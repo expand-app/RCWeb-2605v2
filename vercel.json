@@ -1,0 +1,48 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/offer",                "destination": "/index.html" },
+    { "source": "/cases",                "destination": "/index.html" },
+    { "source": "/background",           "destination": "/index.html" },
+    { "source": "/background/:slug*",    "destination": "/index.html" },
+    { "source": "/resources",            "destination": "/index.html" },
+    { "source": "/resources/:slug*",     "destination": "/index.html" },
+    { "source": "/about",                "destination": "/index.html" },
+    { "source": "/replay/:slug*",        "destination": "/index.html" },
+    { "source": "/article/:slug*",       "destination": "/index.html" },
+    { "source": "/legal/:slug*",         "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options",        "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy",     "value": "geolocation=(), microphone=(), camera=()" }
+      ]
+    },
+    {
+      "source": "/media/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type",  "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type",  "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}

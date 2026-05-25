@@ -1,0 +1,65 @@
+# ============================================================
+# Rexpand · RCWeb-2605 — gitignore
+# ============================================================
+
+# Large media — keep photos only. Videos go on CDN (Vercel Blob / Cloudflare R2 / S3).
+# Replays
+media/replays/*.mp4
+media/replays/*.webm
+media/replays/*.mov
+!media/replays/.gitkeep
+# Instructor video clips (50-100MB each, exceed GitHub limit)
+media/instructors/*.mp4
+media/instructors/*.webm
+media/instructors/*.mov
+!media/instructors/.gitkeep
+# Other large videos
+media/food-hevc-original.mp4
+
+# Internal helper / scratch / temp files (used during dev, not part of site)
+_audit/
+_legal/
+_cases_data.json
+_cases_js_const.js
+_cases_js_data.json
+_generated_cards.html
+_id_mapping.json
+_articles_short.json
+_expand_articles.py
+_expand_articles_2.py
+_expand_remainder.py
+_expansions_batch1.pkl
+_expansions_batch2.pkl
+_panel04.py
+_mod_preview.py
+_arch_replacement.html
+_fm_bg.py
+_fm_polish.py
+_home_redesign.py
+_home_sv.py
+_vf_redesign.py
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Internal notes (not for public)
+.ds.txt
+.quant.txt
+
+# Local serve script log (not needed in repo)
+*.log
+
+# Environment / secrets (for future automation)
+.env
+.env.local
+.env.*.local
+secrets.json

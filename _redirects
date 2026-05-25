@@ -1,0 +1,5 @@
+# Cloudflare Pages / Netlify backup config for SPA fallback.
+# All unknown routes return /index.html with 200 (preserves URL for JS router).
+/sitemap.xml  /sitemap.xml  200
+/robots.txt   /robots.txt   200
+/*            /index.html   200

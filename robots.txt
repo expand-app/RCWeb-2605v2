@@ -1,0 +1,45 @@
+# Rexpand · 睿思班 — robots.txt
+# Welcome all major search engines and AI crawlers
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /media/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Baidu (most important for the Chinese market)
+User-agent: Baiduspider
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# AI crawlers (let them index our content for AI search results)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap
+Sitemap: https://rexpandcareer.com/sitemap.xml
