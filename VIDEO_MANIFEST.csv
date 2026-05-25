@@ -1,0 +1,18 @@
+#,Local File Path,Size (MB),Target CDN Path,HTML References,Notes
+1,media/food-hevc-original.mp4,2.6,/media/food-hevc-original.mp4,0,IN GIT
+2,media/food.mp4,1.0,/media/food.mp4,1,IN GIT
+3,media/instructors/Amber.mp4,39.5,/media/instructors/Amber.mp4,1,IN GIT
+4,media/instructors/Cathy.mp4,88.0,/media/instructors/Cathy.mp4,1,IN GIT
+5,media/instructors/Claire.mp4,63.7,/media/instructors/Claire.mp4,1,IN GIT
+6,media/instructors/Florence.mp4,5.3,/media/instructors/Florence.mp4,1,IN GIT
+7,media/instructors/James.mp4,6.4,/media/instructors/James.mp4,1,IN GIT
+8,media/instructors/Jennie.mp4,100.7,/media/instructors/Jennie.mp4,1,GITIGNORED — must upload to CDN
+9,media/instructors/Jiexuan.mp4,17.6,/media/instructors/Jiexuan.mp4,1,IN GIT
+10,media/instructors/Ryan.mp4,7.6,/media/instructors/Ryan.mp4,1,IN GIT
+11,media/instructors/Vivian.mp4,65.5,/media/instructors/Vivian.mp4,1,IN GIT
+12,media/instructors/Xiaoyi.mp4,16.8,/media/instructors/Xiaoyi.mp4,1,IN GIT
+13,media/instructors/danny.mp4,63.8,/media/instructors/danny.mp4,1,IN GIT
+14,media/instructors/tom.mp4,47.2,/media/instructors/tom.mp4,1,IN GIT
+15,media/replays/goldman-business-operations-analyst-2026-05-25.mp4,352.0,/media/replays/goldman-business-operations-analyst-2026-05-25.mp4,1,GITIGNORED — must upload to CDN
+16,media/replays/mckinsey-senior-data-science-analyst-2026-05-25.mp4,685.5,/media/replays/mckinsey-senior-data-science-analyst-2026-05-25.mp4,1,GITIGNORED — must upload to CDN
+17,media/replays/walmart-senior-data-scientist-2026-05-25.mp4,929.0,/media/replays/walmart-senior-data-scientist-2026-05-25.mp4,1,GITIGNORED — must upload to CDN
