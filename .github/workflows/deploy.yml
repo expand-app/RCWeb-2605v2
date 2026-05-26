@@ -1,0 +1,94 @@
+name: Deploy to Aliyun OSS
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deploy Environment"
+        required: false
+        default: "production"
+        type: choice
+        options:
+          - production
+          - staging
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Stage deployable files
+        run: |
+          mkdir -p dist
+          cp index.html dist/
+          cp robots.txt dist/
+          cp sitemap.xml dist/
+          mkdir -p dist/media
+          cp media/food.mp4 dist/media/
+          cp media/food-*.png dist/media/
+          cp media/meetfood-logo.png dist/media/
+          cp -r media/team dist/media/
+          echo "--- dist tree ---"
+          find dist -maxdepth 3 -type f | sort
+          du -sh dist
+
+      - name: Set environment variables
+        run: |
+          ENVIRONMENT="${{ github.event.inputs.environment }}"
+          if [ -z "$ENVIRONMENT" ]; then
+            ENVIRONMENT="production"
+          fi
+          echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_ENV
+
+          if [[ "$ENVIRONMENT" == "staging" ]]; then
+            echo "OSS_BUCKET=staging-rexpand-official-website" >> $GITHUB_ENV
+            echo "CDN_DOMAINS=http://staging.rexpandcareer.com/" >> $GITHUB_ENV
+          else
+            echo "OSS_BUCKET=rexpand-official-website" >> $GITHUB_ENV
+            echo "CDN_DOMAINS=https://www.rexpandcareer.com/ https://rexpandcareer.com/" >> $GITHUB_ENV
+          fi
+
+      - name: Upload build to Aliyun OSS
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+          OSS_BUCKET: ${{ env.OSS_BUCKET }}
+          OSS_ENDPOINT: "oss-cn-hangzhou.aliyuncs.com"
+        run: |
+          sudo -v ; curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
+          ossutil config -e $OSS_ENDPOINT -i $OSS_ACCESS_KEY_ID -k $OSS_ACCESS_KEY_SECRET
+          ossutil cp -r -f ./dist/ oss://$OSS_BUCKET/
+
+      - name: Refresh Aliyun CDN cache
+        env:
+          CDN_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          CDN_ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+        run: |
+          cd $HOME
+          curl -L -o aliyun-cli-linux-latest-amd64.tgz https://github.com/aliyun/aliyun-cli/releases/download/v3.0.226/aliyun-cli-linux-3.0.226-amd64.tgz
+          tar xzvf aliyun-cli-linux-latest-amd64.tgz
+          sudo cp aliyun /usr/local/bin
+          sudo chmod +x /usr/local/bin/aliyun
+          aliyun version
+
+          aliyun configure set \
+            --profile AkProfile \
+            --mode AK \
+            --access-key-id $CDN_ACCESS_KEY_ID \
+            --access-key-secret $CDN_ACCESS_KEY_SECRET \
+            --region cn-hangzhou
+
+          for domain in $CDN_DOMAINS; do
+            aliyun dcdn RefreshDcdnObjectCaches \
+              --region cn-hangzhou \
+              --ObjectPath "${domain}*" \
+              --ObjectType File
+          done
