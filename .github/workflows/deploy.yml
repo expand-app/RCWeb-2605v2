@@ -100,19 +100,19 @@ jobs:
             --access-key-secret $CDN_ACCESS_KEY_SECRET \
             --region cn-hangzhou
 
-          # Ensure the clean-URL -> .html rewrite exists on both domains so
-          # crawlers fetching /offer, /cases, /background/quant, ... get the
-          # pre-rendered per-page .html (with the right title/description/og).
-          # One generic rule covers every extensionless path; paths without a
-          # matching .html still fall back to index.html (404 -> SPA). Idempotent:
-          # only added when not already present (detected by the [^.] in regex).
+          # Ensure the clean-URL -> .html rewrites exist on both domains so
+          # crawlers fetching /offer, /cases, /background/quant, /legal/privacy,
+          # ... get the pre-rendered per-page .html (right title/description/og).
+          # DCDN's [^.] does NOT span "/", so we need one rule per path depth:
+          #   ^/([^.]+)$          -> /$1.html   (one segment:  /offer)
+          #   ^/([^.]+/[^.]+)$    -> /$1.html   (two segments: /background/quant)
+          # Paths without a matching .html still fall back to index.html (404 ->
+          # SPA). Idempotent: each rule is added only when not already present
+          # (exact-string match with grep -F). $1 stays literal (single quotes).
           for d in www.rexpandcareer.com rexpandcareer.com; do
-            if ! aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames host_redirect 2>/dev/null | grep -q '\[\^\.\]'; then
-              echo "Adding clean-URL->.html host_redirect rule to $d"
-              aliyun dcdn BatchSetDcdnDomainConfigs \
-                --DomainNames "$d" \
-                --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
-            fi
+            cfg=$(aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames host_redirect 2>/dev/null)
+            echo "$cfg" | grep -qF '^/([^.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
+            echo "$cfg" | grep -qF '^/([^.]+/[^.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^.]+/[^.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
           done
 
           # Directory refresh purges every cached object under each domain so the
