@@ -38,6 +38,7 @@ jobs:
           cp media/food-*.png dist/media/
           cp media/meetfood-logo.png dist/media/
           cp -r media/team dist/media/
+          cp -r media/avatars dist/media/
           echo "--- dist tree ---"
           find dist -maxdepth 3 -type f | sort
           du -sh dist
