@@ -26339,6 +26339,13 @@ function go(routeName, opts){
   const el = document.getElementById(target);
   if(el) el.classList.add('active');
 
+  // Stop media on the page we're leaving — an HTML5 <video> keeps playing
+  // (audio included) under display:none, so a 面试回放 would keep going after
+  // navigating away. Pause every video not on the target page; restart muted
+  // autoplay background videos (e.g. home hero) on the page we enter.
+  document.querySelectorAll('video').forEach(v => { if(!el || !el.contains(v)){ try{ v.pause(); }catch(_){} } });
+  if(el){ el.querySelectorAll('video[autoplay][muted]').forEach(v => { try{ const pr = v.play(); if(pr && pr.catch) pr.catch(()=>{}); }catch(_){} }); }
+
   // legal pages share one page-id; pick which doc to show based on route name
   if(target === 'page-legal'){
     const legalKey = ['privacy','user-terms','mentor-terms'].includes(routeName) ? routeName : 'privacy';
