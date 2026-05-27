@@ -1,6 +1,9 @@
 name: Deploy to Aliyun OSS
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       environment:
