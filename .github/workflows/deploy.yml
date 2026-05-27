@@ -144,6 +144,23 @@ jobs:
               --ObjectType Directory
           done
 
+          # Also purge each clean-URL page explicitly (File refresh). The plain,
+          # query-less URL is what crawlers fetch, and a directory refresh that
+          # runs while the origin is still settling can re-cache the stale root;
+          # an explicit per-URL purge guarantees the per-route object is served.
+          MANIFEST="$GITHUB_WORKSPACE/dist-pages/manifest.txt"
+          if [ -f "$MANIFEST" ]; then
+            for base in $CDN_DOMAINS; do
+              while IFS=$'\t' read -r f key; do
+                [ -z "$key" ] && continue
+                aliyun dcdn RefreshDcdnObjectCaches \
+                  --region cn-hangzhou \
+                  --ObjectPath "${base}${key}" \
+                  --ObjectType File || true
+              done < "$MANIFEST"
+            done
+          fi
+
       - name: Notify deploy result
         if: always()
         uses: actions/github-script@v7
