@@ -104,7 +104,7 @@
   --mono: "JetBrains Mono", ui-monospace, monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; scroll-padding-top: 80px;}
 body{
   font-family: var(--sans-cn);
   background: var(--bg);
@@ -5630,9 +5630,12 @@ footer{
 /* ============ RESPONSIVE ============ */
 @media (max-width: 960px){
   .nav-inner{ padding: 14px 20px; gap: 16px; }
-  /* Hide desktop CTA buttons on mobile (they take too much space) */
-  .nav-cta{ display: none; }
-  .nav-toggle{ display: block; }
+  /* Keep the primary "求职咨询" CTA pinned in the sticky bar on mobile;
+     hide the login link to save space and push the button + hamburger right. */
+  .nav-cta{ display: flex; order: 2; margin-left: auto; gap: 0; }
+  .nav-cta .login{ display: none; }
+  .nav-cta .btn-primary{ padding: 7px 13px; font-size: 12px; }
+  .nav-toggle{ display: block; order: 3; }
   /* Mobile menu drawer */
   .nav-links{
     position: fixed;
@@ -26382,6 +26385,32 @@ function go(routeName, opts){
   setTimeout(triggerReveal, 50);
 }
 
+/* Robust body scroll-lock for modals. body{overflow:hidden} does NOT lock
+   scrolling on iOS Safari (background still scrolls, position is lost on
+   close, so the page appears to "jump"). Freezing with position:fixed and
+   restoring the saved offset works across mobile browsers. */
+let _bodyLocked = false, _bodyLockY = 0;
+function lockBodyScroll(){
+  if(_bodyLocked) return;
+  _bodyLockY = window.scrollY || window.pageYOffset || 0;
+  document.body.style.position = 'fixed';
+  document.body.style.top = (-_bodyLockY) + 'px';
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  _bodyLocked = true;
+}
+function unlockBodyScroll(){
+  if(!_bodyLocked) return;
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.width = '';
+  _bodyLocked = false;
+  window.scrollTo(0, _bodyLockY);
+}
+
 /* Intercept all internal data-route clicks → use SPA navigation. */
 document.addEventListener('click', (e) => {
   const link = e.target.closest('[data-route]');
@@ -26564,13 +26593,13 @@ function openCaseModal(caseId){
     </div>
   `;
   modal.hidden = false;
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
 }
 
 function closeCaseModal(){
   const modal = document.getElementById('case-modal');
   if(modal){ modal.hidden = true; }
-  document.body.style.overflow = '';
+  unlockBodyScroll();
 }
 
 document.addEventListener('click', (e) => {
@@ -29177,7 +29206,7 @@ function openResumeModal(){
   if(!m) return;
   m.classList.add('active');
   m.setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
+  lockBodyScroll();
   // populate role cards (re-populate when direction changes)
   const roles = document.getElementById('rm-roles');
   if(roles && rmDirRendered !== CURRENT_BG_DIR){
@@ -29203,7 +29232,7 @@ function closeResumeModal(){
   if(!m) return;
   m.classList.remove('active');
   m.setAttribute('aria-hidden','true');
-  document.body.style.overflow = '';
+  unlockBodyScroll();
   rmAnimToken++; // cancel any pending animations
 }
 function selectResumeRole(roleKey){
@@ -32807,7 +32836,7 @@ function triggerReveal(){
     video.src = src;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
     const p = video.play();
     if(p && typeof p.catch === 'function') p.catch(()=>{});
   }
@@ -32815,7 +32844,7 @@ function triggerReveal(){
   function close(){
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
     try{ video.pause(); }catch(e){}
     video.removeAttribute('src');
     video.load();
