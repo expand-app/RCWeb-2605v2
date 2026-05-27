@@ -85,9 +85,15 @@ jobs:
           mkdir -p /tmp/avrec
           while read -r f; do
             [ -z "$f" ] && continue
-            ts=$(curl -sS -m30 "http://archive.org/wayback/available?url=rexpandcareer.com/_next/static/media/$f" 2>/dev/null | grep -oE '"timestamp": *"[0-9]+"' | grep -oE '[0-9]+' | head -1)
+            # Skip ones already restored to the bucket.
+            if ossutil stat "oss://$OSS_BUCKET/_next/static/media/$f" >/dev/null 2>&1; then
+              echo "HAVE $f" >> /tmp/recover.txt; continue
+            fi
+            # Prefer the CDX index (lists all 200 snapshots) over the flaky
+            # availability endpoint; take the most recent snapshot.
+            ts=$(curl -sS -m40 "http://web.archive.org/cdx/search/cdx?url=rexpandcareer.com/_next/static/media/$f&output=text&fl=timestamp&filter=statuscode:200&limit=-1" 2>/dev/null | tr -dc '0-9\n' | tail -1)
             if [ -z "$ts" ]; then
-              ts=$(curl -sS -m30 "http://archive.org/wayback/available?url=www.rexpandcareer.com/_next/static/media/$f" 2>/dev/null | grep -oE '"timestamp": *"[0-9]+"' | grep -oE '[0-9]+' | head -1)
+              ts=$(curl -sS -m30 "http://archive.org/wayback/available?url=rexpandcareer.com/_next/static/media/$f" 2>/dev/null | grep -oE '"timestamp": *"[0-9]+"' | grep -oE '[0-9]+' | head -1)
             fi
             if [ -z "$ts" ]; then echo "MISS $f" >> /tmp/recover.txt; continue; fi
             curl -sS -m90 -L -o "/tmp/avrec/$f" "http://web.archive.org/web/${ts}id_/https://rexpandcareer.com/_next/static/media/$f" 2>/dev/null
