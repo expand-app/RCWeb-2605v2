@@ -91,6 +91,8 @@ jobs:
           # One-time cleanup of the diagnostic dumps.
           ossutil rm -f "oss://$OSS_BUCKET/_diag-routing.txt" || true
           ossutil rm -f "oss://$OSS_BUCKET/_diag-dcdn.txt" || true
+          ossutil rm -f "oss://$OSS_BUCKET/_diag-legacy.txt" || true
+          ossutil rm -f "oss://$OSS_BUCKET/_diag-legacy2.txt" || true
           # Static-website hosting: with SupportSubDir on, the bound CNAME treats
           # an extensionless clean URL like /offer as a directory and falls back
           # to the root index.html, hiding the per-route objects. Turning it off
@@ -163,33 +165,6 @@ jobs:
               done < "$MANIFEST"
             done
           fi
-
-          # --- ONE-OFF: remove legacy (old-site) host_redirect rules.
-          # The old static pages (success-cases.html, job/*.html, about.html,
-          # privacy-policy.html, ...) no longer exist; these rewrites only point
-          # at missing files. Delete them by ConfigId. KEPT: ^/$ -> /index.html,
-          # the /ad/* rules, and the apex /offer & /cases rules. Idempotent
-          # (already-deleted ids just error harmlessly). Remove this block once
-          # the cleanup is confirmed.
-          WWW_DEL="394817943695360 394817973059584 394818000308224 394818027589632 394818052743168 394818077902848 394818100983808 394818130339843 394818275039232 394818293923840 394818316992512 394818335870976 394818356838400 394818382008320 444861818468352 459906203901952"
-          APEX_DEL="391600170055680 391600662900736 391600742588416 391600780328960 391600805498880 391600843253760 391600874704896 391600899868672 391600943919104 391600969076736 391601000546304 391601038282752 391601065551872 391601094912000 445610736619520 459906266826752"
-          for id in $WWW_DEL; do
-            aliyun dcdn DeleteDcdnSpecificConfig --DomainName www.rexpandcareer.com --ConfigId "$id" || true
-          done
-          for id in $APEX_DEL; do
-            aliyun dcdn DeleteDcdnSpecificConfig --DomainName rexpandcareer.com --ConfigId "$id" || true
-          done
-          # Verify: dump remaining host_redirect rules for inspection.
-          {
-            for d in www.rexpandcareer.com rexpandcareer.com; do
-              echo "### host_redirect $d (after cleanup):"
-              aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames "host_redirect" 2>&1 || true
-              echo
-            done
-          } > /tmp/diag-legacy2.txt 2>&1
-          ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
-          ossutil rm -f "oss://${OSS_BUCKET}/_diag-legacy.txt" || true
-          ossutil cp -f /tmp/diag-legacy2.txt "oss://${OSS_BUCKET}/_diag-legacy2.txt" --meta "Cache-Control:no-cache" || true
 
       - name: Notify deploy result
         if: always()
