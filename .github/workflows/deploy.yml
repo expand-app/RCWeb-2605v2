@@ -72,48 +72,10 @@ jobs:
           sudo -v ; curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
           ossutil config -e $OSS_ENDPOINT -i $OSS_ACCESS_KEY_ID -k $OSS_ACCESS_KEY_SECRET
           ossutil cp -r -f ./dist/ oss://$OSS_BUCKET/
-          # HTML shell must always revalidate so a new deploy shows up immediately
-          # instead of being served from a stale browser/CDN cache.
-          ossutil cp -f --meta "Cache-Control:no-cache" ./dist/index.html oss://$OSS_BUCKET/index.html
-          # Per-route share pages: extensionless objects keyed exactly to the
-          # clean URL (e.g. key "offer", "background/quant"). OSS serves these
-          # directly via the CNAME so crawlers get per-page og meta; unknown
-          # paths still fall back to root index.html (SPA routing intact). They
-          # have no extension, so Content-Type must be set explicitly.
-          if [ -f dist-pages/manifest.txt ]; then
-            while IFS=$'\t' read -r f key; do
-              [ -z "$key" ] && continue
-              ossutil cp -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" "dist-pages/$f" "oss://$OSS_BUCKET/$key"
-              # Drop the older shadowed form from earlier deploys, if present.
-              ossutil rm -f "oss://$OSS_BUCKET/$key/index.html" || true
-            done < dist-pages/manifest.txt
-          fi
-          # One-time cleanup of the diagnostic dumps.
-          ossutil rm -f "oss://$OSS_BUCKET/_diag-routing.txt" || true
-          ossutil rm -f "oss://$OSS_BUCKET/_diag-dcdn.txt" || true
-          ossutil rm -f "oss://$OSS_BUCKET/_diag-legacy.txt" || true
-          ossutil rm -f "oss://$OSS_BUCKET/_diag-legacy2.txt" || true
-          # Static-website hosting: with SupportSubDir on, the bound CNAME treats
-          # an extensionless clean URL like /offer as a directory and falls back
-          # to the root index.html, hiding the per-route objects. Turning it off
-          # makes OSS serve the exact object (key "offer") so crawlers get the
-          # per-page og meta. Unknown paths still fall back to index.html via the
-          # ErrorDocument below, so client-side SPA routing is unchanged. Idempotent.
-          cat > /tmp/website.xml <<'XML'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <WebsiteConfiguration>
-            <IndexDocument>
-              <Suffix>index.html</Suffix>
-              <SupportSubDir>false</SupportSubDir>
-              <Type>0</Type>
-            </IndexDocument>
-            <ErrorDocument>
-              <Key>index.html</Key>
-              <HttpStatus>404</HttpStatus>
-            </ErrorDocument>
-          </WebsiteConfiguration>
-          XML
-          ossutil website --method put oss://$OSS_BUCKET /tmp/website.xml
+          # HTML shells (root index.html + every pre-rendered per-route *.html)
+          # must always revalidate so a new deploy shows up immediately instead of
+          # being served from a stale browser/CDN cache.
+          ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ oss://$OSS_BUCKET/
           # Enable bucket versioning so accidental deletes/overwrites can be
           # rolled back. Idempotent. Not retroactive — only protects changes
           # made from now on. Re-run each deploy keeps it on (self-healing).
@@ -138,33 +100,30 @@ jobs:
             --access-key-secret $CDN_ACCESS_KEY_SECRET \
             --region cn-hangzhou
 
-          # Directory refresh purges every cached object under each domain,
-          # which reliably clears stale routes (the File+wildcard form did not).
-          # Runs after upload; the OSS origin is strongly consistent for object
-          # PUTs, so a re-fetch right after a refresh serves the latest content.
+          # Ensure the clean-URL -> .html rewrite exists on both domains so
+          # crawlers fetching /offer, /cases, /background/quant, ... get the
+          # pre-rendered per-page .html (with the right title/description/og).
+          # One generic rule covers every extensionless path; paths without a
+          # matching .html still fall back to index.html (404 -> SPA). Idempotent:
+          # only added when not already present (detected by the [^.] in regex).
+          for d in www.rexpandcareer.com rexpandcareer.com; do
+            if ! aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames host_redirect 2>/dev/null | grep -q '\[\^\.\]'; then
+              echo "Adding clean-URL->.html host_redirect rule to $d"
+              aliyun dcdn BatchSetDcdnDomainConfigs \
+                --DomainNames "$d" \
+                --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
+            fi
+          done
+
+          # Directory refresh purges every cached object under each domain so the
+          # new .html pages (and the rewrite) take effect immediately. Runs after
+          # the rule is set; OSS is strongly consistent for object PUTs.
           for url in $CDN_DOMAINS; do
             aliyun dcdn RefreshDcdnObjectCaches \
               --region cn-hangzhou \
               --ObjectPath "$url" \
               --ObjectType Directory
           done
-
-          # Also purge each clean-URL page explicitly (File refresh). The plain,
-          # query-less URL is what crawlers fetch, and a directory refresh that
-          # runs while the origin is still settling can re-cache the stale root;
-          # an explicit per-URL purge guarantees the per-route object is served.
-          MANIFEST="$GITHUB_WORKSPACE/dist-pages/manifest.txt"
-          if [ -f "$MANIFEST" ]; then
-            for base in $CDN_DOMAINS; do
-              while IFS=$'\t' read -r f key; do
-                [ -z "$key" ] && continue
-                aliyun dcdn RefreshDcdnObjectCaches \
-                  --region cn-hangzhou \
-                  --ObjectPath "${base}${key}" \
-                  --ObjectType File || true
-              done < "$MANIFEST"
-            done
-          fi
 
       - name: Notify deploy result
         if: always()
