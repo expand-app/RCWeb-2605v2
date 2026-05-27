@@ -421,6 +421,7 @@ body.mobile-menu-open .nav-toggle span:nth-child(3){ top: 17px; transform: rotat
   padding: 56px 40px 80px;
   border-bottom: 1px solid var(--line);
   position: relative;
+  overflow-x: hidden; /* clip the decorative ::before glow so it can't cause horizontal scroll */
 }
 .page-hero::before{
   content:"";
@@ -5759,6 +5760,27 @@ footer{
   .tl-year{ font-size: 28px; }
   .cta-inner{ grid-template-columns: 1fr; gap: 32px; padding: 64px 20px; }
   .foot-inner{ grid-template-columns: 1fr 1fr; gap: 40px; padding: 0 0 40px;}
+}
+
+/* ===== Mobile overflow hardening (phones / small screens) ===== */
+@media (max-width: 700px){
+  /* Footer: stack the copyright above the links, and let the links wrap
+     instead of pushing past the right edge. */
+  .foot-bottom{ flex-direction: column; align-items: flex-start; gap: 16px; }
+  .foot-bottom .right{ flex-wrap: wrap; gap: 12px 18px; }
+  /* About timeline: allow the grid item to shrink so the photo grid
+     (auto-fill minmax 220px) can't expand the whole row past the viewport. */
+  .tl-content{ min-width: 0; }
+  .tl-photos{ grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
+  /* Background highlights + section headers: keep grid tracks from
+     stretching wider than the viewport when content is intrinsically wide. */
+  .high-cell{ min-width: 0; }
+  .sec-header > div{ min-width: 0; }
+  /* About timeline agent list: stack the 3-up cards into one column. */
+  .tl-agents{ grid-template-columns: 1fr; max-width: none; }
+  /* Allow CJK to wrap per-character on narrow screens. The global rule uses
+     word-break:keep-all, which can overflow long unbroken zh runs on mobile. */
+  body{ word-break: normal; }
 }
 
 /* ============ REVEAL ============ */
@@ -32815,8 +32837,12 @@ function triggerReveal(){
   });
 })();
 
-/* boot */
-go('home');
+/* boot — route from the current URL so deep links / refreshes land on the right page */
+(function(){
+  const r = pathToRoute(location.pathname);
+  const bgDir = (r === 'background') ? (pathToBgDir(location.pathname) || BG_DEFAULT_DIR) : null;
+  go(r, {skipPush: true, bgDir: bgDir});
+})();
 </script>
 
 </body>
