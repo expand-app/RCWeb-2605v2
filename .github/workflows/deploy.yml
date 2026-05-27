@@ -77,6 +77,30 @@ jobs:
           ossutil bucket-versioning --method put oss://$OSS_BUCKET enabled || true
           echo "### versioning status after enable" > /tmp/recover.txt
           ossutil bucket-versioning --method get oss://$OSS_BUCKET >> /tmp/recover.txt 2>&1 || true
+          # One-time: recover avatars (deleted earlier with _next/) from the
+          # Wayback Machine and restore them to their original bucket path so the
+          # existing index.html links work again. Only archived ones succeed.
+          echo "### avatar recovery from Wayback" >> /tmp/recover.txt
+          grep -oE '_next/static/media/avatar_[a-z]+\.[a-z0-9]+\.png' index.html | sort -u | sed 's#.*/##' > /tmp/avlist.txt
+          mkdir -p /tmp/avrec
+          while read -r f; do
+            [ -z "$f" ] && continue
+            ts=$(curl -sS -m30 "http://archive.org/wayback/available?url=rexpandcareer.com/_next/static/media/$f" 2>/dev/null | grep -oE '"timestamp": *"[0-9]+"' | grep -oE '[0-9]+' | head -1)
+            if [ -z "$ts" ]; then
+              ts=$(curl -sS -m30 "http://archive.org/wayback/available?url=www.rexpandcareer.com/_next/static/media/$f" 2>/dev/null | grep -oE '"timestamp": *"[0-9]+"' | grep -oE '[0-9]+' | head -1)
+            fi
+            if [ -z "$ts" ]; then echo "MISS $f" >> /tmp/recover.txt; continue; fi
+            curl -sS -m90 -L -o "/tmp/avrec/$f" "http://web.archive.org/web/${ts}id_/https://rexpandcareer.com/_next/static/media/$f" 2>/dev/null
+            if file -b --mime-type "/tmp/avrec/$f" 2>/dev/null | grep -qi image; then
+              if ossutil cp -f "/tmp/avrec/$f" "oss://$OSS_BUCKET/_next/static/media/$f" >/dev/null 2>&1; then
+                echo "OK   $f ($(wc -c < /tmp/avrec/$f)B, snap $ts)" >> /tmp/recover.txt
+              else
+                echo "UPLOAD-FAIL $f" >> /tmp/recover.txt
+              fi
+            else
+              echo "BAD  $f (archived response not an image)" >> /tmp/recover.txt
+            fi
+          done < /tmp/avlist.txt
 
       - name: Refresh Aliyun CDN cache
         env:
