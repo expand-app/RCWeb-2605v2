@@ -6,7 +6,8 @@
  * Source of truth = the routeMeta / BG_ROUTE_META objects inside index.html;
  * we extract them so this never drifts from the runtime router.
  *
- * Reads ./index.html, writes ./dist/<path>/index.html for each route.
+ * Reads ./index.html, writes ./dist/<path>.html for each route (served at the
+ * clean URL via the CDN host_redirect rewrite /<path> -> /<path>.html).
  */
 import fs from 'fs';
 import path from 'path';
@@ -73,34 +74,23 @@ for(const slug in BG_DIR_BY_SLUG){
   pages.push({ path: '/background/' + slug, title: bgm.title, desc: bgm.desc, og: bgOg });
 }
 
-// Write each page as an EXTENSIONLESS object whose key exactly matches the
-// clean URL (e.g. key "offer" for /offer, "background/quant" for
-// /background/quant). OSS serves such objects directly via the bound CNAME —
-// the same way it serves /robots.txt or /media/*. A subdir object literally
-// named index.html (e.g. offer/index.html) is instead intercepted by the
-// IndexDocument/SupportSubDir logic and shadowed by the root index.html, so we
-// must NOT use that form. Unknown paths still fall back to root index.html via
-// the bucket's ErrorDocument, so client-side SPA routing keeps working.
-//
-// We stage files FLAT (key "background/quant" -> file "background__quant")
-// because a local filesystem cannot hold both a file "background" and a dir
-// "background/" at once, whereas OSS's flat namespace can. The deploy reads
-// manifest.txt and uploads each to its real key with Content-Type: text/html.
-const outDir = path.join(ROOT, 'dist-pages');
-fs.mkdirSync(outDir, { recursive: true });
+// Write each page as a real ".html" object at the clean path (e.g.
+// dist/offer.html, dist/background/quant.html, dist/legal/privacy.html). The
+// CDN's host_redirect rule rewrites the extensionless clean URL (/offer) to its
+// .html (/offer.html), which OSS serves reliably as a normal file object — the
+// same proven mechanism the site already uses (e.g. the apex /offer ->
+// /offer.html rule). The canonical/og:url still points at the clean URL.
 let count = 0;
-const manifest = [];
 for(const pg of pages){
-  const key = pg.path.replace(/^\//, '');          // e.g. background/quant
-  const file = key.replace(/\//g, '__');           // e.g. background__quant
+  const key = pg.path.replace(/^\//, '');               // e.g. background/quant
   const rendered = applyHead(html, { title: pg.title, desc: pg.desc, url: ORIGIN + pg.path, og: pg.og });
-  fs.writeFileSync(path.join(outDir, file), rendered);
-  manifest.push(`${file}\t${key}`);
+  const outPath = path.join(ROOT, 'dist', key + '.html'); // dist/background/quant.html
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, rendered);
   count++;
-  console.log('  wrote', file, '->', key, '← og:', pg.og.replace(ORIGIN, ''));
+  console.log('  wrote', key + '.html', '← og:', pg.og.replace(ORIGIN, ''));
 }
-fs.writeFileSync(path.join(outDir, 'manifest.txt'), manifest.join('\n') + '\n');
 // Top-level build marker so the deploy result can be verified from the live
 // site (curl /og-build-marker.txt) without access to CI logs.
-fs.writeFileSync(path.join(ROOT, 'dist', 'og-build-marker.txt'), `og-pages built ${count} clean-path files at ${new Date().toISOString()}\n`);
-console.log(`og-pages: generated ${count} clean-path HTML files + manifest in dist-pages/.`);
+fs.writeFileSync(path.join(ROOT, 'dist', 'og-build-marker.txt'), `og-pages built ${count} .html pages at ${new Date().toISOString()}\n`);
+console.log(`og-pages: generated ${count} per-route .html files in dist/.`);
