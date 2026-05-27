@@ -39,6 +39,9 @@ jobs:
           cp media/meetfood-logo.png dist/media/
           cp -r media/team dist/media/
           cp -r media/avatars dist/media/
+          # Pre-render per-route static HTML so shared deep links get the right
+          # title/description/og:image for crawlers that don't run JS (WeChat etc.)
+          node scripts/og-pages.mjs
           echo "--- dist tree ---"
           find dist -maxdepth 3 -type f | sort
           du -sh dist
@@ -69,9 +72,10 @@ jobs:
           sudo -v ; curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
           ossutil config -e $OSS_ENDPOINT -i $OSS_ACCESS_KEY_ID -k $OSS_ACCESS_KEY_SECRET
           ossutil cp -r -f ./dist/ oss://$OSS_BUCKET/
-          # HTML shell must always revalidate so a new deploy shows up immediately
-          # instead of being served from a stale browser/CDN cache.
-          ossutil cp -f --meta "Cache-Control:no-cache" ./dist/index.html oss://$OSS_BUCKET/index.html
+          # HTML shells must always revalidate so a new deploy shows up immediately
+          # instead of being served from a stale browser/CDN cache. Covers the root
+          # index.html plus every pre-rendered per-route page.
+          ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ oss://$OSS_BUCKET/
           # Enable bucket versioning so accidental deletes/overwrites can be
           # rolled back. Idempotent. Not retroactive — only protects changes
           # made from now on. Re-run each deploy keeps it on (self-healing).
