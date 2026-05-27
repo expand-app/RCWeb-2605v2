@@ -103,39 +103,38 @@ jobs:
           # Ensure the clean-URL -> .html rewrites exist on both domains so
           # crawlers fetching /offer, /cases, /background/quant, /legal/privacy,
           # ... get the pre-rendered per-page .html (right title/description/og).
-          # DCDN's [^.] does NOT span "/", so we need one rule per path depth:
-          #   ^/([^.]+)$          -> /$1.html   (one segment:  /offer)
-          #   ^/([^.]+/[^.]+)$    -> /$1.html   (two segments: /background/quant)
+          # The capture group must NOT contain a "/": DCDN mangles a $1
+          # backreference that spans a slash (so a single ^/([^.]+/[^.]+)$ rule
+          # never matched). Mirror the working /ad rule instead — a literal path
+          # prefix plus a single-segment capture:
+          #   ^/([^.]+)$               -> /$1.html            (one segment)
+          #   ^/background/([^/.]+)$   -> /background/$1.html  (background sub-pages)
+          #   ^/legal/([^/.]+)$        -> /legal/$1.html       (legal sub-pages)
           # Paths without a matching .html still fall back to index.html (404 ->
           # SPA). Idempotent: each rule is added only when not already present
           # (exact-string match with grep -F). $1 stays literal (single quotes).
           for d in www.rexpandcareer.com rexpandcareer.com; do
             cfg=$(aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames host_redirect 2>/dev/null)
             echo "$cfg" | grep -qF '^/([^.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
-            echo "$cfg" | grep -qF '^/([^.]+/[^.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^.]+/[^.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
+            echo "$cfg" | grep -qF '^/background/([^/.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/background/([^/.]+)$"},{"argName":"replacement","argValue":"/background/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
+            echo "$cfg" | grep -qF '^/legal/([^/.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/legal/([^/.]+)$"},{"argName":"replacement","argValue":"/legal/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
           done
+          # One-off: drop the earlier two-segment rule whose $1 captured a "/"
+          # (never matched; superseded by the explicit /background, /legal rules).
+          aliyun dcdn DeleteDcdnSpecificConfig --DomainName www.rexpandcareer.com --ConfigId 499119391651840 || true
+          aliyun dcdn DeleteDcdnSpecificConfig --DomainName rexpandcareer.com --ConfigId 499119395856384 || true
 
           # Directory refresh purges every cached object under each domain so the
           # new .html pages (and the rewrite) take effect immediately. Runs after
-          # the rule is set; OSS is strongly consistent for object PUTs.
+          # the rules are set; OSS is strongly consistent for object PUTs.
           for url in $CDN_DOMAINS; do
             aliyun dcdn RefreshDcdnObjectCaches \
               --region cn-hangzhou \
               --ObjectPath "$url" \
               --ObjectType Directory
           done
-
-          # --- TEMP DIAGNOSTIC: dump host_redirect rules (both domains) so the
-          # two-segment rewrite can be debugged. Removed once fixed.
-          {
-            for d in www.rexpandcareer.com rexpandcareer.com; do
-              echo "### host_redirect $d :"
-              aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames "host_redirect" 2>&1 || true
-              echo
-            done
-          } > /tmp/diag-hr.txt 2>&1
           ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
-          ossutil cp -f /tmp/diag-hr.txt "oss://${OSS_BUCKET}/_diag-hr.txt" --meta "Cache-Control:no-cache" || true
+          ossutil rm -f "oss://${OSS_BUCKET}/_diag-hr.txt" || true
 
       - name: Notify deploy result
         if: always()
