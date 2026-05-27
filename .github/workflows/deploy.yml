@@ -164,6 +164,21 @@ jobs:
             done
           fi
 
+          # --- TEMP DIAGNOSTIC: list legacy artifacts so they can be removed.
+          # Full host_redirect rules (both domains) + recursive bucket object
+          # listing. Removed once the legacy cleanup is done.
+          {
+            for d in www.rexpandcareer.com rexpandcareer.com; do
+              echo "### host_redirect $d :"
+              aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames "host_redirect" 2>&1 || true
+              echo
+            done
+            echo "### bucket objects (recursive) :"
+            ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
+            ossutil ls "oss://${OSS_BUCKET}/" -r 2>&1 || true
+          } > /tmp/diag-legacy.txt 2>&1
+          ossutil cp -f /tmp/diag-legacy.txt "oss://${OSS_BUCKET}/_diag-legacy.txt" --meta "Cache-Control:no-cache" || true
+
       - name: Notify deploy result
         if: always()
         uses: actions/github-script@v7
