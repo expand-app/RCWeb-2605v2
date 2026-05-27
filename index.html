@@ -472,6 +472,48 @@ h1.page-title .accent{
 }
 .page-cta{ display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
 
+/* ===== Unified hero entrance — staggered fade-up, replays on each route view ===== */
+@keyframes heroRise{
+  from{ opacity: 0; transform: translateY(22px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+.page.active .page-hero .eyebrow,
+.page.active .page-hero h1.page-title,
+.page.active .page-hero .page-lead,
+.page.active .page-hero .page-cta,
+.page.active .page-hero .fact-list,
+.page.active .hero-guarantee .eyebrow,
+.page.active .hero-guarantee h1.page-title,
+.page.active .hero-guarantee .page-lead,
+.page.active .hero-guarantee .page-cta,
+.page.active .hero-guarantee .contract{
+  animation: heroRise .72s cubic-bezier(.16,.84,.44,1) both;
+}
+.page.active .page-hero .eyebrow,
+.page.active .hero-guarantee .eyebrow{ animation-delay: .04s; }
+.page.active .page-hero h1.page-title,
+.page.active .hero-guarantee h1.page-title{ animation-delay: .12s; }
+.page.active .page-hero .fact-list,
+.page.active .hero-guarantee .contract{ animation-delay: .26s; }
+.page.active .page-hero .page-lead,
+.page.active .hero-guarantee .page-lead{ animation-delay: .30s; }
+.page.active .page-hero .page-cta,
+.page.active .hero-guarantee .page-cta{ animation-delay: .40s; }
+@media (prefers-reduced-motion: reduce){
+  .page.active .page-hero .eyebrow,
+  .page.active .page-hero h1.page-title,
+  .page.active .page-hero .page-lead,
+  .page.active .page-hero .page-cta,
+  .page.active .page-hero .fact-list,
+  .page.active .hero-guarantee .eyebrow,
+  .page.active .hero-guarantee h1.page-title,
+  .page.active .hero-guarantee .page-lead,
+  .page.active .hero-guarantee .page-cta,
+  .page.active .hero-guarantee .contract{
+    animation: none;
+  }
+}
+
 /* Tech-stack pills inside the hero, below the lead paragraph */
 .hero-tags{
   display: flex;
@@ -13493,12 +13535,13 @@ footer{
     <div class="guarantee-grid" style="max-width:1280px; margin:0 auto; padding-left:40px; padding-right:40px;">
       <div>
         <div class="eyebrow"><span class="dot"></span>Offer Guarantee · 写进合同的承诺</div>
-        <h1 class="hero-title">
+        <h1 class="page-title">
           一份目标方向<br>
-          <em>全职 offer.</em><br>
+          <span class="accent">全职 offer.</span><br>
           没拿到，退款。
+          <span class="en">A full-time offer in your target field — or your money back.</span>
         </h1>
-        <p class="hero-lead">
+        <p class="page-lead">
           这不是营销话术。条款写进合同，按条款执行。我们之所以敢承诺，是因为我们用 AI Agent 把"拿 offer"这件事系统化了。
         </p>
         <div class="page-cta">
@@ -16710,8 +16753,8 @@ footer{
   /* Cases page — scoped styles */
   #page-cases .page-hero{ padding-bottom: 56px; }
   #page-cases .page-hero-grid{ grid-template-columns: 1fr; max-width: 880px; align-items: start; }
-  #page-cases .page-hero h1.page-title{ font-size: clamp(40px, 4.6vw, 58px); }
-  #page-cases .page-hero .page-lead{ max-width: 680px; font-size: 18px; }
+  #page-cases .page-hero h1.page-title{ font-size: clamp(40px, 5vw, 64px); }
+  #page-cases .page-hero .page-lead{ max-width: 680px; font-size: 17px; }
 
   /* ---------- OFFER WALL (unused — removed from page) ---------- */
   #page-cases .offer-wall{
