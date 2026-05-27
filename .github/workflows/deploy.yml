@@ -88,8 +88,9 @@ jobs:
               ossutil rm -f "oss://$OSS_BUCKET/$key/index.html" || true
             done < dist-pages/manifest.txt
           fi
-          # One-time cleanup of the diagnostic dump.
+          # One-time cleanup of the diagnostic dumps.
           ossutil rm -f "oss://$OSS_BUCKET/_diag-routing.txt" || true
+          ossutil rm -f "oss://$OSS_BUCKET/_diag-dcdn.txt" || true
           # Static-website hosting: with SupportSubDir on, the bound CNAME treats
           # an extensionless clean URL like /offer as a directory and falls back
           # to the root index.html, hiding the per-route objects. Turning it off
@@ -162,18 +163,6 @@ jobs:
               done < "$MANIFEST"
             done
           fi
-
-          # --- TEMP DIAGNOSTIC: dump the full host_redirect (origin URL rewrite)
-          # rules for both domains, untruncated. Removed once understood.
-          {
-            for d in www.rexpandcareer.com rexpandcareer.com; do
-              echo "### host_redirect for $d :"
-              aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames "host_redirect" 2>&1 || true
-              echo
-            done
-          } > /tmp/diag-dcdn.txt 2>&1
-          ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" || true
-          ossutil cp -f /tmp/diag-dcdn.txt "oss://${OSS_BUCKET}/_diag-dcdn.txt" --meta "Cache-Control:no-cache" || true
 
       - name: Notify deploy result
         if: always()
