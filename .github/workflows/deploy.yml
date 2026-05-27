@@ -137,6 +137,8 @@ jobs:
 
           # Directory refresh purges every cached object under each domain,
           # which reliably clears stale routes (the File+wildcard form did not).
+          # Runs after upload; the OSS origin is strongly consistent for object
+          # PUTs, so a re-fetch right after a refresh serves the latest content.
           for url in $CDN_DOMAINS; do
             aliyun dcdn RefreshDcdnObjectCaches \
               --region cn-hangzhou \
