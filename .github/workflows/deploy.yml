@@ -90,6 +90,27 @@ jobs:
           fi
           # One-time cleanup of the diagnostic dump.
           ossutil rm -f "oss://$OSS_BUCKET/_diag-routing.txt" || true
+          # Static-website hosting: with SupportSubDir on, the bound CNAME treats
+          # an extensionless clean URL like /offer as a directory and falls back
+          # to the root index.html, hiding the per-route objects. Turning it off
+          # makes OSS serve the exact object (key "offer") so crawlers get the
+          # per-page og meta. Unknown paths still fall back to index.html via the
+          # ErrorDocument below, so client-side SPA routing is unchanged. Idempotent.
+          cat > /tmp/website.xml <<'XML'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <WebsiteConfiguration>
+            <IndexDocument>
+              <Suffix>index.html</Suffix>
+              <SupportSubDir>false</SupportSubDir>
+              <Type>0</Type>
+            </IndexDocument>
+            <ErrorDocument>
+              <Key>index.html</Key>
+              <HttpStatus>404</HttpStatus>
+            </ErrorDocument>
+          </WebsiteConfiguration>
+          XML
+          ossutil website --method put oss://$OSS_BUCKET /tmp/website.xml
           # Enable bucket versioning so accidental deletes/overwrites can be
           # rolled back. Idempotent. Not retroactive — only protects changes
           # made from now on. Re-run each deploy keeps it on (self-healing).
