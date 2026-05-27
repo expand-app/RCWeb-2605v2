@@ -68,6 +68,12 @@ jobs:
           sudo -v ; curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
           ossutil config -e $OSS_ENDPOINT -i $OSS_ACCESS_KEY_ID -k $OSS_ACCESS_KEY_SECRET
           ossutil cp -r -f ./dist/ oss://$OSS_BUCKET/
+          # HTML shell must always revalidate so a new deploy shows up immediately
+          # instead of being served from a stale browser/CDN cache.
+          ossutil cp -f --meta "Cache-Control:no-cache" ./dist/index.html oss://$OSS_BUCKET/index.html
+          # Drop a stale page left from the old multi-page export so /about
+          # falls through to the SPA (index.html) like every other route.
+          ossutil rm oss://$OSS_BUCKET/about.html -f || true
 
       - name: Refresh Aliyun CDN cache
         env:
@@ -89,10 +95,12 @@ jobs:
             --region cn-hangzhou
 
           for domain in $CDN_DOMAINS; do
-            aliyun dcdn RefreshDcdnObjectCaches \
-              --region cn-hangzhou \
-              --ObjectPath "${domain}*" \
-              --ObjectType File
+            for path in "*" "about" "about.html"; do
+              aliyun dcdn RefreshDcdnObjectCaches \
+                --region cn-hangzhou \
+                --ObjectPath "${domain}${path}" \
+                --ObjectType File
+            done
           done
 
       - name: Notify deploy result
