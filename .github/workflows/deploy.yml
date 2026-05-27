@@ -74,19 +74,14 @@ jobs:
           # Drop a stale page left from the old multi-page export so /about
           # falls through to the SPA (index.html) like every other route.
           ossutil rm oss://$OSS_BUCKET/about.html -f || true
-          # One-time: remove the remaining old Next.js export pages. Only .html
-          # pages and the unused _next/ bundle are deleted; /media/* (including
-          # avatars reused by the new site) and index.html are preserved.
-          for key in \
-            success-cases.html free-resources.html hot-tag.html \
-            mentor-service-agreement.html privacy-policy.html user-service-agreement.html \
-            job/interview-camp.html job/offer-guarantee.html \
-            job/internship/ai-agent-dev.html job/internship/data-analysis.html \
-            job/internship/data-science.html job/internship/financial-modeling.html \
-            job/internship/full-stack-dev.html job/internship/quantitative-investment.html; do
-            ossutil rm "oss://$OSS_BUCKET/$key" -f || true
+          # One-time: remove the entire old Next.js multi-page export. These
+          # top-level prefixes are all legacy pages; the new single-file site
+          # uses none of them. Trailing slashes scope each delete to the prefix,
+          # so the root index.html (key "index.html", not "index/") is safe.
+          # /media/*, robots.txt, sitemap.xml, favicons and fonts are kept.
+          for prefix in ad/ en-us/ free-resources/ index/ job/ _next/; do
+            ossutil rm "oss://$OSS_BUCKET/$prefix" -r -f || true
           done
-          ossutil rm "oss://$OSS_BUCKET/_next/" -r -f || true
           # Capture remaining objects so the notify step can report them for review.
           ossutil ls oss://$OSS_BUCKET/ -s > /tmp/oss_inventory.txt 2>&1 || true
 
