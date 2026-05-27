@@ -94,6 +94,17 @@ jobs:
             --access-key-secret $CDN_ACCESS_KEY_SECRET \
             --region cn-hangzhou
 
+          # One-time: SPA fallback so client routes return HTTP 200 (not 404).
+          # Known routes are rewritten to /index.html at origin; the JS router
+          # reads the original path. Real files (anything with a "." extension)
+          # never match this regex, so static assets are untouched.
+          SPA_FUNCTIONS='[{"functionName":"back_to_origin_url_rewrite","functionArgs":[{"argName":"source_url","argValue":"^/(offer|cases|background|resources|about|replay|article|legal)(/.*)?$"},{"argName":"target_url","argValue":"/index.html"},{"argName":"flag","argValue":"break"}]}]'
+          for url in $CDN_DOMAINS; do
+            host=$(echo "$url" | sed -E 's#^https?://##; s#/.*$##')
+            echo "Configuring SPA fallback rewrite for $host"
+            aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$host" --Functions "$SPA_FUNCTIONS"
+          done
+
           for domain in $CDN_DOMAINS; do
             for path in "*" "about" "about.html"; do
               aliyun dcdn RefreshDcdnObjectCaches \
