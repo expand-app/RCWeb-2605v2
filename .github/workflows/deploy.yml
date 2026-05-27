@@ -163,15 +163,13 @@ jobs:
             done
           fi
 
-          # --- TEMP DIAGNOSTIC: dump full DCDN config (origin host + any URL
-          # rewrite) to locate why the CDN returns root for clean URLs. Removed
-          # once understood.
+          # --- TEMP DIAGNOSTIC: dump the full host_redirect (origin URL rewrite)
+          # rules for both domains, untruncated. Removed once understood.
           {
-            echo "### DescribeDcdnDomainDetail www:"
-            aliyun dcdn DescribeDcdnDomainDetail --DomainName www.rexpandcareer.com || true
-            for fn in set_req_host_header forward_scheme host_redirect error_page condition_rewrite rewrite ali_url_rewrite url_rewrite https_force http_force filetype_based_ttl_set path_based_ttl_set set_resp_header oss_auth l2_oss_key range gzip ipv6; do
-              echo "### config fn=$fn :"
-              aliyun dcdn DescribeDcdnDomainConfigs --DomainName www.rexpandcareer.com --FunctionNames "$fn" 2>&1 | head -30 || true
+            for d in www.rexpandcareer.com rexpandcareer.com; do
+              echo "### host_redirect for $d :"
+              aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames "host_redirect" 2>&1 || true
+              echo
             done
           } > /tmp/diag-dcdn.txt 2>&1
           ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" || true
