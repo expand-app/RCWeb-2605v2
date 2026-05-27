@@ -83,4 +83,7 @@ for(const pg of pages){
   count++;
   console.log('  wrote', path.relative(ROOT, outPath), '← og:', pg.og.replace(ORIGIN, ''));
 }
+// Top-level build marker so the deploy result can be verified from the live
+// site (curl /og-build-marker.txt) without access to CI logs.
+fs.writeFileSync(path.join(ROOT, 'dist', 'og-build-marker.txt'), `og-pages built ${count} files at ${new Date().toISOString()}\n`);
 console.log(`og-pages: generated ${count} per-route HTML files.`);
