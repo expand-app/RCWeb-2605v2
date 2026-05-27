@@ -74,6 +74,21 @@ jobs:
           # Drop a stale page left from the old multi-page export so /about
           # falls through to the SPA (index.html) like every other route.
           ossutil rm oss://$OSS_BUCKET/about.html -f || true
+          # One-time: remove the remaining old Next.js export pages. Only .html
+          # pages and the unused _next/ bundle are deleted; /media/* (including
+          # avatars reused by the new site) and index.html are preserved.
+          for key in \
+            success-cases.html free-resources.html hot-tag.html \
+            mentor-service-agreement.html privacy-policy.html user-service-agreement.html \
+            job/interview-camp.html job/offer-guarantee.html \
+            job/internship/ai-agent-dev.html job/internship/data-analysis.html \
+            job/internship/data-science.html job/internship/financial-modeling.html \
+            job/internship/full-stack-dev.html job/internship/quantitative-investment.html; do
+            ossutil rm "oss://$OSS_BUCKET/$key" -f || true
+          done
+          ossutil rm "oss://$OSS_BUCKET/_next/" -r -f || true
+          # Capture remaining objects so the notify step can report them for review.
+          ossutil ls oss://$OSS_BUCKET/ -s > /tmp/oss_inventory.txt 2>&1 || true
 
       - name: Refresh Aliyun CDN cache
         env:
@@ -105,13 +120,13 @@ jobs:
             aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$host" --Functions "$SPA_FUNCTIONS"
           done
 
-          for domain in $CDN_DOMAINS; do
-            for path in "*" "about" "about.html"; do
-              aliyun dcdn RefreshDcdnObjectCaches \
-                --region cn-hangzhou \
-                --ObjectPath "${domain}${path}" \
-                --ObjectType File
-            done
+          # Directory refresh purges every cached object under each domain,
+          # which reliably clears stale routes (the File+wildcard form did not).
+          for url in $CDN_DOMAINS; do
+            aliyun dcdn RefreshDcdnObjectCaches \
+              --region cn-hangzhou \
+              --ObjectPath "$url" \
+              --ObjectType Directory
           done
 
       - name: Notify deploy result
@@ -124,12 +139,22 @@ jobs:
             const env = process.env.ENVIRONMENT || 'production';
             const sha = context.sha;
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const body = [
+            const lines = [
               `${emoji} **Deploy ${status}** — \`${env}\``,
               '',
               `- Commit: \`${sha.substring(0, 7)}\``,
               `- Run: ${runUrl}`,
-            ].join('\n');
+            ];
+            try {
+              const fs = require('fs');
+              let inv = fs.readFileSync('/tmp/oss_inventory.txt', 'utf8').trim();
+              if (inv) {
+                const all = inv.split('\n');
+                const shown = all.slice(0, 300).join('\n');
+                lines.push('', '<details><summary>Bucket inventory (' + all.length + ' lines)</summary>', '', '```', shown, '```', '</details>');
+              }
+            } catch (e) {}
+            const body = lines.join('\n');
             const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
               owner: context.repo.owner,
               repo: context.repo.repo,
