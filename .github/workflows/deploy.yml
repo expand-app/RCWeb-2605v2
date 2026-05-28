@@ -39,6 +39,10 @@ jobs:
           cp media/meetfood-logo.png dist/media/
           cp -r media/team dist/media/
           cp -r media/avatars dist/media/
+          # Per-page Open Graph thumbnails (/og/rexpand_*.png). Copy whatever is
+          # in public/og/; harmless if empty.
+          mkdir -p dist/og
+          if compgen -G "public/og/*" >/dev/null; then cp -r public/og/. dist/og/; fi
           # Pre-render per-route static HTML so shared deep links get the right
           # title/description/og:image for crawlers that don't run JS (WeChat etc.)
           node scripts/og-pages.mjs
