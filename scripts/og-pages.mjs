@@ -76,21 +76,36 @@ for(const slug in BG_DIR_BY_SLUG){
 
 // Write each page as a real ".html" object at the clean path (e.g.
 // dist/offer.html, dist/background/quant.html, dist/legal/privacy.html). The
-// CDN's host_redirect rule rewrites the extensionless clean URL (/offer) to its
-// .html (/offer.html), which OSS serves reliably as a normal file object — the
-// same proven mechanism the site already uses (e.g. the apex /offer ->
-// /offer.html rule). The canonical/og:url still points at the clean URL.
+// CDN's host_redirect rule rewrites the extensionless single-segment clean URL
+// (/offer) to its .html (/offer.html), which OSS serves reliably.
+//
+// DCDN's host_redirect on this account cannot match multi-segment paths, so
+// nested clean URLs (/background/quant, /legal/privacy) are ALSO emitted as
+// extensionless flat-staged copies in dist-nested/. The deploy uploads them
+// with Content-Type: text/html so OSS serves them directly via CNAME website
+// hosting when SupportSubDir=false. Flat staging ("a/b" -> "a__b") is needed
+// because a local FS can't hold both a file "background" and a dir "background/".
 let count = 0;
+const nested = [];
 for(const pg of pages){
   const key = pg.path.replace(/^\//, '');               // e.g. background/quant
   const rendered = applyHead(html, { title: pg.title, desc: pg.desc, url: ORIGIN + pg.path, og: pg.og });
   const outPath = path.join(ROOT, 'dist', key + '.html'); // dist/background/quant.html
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, rendered);
+  if(key.includes('/')){
+    const flat = key.replace(/\//g, '__');
+    fs.mkdirSync(path.join(ROOT, 'dist-nested'), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, 'dist-nested', flat), rendered);
+    nested.push(`${flat}\t${key}`);
+  }
   count++;
-  console.log('  wrote', key + '.html', '← og:', pg.og.replace(ORIGIN, ''));
+  console.log('  wrote', key + '.html' + (key.includes('/') ? ' (+ extensionless)' : ''), '← og:', pg.og.replace(ORIGIN, ''));
+}
+if(nested.length){
+  fs.writeFileSync(path.join(ROOT, 'dist-nested', 'manifest.txt'), nested.join('\n') + '\n');
 }
 // Top-level build marker so the deploy result can be verified from the live
 // site (curl /og-build-marker.txt) without access to CI logs.
-fs.writeFileSync(path.join(ROOT, 'dist', 'og-build-marker.txt'), `og-pages built ${count} .html pages at ${new Date().toISOString()}\n`);
-console.log(`og-pages: generated ${count} per-route .html files in dist/.`);
+fs.writeFileSync(path.join(ROOT, 'dist', 'og-build-marker.txt'), `og-pages built ${count} .html pages (+${nested.length} extensionless) at ${new Date().toISOString()}\n`);
+console.log(`og-pages: generated ${count} per-route .html files in dist/ (+${nested.length} extensionless in dist-nested/).`);
