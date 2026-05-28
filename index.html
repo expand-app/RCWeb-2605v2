@@ -25,8 +25,8 @@
 <meta id="og-description" property="og:description" content="自研 Multi-Agent + 1,000+ 名企现役导师，为北美留学生提供从背景提升、内推到 H1B 的全周期求职服务。拿不到 offer 按合同退款。">
 <meta id="og-url" property="og:url" content="https://rexpandcareer.com/">
 <meta id="og-image" property="og:image" content="https://rexpandcareer.com/media/team/2024-annual-gala.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta id="og-image-width" property="og:image:width" content="1200">
+<meta id="og-image-height" property="og:image:height" content="630">
 <meta property="og:image:alt" content="Rexpand 睿思班 团队合影">
 
 <!-- Twitter Card -->
@@ -25939,7 +25939,8 @@ const routeMeta = {
     path: '/offer',
     title: '保 offer 项目 · 不达成退款 — Rexpand 睿思班',
     desc: '一份目标方向全职 offer，没拿到退款。AI Agent 每周触达 100+ Hiring Team，1,000+ 名企导师 1v1 辅导，条款写进合同。',
-    og: ORIGIN + '/media/team/2024-celebration.jpg'
+    og: ORIGIN + '/og/rexpand_08_offer.png',
+    ogw: 1080, ogh: 1080
   },
   cases: {
     path: '/cases',
@@ -25957,13 +25958,15 @@ const routeMeta = {
     path: '/resources',
     title: '免费资源 · 面试复盘 + 行业洞察 — Rexpand 睿思班',
     desc: '真实面试复盘视频、按公司分层的高频题库、行业洞察文章 —— 每周更新，把别人踩过的坑变成你的弹药。',
-    og: ORIGIN + '/media/team/office-daily.jpg'
+    og: ORIGIN + '/og/rexpand_06_resources.png',
+    ogw: 1080, ogh: 1080
   },
   about: {
     path: '/about',
     title: '关于我们 · AI-Native · Since 2022 — Rexpand 睿思班',
     desc: 'AI-Powered 求职。Rexpand 是一家成立于 2022 年的 AI 驱动留学生求职公司，自研 Multi-Agent 系统 + 1,000+ 名企现役导师辅导网络。',
-    og: ORIGIN + '/media/team/2022-founders.png'
+    og: ORIGIN + '/og/rexpand_07_about.png',
+    ogw: 1080, ogh: 1080
   },
   privacy:        { path: '/legal/privacy',      title: '隐私政策 · Privacy Policy — Rexpand', desc: 'Rexpand 睿思班 隐私政策。', og: DEFAULT_OG },
   'user-terms':   { path: '/legal/user-terms',   title: '用户协议 · User Terms — Rexpand',    desc: 'Rexpand 睿思班 用户服务协议。', og: DEFAULT_OG },
@@ -25991,23 +25994,28 @@ const BG_DEFAULT_DIR = 'da';
 const BG_ROUTE_META = {
   da: {
     title: '数据分析实习 · 北美零售 Marketing 团队远程项目 — Rexpand 睿思班',
-    desc: '在北美零售头部企业 Marketing 团队任职。Mailchimp + SQL + AI Agent 全栈技术栈，覆盖 Email Automation、A/B Testing、PostgreSQL 数据清洗与端到端营销管线。结项即获 referral。'
+    desc: '在北美零售头部企业 Marketing 团队任职。Mailchimp + SQL + AI Agent 全栈技术栈，覆盖 Email Automation、A/B Testing、PostgreSQL 数据清洗与端到端营销管线。结项即获 referral。',
+    og: ORIGIN + '/og/rexpand_01_data-analytics.png', ogw: 1080, ogh: 1080
   },
   ds: {
     title: '数据科学实习 · 美国电力公司工业级项目 — Rexpand 睿思班',
-    desc: '在美国电力公司任职，参与用电量预测、用户行为分群、异常检测与电网图分析等工业级数据科学项目。Python + ML + Graph 全栈训练，结项即获 referral。'
+    desc: '在美国电力公司任职，参与用电量预测、用户行为分群、异常检测与电网图分析等工业级数据科学项目。Python + ML + Graph 全栈训练，结项即获 referral。',
+    og: ORIGIN + '/og/rexpand_02_data-science.png', ogw: 1080, ogh: 1080
   },
   qi: {
     title: '量化投资实习 · IMS 资管部门项目 — Rexpand 睿思班',
-    desc: '在咨询公司 Investment Management Services 部门任职。VaR、Markowitz 组合优化、Brinson 归因、Bond Risk、Macro Factor Model 与大类资产配置 —— 求职 Quant / Risk / Asset Allocation 的首选实习。'
+    desc: '在咨询公司 Investment Management Services 部门任职。VaR、Markowitz 组合优化、Brinson 归因、Bond Risk、Macro Factor Model 与大类资产配置 —— 求职 Quant / Risk / Asset Allocation 的首选实习。',
+    og: ORIGIN + '/og/rexpand_03_quant.png', ogw: 1080, ogh: 1080
   },
   fm: {
     title: '投行建模实习 · Transaction Advisory 项目 — Rexpand 睿思班',
-    desc: '在咨询公司 Transaction Advisory Services 部门任职。为客户的并购交易提供金融建模、公司估值与财务预测支持 —— 投行 / 估值 / 财务咨询求职的硬通货实习。'
+    desc: '在咨询公司 Transaction Advisory Services 部门任职。为客户的并购交易提供金融建模、公司估值与财务预测支持 —— 投行 / 估值 / 财务咨询求职的硬通货实习。',
+    og: ORIGIN + '/og/rexpand_04_investment-banking.png', ogw: 1080, ogh: 1080
   },
   se: {
     title: '软件工程实习 · Full-Stack + AI Agent 项目 — Rexpand 睿思班',
-    desc: '从 0 到 1 交付两款真实科技产品：「小红书 + DoorDash」式 Meetfood 移动应用，以及 AI 驱动的自动内推平台 Tuilink。覆盖全栈工程 + AI-native 系统设计的全部技能维度。'
+    desc: '从 0 到 1 交付两款真实科技产品：「小红书 + DoorDash」式 Meetfood 移动应用，以及 AI 驱动的自动内推平台 Tuilink。覆盖全栈工程 + AI-native 系统设计的全部技能维度。',
+    og: ORIGIN + '/og/rexpand_05_software-engineering.png', ogw: 1080, ogh: 1080
   }
 };
 
@@ -26124,21 +26132,28 @@ function applyMeta(routeName, opts){
   opts = opts || {};
   let m = routeMeta[routeName] || routeMeta.home;
   let path = m.path || '/';
-  // Background page → use per-direction title/desc + slugged path
+  // Background page → use per-direction title/desc/og + slugged path
   if(routeName === 'background' && opts.bgDir && BG_ROUTE_META[opts.bgDir]){
     const bgm = BG_ROUTE_META[opts.bgDir];
-    m = { title: bgm.title, desc: bgm.desc, og: m.og, path: '/background/' + BG_SLUG_BY_DIR[opts.bgDir] };
+    m = {
+      title: bgm.title, desc: bgm.desc,
+      og: bgm.og || m.og,
+      ogw: bgm.ogw || m.ogw, ogh: bgm.ogh || m.ogh,
+      path: '/background/' + BG_SLUG_BY_DIR[opts.bgDir]
+    };
     path = m.path;
   }
   const canonical = ORIGIN + path;
   document.title = m.title;
-  const set = (id, attr, val) => { const el = document.getElementById(id); if(el) el.setAttribute(attr, val); };
+  const set = (id, attr, val) => { const el = document.getElementById(id); if(el && val != null) el.setAttribute(attr, val); };
   set('meta-description', 'content', m.desc);
   set('meta-canonical', 'href', canonical);
   set('og-title', 'content', m.title);
   set('og-description', 'content', m.desc);
   set('og-url', 'content', canonical);
   set('og-image', 'content', m.og);
+  set('og-image-width', 'content', m.ogw);
+  set('og-image-height', 'content', m.ogh);
   set('tw-title', 'content', m.title);
   set('tw-description', 'content', m.desc);
   set('tw-image', 'content', m.og);

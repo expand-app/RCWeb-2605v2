@@ -37,11 +37,12 @@ function esc(s){
 
 // Replace the value of a head element identified by id (content= or href=),
 // or the text of the <title>.
-function applyHead(src, { title, desc, url, og }){
+function applyHead(src, { title, desc, url, og, ogw, ogh }){
   let out = src;
   const canonical = url;
   out = out.replace(/(<title id="meta-title">)[^<]*(<\/title>)/, `$1${esc(title)}$2`);
   const setAttr = (id, attr, val) => {
+    if(val == null) return;
     const re = new RegExp(`(<[^>]*id="${id}"[^>]*${attr}=")[^"]*(")`);
     out = out.replace(re, `$1${esc(val)}$2`);
   };
@@ -51,6 +52,8 @@ function applyHead(src, { title, desc, url, og }){
   setAttr('og-description', 'content', desc);
   setAttr('og-url', 'content', canonical);
   setAttr('og-image', 'content', og);
+  setAttr('og-image-width', 'content', ogw);
+  setAttr('og-image-height', 'content', ogh);
   setAttr('tw-title', 'content', title);
   setAttr('tw-description', 'content', desc);
   setAttr('tw-image', 'content', og);
@@ -63,15 +66,22 @@ const pages = [];
 for(const key of ['offer', 'cases', 'background', 'resources', 'about', 'privacy', 'user-terms', 'mentor-terms']){
   const m = routeMeta[key];
   if(!m) continue;
-  pages.push({ path: m.path, title: m.title, desc: m.desc, og: m.og });
+  pages.push({ path: m.path, title: m.title, desc: m.desc, og: m.og, ogw: m.ogw, ogh: m.ogh });
 }
-// Background per-direction sub-pages share background's og image.
-const bgOg = routeMeta.background.og;
+// Background per-direction sub-pages: prefer per-direction og/dimensions, fall
+// back to the /background parent's og.
+const bgParent = routeMeta.background;
 for(const slug in BG_DIR_BY_SLUG){
   const dir = BG_DIR_BY_SLUG[slug];
   const bgm = BG_ROUTE_META[dir];
   if(!bgm) continue;
-  pages.push({ path: '/background/' + slug, title: bgm.title, desc: bgm.desc, og: bgOg });
+  pages.push({
+    path: '/background/' + slug,
+    title: bgm.title, desc: bgm.desc,
+    og: bgm.og || bgParent.og,
+    ogw: bgm.ogw || bgParent.ogw,
+    ogh: bgm.ogh || bgParent.ogh
+  });
 }
 
 // Write each page as a real ".html" object at the clean path (e.g.
@@ -89,7 +99,7 @@ let count = 0;
 const nested = [];
 for(const pg of pages){
   const key = pg.path.replace(/^\//, '');               // e.g. background/quant
-  const rendered = applyHead(html, { title: pg.title, desc: pg.desc, url: ORIGIN + pg.path, og: pg.og });
+  const rendered = applyHead(html, { title: pg.title, desc: pg.desc, url: ORIGIN + pg.path, og: pg.og, ogw: pg.ogw, ogh: pg.ogh });
   const outPath = path.join(ROOT, 'dist', key + '.html'); // dist/background/quant.html
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, rendered);
