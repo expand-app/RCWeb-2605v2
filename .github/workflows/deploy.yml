@@ -76,6 +76,38 @@ jobs:
           # must always revalidate so a new deploy shows up immediately instead of
           # being served from a stale browser/CDN cache.
           ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ oss://$OSS_BUCKET/
+          # Nested clean-URL pages (/background/<slug>, /legal/<x>): DCDN's
+          # host_redirect can't rewrite multi-segment paths on this account, so
+          # we ALSO upload each as an extensionless object at its exact clean
+          # key (e.g. "background/quant"). With SupportSubDir=false below, OSS
+          # serves these directly via the CNAME — no rewrite needed. Each file
+          # has no extension, so Content-Type must be set explicitly.
+          if [ -f dist-nested/manifest.txt ]; then
+            while IFS=$'\t' read -r f key; do
+              [ -z "$key" ] && continue
+              ossutil cp -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" "dist-nested/$f" "oss://$OSS_BUCKET/$key"
+            done < dist-nested/manifest.txt
+          fi
+          # Static-website hosting: SupportSubDir=false lets the CNAME serve the
+          # extensionless objects directly for nested clean URLs. Single-segment
+          # routes still go through DCDN's host_redirect (->/<seg>.html) and are
+          # unaffected. Unknown paths still fall back to index.html via the
+          # ErrorDocument below, so the SPA fallback keeps working. Idempotent.
+          cat > /tmp/website.xml <<'XML'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <WebsiteConfiguration>
+            <IndexDocument>
+              <Suffix>index.html</Suffix>
+              <SupportSubDir>false</SupportSubDir>
+              <Type>0</Type>
+            </IndexDocument>
+            <ErrorDocument>
+              <Key>index.html</Key>
+              <HttpStatus>404</HttpStatus>
+            </ErrorDocument>
+          </WebsiteConfiguration>
+          XML
+          ossutil website --method put oss://$OSS_BUCKET /tmp/website.xml
           # Enable bucket versioning so accidental deletes/overwrites can be
           # rolled back. Idempotent. Not retroactive — only protects changes
           # made from now on. Re-run each deploy keeps it on (self-healing).
@@ -100,23 +132,17 @@ jobs:
             --access-key-secret $CDN_ACCESS_KEY_SECRET \
             --region cn-hangzhou
 
-          # Ensure clean-URL -> .html rewrites on both domains so crawlers
-          # fetching /offer, /cases, /background/quant, /legal/privacy, ... get
-          # the pre-rendered per-page .html (right title/description/og).
-          #   ^/([^/.]+)$ -> /$1.html        — single-segment (captured, works)
-          #   plus a LITERAL rule per known two-segment path: the captured form
-          #   ^/background/([^/.]+)$ never matched on this DCDN, so each nested
-          #   slug gets its own zero-capture rule "^/<path>$ -> /<path>.html".
-          # Idempotent: grep -F for each rule's exact regex; only add if absent.
-          NESTED="background/data-analytics background/data-science background/quant background/investment-banking background/software-engineering legal/privacy legal/user-terms legal/mentor-terms"
+          # Ensure the single-segment clean-URL -> .html rewrite exists on both
+          # domains:  ^/([^/.]+)$ -> /$1.html  — so crawlers fetching /offer,
+          # /cases, /background, /resources, /about etc. get the pre-rendered
+          # per-page .html. (Multi-segment paths like /background/quant cannot
+          # be rewritten by DCDN host_redirect on this account — verified by
+          # adding literal zero-capture rules that never matched — so nested
+          # pages are served directly by OSS as extensionless objects with
+          # SupportSubDir=false; see the upload step.) Idempotent: grep -F.
           for d in www.rexpandcareer.com rexpandcareer.com; do
             cfg=$(aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames host_redirect 2>/dev/null)
             echo "$cfg" | grep -qF '^/([^/.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^/.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
-            for p in $NESTED; do
-              re="^/${p}\$"   # bash escapes $ -> literal $; this becomes "^/<path>$"
-              rep="/${p}.html"
-              echo "$cfg" | grep -qF "$re" || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions "[{\"functionName\":\"host_redirect\",\"functionArgs\":[{\"argName\":\"regex\",\"argValue\":\"$re\"},{\"argName\":\"replacement\",\"argValue\":\"$rep\"},{\"argName\":\"flag\",\"argValue\":\"break\"}]}]" || true
-            done
           done
           # One-off: drop broad/captured rules that turned out unreliable. The
           # zero-capture literal rules above supersede them.
