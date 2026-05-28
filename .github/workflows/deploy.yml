@@ -137,16 +137,7 @@ jobs:
               --ObjectType Directory
           done
           ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
-          # TEMP: dump host_redirect to verify whether the literal nested rules
-          # were actually persisted by BatchSetDcdnDomainConfigs.
-          {
-            for d in www.rexpandcareer.com rexpandcareer.com; do
-              echo "### host_redirect $d :"
-              aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames "host_redirect" 2>&1 || true
-              echo
-            done
-          } > /tmp/diag-hr.txt 2>&1
-          ossutil cp -f /tmp/diag-hr.txt "oss://${OSS_BUCKET}/_diag-hr.txt" --meta "Cache-Control:no-cache" || true
+          ossutil rm -f "oss://${OSS_BUCKET}/_diag-hr.txt" || true
 
       - name: Notify deploy result
         if: always()
