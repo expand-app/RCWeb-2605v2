@@ -1697,8 +1697,10 @@ h1.page-title .accent{
 .home-cases-sv{ border-top: 1px solid var(--line); background: var(--bg-soft); }
 /* Auto-scrolling marquee container. Static SSR rows fill it cleanly when JS
    is off; JS doubles the row set + flips .is-marquee on .offer-track to start
-   the vertical scroll. The mask fades rows in/out at top/bottom so they don't
-   pop into view at the borders. */
+   the vertical scroll. ::before / ::after pseudo-elements lay a white-to-
+   transparent gradient veil at top + bottom so arriving / departing rows
+   fade into the card instead of hard-cutting; the box-shadow lifts the card
+   slightly off the section background. */
 .offer-marquee{
   background: #fff;
   border: 1px solid var(--line);
@@ -1706,8 +1708,26 @@ h1.page-title .accent{
   overflow: hidden;
   height: 480px;
   position: relative;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
-          mask-image: linear-gradient(180deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+  box-shadow:
+    0 1px 2px rgba(10,14,11,0.04),
+    0 12px 32px rgba(10,14,11,0.06);
+}
+.offer-marquee::before,
+.offer-marquee::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 56px;
+  pointer-events: none;
+  z-index: 2;
+}
+.offer-marquee::before{
+  top: 0;
+  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0) 100%);
+}
+.offer-marquee::after{
+  bottom: 0;
+  background: linear-gradient(0deg,   #fff 0%, rgba(255,255,255,0) 100%);
 }
 .offer-track{
   display: flex;
@@ -1738,7 +1758,9 @@ h1.page-title .accent{
 }
 @media (prefers-reduced-motion: reduce){
   .offer-track.is-marquee{ animation: none; }
-  .offer-marquee{ height: 600px; overflow-y: auto; -webkit-mask-image: none; mask-image: none; }
+  .offer-marquee{ height: 600px; overflow-y: auto; }
+  .offer-marquee::before,
+  .offer-marquee::after{ display: none; }
 }
 .offer-row{
   display: grid;
