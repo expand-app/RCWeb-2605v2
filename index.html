@@ -1695,11 +1695,50 @@ h1.page-title .accent{
 
 /* --- Cases SV: clean offer-flow list, magazine-row style --- */
 .home-cases-sv{ border-top: 1px solid var(--line); background: var(--bg-soft); }
-.offer-list{
+/* Auto-scrolling marquee container. Static SSR rows fill it cleanly when JS
+   is off; JS doubles the row set + flips .is-marquee on .offer-track to start
+   the vertical scroll. The mask fades rows in/out at top/bottom so they don't
+   pop into view at the borders. */
+.offer-marquee{
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
+  height: 480px;
+  position: relative;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+}
+.offer-track{
+  display: flex;
+  flex-direction: column;
+}
+.offer-track.is-marquee{
+  animation: offerMarquee var(--marquee-dur, 70s) linear infinite;
+  will-change: transform;
+}
+.offer-marquee:hover .offer-track.is-marquee,
+.offer-marquee:focus-within .offer-track.is-marquee{ animation-play-state: paused; }
+@keyframes offerMarquee{
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -50%, 0); }
+}
+/* Inside the marquee every row keeps a bottom separator — including the
+   very last DOM row, because the loop wraps to a duplicate immediately after. */
+.offer-marquee .offer-row{ border-bottom: 1px solid var(--line); }
+.offer-marquee .offer-row:last-child{ border-bottom: 1px solid var(--line); }
+/* Long school / role strings ellipsize so row heights stay uniform. */
+.offer-marquee .or-school,
+.offer-marquee .or-role,
+.offer-marquee .or-company{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+@media (prefers-reduced-motion: reduce){
+  .offer-track.is-marquee{ animation: none; }
+  .offer-marquee{ height: 600px; overflow-y: auto; -webkit-mask-image: none; mask-image: none; }
 }
 .offer-row{
   display: grid;
@@ -1786,6 +1825,7 @@ h1.page-title .accent{
   .man-grid{ grid-template-columns: 1fr; gap: 36px; padding: 36px 0; }
   .man-headline{ margin-bottom: 56px; }
   .prog-grid-sv{ grid-template-columns: repeat(2, 1fr); }
+  .offer-marquee{ height: 540px; }
   .offer-row{
     grid-template-columns: 36px 1fr;
     grid-template-areas:
@@ -5985,55 +6025,58 @@ footer{
       <p class="sec-desc">从 2022 至今 · 累计学员 300+ · 每一份 offer letter 留档可查。<a class="hl-link" href="/cases" data-route="cases">查看全部档案 →</a></p>
     </div>
 
-    <div class="offer-list">
-      <a class="offer-row" href="/cases" data-route="cases">
-        <span class="or-avatar">F</span>
-        <span class="or-school">Wustl · <em>Financial Eng + DS</em></span>
-        <span class="or-arr">→</span>
-        <span class="or-company">JPMorgan</span>
-        <span class="or-role">CADP · Risk Analytics</span>
-        <span class="or-tag">Data · 风控</span>
-      </a>
-      <a class="offer-row" href="/cases" data-route="cases">
-        <span class="or-avatar">J</span>
-        <span class="or-school">UIC · <em>Finance</em></span>
-        <span class="or-arr">→</span>
-        <span class="or-company">Goldman Sachs</span>
-        <span class="or-role">Investment Banking Analyst</span>
-        <span class="or-tag">Finance · IB</span>
-      </a>
-      <a class="offer-row" href="/cases" data-route="cases">
-        <span class="or-avatar">L</span>
-        <span class="or-school">Cornell · <em>Computer Science</em></span>
-        <span class="or-arr">→</span>
-        <span class="or-company">Meta</span>
-        <span class="or-role">Software Engineer</span>
-        <span class="or-tag">SDE · FAANG</span>
-      </a>
-      <a class="offer-row" href="/cases" data-route="cases">
-        <span class="or-avatar">C</span>
-        <span class="or-school">CMU · <em>ML &amp; Public Policy</em></span>
-        <span class="or-arr">→</span>
-        <span class="or-company">Google</span>
-        <span class="or-role">Machine Learning Engineer</span>
-        <span class="or-tag">ML · FAANG</span>
-      </a>
-      <a class="offer-row" href="/cases" data-route="cases">
-        <span class="or-avatar">S</span>
-        <span class="or-school">Columbia · <em>Operations Research</em></span>
-        <span class="or-arr">→</span>
-        <span class="or-company">TD</span>
-        <span class="or-role">Senior Quantitative Analyst</span>
-        <span class="or-tag">Quant · Risk</span>
-      </a>
-      <a class="offer-row" href="/cases" data-route="cases">
-        <span class="or-avatar">Y</span>
-        <span class="or-school">Wharton · <em>MBA</em></span>
-        <span class="or-arr">→</span>
-        <span class="or-company">UBS</span>
-        <span class="or-role">IB Associate</span>
-        <span class="or-tag">Finance · MBA</span>
-      </a>
+    <div class="offer-marquee" aria-label="Rexpand 学员近年 offer 滚动展示">
+      <div class="offer-track" data-offer-marquee-track>
+        <!-- 6 静态兜底行(SEO/SSR/无 JS 都有内容);JS 上线后会替换成 63 条全量循环 -->
+        <a class="offer-row" href="/cases" data-route="cases">
+          <span class="or-avatar">F</span>
+          <span class="or-school">Wustl · <em>Financial Eng + DS</em></span>
+          <span class="or-arr">→</span>
+          <span class="or-company">JPMorgan</span>
+          <span class="or-role">CADP · Risk Analytics</span>
+          <span class="or-tag">Data · 风控</span>
+        </a>
+        <a class="offer-row" href="/cases" data-route="cases">
+          <span class="or-avatar">J</span>
+          <span class="or-school">UIC · <em>Finance</em></span>
+          <span class="or-arr">→</span>
+          <span class="or-company">Goldman Sachs</span>
+          <span class="or-role">Investment Banking Analyst</span>
+          <span class="or-tag">Finance · IB</span>
+        </a>
+        <a class="offer-row" href="/cases" data-route="cases">
+          <span class="or-avatar">L</span>
+          <span class="or-school">Cornell · <em>Computer Science</em></span>
+          <span class="or-arr">→</span>
+          <span class="or-company">Meta</span>
+          <span class="or-role">Software Engineer</span>
+          <span class="or-tag">SDE · FAANG</span>
+        </a>
+        <a class="offer-row" href="/cases" data-route="cases">
+          <span class="or-avatar">C</span>
+          <span class="or-school">CMU · <em>ML &amp; Public Policy</em></span>
+          <span class="or-arr">→</span>
+          <span class="or-company">Google</span>
+          <span class="or-role">Machine Learning Engineer</span>
+          <span class="or-tag">ML · FAANG</span>
+        </a>
+        <a class="offer-row" href="/cases" data-route="cases">
+          <span class="or-avatar">S</span>
+          <span class="or-school">Columbia · <em>Operations Research</em></span>
+          <span class="or-arr">→</span>
+          <span class="or-company">TD</span>
+          <span class="or-role">Senior Quantitative Analyst</span>
+          <span class="or-tag">Quant · Risk</span>
+        </a>
+        <a class="offer-row" href="/cases" data-route="cases">
+          <span class="or-avatar">Y</span>
+          <span class="or-school">Wharton · <em>MBA</em></span>
+          <span class="or-arr">→</span>
+          <span class="or-company">UBS</span>
+          <span class="or-role">IB Associate</span>
+          <span class="or-tag">Finance · MBA</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -32721,6 +32764,42 @@ function triggerReveal(){
   const r = pathToRoute(location.pathname);
   const bgDir = (r === 'background') ? (pathToBgDir(location.pathname) || BG_DEFAULT_DIR) : null;
   go(r, {skipPush: true, bgDir: bgDir});
+})();
+
+/* Home "真实学员 → 真实 offer" auto-scroll marquee. The cases page is the
+   single source of truth: scrape every #page-cases .case-card, render the
+   home offer-row markup, duplicate for a seamless CSS-driven vertical loop. */
+(function(){
+  const track = document.querySelector('.home-cases-sv [data-offer-marquee-track]');
+  if(!track) return;
+  const cards = document.querySelectorAll('#page-cases .case-card');
+  if(cards.length < 8) return;  // not enough to justify scrolling — keep static fallback
+
+  const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const rows = Array.from(cards).map(card => {
+    const avatar    = (card.querySelector('.cc-avatar')?.textContent || '·').trim();
+    const schoolEl  = card.querySelector('.cc-school');
+    const schoolHtml = schoolEl ? schoolEl.innerHTML.trim() : '';
+    const company   = (card.querySelector('.cc-company')?.textContent || '').trim();
+    const role      = (card.querySelector('.cc-role')?.textContent || '').trim();
+    const tag       = (card.querySelector('.cc-tag')?.textContent || '').trim();
+    return `<a class="offer-row" href="/cases" data-route="cases">`
+      + `<span class="or-avatar">${esc(avatar)}</span>`
+      + `<span class="or-school">${schoolHtml}</span>`
+      + `<span class="or-arr">→</span>`
+      + `<span class="or-company">${esc(company)}</span>`
+      + `<span class="or-role">${esc(role)}</span>`
+      + `<span class="or-tag">${esc(tag)}</span>`
+      + `</a>`;
+  });
+
+  const oneSet = rows.join('');
+  track.innerHTML = oneSet + oneSet;
+  track.classList.add('is-marquee');
+  // ~0.9 s per row; clamp 50–110s so 8-row and 100-row lists both feel natural.
+  const dur = Math.max(50, Math.min(110, rows.length * 0.9));
+  track.style.setProperty('--marquee-dur', dur + 's');
 })();
 </script>
 
