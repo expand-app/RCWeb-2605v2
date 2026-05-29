@@ -76,7 +76,7 @@ for(const slug in BG_DIR_BY_SLUG){
   const bgm = BG_ROUTE_META[dir];
   if(!bgm) continue;
   pages.push({
-    path: '/background/' + slug,
+    path: '/bg-' + slug,
     title: bgm.title, desc: bgm.desc,
     og: bgm.og || bgParent.og,
     ogw: bgm.ogw || bgParent.ogw,

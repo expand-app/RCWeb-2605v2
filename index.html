@@ -5818,19 +5818,19 @@ footer{
       <div class="nav-item-wrap">
         <a href="/background" data-route="background" class="nav-item has-sub">背景提升<span class="caret"></span></a>
         <div class="nav-dropdown">
-          <a href="/background/data-analytics" class="dd-item bg-jump" data-dir="da">
+          <a href="/bg-data-analytics" class="dd-item bg-jump" data-dir="da">
             <span class="dd-name">数据分析<small>Data Analytics</small></span>
           </a>
-          <a href="/background/data-science" class="dd-item bg-jump" data-dir="ds">
+          <a href="/bg-data-science" class="dd-item bg-jump" data-dir="ds">
             <span class="dd-name">数据科学<small>Data Science</small></span>
           </a>
-          <a href="/background/quant" class="dd-item bg-jump" data-dir="qi">
+          <a href="/bg-quant" class="dd-item bg-jump" data-dir="qi">
             <span class="dd-name">量化投资<small>Quantitative Investment</small></span>
           </a>
-          <a href="/background/investment-banking" class="dd-item bg-jump" data-dir="fm">
+          <a href="/bg-investment-banking" class="dd-item bg-jump" data-dir="fm">
             <span class="dd-name">投行建模<small>Financial Modeling</small></span>
           </a>
-          <a href="/background/software-engineering" class="dd-item bg-jump" data-dir="se">
+          <a href="/bg-software-engineering" class="dd-item bg-jump" data-dir="se">
             <span class="dd-name">软件工程<small>Software Engineering</small></span>
           </a>
         </div>
@@ -5937,31 +5937,31 @@ footer{
     </div>
 
     <div class="prog-grid-sv">
-      <a class="prog-tile bg-jump" href="/background/data-analytics" data-dir="da">
+      <a class="prog-tile bg-jump" href="/bg-data-analytics" data-dir="da">
         <div class="pt-dir">DA</div>
         <div class="pt-title">数据分析</div>
         <div class="pt-en">Data Analytics</div>
         <div class="pt-arr">→</div>
       </a>
-      <a class="prog-tile bg-jump" href="/background/data-science" data-dir="ds">
+      <a class="prog-tile bg-jump" href="/bg-data-science" data-dir="ds">
         <div class="pt-dir">DS</div>
         <div class="pt-title">数据科学</div>
         <div class="pt-en">Data Science</div>
         <div class="pt-arr">→</div>
       </a>
-      <a class="prog-tile bg-jump" href="/background/quant" data-dir="qi">
+      <a class="prog-tile bg-jump" href="/bg-quant" data-dir="qi">
         <div class="pt-dir">QI</div>
         <div class="pt-title">量化投资</div>
         <div class="pt-en">Quantitative Investment</div>
         <div class="pt-arr">→</div>
       </a>
-      <a class="prog-tile bg-jump" href="/background/investment-banking" data-dir="fm">
+      <a class="prog-tile bg-jump" href="/bg-investment-banking" data-dir="fm">
         <div class="pt-dir">FM</div>
         <div class="pt-title">投行建模</div>
         <div class="pt-en">Financial Modeling</div>
         <div class="pt-arr">→</div>
       </a>
-      <a class="prog-tile bg-jump" href="/background/software-engineering" data-dir="se">
+      <a class="prog-tile bg-jump" href="/bg-software-engineering" data-dir="se">
         <div class="pt-dir">SE</div>
         <div class="pt-title">软件工程</div>
         <div class="pt-en">Software Engineering</div>
@@ -26019,9 +26019,12 @@ const BG_ROUTE_META = {
   }
 };
 
-/* Map current pathname → bg direction key (or null if not /background/<slug>). */
+/* Map current pathname → bg direction key. Accepts both the new single-segment
+   form /bg-<slug> (the canonical form, so it gets a per-page share preview via
+   the single-segment CDN rewrite) and the legacy /background/<slug> form
+   (still routed correctly so old shared links keep working). */
 function pathToBgDir(pathname){
-  const m = (pathname || '').match(/^\/background\/([a-z-]+)\/?$/);
+  const m = (pathname || '').match(/^\/(?:bg-|background\/)([a-z-]+)\/?$/);
   if(!m) return null;
   return BG_DIR_BY_SLUG[m[1]] || null;
 }
@@ -26116,7 +26119,7 @@ function pathToRoute(pathname){
   if(p === '' || p === '/') return 'home';
   if(p === '/offer') return 'offer';
   if(p === '/cases') return 'cases';
-  if(p === '/background' || p.startsWith('/background/')) return 'background';
+  if(p === '/background' || p.startsWith('/background/') || p.startsWith('/bg-')) return 'background';
   if(p === '/resources' || p.startsWith('/resources/')) return 'resources';
   if(p === '/about') return 'about';
   if(p === '/legal/privacy') return 'privacy';
@@ -26139,7 +26142,7 @@ function applyMeta(routeName, opts){
       title: bgm.title, desc: bgm.desc,
       og: bgm.og || m.og,
       ogw: bgm.ogw || m.ogw, ogh: bgm.ogh || m.ogh,
-      path: '/background/' + BG_SLUG_BY_DIR[opts.bgDir]
+      path: '/bg-' + BG_SLUG_BY_DIR[opts.bgDir]
     };
     path = m.path;
   }
@@ -26194,7 +26197,7 @@ function go(routeName, opts){
     // Background page → use per-direction slug URL
     if(routeName === 'background'){
       const dir = opts.bgDir || pathToBgDir(location.pathname) || (typeof CURRENT_BG_DIR !== 'undefined' ? CURRENT_BG_DIR : null) || BG_DEFAULT_DIR;
-      targetPath = '/background/' + BG_SLUG_BY_DIR[dir];
+      targetPath = '/bg-' + BG_SLUG_BY_DIR[dir];
     }
     // Preserve deep-link hash so #/replay/<slug> and #/article/<slug> URLs stay shareable
     if(location.hash && (location.hash.startsWith('#/replay/') || location.hash.startsWith('#/article/'))){
@@ -26305,8 +26308,14 @@ window.addEventListener('DOMContentLoaded', () => {
     if(typeof bgRender === 'function' && bgDir && bgDir !== BG_DEFAULT_DIR){
       bgRender(bgDir, {fromUrl: true});
     }
+    // Normalize legacy /background/<slug> -> /bg-<slug> so users with old shared
+    // links land on the canonical single-segment URL going forward.
+    const legacy = location.pathname.match(/^\/background\/([a-z-]+)\/?$/);
+    if(legacy && BG_DIR_BY_SLUG[legacy[1]]){
+      try { history.replaceState({route:'background'}, '', '/bg-' + legacy[1]); } catch(_){}
+    }
     if(location.pathname === '/background' || location.pathname === '/background/'){
-      try { history.replaceState({route:'background'}, '', '/background/' + BG_SLUG_BY_DIR[bgDir || BG_DEFAULT_DIR]); } catch(_){}
+      try { history.replaceState({route:'background'}, '', '/bg-' + BG_SLUG_BY_DIR[bgDir || BG_DEFAULT_DIR]); } catch(_){}
     }
   }
   // Kick off hero stat count-up after the entrance animations settle
@@ -28533,7 +28542,7 @@ function bgRender(dirKey, opts){
   // any page is shown, and skips when bgRender is called from URL parsing.)
   const bgPageActive = !!(document.getElementById('page-background') && document.getElementById('page-background').classList.contains('active'));
   if(bgPageActive && !opts.fromUrl && BG_SLUG_BY_DIR[dirKey]){
-    const newPath = '/background/' + BG_SLUG_BY_DIR[dirKey];
+    const newPath = '/bg-' + BG_SLUG_BY_DIR[dirKey];
     if(location.pathname !== newPath){
       try { history.pushState({route:'background', bgDir:dirKey}, '', newPath); } catch(_){}
     }
