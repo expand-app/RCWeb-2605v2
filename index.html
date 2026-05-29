@@ -178,6 +178,8 @@ img{max-width:100%; display:block;}
 .nav-links a.active{ color: var(--ink); font-weight: 500; }
 .nav-cta{ display:flex; align-items:center; gap:18px; font-size: 14px; }
 .nav-cta .login{ color: var(--ink-3); cursor: pointer; }
+/* The mobile-drawer "登录" entry; hidden on desktop where .nav-cta .login already shows. */
+.nav-links .nav-item-login{ display: none; }
 
 /* Mobile hamburger toggle (hidden on desktop, shown ≤960px) */
 .nav-toggle{
@@ -5634,6 +5636,8 @@ footer{
      hide the login link to save space and push the button + hamburger right. */
   .nav-cta{ display: flex; order: 2; margin-left: auto; gap: 0; }
   .nav-cta .login{ display: none; }
+  /* …because the desktop login moves into the hamburger drawer on mobile. */
+  .nav-links .nav-item-login{ display: block; }
   .nav-cta .btn-primary{ padding: 7px 13px; font-size: 12px; }
   .nav-toggle{ display: block; order: 3; }
   /* Mobile menu drawer */
@@ -5837,10 +5841,11 @@ footer{
       </div>
       <a href="/resources" data-route="resources" class="nav-item">免费资源</a>
       <a href="/about" data-route="about" class="nav-item">关于我们</a>
+      <a href="https://student.rexpandcareer.com/" target="_blank" rel="noopener" class="nav-item nav-item-login">登录</a>
     </div>
     <div class="nav-cta">
       <a class="login" href="https://student.rexpandcareer.com/" target="_blank" rel="noopener">登录</a>
-      <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">求职咨询 <span class="arr">→</span></a>
+      <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">求职咨询</a>
     </div>
   </div>
 </nav>
@@ -25290,7 +25295,7 @@ footer{
         </h1>
         <p class="page-lead">睿思班求职（Rexpand）是一家 <strong>AI 驱动</strong>的留学生求职公司。我们用自研 Multi-Agent 系统替你跑 Job Sourcing、Referral、Interview Prep——把求职从靠运气、靠人脉，变成可工程化、可承诺的服务。</p>
         <div class="page-cta">
-          <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">求职咨询 <span class="arr">→</span></a>
+          <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">求职咨询</a>
           <a class="btn-ghost" href="#mentors">认识我们的导师</a>
         </div>
       </div>
