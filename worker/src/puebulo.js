@@ -1,16 +1,16 @@
 // Puebulo share-link importer.
 //
 // API: GET https://puebulo.com/api/share/<token>   (public, no auth)
-// Response shape (verified 2026-05-31, see worker README for schema):
+// Response shape (verified 2026-05-31):
 //   { session: {id, title, startedAt, durationSeconds, score, speakerRoles},
 //     recordings: {videoUrl, audioUrl},
-//     questions:  [{id, text, askedAtSeconds, kind: 'interviewer'|'candidate', ...}],
+//     questions:  [{id, text, askedAtSeconds, kind, ...}],
 //     comments:   [...], utterances: [...] }
 //
-// We transform it into the REPLAYS schema used on /resources. Pueblo gives
-// us only date / duration / video / questions automatically; the rest
-// (company, role, score copy, summary, mainIssue, alsoNoting, tags) is
-// human-curated in the admin form.
+// We transform it into the REPLAYS schema used on /resources. The admin
+// just uploads a video and pastes a Pueblo link — this mapper fills
+// everything else (slug, date, duration, company, role, logo, seoTitle,
+// dek, score, questions) by parsing session.title + session.score.
 
 function fmtDuration(seconds) {
   if (!seconds || seconds <= 0) return "0:00";
@@ -44,8 +44,93 @@ function slugify(s) {
     .slice(0, 80);
 }
 
-// Parse out a share token from either a raw token, a /share/<t> URL,
-// or a full puebulo.com URL.
+/**
+ * Parse Pueblo session.title into {company, role}. Tries common formats:
+ *   "Walmart - Senior Data Scientist"  →  company=Walmart, role=Senior Data Scientist
+ *   "Senior Data Scientist · Walmart"  →  role=Senior..., company=Walmart  (mirrors our site)
+ *   "Senior DS @ Walmart"              →  role=Senior DS, company=Walmart
+ *   anything else                      →  role=<title>, company=""
+ */
+function parseTitle(rawTitle) {
+  const title = String(rawTitle || "").trim();
+  if (!title) return { company: "", role: "" };
+  let m;
+  if ((m = title.match(/^(.+?)\s*[-—]\s*(.+)$/))) {
+    return { company: m[1].trim(), role: m[2].trim() };
+  }
+  if ((m = title.match(/^(.+?)\s+·\s+(.+)$/))) {
+    return { role: m[1].trim(), company: m[2].trim() };
+  }
+  if ((m = title.match(/^(.+?)\s+@\s+(.+)$/))) {
+    return { role: m[1].trim(), company: m[2].trim() };
+  }
+  return { company: "", role: title };
+}
+
+// REPLAYS score schema (4 canonical bands; verdict derived from `overall`).
+const BANDS = [
+  { name: "Fail",        range: "< 55",  note: "Clear no — panel passes." },
+  { name: "Borderline",  range: "55–64", note: "Committee hesitates; could go either way." },
+  { name: "Pass",        range: "65–84", note: "Advances, with reservations to probe next round." },
+  { name: "Strong Pass", range: "≥ 85",  note: "Panel advances without hesitation." },
+];
+
+function verdictFor(overall) {
+  if (overall < 55) return { verdict: "FAIL",        label: BANDS[0].note };
+  if (overall < 65) return { verdict: "BORDERLINE",  label: BANDS[1].note };
+  if (overall < 85) return { verdict: "PASS",        label: BANDS[2].note };
+  return                   { verdict: "STRONG PASS", label: BANDS[3].note };
+}
+
+function extractDimensions(puebloScore) {
+  // Pueblo score field name varies by interview type; try the common ones.
+  const arr =
+    (Array.isArray(puebloScore.dimensions)  && puebloScore.dimensions) ||
+    (Array.isArray(puebloScore.criteria)    && puebloScore.criteria) ||
+    (Array.isArray(puebloScore.categories)  && puebloScore.categories) ||
+    (Array.isArray(puebloScore.competencies)&& puebloScore.competencies) ||
+    [];
+  return arr.map((d) => ({
+    name: d.name || d.label || d.title || "?",
+    score: Number(d.score ?? d.value ?? 0),
+    max:   Number(d.max   ?? d.outOf ?? 10),
+    note:  d.note || d.feedback || d.summary || "",
+  }));
+}
+
+/**
+ * Map Pueblo's session.score → REPLAYS score schema, or null if no `overall`.
+ */
+function mapScore(puebloScore) {
+  if (!puebloScore || typeof puebloScore !== "object") return null;
+  const overall = Number(
+    puebloScore.overall ?? puebloScore.total ?? puebloScore.score ?? NaN,
+  );
+  if (!Number.isFinite(overall)) return null;
+  const max = Number(puebloScore.max ?? 100);
+  const { verdict, label } = verdictFor(overall);
+  return {
+    overall,
+    max,
+    verdict,
+    verdictPct: `${Math.round((overall / max) * 100)}%`,
+    label,
+    bands: BANDS,
+    dimensions: extractDimensions(puebloScore),
+  };
+}
+
+function autoDek(company, role, durationStr, qCount) {
+  const parts = [];
+  if (company && role) parts.push(`A ${durationStr} ${company} ${role} mock interview replay`);
+  else if (role)       parts.push(`A ${durationStr} ${role} mock interview replay`);
+  else                 parts.push(`A ${durationStr} mock interview replay`);
+  if (qCount)          parts.push(`${qCount} interviewer questions with timestamps`);
+  parts.push("full transcript and Puebulo-style scoring");
+  return parts.join(", ") + ".";
+}
+
+// Parse out a share token from raw token / /share/<t> URL / full URL.
 export function parseToken(input) {
   if (!input) throw new Error("missing input");
   const s = String(input).trim();
@@ -56,8 +141,9 @@ export function parseToken(input) {
 }
 
 /**
- * Fetch a Puebulo share + transform to a partial REPLAY draft.
- * Returns { draft, raw }. The admin fills out the rest of the REPLAY before saving.
+ * Fetch a Puebulo share + transform to a REPLAY draft. The admin uploads
+ * its own copy of the video (not Pueblo's expiring URL), so videoSrc stays
+ * empty here — caller fills from the OSS PUT.
  */
 export async function importShare(input) {
   const token = parseToken(input);
@@ -65,53 +151,45 @@ export async function importShare(input) {
     `https://puebulo.com/api/share/${encodeURIComponent(token)}`,
     { headers: { Accept: "application/json" }, cf: { cacheTtl: 0 } },
   );
-  if (r.status === 404) throw new Error("Puebulo: share not found (404)");
-  if (r.status === 410) throw new Error("Puebulo: share revoked (410)");
+  if (r.status === 404) throw new Error("Pueblo: share not found (404)");
+  if (r.status === 410) throw new Error("Pueblo: share revoked (410)");
   if (!r.ok) {
     const body = await r.text();
-    throw new Error(`Puebulo: ${r.status} ${body.slice(0, 200)}`);
+    throw new Error(`Pueblo: ${r.status} ${body.slice(0, 200)}`);
   }
   const raw = await r.json();
   const session = raw.session || {};
   const recordings = raw.recordings || {};
   const questions = Array.isArray(raw.questions) ? raw.questions : [];
 
-  // Map questions: keep only interviewer-asked (Pueblo's 'interviewer' kind);
-  // candidate's clarifying questions are usually noise for our display.
+  // Map interviewer-asked questions (drop candidate's clarifying ones).
   const interviewerQs = questions.filter((q) => q.kind !== "candidate");
 
   const dateStr = fmtDate(session.startedAt);
-  // Slug: keep humans free to override; we provide a date-based default.
-  const slugSeed = session.title || token;
-  const slug = `${slugify(slugSeed)}-${dateStr.replace(/\./g, "-")}`;
+  const durationStr = fmtDuration(session.durationSeconds);
+  const { company, role } = parseTitle(session.title);
+  const slug = slugify(`${company} ${role}`) + (dateStr ? "-" + dateStr.replace(/\./g, "-") : "");
 
   const draft = {
-    slug,
+    slug: slug || slugify(token),
     date: dateStr,
-    duration: fmtDuration(session.durationSeconds),
-
-    // === Filled by user in admin ===
-    company: "",
+    duration: durationStr,
+    company,
     location: "",
-    role: session.title || "",
-    logo: "",
-    seoTitle: "",
-    dek: "",
+    role,
+    logo: company ? company[0].toUpperCase() : "",
+    seoTitle: role && company
+      ? `${role} · ${company} — Mock Interview Replay`
+      : (role ? `${role} — Mock Interview Replay` : ""),
+    dek: autoDek(company, role, durationStr, interviewerQs.length),
     tags: [],
-
-    // === Auto-filled from Pueblo ===
-    videoSrc: recordings.videoUrl || "",
+    videoSrc: "",  // user uploads via OSS; we don't reuse Pueblo's expiring URL
     questions: interviewerQs.map((q) => ({
       t: Math.round(q.askedAtSeconds || 0),
-      q: (q.text || "").trim(),
-      meta: "",
+      q: String(q.text || "").trim(),
+      meta: q.kind === "interviewer" ? "" : (q.kind || ""),
     })),
-
-    // === Score: Pueblo's shape varies. We hand it through raw so admin can
-    //     copy fields into our format; final REPLAY.score is built in UI. ===
-    score: null,
-
-    // === Free-form narrative; admin must write ===
+    score: mapScore(session.score),
     summary: "",
     mainIssue: "",
     alsoNoting: "",

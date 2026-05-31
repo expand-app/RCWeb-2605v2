@@ -125,16 +125,21 @@ export async function presignPutObject(env, key, contentType, ttl = 900) {
 }
 
 const VIDEO_EXTS = new Set(["mp4", "mov", "webm", "m4v"]);
+const IMAGE_EXTS = new Set(["png", "jpg", "jpeg", "webp"]);
 
-/** Sanitize + namespace an upload filename. */
-export function makeVideoKey(prefix, filename) {
+/** Sanitize + namespace an upload filename. Routes by prefix to image vs video allowlist. */
+export function makeUploadKey(prefix, filename) {
   const safe = filename
     .toLowerCase()
     .replace(/[^a-z0-9._-]+/g, "-")
     .replace(/^-+|-+$/g, "");
-  const ext = safe.split(".").pop() || "mp4";
-  if (!VIDEO_EXTS.has(ext)) {
-    throw new Error(`unsupported video extension: .${ext}`);
+  const ext = (safe.split(".").pop() || "").toLowerCase();
+  const isImage = prefix === "avatars";
+  const allowed = isImage ? IMAGE_EXTS : VIDEO_EXTS;
+  if (!allowed.has(ext)) {
+    throw new Error(
+      `unsupported ${isImage ? "image" : "video"} extension: .${ext}`,
+    );
   }
   const stamp = new Date().toISOString().slice(0, 10);
   return `${prefix}/${stamp}-${safe}`;
