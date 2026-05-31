@@ -1,0 +1,15 @@
+{
+  "name": "rexpand-admin-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudflare Worker backing webadmin.rexpandcareer.com — auth, GitHub commit, OSS upload, Pueblo import.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

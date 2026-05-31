@@ -1,0 +1,26 @@
+name = "rexpand-admin-api"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+# CORS-allowed origin for the admin SPA (override in production)
+[vars]
+ADMIN_ORIGIN = "https://webadmin.rexpandcareer.com"
+GITHUB_REPO = "expand-app/rcweb-2605v2"
+GITHUB_BRANCH = "main"
+# Aliyun OSS — fill in your real values before deploy
+OSS_REGION = "oss-cn-hangzhou"
+OSS_BUCKET = "TODO-fill-in"
+OSS_ENDPOINT = "https://oss-cn-hangzhou.aliyuncs.com"
+OSS_PUBLIC_BASE = "https://resources.rexpandcareer.com"
+
+# Secrets — set these via `wrangler secret put <NAME>`:
+#   ADMIN_PASSWORD_HASH    # pbkdf2_sha256$100000$<salt>$<hash> (use scripts/hash_password.py)
+#   JWT_SECRET             # any 32+ char random string
+#   GITHUB_TOKEN           # fine-grained PAT, contents:write on the repo above
+#   OSS_ACCESS_KEY_ID      # Aliyun RAM sub-user
+#   OSS_ACCESS_KEY_SECRET  # paired secret
+
+# Custom domain (configure DNS to point to the worker)
+# [[routes]]
+# pattern = "admin-api.rexpandcareer.com/*"
+# zone_name = "rexpandcareer.com"
