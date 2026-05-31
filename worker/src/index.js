@@ -12,7 +12,7 @@
 import { verifyPassword, signJWT, verifyJWT } from "./auth.js";
 import { readFile, commitFiles } from "./github.js";
 import { buildCommitFiles } from "./sync-html.js";
-import { presignPutObject, makeVideoKey } from "./oss.js";
+import { presignPutObject, makeUploadKey } from "./oss.js";
 import { importShare } from "./puebulo.js";
 
 // --- response helpers ---
@@ -132,14 +132,14 @@ async function handleUploadUrl(env, req) {
   if (!claims) return err(env, 401, "unauthorized");
   const body = await req.json().catch(() => ({}));
   const prefix = body.prefix || "videos/misc";
-  if (!/^videos\/(mentors|replays|misc)$/.test(prefix)) {
-    return err(env, 400, "prefix must be videos/mentors, videos/replays, or videos/misc");
+  if (!/^(videos\/(mentors|replays|misc)|avatars)$/.test(prefix)) {
+    return err(env, 400, "prefix must be videos/{mentors,replays,misc} or avatars");
   }
   if (!body.filename) return err(env, 400, "filename required");
   if (!body.contentType) return err(env, 400, "contentType required");
   let key;
   try {
-    key = makeVideoKey(prefix, body.filename);
+    key = makeUploadKey(prefix, body.filename);
   } catch (e) {
     return err(env, 400, e.message);
   }

@@ -50,18 +50,43 @@ label:first-of-type{margin-top:0}
 .login{
   display:flex; align-items:center; justify-content:center;
   min-height:100vh; padding:24px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(15,98,254,0.08), transparent 50%),
+    radial-gradient(circle at 82% 82%, rgba(15,98,254,0.05), transparent 50%),
+    #fafafa;
 }
 .login-card{
-  width:100%; max-width:360px; padding:28px;
-  background:var(--panel); border:1px solid var(--line);
-  border-radius:8px; box-shadow:var(--shadow);
+  width:100%; max-width:380px; padding:36px 32px 32px;
+  background:#fff; border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 1px 3px rgba(0,0,0,.04), 0 16px 48px rgba(0,0,0,.08);
 }
-.login-card h1{margin:0 0 4px; font-size:20px; letter-spacing:-.01em}
-.login-card .sub{color:var(--ink-3); margin:0 0 22px; font-size:13px}
-.login-card .err{color:var(--danger); margin-top:10px; font-size:13px}
-.login-card button{width:100%; margin-top:14px; justify-content:center}
-.login-card .api-base{margin-top:18px; font-size:12px; color:var(--ink-3)}
-.login-card .api-base code{font-size:11px; background:#f3f3f3; padding:1px 5px; border-radius:3px}
+.login-brand{
+  margin-bottom:24px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.login-card h1{
+  margin:0 0 6px; font-size:22px; font-weight:600;
+  letter-spacing:-.02em; cursor:default; user-select:none;
+}
+.login-card .sub{
+  color:var(--ink-3); margin:0; font-size:13px; line-height:1.55;
+}
+.login-card form label{margin-top:0; font-size:12px; color:var(--ink-2)}
+.login-card input{
+  padding:10px 12px; font-size:14px;
+  border-radius:8px;
+}
+.login-card .err{
+  color:var(--danger); margin-top:12px; font-size:13px;
+  padding:8px 10px; background:#fdf0f0; border-radius:6px;
+}
+.login-card button{
+  width:100%; margin-top:18px; justify-content:center;
+  padding:10px; font-size:14px; font-weight:500;
+  border-radius:8px;
+}
 
 /* ============== Shell ============== */
 .shell{display:grid; grid-template-columns:200px 1fr; min-height:100vh}
@@ -186,7 +211,24 @@ label:first-of-type{margin-top:0}
 /* Upload + Pueblo controls */
 .upload-row{display:flex; gap:8px; align-items:center}
 .upload-row input[type=file]{padding:4px}
-.upload-status{font-size:12px; color:var(--ink-3)}
+.upload-status{font-size:12px; color:var(--ink-3); margin-top:6px}
+.upload-preview{margin-top:8px; display:flex; flex-direction:column; gap:6px}
+.upload-preview-img{
+  max-width:120px; max-height:120px; object-fit:cover;
+  border:1px solid var(--line); border-radius:6px; background:#f8f8f8;
+}
+.upload-preview-link{
+  font-size:12px; color:var(--ink-3); word-break:break-all;
+  text-decoration:none;
+}
+.upload-preview-link:hover{color:var(--accent); text-decoration:underline}
+.import-summary{
+  margin-top:14px; padding:12px 14px;
+  background:#f0f8ff; border:1px solid #d6e9ff;
+  border-radius:6px; font-size:13px; line-height:1.7;
+}
+.import-summary .summary-dim{margin-right:18px; color:var(--ink-2)}
+.import-summary .summary-dim b{color:var(--ink)}
 
 /* Toast */
 #toast{

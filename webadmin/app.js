@@ -101,8 +101,17 @@ function render() {
 function renderLogin() {
   return el("div", { class: "login" },
     el("div", { class: "login-card" },
-      el("h1", {}, "Rexpand 站点后台"),
-      el("p", { class: "sub" }, "登录后可编辑案例、导师、面试回放,删除资讯文章。"),
+      el("div", { class: "login-brand" },
+        // Hidden API switch: triple-click the brand to reopen the API-base prompt.
+        // Default deployed UI hides it; only needed if you re-bind admin-api domain.
+        el("h1", {
+          ondblclick: () => {
+            const v = prompt("API base URL", State.apiBase);
+            if (v) { State.apiBase = v; localStorage.setItem("apiBase", v); render(); }
+          },
+        }, "Rexpand 站点后台"),
+        el("p", { class: "sub" }, "登录后可编辑案例、导师、面试回放,删除资讯文章。"),
+      ),
       el("form", {
         onsubmit: async (e) => {
           e.preventDefault();
@@ -124,10 +133,6 @@ function renderLogin() {
         el("label", {}, "密码"),
         el("input", { type: "password", name: "password", required: true, autofocus: true }),
         el("button", { type: "submit" }, "登录"),
-      ),
-      el("div", { class: "api-base" },
-        "API: ", el("code", {}, State.apiBase),
-        " · ", el("a", { href: "#", onclick: (e) => { e.preventDefault(); const v = prompt("API base URL", State.apiBase); if (v) { State.apiBase = v; localStorage.setItem("apiBase", v); render(); } } }, "切换"),
       ),
     ),
   );
@@ -238,10 +243,16 @@ function renderTable({ title, rows, cols, onNew, onEdit, onDelete, viewKey }) {
 
 function renderModal() {
   if (State.editing == null) return null;
-  switch (State.view) {
-    case "cases": return caseModal(State.editing);
-    case "mentors": return mentorModal(State.editing);
-    case "replays": return replayModal(State.editing);
+  try {
+    switch (State.view) {
+      case "cases": return caseModal(State.editing);
+      case "mentors": return mentorModal(State.editing);
+      case "replays": return replayModal(State.editing);
+    }
+  } catch (e) {
+    console.error("Modal render error:", e, "editing record:", State.editing);
+    toast(`打开编辑器出错: ${e.message}`, "err");
+    State.editing = null;
   }
   return null;
 }
@@ -435,11 +446,12 @@ function mentorModal(m) {
           field("Company", input(m, "company")),
           field("Company sub(第二行)", input(m, "company_sub", { placeholder: "Senior Manager · VP" })),
         ),
-        field("Avatar(/media/avatars/ 下的相对路径)", input(m, "avatar_src", { placeholder: "/media/avatars/avatar_xxx.png" })),
+        el("div", { class: "section-divider" }, "头像(上传 PNG/JPG)"),
+        uploadWidget("image", "avatars", m, "avatar_src"),
         el("div", { class: "section-divider" }, "Focus 标签(回车添加,× 删除)"),
         chipEditor(m, "focus"),
-        el("div", { class: "section-divider" }, "视频(可选)"),
-        videoUpload("videos/mentors", m, "video_url"),
+        el("div", { class: "section-divider" }, "视频(可选,上传 MP4)"),
+        uploadWidget("video", "videos/mentors", m, "video_url"),
       ),
       el("div", { class: "modal-ft" },
         el("button", { class: "ghost", onclick: close }, "取消"),
@@ -484,57 +496,33 @@ function makeBlankReplay() {
 }
 
 function replayModal(r) {
-  const close = () => { if (anyDirty()) {} State.editing = null; render(); };
+  const close = () => { State.editing = null; render(); };
   const ok = () => {
     if (!r.slug) return toast("slug 必填", "err");
+    if (!r.videoSrc) return toast("视频未上传", "err");
     const idx = State.data.replays.findIndex((x) => x.slug === r.slug);
     if (r.__new) {
       if (idx >= 0) return toast(`slug ${r.slug} 已存在`, "err");
-      delete r.__new; State.data.replays.unshift(r);
+      delete r.__new; delete r.__advanced; State.data.replays.unshift(r);
     } else {
       if (idx < 0) return toast("找不到原记录", "err");
       State.data.replays[idx] = r;
     }
     State.editing = null; render();
   };
-  return el("div", { class: "modal-back", onclick: (e) => { if (e.target.classList.contains("modal-back")) close(); } },
+  const body = r.__new
+    ? replayCreateBody(r)
+    : replayFullEditorBody(r);
+  return el("div", {
+    class: "modal-back",
+    onclick: (e) => { if (e.target.classList.contains("modal-back")) close(); },
+  },
     el("div", { class: "modal", style: "max-width:880px" },
       el("div", { class: "modal-hd" },
-        el("h3", {}, r.__new ? "新增面试回放" : `编辑回放 ${r.slug}`),
+        el("h3", {}, r.__new ? "新增面试回放" : `编辑回放 ${r.slug || "(空)"}`),
         el("button", { class: "close", onclick: close }, "×"),
       ),
-      el("div", { class: "modal-bd" },
-        r.__new ? el("div", { class: "section-divider" }, "可从 Pueblo 一键导入") : null,
-        r.__new ? puebloImport(r) : null,
-        el("div", { class: "section-divider" }, "基础信息"),
-        el("div", { class: "row2" },
-          field("Slug(URL 用,小写+连字符)", input(r, "slug", { placeholder: "company-role-yyyy-mm-dd" })),
-          field("日期(2026.05.31)", input(r, "date")),
-        ),
-        el("div", { class: "row3" },
-          field("Company", input(r, "company")),
-          field("Location", input(r, "location")),
-          field("Logo(1-2 字符)", input(r, "logo", { maxlength: 3 })),
-        ),
-        el("div", { class: "row2" },
-          field("Role", input(r, "role")),
-          field("Duration(MM:SS / HH:MM:SS)", input(r, "duration")),
-        ),
-        field("SEO Title", input(r, "seoTitle")),
-        field("Dek(摘要)", textarea(r, "dek", { rows: 3 })),
-        el("div", { class: "section-divider" }, "标签(回车添加)"),
-        chipEditor(r, "tags"),
-        el("div", { class: "section-divider" }, "视频"),
-        videoUpload("videos/replays", r, "videoSrc"),
-        el("div", { class: "section-divider" }, "评分 JSON(从 Pueblo 导入后可粘贴或手编)"),
-        jsonEditor(r, "score", "评分对象,留 null 表示无评分块"),
-        el("div", { class: "section-divider" }, "正文叙述"),
-        field("Summary", textarea(r, "summary", { rows: 4 })),
-        field("Main issue", textarea(r, "mainIssue", { rows: 4 })),
-        field("Also noting", textarea(r, "alsoNoting", { rows: 4 })),
-        el("div", { class: "section-divider" }, "题目列表(t = 秒)"),
-        questionsEditor(r),
-      ),
+      el("div", { class: "modal-bd" }, body),
       el("div", { class: "modal-ft" },
         el("button", { class: "ghost", onclick: close }, "取消"),
         el("button", { onclick: ok }, "确认"),
@@ -543,29 +531,107 @@ function replayModal(r) {
   );
 }
 
-function puebloImport(r) {
-  const inputEl = el("input", { type: "text", placeholder: "粘贴 Pueblo share 链接或 token" });
+// ----- New-replay flow: video + Pueblo only -----
+function replayCreateBody(r) {
+  const parts = [
+    el("div", { class: "section-divider" }, "① 视频文件(MP4)"),
+    uploadWidget("video", "videos/replays", r, "videoSrc"),
+    el("div", { class: "section-divider" }, "② Pueblo Share 链接"),
+    puebloImporter(r),
+  ];
+  if (r.slug) {
+    parts.push(replayImportSummary(r));
+  }
+  // Optional advanced editor toggle — if user wants to tweak the auto-filled
+  // text fields, they expand it.
+  parts.push(
+    el("div", { class: "section-divider", style: "margin-top:24px" },
+      el("a", { href: "#",
+        onclick: (e) => { e.preventDefault(); r.__advanced = !r.__advanced; renderModalOnly(); },
+      }, r.__advanced ? "▼ 收起详细字段" : "▶ 展开详细字段(可选,微调文本)"),
+    ),
+  );
+  if (r.__advanced) {
+    parts.push(replayFullEditorBody(r, { skipVideo: true, skipImport: true }));
+  }
+  return parts;
+}
+
+// ----- Edit flow: full editor (also used in "advanced" panel of create) -----
+function replayFullEditorBody(r, opts = {}) {
+  return [
+    !opts.skipVideo && el("div", { class: "section-divider" }, "视频(MP4)"),
+    !opts.skipVideo && uploadWidget("video", "videos/replays", r, "videoSrc"),
+    el("div", { class: "section-divider" }, "基础信息"),
+    el("div", { class: "row2" },
+      field("Slug(URL 用)", input(r, "slug", { placeholder: "company-role-yyyy-mm-dd" })),
+      field("日期(2026.05.31)", input(r, "date")),
+    ),
+    el("div", { class: "row3" },
+      field("Company", input(r, "company")),
+      field("Location", input(r, "location")),
+      field("Logo(1-2 字符)", input(r, "logo", { maxlength: 3 })),
+    ),
+    el("div", { class: "row2" },
+      field("Role", input(r, "role")),
+      field("Duration", input(r, "duration", { placeholder: "MM:SS / HH:MM:SS" })),
+    ),
+    field("SEO Title", input(r, "seoTitle")),
+    field("Dek(摘要)", textarea(r, "dek", { rows: 3 })),
+    el("div", { class: "section-divider" }, "标签"),
+    chipEditor(r, "tags"),
+    el("div", { class: "section-divider" }, "评分 JSON"),
+    jsonEditor(r, "score", "Pueblo 导入会自动填这里;留 null 则不显示评分块"),
+    el("div", { class: "section-divider" }, "正文叙述"),
+    field("Summary", textarea(r, "summary", { rows: 4 })),
+    field("Main issue", textarea(r, "mainIssue", { rows: 4 })),
+    field("Also noting", textarea(r, "alsoNoting", { rows: 4 })),
+    el("div", { class: "section-divider" }, "题目列表(t = 秒)"),
+    questionsEditor(r),
+  ].filter(Boolean);
+}
+
+// Pueblo import — paste link, click import, auto-fills the draft.
+function puebloImporter(r) {
+  const inputEl = el("input", {
+    type: "text",
+    placeholder: "https://puebulo.com/share/<token>",
+    value: r.__puebulo_input || "",
+    onchange: (e) => { r.__puebulo_input = e.target.value; },
+  });
   const status = el("div", { class: "upload-status" });
   return el("div", {},
     el("div", { class: "upload-row" }, inputEl,
       el("button", { onclick: async () => {
-        const v = inputEl.value.trim();
-        if (!v) return;
+        const v = (inputEl.value || r.__puebulo_input || "").trim();
+        if (!v) return toast("请粘贴 Pueblo share 链接", "err");
         status.textContent = "拉取中…";
         try {
-          const r2 = await api.puebulo(v);
-          status.textContent = `导入成功(${r2.draft.questions.length} 道题)`;
-          Object.assign(r, r2.draft);
-          if (r2.pueblo_score_preview) {
-            status.textContent += " · Pueblo 原始评分已存到 score 字段供参考";
-            r.score = r2.pueblo_score_preview;
-          }
-          render(); // re-renders modal with new values
+          const result = await api.puebulo(v);
+          status.textContent = "✓ 导入成功";
+          // Merge — preserve videoSrc the user already uploaded.
+          const { videoSrc: _ignore, ...rest } = result.draft;
+          Object.assign(r, rest);
+          r.__puebulo_input = v;
+          renderModalOnly();
         } catch (e) {
-          status.textContent = "失败:" + e.message;
+          status.textContent = "✗ " + e.message;
         }
       } }, "导入"),
     ), status,
+  );
+}
+
+// Show a one-line summary of what got auto-filled from Pueblo.
+function replayImportSummary(r) {
+  const dim = (label, val) => el("span", { class: "summary-dim" }, label + ": ", el("b", {}, String(val || "—")));
+  return el("div", { class: "import-summary" },
+    el("div", { style: "font-weight:600;margin-bottom:6px;" }, "✓ Pueblo 已导入,可直接确认或展开微调"),
+    dim("公司", r.company),
+    dim("职位", r.role),
+    dim("时长", r.duration),
+    dim("题数", (r.questions || []).length),
+    dim("评分", r.score?.overall ?? "—"),
   );
 }
 
@@ -676,10 +742,30 @@ function jsonEditor(obj, key, help) {
   };
   return el("div", {}, ta, el("div", { class: "help" }, help));
 }
-function videoUpload(prefix, obj, key) {
-  const file = el("input", { type: "file", accept: "video/mp4,video/quicktime,video/webm" });
+// Upload widget — file picker + upload button. No URL paste field.
+// kind:    "video" | "image"
+// prefix:  OSS key prefix (e.g., "videos/mentors", "videos/replays", "avatars")
+// obj/key: where to store the resulting public URL
+function uploadWidget(kind, prefix, obj, key) {
+  const isImage = kind === "image";
+  const accept = isImage
+    ? "image/png,image/jpeg,image/webp"
+    : "video/mp4,video/quicktime,video/webm";
+  const fallbackMime = isImage ? "image/png" : "video/mp4";
+  const file = el("input", { type: "file", accept });
   const status = el("div", { class: "upload-status" });
-  const showCurrent = () => obj[key] ? el("div", { class: "help" }, "当前: ", el("a", { href: obj[key], target: "_blank" }, obj[key])) : null;
+  const preview = el("div", { class: "upload-preview" });
+  const refreshPreview = () => {
+    preview.innerHTML = "";
+    if (!obj[key]) return;
+    if (isImage) {
+      preview.appendChild(el("img", { src: obj[key], class: "upload-preview-img", alt: "" }));
+    }
+    preview.appendChild(
+      el("a", { href: obj[key], target: "_blank", class: "upload-preview-link" }, obj[key]),
+    );
+  };
+  refreshPreview();
   return el("div", {},
     el("div", { class: "upload-row" }, file,
       el("button", { onclick: async () => {
@@ -687,27 +773,40 @@ function videoUpload(prefix, obj, key) {
         const f = file.files[0];
         status.textContent = "申请上传 URL…";
         try {
-          const up = await api.uploadUrl(prefix, f.name, f.type || "video/mp4");
+          const up = await api.uploadUrl(prefix, f.name, f.type || fallbackMime);
           status.textContent = `上传中 (${(f.size / 1024 / 1024).toFixed(1)} MB)…`;
-          const r = await fetch(up.url, { method: "PUT", body: f, headers: { "Content-Type": f.type || "video/mp4" } });
+          const r = await fetch(up.url, {
+            method: "PUT", body: f,
+            headers: { "Content-Type": f.type || fallbackMime },
+          });
           if (!r.ok) throw new Error(`OSS PUT ${r.status}`);
           obj[key] = up.publicUrl;
           status.textContent = "上传成功 ✓";
-          renderModalOnly();
+          refreshPreview();
         } catch (e) {
           status.textContent = "失败:" + e.message;
         }
       } }, "上传"),
     ),
-    showCurrent(), status,
-    el("div", { class: "help" }, "或直接粘贴一个已有的视频 URL:"),
-    input(obj, key, { placeholder: "https://resources.rexpandcareer.com/videos/..." }),
+    preview, status,
   );
 }
 
 // ====================================================================
 // Boot
 // ====================================================================
+
+// Surface any uncaught error as a toast so the operator sees it instead of
+// the modal just silently failing to open.
+window.addEventListener("error", (e) => {
+  console.error("Uncaught error:", e.error || e.message);
+  toast("出错了: " + (e.error?.message || e.message || "unknown"), "err");
+});
+window.addEventListener("unhandledrejection", (e) => {
+  console.error("Unhandled rejection:", e.reason);
+  toast("出错了: " + (e.reason?.message || String(e.reason)), "err");
+});
+
 async function boot() {
   if (State.token) {
     try { await reloadState(); }
