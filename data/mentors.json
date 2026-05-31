@@ -1,0 +1,320 @@
+[
+  {
+    "name": "Lance",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_l.7f33e695.png",
+    "company": "知名银行",
+    "company_sub": "Senior Manager · VP",
+    "focus": [
+      "Data Engineering",
+      "Data Analytics"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Jimmy",
+    "role_title": "Sr. SDE",
+    "avatar_src": "/media/avatars/avatar_jimmy.e7cb9d7d.png",
+    "company": "AWS",
+    "company_sub": "资深软件工程师",
+    "focus": [
+      "Machine Learning",
+      "Software Engineering"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Max",
+    "role_title": "FLAG",
+    "avatar_src": "/media/avatars/avatar_max.aebfaebb.png",
+    "company": "FLAG 之一",
+    "company_sub": "多年 CS 方向辅导",
+    "focus": [
+      "Software Development",
+      "Machine Learning Eng",
+      "Front-end Engineering"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Vincent",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_yang.3ec880a6.png",
+    "company": "Morgan Stanley",
+    "company_sub": "信贷量化研究 VP",
+    "focus": [
+      "Risk Management",
+      "Quantitative Finance",
+      "Trading"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Jiexuan",
+    "role_title": "Sr. Analyst",
+    "avatar_src": "/media/avatars/avatar_jiexuan.356c5402.png",
+    "company": "Barclays · PwC",
+    "company_sub": "资深金融分析师",
+    "focus": [
+      "Financial Planning & Analysis",
+      "Investment Banking",
+      "Banking Operations"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Jiexuan.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Leo",
+    "role_title": "Senior DA",
+    "avatar_src": "/media/avatars/avatar_leo.68d2c665.png",
+    "company": "Amazon Alexa",
+    "company_sub": "零售 & 电商方向",
+    "focus": [
+      "Business Analyst",
+      "Data Analytics",
+      "Data Science"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Teddy",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_teddy.693ed0f7.png",
+    "company": "JPMorgan",
+    "company_sub": "Quant Modeling Lead",
+    "focus": [
+      "Quant Modeling",
+      "Quantitative Finance",
+      "Risk Management"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Danny",
+    "role_title": "Consultant",
+    "avatar_src": "/media/avatars/avatar_bobby.2b88cc45.png",
+    "company": "McKinsey · 前 UBS IB",
+    "company_sub": "管理咨询顾问",
+    "focus": [
+      "Management Consulting",
+      "Case Interview"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/danny.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Amber",
+    "role_title": "Lead",
+    "avatar_src": "/media/avatars/avatar_amber.62b56fc7.png",
+    "company": "Barclays",
+    "company_sub": "Risk Strategy Lead",
+    "focus": [
+      "Credit Risk",
+      "Quant Analytics",
+      "Data Analytics"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Amber.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Cathy",
+    "role_title": "Sr. Officer",
+    "avatar_src": "/media/avatars/avatar_cathy.2ba5b4a0.png",
+    "company": "Wells Fargo",
+    "company_sub": "Sr. Risk Officer · 15y+",
+    "focus": [
+      "Operational Risk",
+      "Risk Management",
+      "Behavioral Questions"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Cathy.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Claire",
+    "role_title": "Sr. VP",
+    "avatar_src": "/media/avatars/avatar_claire.2ef82482.png",
+    "company": "Morgan Stanley",
+    "company_sub": "Senior VP · 投行后台",
+    "focus": [
+      "Accounting & Finance",
+      "Operations (IB)",
+      "Behavioral Questions"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Claire.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Jennie",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_jennie.3ee7f0d5.png",
+    "company": "J.P. Morgan",
+    "company_sub": "VP · CIB Risk",
+    "focus": [
+      "Quantitative Finance",
+      "Risk Management"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Jennie.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Peter",
+    "role_title": "DS",
+    "avatar_src": "/media/avatars/avatar_peter.e3972011.png",
+    "company": "TikTok",
+    "company_sub": "Data Scientist",
+    "focus": [
+      "Data Science",
+      "Product Sense Questions",
+      "A/B Testing"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Tom",
+    "role_title": "Applied Scientist",
+    "avatar_src": "/media/avatars/avatar_tom.f8e628b0.png",
+    "company": "Amazon",
+    "company_sub": "Applied Scientist",
+    "focus": [
+      "Machine Learning",
+      "Data Analytics",
+      "Data Science"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/tom.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Vivian",
+    "role_title": "Strategy",
+    "avatar_src": "/media/avatars/avatar_vivian.51543cc3.png",
+    "company": "LinkedIn",
+    "company_sub": "Strategy & Ops",
+    "focus": [
+      "Business Analyst",
+      "Business Case Questions",
+      "Strategy & Operations"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Vivian.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Andy",
+    "role_title": "DA",
+    "avatar_src": "/media/avatars/avatar_andy.b82c0b6d.png",
+    "company": "Google",
+    "company_sub": "数据分析 · 前商业银行",
+    "focus": [
+      "Business Analyst",
+      "Data Analytics",
+      "Data Engineer"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Terry",
+    "role_title": "Applied Researcher",
+    "avatar_src": "/media/avatars/avatar_terry.7055d442.png",
+    "company": "eBay",
+    "company_sub": "Applied Researcher",
+    "focus": [
+      "Machine Learning",
+      "Data Analytics",
+      "Data Science"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Xiao",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_xiaoyi.7308638e.png",
+    "company": "Capital One",
+    "company_sub": "VP · 多家顶级公司高管",
+    "focus": [
+      "Software Development",
+      "Career Advancement"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Xiaoyi.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Chang",
+    "role_title": "Consultant",
+    "avatar_src": "/media/avatars/avatar_changle.7e359973.png",
+    "company": "前 McKinsey",
+    "company_sub": "管理咨询顾问",
+    "focus": [
+      "Management Consulting",
+      "Case Interview",
+      "Personal Experience Interview"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Flora",
+    "role_title": "BA Manager",
+    "avatar_src": "/media/avatars/avatar_flora.632f2958.png",
+    "company": "Capital One",
+    "company_sub": "BA Manager",
+    "focus": [
+      "Business Analyst",
+      "Data Analytics",
+      "Business Case"
+    ],
+    "video_url": null,
+    "has_video": false
+  },
+  {
+    "name": "Ryan",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_ryan.760f5abf.png",
+    "company": "PGIM",
+    "company_sub": "Investment VP",
+    "focus": [
+      "Quant Modeling",
+      "Quantitative Finance",
+      "Risk Management",
+      "Financial Analyst"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Ryan.mp4",
+    "has_video": true
+  },
+  {
+    "name": "James",
+    "role_title": "DS",
+    "avatar_src": "/media/avatars/avatar_james.759cc7d6.png",
+    "company": "Pinterest",
+    "company_sub": "Data Scientist",
+    "focus": [
+      "Business Analyst",
+      "Data Analyst",
+      "Data Science"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/James.mp4",
+    "has_video": true
+  },
+  {
+    "name": "Florence",
+    "role_title": "VP",
+    "avatar_src": "/media/avatars/avatar_florence.7daa7755.png",
+    "company": "Goldman Sachs",
+    "company_sub": "VP",
+    "focus": [
+      "Financial Analyst",
+      "Fund Management",
+      "Financial Reporting"
+    ],
+    "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Florence.mp4",
+    "has_video": true
+  }
+]
