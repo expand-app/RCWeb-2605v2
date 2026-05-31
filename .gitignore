@@ -66,3 +66,6 @@ secrets.json
 dist/
 dist-pages/
 dist-nested/
+# ...but keep the paste-able single-file Worker bundle (for dashboard deploy)
+!worker/dist/
+!worker/dist/worker.bundled.js
