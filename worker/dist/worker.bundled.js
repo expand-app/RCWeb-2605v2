@@ -153,21 +153,32 @@ function utf8ToB64(str) {
   return btoa(bin);
 }
 
-function b64ToUtf8(b64) {
-  const bin = atob(b64.replace(/\s/g, ""));
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return new TextDecoder("utf-8").decode(bytes);
-}
-
-/** Read file at HEAD of configured branch. Returns full UTF-8 text. */
+/**
+ * Read file at HEAD of configured branch. Returns full UTF-8 text.
+ *
+ * Uses `Accept: application/vnd.github.raw` so we get the file body directly
+ * instead of GitHub's JSON wrapper. The JSON wrapper truncates content to
+ * empty string for files >1MB (index.html is 1.55MB), which would make every
+ * marker lookup fail — see GitHub Contents API docs.
+ */
 async function readFile(env, path) {
-  const { repo, branch } = cfg(env);
-  const r = await gh(
-    env,
-    `/repos/${repo}/contents/${encodeURIComponent(path)}?ref=${branch}`,
+  const { repo, branch, token } = cfg(env);
+  const r = await fetch(
+    `${API}/repos/${repo}/contents/${encodeURIComponent(path)}?ref=${branch}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github.raw",
+        "User-Agent": "rexpand-admin-worker",
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+    },
   );
-  return b64ToUtf8(r.content);
+  if (!r.ok) {
+    const body = await r.text();
+    throw new Error(`GitHub read ${path}: ${r.status} ${body.slice(0, 400)}`);
+  }
+  return r.text();
 }
 
 /**
