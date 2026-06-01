@@ -633,20 +633,24 @@ function verdictFor(overall) {
   return                   { verdict: "STRONG PASS", label: BANDS[3].note };
 }
 
-function extractDimensions(puebloScore) {
-  // Pueblo score field name varies by interview type; try the common ones.
+function extractBreakdown(puebloScore) {
+  // Pueblo's per-dimension field name varies; try the common ones, normalize
+  // to the [name, score, max, note] tuple shape the site renderer reads.
   const arr =
-    (Array.isArray(puebloScore.dimensions)  && puebloScore.dimensions) ||
-    (Array.isArray(puebloScore.criteria)    && puebloScore.criteria) ||
-    (Array.isArray(puebloScore.categories)  && puebloScore.categories) ||
+    (Array.isArray(puebloScore.dimensions)  && puebloScore.dimensions)   ||
+    (Array.isArray(puebloScore.criteria)    && puebloScore.criteria)     ||
+    (Array.isArray(puebloScore.categories)  && puebloScore.categories)   ||
     (Array.isArray(puebloScore.competencies)&& puebloScore.competencies) ||
     [];
-  return arr.map((d) => ({
-    name: d.name || d.label || d.title || "?",
-    score: Number(d.score ?? d.value ?? 0),
-    max:   Number(d.max   ?? d.outOf ?? 10),
-    note:  d.note || d.feedback || d.summary || "",
-  }));
+  return arr
+    .map((d) => [
+      d.name || d.label || d.title || "?",
+      Number(d.score ?? d.value ?? 0),
+      Number(d.max   ?? d.outOf ?? 10),
+      String(d.note || d.feedback || d.summary || ""),
+    ])
+    // drop rows with max=0 (Pueblo emits placeholder "Role Fit" with 0/0)
+    .filter(([, , max]) => max > 0);
 }
 
 /**
@@ -667,7 +671,7 @@ function mapScore(puebloScore) {
     verdictPct: `${Math.round((overall / max) * 100)}%`,
     label,
     bands: BANDS,
-    dimensions: extractDimensions(puebloScore),
+    breakdown: extractBreakdown(puebloScore),
   };
 }
 
@@ -679,6 +683,30 @@ function autoDek(company, role, durationStr, qCount) {
   if (qCount)          parts.push(`${qCount} interviewer questions with timestamps`);
   parts.push("full transcript and Puebulo-style scoring");
   return parts.join(", ") + ".";
+}
+
+// Auto-write a basic Chinese summary from Pueblo's structured data. Surfaces
+// score + relative strongest/weakest dimension. Operator can override via the
+// admin "advanced edit" panel.
+function autoSummary(company, role, durationStr, qCount, score) {
+  const parts = [];
+  if (role && company) parts.push(`${role} @ ${company} 模拟面试,时长 ${durationStr},共 ${qCount} 道题。`);
+  else if (role)       parts.push(`${role} 模拟面试,时长 ${durationStr},共 ${qCount} 道题。`);
+  else                 parts.push(`模拟面试,时长 ${durationStr},共 ${qCount} 道题。`);
+  if (score?.overall != null) {
+    parts.push(`Pueblo 评分 ${score.overall}/${score.max}(${score.verdict})。`);
+  }
+  if (score?.breakdown?.length >= 2) {
+    const sorted = [...score.breakdown].sort((a, b) => (a[1]/a[2]) - (b[1]/b[2]));
+    const weakest = sorted[0];
+    const strongest = sorted[sorted.length - 1];
+    parts.push(
+      `相对强项 ${strongest[0]} (${strongest[1]}/${strongest[2]}),` +
+      `相对弱项 ${weakest[0]} (${weakest[1]}/${weakest[2]})。`,
+    );
+  }
+  parts.push("完整题目时间戳和评分见下,Main Issue 与 Also Worth Noting 由运营人工补充。");
+  return parts.join("");
 }
 
 // Parse out a share token from raw token / /share/<t> URL / full URL.
@@ -720,6 +748,7 @@ async function importShare(input) {
   const durationStr = fmtDuration(session.durationSeconds);
   const { company, role } = parseTitle(session.title);
   const slug = slugify(`${company} ${role}`) + (dateStr ? "-" + dateStr.replace(/\./g, "-") : "");
+  const score = mapScore(session.score);
 
   const draft = {
     slug: slug || slugify(token),
@@ -740,10 +769,12 @@ async function importShare(input) {
       q: String(q.text || "").trim(),
       meta: q.kind === "interviewer" ? "" : (q.kind || ""),
     })),
-    score: mapScore(session.score),
-    summary: "",
-    mainIssue: "",
-    alsoNoting: "",
+    score,
+    summary: autoSummary(company, role, durationStr, interviewerQs.length, score),
+    // Pueblo doesn't expose narrative coaching notes — leave these blank so
+    // the renderer hides those sections; operator can fill via advanced editor.
+    mainIssue: null,
+    alsoNoting: [],
   };
 
   return { draft, raw, pueblo_score_preview: session.score || null };

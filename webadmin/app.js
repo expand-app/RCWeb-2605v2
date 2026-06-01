@@ -583,9 +583,11 @@ function replayFullEditorBody(r, opts = {}) {
     el("div", { class: "section-divider" }, "评分 JSON"),
     jsonEditor(r, "score", "Pueblo 导入会自动填这里;留 null 则不显示评分块"),
     el("div", { class: "section-divider" }, "正文叙述"),
-    field("Summary", textarea(r, "summary", { rows: 4 })),
-    field("Main issue", textarea(r, "mainIssue", { rows: 4 })),
-    field("Also noting", textarea(r, "alsoNoting", { rows: 4 })),
+    field("Summary(开头一段总评)", textarea(r, "summary", { rows: 4 })),
+    el("div", { class: "section-divider" }, "Main Issue(可选,最大问题的标题 + 详细说明)"),
+    mainIssueEditor(r),
+    el("div", { class: "section-divider" }, "Also Worth Noting(可选,补充观察的列表)"),
+    bulletListEditor(r, "alsoNoting"),
     el("div", { class: "section-divider" }, "题目列表(t = 秒)"),
     questionsEditor(r),
   ].filter(Boolean);
@@ -632,6 +634,57 @@ function replayImportSummary(r) {
     dim("时长", r.duration),
     dim("题数", (r.questions || []).length),
     dim("评分", r.score?.overall ?? "—"),
+  );
+}
+
+// mainIssue 是 {title, body} 对象 — 拆成两个 input 编辑;按"清空"还原 null。
+function mainIssueEditor(r) {
+  if (r.mainIssue && typeof r.mainIssue !== "object") r.mainIssue = null;
+  const enabled = r.mainIssue != null;
+  if (!enabled) {
+    return el("div", {},
+      el("div", { class: "help" }, "未填写(对应页面区块隐藏)。"),
+      el("button", { class: "ghost",
+        onclick: () => { r.mainIssue = { title: "", body: "" }; renderModalOnly(); },
+      }, "+ 添加 Main Issue"),
+    );
+  }
+  return el("div", {},
+    field("Title(短标题)", el("input", {
+      type: "text", value: r.mainIssue.title || "",
+      onchange: (e) => { r.mainIssue.title = e.target.value; },
+    })),
+    field("Body(详细说明,可多行 / 用 \\n• 做项目符号)", el("textarea", {
+      rows: 8, onchange: (e) => { r.mainIssue.body = e.target.value; },
+    }, r.mainIssue.body || "")),
+    el("button", { class: "ghost",
+      style: "margin-top:6px;color:var(--danger);border-color:var(--danger)",
+      onclick: () => { r.mainIssue = null; renderModalOnly(); },
+    }, "× 清空 Main Issue"),
+  );
+}
+
+// alsoNoting 是字符串数组 — 每项一个 textarea + 删除按钮 + 末尾"加一条"。
+// 比 chipEditor 更适合中长文本(50-150 字)。
+function bulletListEditor(r, key) {
+  if (!Array.isArray(r[key])) r[key] = [];
+  return el("div", {},
+    el("div", { class: "q-list" },
+      r[key].map((item, i) =>
+        el("div", { class: "q-item", style: "grid-template-columns:1fr auto" },
+          el("textarea", {
+            rows: 2,
+            onchange: (e) => { r[key][i] = e.target.value; },
+          }, String(item || "")),
+          el("button", {
+            onclick: () => { r[key].splice(i, 1); renderModalOnly(); },
+          }, "×"),
+        ),
+      ),
+    ),
+    el("button", { class: "ghost", style: "margin-top:8px",
+      onclick: () => { r[key].push(""); renderModalOnly(); },
+    }, "+ 添加一条"),
   );
 }
 

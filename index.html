@@ -30216,7 +30216,15 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
     const max = s.max || (s.overall <= 5 ? 5 : 100);
     const overall = (s.overall != null) ? s.overall : 0;
     const verdictKey = (s.verdict || '').toLowerCase().replace(/\s+/g,'-'); // 'borderline', 'pass', 'strong-pass', 'fail', 'hire'
-    const breakdownHtml = (s.breakdown || []).map(row => {
+    // Accept both legacy tuple shape `breakdown: [[name, score, max, note], ...]`
+    // and Pueblo-style object shape `dimensions: [{name, score, max, note}, ...]`
+    // emitted by the webadmin Puebulo importer.
+    const breakdownRaw = (s.breakdown && s.breakdown.length)
+      ? s.breakdown
+      : (Array.isArray(s.dimensions)
+          ? s.dimensions.map(d => [d.name, d.score, d.max, d.note || ''])
+          : []);
+    const breakdownHtml = breakdownRaw.map(row => {
       const [cat, val, mx, note] = (row.length >= 3) ? row : [row[0], row[1], 5, row[2]];
       const pct = Math.max(0, Math.min(100, (val/mx)*100));
       return `<div class="sb-row">
