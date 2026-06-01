@@ -498,16 +498,23 @@ function makeBlankReplay() {
 function replayModal(r) {
   const close = () => { State.editing = null; render(); };
   const ok = () => {
+    if (r.__uploading) return toast("视频上传中,等完成再点确认", "err");
     if (!r.slug) return toast("slug 必填", "err");
-    if (!r.videoSrc) return toast("视频未上传", "err");
-    const idx = State.data.replays.findIndex((x) => x.slug === r.slug);
-    if (r.__new) {
-      if (idx >= 0) return toast(`slug ${r.slug} 已存在`, "err");
-      delete r.__new; delete r.__advanced; State.data.replays.unshift(r);
-    } else {
-      if (idx < 0) return toast("找不到原记录", "err");
-      State.data.replays[idx] = r;
+    if (!r.videoSrc) return toast("视频未上传(请先上传视频文件)", "err");
+    // Drop UI-internal flags before persisting.
+    for (const k of ["__new", "__advanced", "__puebulo_input", "__uploading"]) {
+      delete r[k];
     }
+    const idx = State.data.replays.findIndex((x) => x.slug === r.slug);
+    if (idx >= 0 && r !== State.data.replays[idx]) {
+      // collision with another record — happens only if user manually edits
+      // the slug to an existing one. (Auto-create collisions are caught
+      // earlier by puebloImporter's auto-rename.)
+      return toast(`slug ${r.slug} 已存在`, "err");
+    }
+    if (idx >= 0) State.data.replays[idx] = r;
+    else State.data.replays.unshift(r);
+    toast(`✓ 已添加到列表,点右上"保存到生产"提交`, "ok");
     State.editing = null; render();
   };
   const body = r.__new
@@ -533,21 +540,34 @@ function replayModal(r) {
 
 // ----- New-replay flow: video + Pueblo only -----
 function replayCreateBody(r) {
+  // Dedicated DOM slot for the Pueblo summary card — updated in place by
+  // puebloImporter without a full modal re-render. This is what lets the
+  // video upload keep its in-progress state when Pueblo import is clicked
+  // mid-upload.
+  const summarySlot = el("div", { class: "summary-slot" });
+  const refreshSummary = () => {
+    summarySlot.innerHTML = "";
+    if (r.slug) summarySlot.appendChild(replayImportSummary(r));
+  };
+  refreshSummary();
+
   const parts = [
     el("div", { class: "section-divider" }, "① 视频文件(MP4)"),
     uploadWidget("video", "videos/replays", r, "videoSrc"),
     el("div", { class: "section-divider" }, "② Pueblo Share 链接"),
-    puebloImporter(r),
+    puebloImporter(r, refreshSummary),
+    summarySlot,
   ];
-  if (r.slug) {
-    parts.push(replayImportSummary(r));
-  }
   // Optional advanced editor toggle — if user wants to tweak the auto-filled
   // text fields, they expand it.
   parts.push(
     el("div", { class: "section-divider", style: "margin-top:24px" },
       el("a", { href: "#",
-        onclick: (e) => { e.preventDefault(); r.__advanced = !r.__advanced; renderModalOnly(); },
+        onclick: (e) => {
+          e.preventDefault();
+          if (r.__uploading) return toast("视频上传中,请等完成再展开", "err");
+          r.__advanced = !r.__advanced; renderModalOnly();
+        },
       }, r.__advanced ? "▼ 收起详细字段" : "▶ 展开详细字段(可选,微调文本)"),
     ),
   );
@@ -594,7 +614,10 @@ function replayFullEditorBody(r, opts = {}) {
 }
 
 // Pueblo import — paste link, click import, auto-fills the draft.
-function puebloImporter(r) {
+// `onImported` is called after successful import so the parent can update
+// just the summary card slot, without re-rendering the whole modal
+// (which would interrupt any in-progress video upload).
+function puebloImporter(r, onImported) {
   const inputEl = el("input", {
     type: "text",
     placeholder: "https://puebulo.com/share/<token>",
@@ -615,7 +638,19 @@ function puebloImporter(r) {
           const { videoSrc: _ignore, ...rest } = result.draft;
           Object.assign(r, rest);
           r.__puebulo_input = v;
-          renderModalOnly();
+          // If new slug collides with an existing replay, append a numeric
+          // suffix so the ok() validation passes and the user isn't stuck.
+          if (State.data?.replays) {
+            const existing = new Set(State.data.replays.map((x) => x.slug));
+            if (existing.has(r.slug)) {
+              const baseSlug = r.slug;
+              let n = 2;
+              while (existing.has(`${baseSlug}-${n}`)) n++;
+              r.slug = `${baseSlug}-${n}`;
+              status.textContent += ` · slug 与现有撞,改成 ${r.slug}`;
+            }
+          }
+          if (onImported) onImported();
         } catch (e) {
           status.textContent = "✗ " + e.message;
         }
@@ -708,8 +743,14 @@ function questionsEditor(r) {
   );
 }
 
-// Re-renders only the modal (so input focus elsewhere isn't lost)
+// Re-renders only the modal (so input focus elsewhere isn't lost).
+// Skips while a video upload is in flight — tearing down the upload widget's
+// DOM mid-XHR makes the user think the upload was interrupted.
 function renderModalOnly() {
+  if (State.editing?.__uploading) {
+    console.warn("renderModalOnly skipped — upload in progress");
+    return;
+  }
   const back = document.querySelector(".modal-back");
   if (!back) return render();
   const fresh = renderModal();
@@ -855,6 +896,9 @@ function uploadWidget(kind, prefix, obj, key) {
         const f = file.files[0];
         status.textContent = "申请上传 URL…";
         bar.style.display = "none";
+        // Flag in-progress upload so renderModalOnly() can skip re-renders
+        // that would tear down this widget's DOM mid-upload.
+        obj.__uploading = true;
         try {
           const up = await api.uploadUrl(prefix, f.name, f.type || fallbackMime);
           // Reveal the progress bar + live status as bytes upload.
@@ -885,6 +929,8 @@ function uploadWidget(kind, prefix, obj, key) {
           refreshPreview();
         } catch (e) {
           status.textContent = "失败: " + e.message;
+        } finally {
+          obj.__uploading = false;
         }
       } }, "上传"),
     ),
