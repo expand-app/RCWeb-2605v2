@@ -211,7 +211,19 @@ label:first-of-type{margin-top:0}
 /* Upload + Pueblo controls */
 .upload-row{display:flex; gap:8px; align-items:center}
 .upload-row input[type=file]{padding:4px}
-.upload-status{font-size:12px; color:var(--ink-3); margin-top:6px}
+.upload-status{
+  font-size:12px; color:var(--ink-2); margin-top:6px;
+  font-family:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;
+}
+.upload-bar{
+  margin-top:8px; height:6px;
+  background:#eee; border-radius:3px; overflow:hidden;
+}
+.upload-bar-fill{
+  height:100%; width:0%;
+  background:linear-gradient(90deg, var(--accent), #4a8aff);
+  transition:width .15s ease-out;
+}
 .upload-preview{margin-top:8px; display:flex; flex-direction:column; gap:6px}
 .upload-preview-img{
   max-width:120px; max-height:120px; object-fit:cover;

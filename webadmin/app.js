@@ -746,6 +746,32 @@ function jsonEditor(obj, key, help) {
 // kind:    "video" | "image"
 // prefix:  OSS key prefix (e.g., "videos/mentors", "videos/replays", "avatars")
 // obj/key: where to store the resulting public URL
+// PUT a file with progress callback. fetch() can't report upload progress,
+// so we use XMLHttpRequest which fires `progress` events on the upload stream.
+function uploadWithProgress(url, file, contentType, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", url);
+    xhr.setRequestHeader("Content-Type", contentType);
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable) onProgress(e.loaded, e.total);
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) resolve();
+      else reject(new Error(`OSS PUT ${xhr.status}`));
+    };
+    xhr.onerror = () => reject(new Error("network error"));
+    xhr.onabort = () => reject(new Error("upload aborted"));
+    xhr.send(file);
+  });
+}
+
+function fmtBytes(n) {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  return `${(n / 1024 / 1024).toFixed(1)} MB`;
+}
+
 function uploadWidget(kind, prefix, obj, key) {
   const isImage = kind === "image";
   const accept = isImage
@@ -754,6 +780,9 @@ function uploadWidget(kind, prefix, obj, key) {
   const fallbackMime = isImage ? "image/png" : "video/mp4";
   const file = el("input", { type: "file", accept });
   const status = el("div", { class: "upload-status" });
+  const bar = el("div", { class: "upload-bar" }, el("div", { class: "upload-bar-fill" }));
+  const fill = bar.firstChild;
+  bar.style.display = "none";
   const preview = el("div", { class: "upload-preview" });
   const refreshPreview = () => {
     preview.innerHTML = "";
@@ -772,23 +801,41 @@ function uploadWidget(kind, prefix, obj, key) {
         if (!file.files[0]) return toast("请选择文件", "err");
         const f = file.files[0];
         status.textContent = "申请上传 URL…";
+        bar.style.display = "none";
         try {
           const up = await api.uploadUrl(prefix, f.name, f.type || fallbackMime);
-          status.textContent = `上传中 (${(f.size / 1024 / 1024).toFixed(1)} MB)…`;
-          const r = await fetch(up.url, {
-            method: "PUT", body: f,
-            headers: { "Content-Type": f.type || fallbackMime },
+          // Reveal the progress bar + live status as bytes upload.
+          bar.style.display = "";
+          fill.style.width = "0%";
+          const start = Date.now();
+          let lastUpdate = 0;
+          await uploadWithProgress(up.url, f, f.type || fallbackMime, (loaded, total) => {
+            const now = Date.now();
+            if (now - lastUpdate < 200) return;  // throttle 5 Hz
+            lastUpdate = now;
+            const pct = (loaded / total) * 100;
+            fill.style.width = pct.toFixed(1) + "%";
+            const elapsed = (now - start) / 1000;
+            const speedBps = elapsed > 0 ? loaded / elapsed : 0;
+            const remainBytes = total - loaded;
+            const etaSec = speedBps > 0 ? Math.round(remainBytes / speedBps) : 0;
+            status.textContent =
+              `上传中 ${pct.toFixed(1)}%` +
+              ` · ${fmtBytes(loaded)} / ${fmtBytes(total)}` +
+              ` · ${fmtBytes(speedBps)}/s` +
+              ` · ETA ${etaSec}s`;
           });
-          if (!r.ok) throw new Error(`OSS PUT ${r.status}`);
+          fill.style.width = "100%";
           obj[key] = up.publicUrl;
-          status.textContent = "上传成功 ✓";
+          const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+          status.textContent = `✓ 上传成功 (${fmtBytes(f.size)} · ${elapsed}s)`;
           refreshPreview();
         } catch (e) {
-          status.textContent = "失败:" + e.message;
+          status.textContent = "失败: " + e.message;
         }
       } }, "上传"),
     ),
-    preview, status,
+    bar, preview, status,
   );
 }
 
