@@ -761,19 +761,26 @@ function renderModalOnly() {
 // Articles (delete-only)
 // ====================================================================
 function renderArticles() {
+  // Sort by date desc for display; storage order doesn't matter because the
+  // live site re-sorts at render time (index.html ~line 32443). Delete looks
+  // up by slug so the visible index doesn't drift.
+  const sorted = [...State.data.articles].sort(
+    (a, b) => (b.date || "").localeCompare(a.date || ""),
+  );
   return renderTable({
     title: "求职情报",
     viewKey: "articles",
-    rows: State.data.articles,
+    rows: sorted,
     cols: [
       { label: "日期", width: "100px", render: (a) => a.date },
       { label: "Category", width: "120px", render: (a) => a.category },
       { label: "Slug", render: (a) => el("span", { class: "truncate" }, a.slug) },
       { label: "标题(简)", render: (a) => el("span", { class: "truncate", html: a.title }) },
     ],
-    // No new/edit — only delete
-    onDelete: (a, i) => {
-      if (confirm(`删除文章 "${a.slug}"?`)) { State.data.articles.splice(i, 1); render(); }
+    onDelete: (a) => {
+      if (!confirm(`删除文章 "${a.slug}"?`)) return;
+      const idx = State.data.articles.findIndex((x) => x.slug === a.slug);
+      if (idx >= 0) { State.data.articles.splice(idx, 1); render(); }
     },
   });
 }
