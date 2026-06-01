@@ -1,5 +1,206 @@
 [
   {
+    "slug": "axos-bank-junior-market-risk-analyst-2026-05-27",
+    "date": "2026.05.27",
+    "duration": "35:06",
+    "company": "Axos Bank",
+    "location": "",
+    "role": "Junior Market Risk Analyst",
+    "logo": "A",
+    "seoTitle": "Junior Market Risk Analyst · Axos Bank — Mock Interview Replay",
+    "dek": "A 35:06 Axos Bank Junior Market Risk Analyst mock interview replay, 24 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-06-01-junior-market-risk-analyst-axos-bank-2026-06-01.mp4",
+    "score": {
+      "overall": 68,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "68%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          18,
+          25,
+          "多数题最终 land 到了答案(DCF、duration、HQLA、normal distribution),但常需要面试官 reframe 或 probe 才能收紧 —— 比如 DCF 开场混入 bond pricing,discount rate 题铺了四个维度但没说 how。"
+        ],
+        [
+          "Specificity & Evidence",
+          22,
+          30,
+          "简历上的 VaR / Monte Carlo / backtesting 在面试中完全没被引用;SVB case 提到了 duration mismatch + deposit flight,但埋在 time zone 八卦里;HQLA 点出了 Treasury / Fannie Mae,算具体。"
+        ],
+        [
+          "Depth & Reasoning",
+          20,
+          30,
+          "概念定义基本正确(R²、p-value、multicollinearity、68-95-99.7 rule),但没有一个答案主动串回简历项目或 ALM context —— 比如 p-value 可以接 VaR backtesting,LCR 可以接 deposit tracker,全是孤立定义。"
+        ],
+        [
+          "Communication",
+          8,
+          15,
+          "'I mean' 出现 50+ 次,'I'm not sure' / 'correct me if I'm wrong' 反复自我否定;多个答案开头卡顿(DCF、R²、p-value)然后重启;面试官多次用 'it's alright' / 'don't worry' 安抚 —— delivery 的不稳削弱了内容可信度。"
+        ]
+      ]
+    },
+    "summary": "候选人概念储备基本达标(finance + stats 定义题多数答对),但 delivery 问题严重拖累了面试表现:过度的 filler words('I mean' 50+ 次)和自我否定('I'm not sure' / 'correct me if I'm wrong')让答案听起来比实际内容更弱,且简历上的 VaR / backtesting / ALM tracker 项目在整场面试中完全没被主动引用来支撑答案 —— 错失了把理论定义接回实操经验的所有机会。面试官多次用 'it's alright' / 'don't worry' 安抚,是 disengagement 信号。",
+    "mainIssue": {
+      "title": "过度 hedge 和 filler words 系统性削弱答案可信度,即使内容正确",
+      "body": "整场面试中 'I mean' 出现 50+ 次,'I'm not sure' / 'correct me if I'm wrong' / 'let me try to remember' 反复出现在已经答对的题目上,面试官多次用 'it's alright' / 'don't worry' 安抚。这种 delivery pattern 在 entry-level technical screen 上是致命的 —— 它让面试官无法区分你真正不会的题和只是表达不自信的题,最终只能按 '候选人自己都不确定' 来打分。\n- Normal distribution 题:定义完全正确(bell shape、mean=median=mode、由 μ 和 σ 描述),但答完立刻接 'I'm not sure if I remember that correctly' + 'I'm out of college for a while',面试官都开口安抚了。\n- R² vs adjusted R² 题:核心逻辑其实抓住了(R² 总是增加,adjusted R² penalize 无效变量),但开头说 'I forgot the concept' 然后磕磕巴巴重启,面试官又是 'it's alright'。\n- Multicollinearity 题:定义基本正确,但先说 'I'm not sure if it's correct' 再答,把答案的可信度自己拆了一半。\n\n这会让 hiring committee 怀疑候选人在压力下的 composure 和对自己技术储备的 ownership —— Jr. Analyst 岗位需要在 daily P&L review 和 risk limit breach 时快速给出判断,这种反复自我否定的 pattern 是 red flag。\n\n— 如何改进 —\n下次面试前,把简历上每个 technical skill(VaR、backtesting、Monte Carlo、LCR、duration)用一段话写出来,每段必须包含:定义 + 你在哪个项目里用过 + 一个具体数字/结果。把这些段落背到能在 60 秒内不带 'I mean' / 'I'm not sure' 地讲出来。\n- 录音自己答 5 个常见定义题(duration、p-value、normal distribution、VaR、LCR),回放时数 filler words —— 目标是把 'I mean' 从每 10 秒一次降到每分钟一次。\n- 把 'I'm not sure' 替换成 'Let me walk through what I know' —— 后者是 collaborative framing,前者是自我否定。\n- 答完定义后,立刻接一句 'I used this in [project name]' 把理论接回简历 —— 比如 p-value 答完接 'I applied this in VaR backtesting to check if violation frequency was statistically consistent with the 95% confidence level',这样面试官听到的是 hands-on experience,不是教科书复述。\n- 用 5 个 past technical questions 做这个 drill,计时录音,确保每个答案都在 45 秒内落地 定义 + 项目引用,且 'I mean' 不超过 2 次。"
+    },
+    "alsoNoting": [
+      "简历上的 VaR / backtesting / ALM tracker 项目在整场面试中完全没被主动引用",
+      "Fed funds rate 和 yield curve shape 这种 market awareness 题答得模糊,但这是 Jr. Market Risk 岗位的日常工作内容",
+      "SVB case 答案埋在 time zone 八卦里,核心 duration mismatch + IRRBB governance 分析被稀释",
+      "多个答案开头卡顿然后重启(DCF、R²、discount rate),在 entry-level screen 上这会被读作准备不足"
+    ],
+    "questions": [
+      {
+        "t": 79,
+        "q": "Can you walk me through the discount cash flow model, DCF, on a very high level?",
+        "meta": "面试官在铺流程:15 题 finance + stats,之后还有 4 道 Excel,总共 40-50 分钟"
+      },
+      {
+        "t": 394,
+        "q": "What is the duration for a treasury bond?",
+        "meta": "面试官刚确认你 benchmark 答对了,然后预告会问 15-20 个问题 —— 节奏会很快,他明确说不会的可以直接讲"
+      },
+      {
+        "t": 588,
+        "q": "The treasury yield curve. Do you know, like, what does it look like in terms of the shape?",
+        "meta": "面试官从 yield curve 切到更简单的 Fed 问题,是因为上一题没 landing —— 这个 cue 要 c"
+      },
+      {
+        "t": 644,
+        "q": "Have you ever paid attention to the news? For example, you know, Federal Reserve, are they gonna cut or raise the benchmark rate, all that kind of news? Do you know anything about it?",
+        "meta": "把 rate 和 deposit flight / liquidity 串起来思路是对的,但面试官立刻 pivot 到一"
+      },
+      {
+        "t": 804,
+        "q": "Do you know what is a prepayment",
+        "meta": "面试官在 confirm 你答对了(3"
+      },
+      {
+        "t": 857,
+        "q": "What is the primary goal of asset liability management in a bank?",
+        "meta": ""
+      },
+      {
+        "t": 924,
+        "q": "Think about a treasury bond. There are 2 investment vehicles: 1 is a treasury bond, a 10 year treasury bond, another 1 is the 10 year mortgage. In your opinion, which 1 has a higher coupon and why?",
+        "meta": "面试官在 setup 一个经典对比题:10Y Treasury vs 10Y Mortgage,大概率问 yield /"
+      },
+      {
+        "t": 983,
+        "q": "Do you know what happened to a bank called Silicon Valley Bank back in 3 years ago? Can you tell me about it? What happened?",
+        "meta": "抓到了核心 —— deposit run + 长债 concentration,方向对的"
+      },
+      {
+        "t": 1138,
+        "q": "Let's say there are 2 banks. The first bank focuses on regular retail customers with deposit size around 50 k to 100 k. The second bank focuses on high net worth clients with deposit size above $1 million. Which one has a higher liquidity risk and why?",
+        "meta": "面试官在 set up 一个 两家银行对比 的 case,第一家是普通 retail($50k-$100k 散户存款)"
+      },
+      {
+        "t": 1329,
+        "q": "What is considered HQLA? Can you give me an exact example?",
+        "meta": ""
+      },
+      {
+        "t": 1374,
+        "q": "Maybe a few statistical questions. Okay?",
+        "meta": ""
+      },
+      {
+        "t": 1384,
+        "q": "Do you know what is a regression model?",
+        "meta": "定义答得 OK,但 R² 那段明显在fumbling —— \"what's that called\"、\"let me t"
+      },
+      {
+        "t": 1532,
+        "q": "Can you tell me what is a normal distribution?",
+        "meta": "内容其实答对了 —— bell shape、mean=median=mode、由 μ 和 σ 描述,都点到了"
+      },
+      {
+        "t": 1693,
+        "q": "Do you know what's the p value?",
+        "meta": "定义本身是对的,但开头卡顿+ \"we get the h0\" 说反了(应该是 reject H0),这种基础题最好一句话"
+      },
+      {
+        "t": 1785,
+        "q": "Do you know what is a multicollinearity?",
+        "meta": "定义其实basically correct(面试官都接话确认了),但 \"I'm not sure / I don't r"
+      },
+      {
+        "t": 1957,
+        "q": "Imagine you have unlimited amount of coins and a round shaped table. Your job is to put all the coins on the table to cover the whole table. Once you finish covering the table, is the number of coins an odd number or an even number?",
+        "meta": "面试官在出 brainteaser:抛硬币 2 次,问得到 1 正 1 反的概率"
+      },
+      {
+        "t": 1960,
+        "q": "Once you finish cover the whole table, how many coins is that — is that an odd number or an even number?",
+        "meta": "直觉对了 —— center coin 是 anchor,其他 coins 可以通过对称 pair 起来,所以是 odd"
+      },
+      {
+        "t": 190,
+        "q": "When you choose a discount rate to value a loan or mortgage by using the DCF model, what factors would you consider? How do you choose it?",
+        "meta": "面试官在追问 discount rate 的选择逻辑 —— 不是要公式,而是想听你怎么拆:risk-free + cre"
+      },
+      {
+        "t": 284,
+        "q": "When you think about the benchmark rate, what would you consider for the benchmark rate?",
+        "meta": "提到了 Treasury curve 和 SOFR 两个选项是对的,但 filler words 太多(\"I mean\""
+      },
+      {
+        "t": 438,
+        "q": "Do you know what convexity is?",
+        "meta": ""
+      },
+      {
+        "t": 518,
+        "q": "What's the percentage change on the bond price?",
+        "meta": "面试官明说 mental math,不用纸笔 —— 他要的是快速反应:-Duration × Δy = -6 × 0"
+      },
+      {
+        "t": 708,
+        "q": "Do you know what is the current Fed fund upper bound rate?",
+        "meta": ""
+      },
+      {
+        "t": 1463,
+        "q": "What's the difference between r-squared and adjusted r-squared?",
+        "meta": "核心概念其实抓住了 —— R² 衡量 variance explained,adjusted R² penalize 多"
+      },
+      {
+        "t": 1645,
+        "q": "Imagine there's a large dataset which is following the normal distribution curve. How much of the data fall into 1 standard deviation, and how much data fall in 2 and 3 standard deviations?",
+        "meta": "面试官在降压 —— 他明确说不在乎你 100% 答对,只想知道你 know what"
+      }
+    ]
+  },
+  {
     "slug": "walmart-senior-data-scientist-2026-05-15",
     "date": "2026.05.15",
     "duration": "57:56",
