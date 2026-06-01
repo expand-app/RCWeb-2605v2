@@ -83,8 +83,9 @@ function verdictFor(overall) {
 }
 
 function extractBreakdown(puebloScore) {
-  // Pueblo's per-dimension field name varies; try the common ones, normalize
-  // to the [name, score, max, note] tuple shape the site renderer reads.
+  // Pueblo's actual shape (verified 2026-06-01 against real share):
+  //   dimensions: [{key, label, score, max, justification}]
+  // We also accept the alt names other Pueblo accounts might emit.
   const arr =
     (Array.isArray(puebloScore.dimensions)  && puebloScore.dimensions)   ||
     (Array.isArray(puebloScore.criteria)    && puebloScore.criteria)     ||
@@ -92,36 +93,67 @@ function extractBreakdown(puebloScore) {
     (Array.isArray(puebloScore.competencies)&& puebloScore.competencies) ||
     [];
   return arr
+    .filter((d) => d.score != null && (d.max ?? 0) > 0)  // drop nulls + max=0
     .map((d) => [
-      d.name || d.label || d.title || "?",
+      d.label || d.name || d.title || "?",
       Number(d.score ?? d.value ?? 0),
       Number(d.max   ?? d.outOf ?? 10),
-      String(d.note || d.feedback || d.summary || ""),
-    ])
-    // drop rows with max=0 (Pueblo emits placeholder "Role Fit" with 0/0)
-    .filter(([, , max]) => max > 0);
+      String(d.justification || d.note || d.feedback || d.summary || ""),
+    ]);
 }
 
 /**
- * Map Pueblo's session.score → REPLAYS score schema, or null if no `overall`.
+ * Map Pueblo's session.score → REPLAYS score schema, or null if no score.
+ * Pueblo emits `total` / `totalMax` / `percent` / `verdict` (lowercase) /
+ * `summary` / `improvements[]` / `dimensions[]`. We translate to the site
+ * renderer's shape and SURFACE the narrative content separately so the
+ * caller can put it into draft.summary / mainIssue / alsoNoting.
  */
 function mapScore(puebloScore) {
   if (!puebloScore || typeof puebloScore !== "object") return null;
   const overall = Number(
-    puebloScore.overall ?? puebloScore.total ?? puebloScore.score ?? NaN,
+    puebloScore.total ?? puebloScore.overall ?? puebloScore.score ?? NaN,
   );
   if (!Number.isFinite(overall)) return null;
-  const max = Number(puebloScore.max ?? 100);
+  const max = Number(puebloScore.totalMax ?? puebloScore.max ?? 100);
+  const pct = puebloScore.percent != null
+    ? `${Math.round(Number(puebloScore.percent))}%`
+    : `${Math.round((overall / max) * 100)}%`;
   const { verdict, label } = verdictFor(overall);
   return {
     overall,
     max,
     verdict,
-    verdictPct: `${Math.round((overall / max) * 100)}%`,
+    verdictPct: pct,
     label,
     bands: BANDS,
     breakdown: extractBreakdown(puebloScore),
   };
+}
+
+// Pueblo's narrative content (summary / improvements) drives the rest of the
+// REPLAY page — what previously had to be hand-written.
+function extractNarrative(puebloScore) {
+  const summary = String(puebloScore?.summary || "").trim();
+  const imps = Array.isArray(puebloScore?.improvements) ? puebloScore.improvements : [];
+  // improvements[0] (with `detail` + `fix`) → mainIssue; the rest (title only) → alsoNoting bullets.
+  let mainIssue = null;
+  if (imps.length > 0) {
+    const first = imps[0];
+    const title = String(first.title || "").trim();
+    const detail = String(first.detail || "").trim();
+    const fix = String(first.fix || "").trim();
+    const bodyParts = [];
+    if (detail) bodyParts.push(detail);
+    if (fix) bodyParts.push("\n\n— 如何改进 —\n" + fix);
+    if (title || bodyParts.length) {
+      mainIssue = { title: title || "Main Issue", body: bodyParts.join("") };
+    }
+  }
+  const alsoNoting = imps.slice(1)
+    .map((x) => String(x.title || x.detail || "").trim())
+    .filter(Boolean);
+  return { summary, mainIssue, alsoNoting };
 }
 
 function autoDek(company, role, durationStr, qCount) {
@@ -198,6 +230,22 @@ export async function importShare(input) {
   const { company, role } = parseTitle(session.title);
   const slug = slugify(`${company} ${role}`) + (dateStr ? "-" + dateStr.replace(/\./g, "-") : "");
   const score = mapScore(session.score);
+  const narrative = extractNarrative(session.score);
+
+  // Per-question coach commentary (Pueblo's `comments` array). We pick the
+  // FIRST comment for each question and strip HTML for a compact meta tag
+  // shown next to the timestamp on the live site.
+  const commentByQ = new Map();
+  for (const c of Array.isArray(raw.comments) ? raw.comments : []) {
+    if (!c.questionId) continue;
+    if (!commentByQ.has(c.questionId)) {
+      const txt = String(c.text || "").replace(/<[^>]+>/g, "").trim();
+      // Take only the first sentence / line for the meta tag — full comment
+      // is too long to render inline.
+      const short = txt.split(/[\n。.]/)[0].trim();
+      if (short) commentByQ.set(c.questionId, short.slice(0, 60));
+    }
+  }
 
   const draft = {
     slug: slug || slugify(token),
@@ -216,14 +264,16 @@ export async function importShare(input) {
     questions: interviewerQs.map((q) => ({
       t: Math.round(q.askedAtSeconds || 0),
       q: String(q.text || "").trim(),
-      meta: q.kind === "interviewer" ? "" : (q.kind || ""),
+      meta: commentByQ.get(q.id) || "",
     })),
     score,
-    summary: autoSummary(company, role, durationStr, interviewerQs.length, score),
-    // Pueblo doesn't expose narrative coaching notes — leave these blank so
-    // the renderer hides those sections; operator can fill via advanced editor.
-    mainIssue: null,
-    alsoNoting: [],
+    // Pueblo's own `summary` / `improvements` are exactly the narrative
+    // content that used to require hand-writing. Use them when present;
+    // fall back to autoSummary only if Pueblo gave nothing.
+    summary: narrative.summary
+      || autoSummary(company, role, durationStr, interviewerQs.length, score),
+    mainIssue: narrative.mainIssue,
+    alsoNoting: narrative.alsoNoting,
   };
 
   return { draft, raw, pueblo_score_preview: session.score || null };
