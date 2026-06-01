@@ -32466,7 +32466,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
 
     // Render grid (all articles — no featured separation)
     gridEl.innerHTML = ARTICLES.map(a => {
-      const dateShort = a.date.slice(5).replace('.','/');
+      const dateShort = a.date.replace(/\./g, '/');
       const img = a.image ? `<img src="${a.image.url}" alt="${a.image.alt||''}" referrerpolicy="no-referrer">` : '';
       return `
       <article class="article-card" data-article-slug="${a.slug}" data-cat="${a.category}">
