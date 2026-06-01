@@ -1,0 +1,73 @@
+name: Sync data/*.json from index.html
+
+# When index.html changes on main (e.g. someone hand-edited it outside the
+# webadmin, or pushed via a different tool), re-run scripts/extract_data.py
+# and commit the resulting data/*.json so the webadmin and the Worker see
+# the same articles/cases/mentors/replays as the rendered site.
+#
+# Loop guard: this workflow only triggers on `index.html` or `scripts/extract_data.py`
+# changes — NOT on data/**/*.json. So when this workflow itself commits a
+# data/*.json update, it will NOT re-trigger.
+#
+# When the webadmin Worker commits a change, it writes index.html + the
+# matching JSON atomically — extract_data will run, find no diff, and skip
+# the commit. No churn.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'scripts/extract_data.py'
+  workflow_dispatch:  # manual re-sync from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node (needed by extract_data.py for REPLAYS/ARTICLES JS literals)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Re-extract data/*.json
+        run: python3 scripts/extract_data.py
+
+      - name: Commit if data/ changed
+        run: |
+          if [[ -z "$(git status --porcelain data/)" ]]; then
+            echo "✓ data/*.json already in sync — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          # Short stats for the commit body
+          stats=$(python3 -c "
+          import json, glob
+          for p in sorted(glob.glob('data/*.json')):
+              try:
+                  n = len(json.load(open(p)))
+                  print(f'  {p}: {n} 条')
+              except Exception: pass
+          ")
+          git commit -m "auto-sync: data/*.json from index.html
+
+          自动:scripts/extract_data.py 跑完发现 index.html 跟 data/*.json
+          不一致(可能 user 手改了 index.html、或外部工具发布了新文章)。
+          回写 JSON 让 webadmin / Worker 看到的内容跟主站一致。
+
+          $stats"
+          git push
