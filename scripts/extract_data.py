@@ -156,7 +156,10 @@ def main():
     ]:
         items = fn()
         path = data_dir / f"{name}.json"
-        path.write_text(json.dumps(items, ensure_ascii=False, indent=2))
+        # Match Worker's JSON.stringify(..., null, 2) + "\n" exactly so the
+        # auto-sync workflow doesn't trip over a 1-byte trailing-newline diff
+        # and create a churn-commit on every push.
+        path.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n")
         print(f"  data/{name}.json  ← {len(items)} 条")
 
 
