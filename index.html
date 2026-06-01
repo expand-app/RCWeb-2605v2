@@ -29362,177 +29362,611 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // ===========================================================
   // @data:replays:start
   const REPLAYS = [
-    {
-      slug: 'walmart-senior-data-scientist-2026-05-15',
-      date: '2026.05.15',
-      duration: '57:56',
-      company: 'Walmart',
-      location: 'Bentonville',
-      role: 'Senior Data Scientist',
-      logo: 'W',
-      // SEO/social meta — full descriptive headline
-      seoTitle: 'Senior Data Scientist · Walmart — Mock Interview Replay',
-      dek: 'A full 57-minute Walmart Senior Data Scientist mock interview replay. Resume deep dive on tutoring pricing analytics + LLM pipeline, behavioral STAR, model selection criteria, and a Walmart AI shopping copilot product case.',
-      tags: ['Data', 'ML', 'Product'],
-      videoSrc: 'https://resources.rexpandcareer.com/videos/replays/walmart-senior-data-scientist-2026-05-25.mp4',
-      // ===== Scoring (Puebulo rubric — out of 100, original Chinese-English notes) =====
-      score: {
-        overall: 64,
-        max: 100,
-        verdict: 'BORDERLINE',
-        verdictPct: '64%',
-        label: 'Committee hesitates — could go either way.',
-        bands: [
-          { name: 'Fail',        range: '< 55',   note: 'Clear no — panel passes.' },
-          { name: 'Borderline',  range: '55–64',  note: 'Committee hesitates; could go either way.' },
-          { name: 'Pass',        range: '65–84',  note: 'Advances, with reservations to probe next round.' },
-          { name: 'Strong Pass', range: '≥ 85',   note: 'Panel advances without hesitation.' }
-        ],
-        breakdown: [
-          ['Question Addressing',   14, 20, '多数问题最终 land 了，但经常需要面试官 probe 或 reframe 才到位 —— 比如 causal attribution 那题答成了 segmentation，面试官平淡 "Okay. Cool." 就切走了。'],
-          ['Specificity & Evidence',16, 25, '简历项目有数字 (20% enrollment lift, 98% latency reduction)，但展开时缺细节 —— LLM pipeline 没说具体 transformation，TDA 应用停在定义层没落到 Walmart use case。'],
-          ['Depth & Reasoning',     15, 25, 'Product case 里多次把设计决策推回面试官 ("is there a preference?" / "should I skip?")，面试官两次明确说 "design by yourself" —— ownership 信号偏弱。'],
-          ['Role Fit',               9, 15, 'JD 强调 business-oriented + translate business problems，但候选人在 self-intro 时说 "improve workflows" 太 generic，错过了用 20% lift 立 credibility 的机会；TDA 问题也没主动 bridge 到 JD 里的 classification / regression。'],
-          ['Communication',         10, 15, '铺垫偏长 —— tight deadline 题花了一分多钟还在 "align language"，没出现 action；product case 开场 restate 功能 30 秒后自己说 "maybe I missed this part"。']
-        ]
-      },
-      // ===== Headline coaching summary (verbatim from Puebulo) =====
-      summary: '候选人有扎实的项目经验和数字 (20% enrollment lift, 98% latency reduction)，但在面试中经常需要面试官 probe 才能 land 到具体内容，且多次把设计决策推回面试官 ("is there a preference?" / "should I skip?")，ownership 信号偏弱。简历上的亮点在展开时缺乏细节 —— LLM pipeline 没说具体 transformation 逻辑，TDA 应用停在定义层没落到 Walmart 的 business use case。整体表现在 pass 和 borderline 之间，hiring committee 会希望下一轮看到更主动的 problem framing 和更少的 prompt-feeding。',
-      // ===== Main issue (verbatim from Puebulo) =====
-      mainIssue: {
-        title: '把设计决策推回面试官，ownership 信号偏弱',
-        body: '在 Walmart Copilot product case 里，候选人多次把设计决策的 ownership 让出去，面试官需要反复提醒 "it\'s your project" / "design by yourself"：\n• Re-ranking stage：问 "is there a preference or whether or not to have this re-ranking?"，面试官回 "design by yourself"。\n• MDE 设定：说 "should I just skip over this part?"，面试官放行但这是第二次把决策推走。\n• Feature selection：面试官直接喂了 price / inventory / delivery / reviews 四个 features，候选人只是复述 "thank you for the suggestion"，没有自己先 brainstorm。\n\n这在 senior DS 岗是明显的红旗 —— JD 明确要 "translate business problems into analytical solutions"，hiring committee 期待的是候选人 own the problem framing 并主动给出有 rationale 的设计选择，而不是等面试官 permission 或 prompt-feeding。Coach notes 里反复出现 "面试官在帮他兜底" / "这是第 N 次把 ownership 让出去"，说明这不是一次性失误，而是系统性沟通习惯。'
-      },
-      // ===== "Also worth noting" (verbatim from Puebulo) =====
-      alsoNoting: [
-        '简历亮点在展开时缺细节 —— 20% enrollment lift 和 LLM pipeline 都没说清楚 how',
-        'TDA 应用停在定义层，没主动 bridge 到 Walmart 的 business use case',
-        '多个问题需要面试官 probe 或 reframe 才 land —— causal attribution 答成了 segmentation',
-        '铺垫偏长 —— tight deadline 题花了一分多钟还在讲 "align language"，没出现 action'
+  {
+    "slug": "axos-bank-junior-market-risk-analyst-2026-05-27",
+    "date": "2026.05.27",
+    "duration": "35:06",
+    "company": "Axos Bank",
+    "location": "",
+    "role": "Junior Market Risk Analyst",
+    "logo": "A",
+    "seoTitle": "Junior Market Risk Analyst · Axos Bank — Mock Interview Replay",
+    "dek": "A 35:06 Axos Bank Junior Market Risk Analyst mock interview replay, 24 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-06-01-junior-market-risk-analyst-axos-bank-2026-06-01.mp4",
+    "score": {
+      "overall": 68,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "68%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
       ],
-      // ===== 13 lead questions extracted from real transcript (English, with seconds-from-start timestamps) =====
-      questions: [
-        { t: 86,   q: 'Can you start with a brief self introduction? We will go through your resume for some deep-dive questions, and the second part will be behavior questions.',                                            meta: 'Lead · Self-Intro' },
-        { t: 213,  q: 'Can you walk me through this project (C2 Education tuition pricing & 20% enrollment lift) in detail?',                                                                                                  meta: 'Lead · Resume Deep-Dive · Project 1' },
-        { t: 388,  q: 'What exactly did this (LLM scheduling/feedback) pipeline do? Can you give me more details?',                                                                                                            meta: 'Lead · Resume Deep-Dive · LLM Pipeline' },
-        { t: 709,  q: 'If the pipeline suddenly drops after launch, how would you detect and debug it?',                                                                                                                       meta: 'Lead · Production Reliability' },
-        { t: 821,  q: 'If you were designing a similar logging system or logging plan for Walmart\'s customers dropping off in January, what events or data metrics would you track?',                                        meta: 'Lead · Walmart-Context Transfer' },
-        { t: 936,  q: 'Can you give me specific examples of how you translate or deliver your findings to your stakeholders?',                                                                                                 meta: 'Lead · Stakeholder Communication' },
-        { t: 1107, q: 'Let\'s jump into your second role — mathematics and physical science tutor at University of Florida, right?',                                                                                           meta: 'Lead · Resume Deep-Dive · Role 2' },
-        { t: 1140, q: 'Can you talk about the University of Florida PhD and the machine learning research? How would you apply topological data analysis to business situations?',                                            meta: 'Lead · Research-to-Business Bridge' },
-        { t: 1329, q: 'Do you have any standard or criteria for choosing different models? When would you not use a complex model?',                                                                                          meta: 'Lead · Model Selection' },
-        { t: 1433, q: 'Tell me about a time when you had a limited timeline to deliver and analyze your solution. What did you do?',                                                                                          meta: 'Lead · Behavioral · STAR' },
-        { t: 1649, q: 'Imagine Walmart is launching a new AI-powered shopping Copilot in the app or website — it understands natural-language shopping needs, recommends products, compares options, suggests substitutions when items are out of stock, and helps build a cart.',  meta: 'Lead · Product Case · Setup' },
-        { t: 1755, q: 'How would you design this product? And after you design it, when you want to launch, how do you evaluate whether the project is a success?',                                                            meta: 'Lead · Product Case · Design & Success Metrics' },
-        { t: 3057, q: 'How do we evaluate whether this product is a success? (Drill-down — A/B test design, primary metric, MDE, launch decision)',                                                                            meta: 'Lead · Experimentation Closeout' }
+      "dimensions": [
+        {
+          "name": "Question Addressing",
+          "score": 18,
+          "max": 25,
+          "note": ""
+        },
+        {
+          "name": "Specificity & Evidence",
+          "score": 22,
+          "max": 30,
+          "note": ""
+        },
+        {
+          "name": "Depth & Reasoning",
+          "score": 20,
+          "max": 30,
+          "note": ""
+        },
+        {
+          "name": "Role Fit",
+          "score": 0,
+          "max": 0,
+          "note": ""
+        },
+        {
+          "name": "Communication",
+          "score": 8,
+          "max": 15,
+          "note": ""
+        }
       ]
     },
-    {
-      slug: 'mckinsey-senior-data-science-analyst-2026-05-13',
-      date: '2026.05.13',
-      duration: '1:00:00',
-      company: 'McKinsey',
-      location: 'Growth, Marketing & Sales',
-      role: 'Senior Data Science Analyst',
-      logo: 'Mc',
-      seoTitle: 'Senior Data Science Analyst · McKinsey — Mock Interview Replay',
-      dek: 'A full 60-minute McKinsey Senior Data Science Analyst (Growth, Marketing & Sales) mock interview replay. Self-intro, a rapidly-learn behavioral story (OCR pipeline + PySpark on AWS EMR), and a Lulu EV charging-network market-entry case covering supply-demand tradeoffs, time-series market share modeling, and flexible vs traditional pricing.',
-      tags: ['Consulting', 'Case', 'Data', 'Behavioral'],
-      videoSrc: 'https://resources.rexpandcareer.com/videos/replays/mckinsey-senior-data-science-analyst-2026-05-25.mp4',
-      score: {
-        overall: 68,
-        max: 100,
-        verdict: 'PASS',
-        verdictPct: '68%',
-        label: 'Advances, with reservations to probe next round.',
-        bands: [
-          { name: 'Fail',        range: '< 55',   note: 'Clear no — panel passes.' },
-          { name: 'Borderline',  range: '55–64',  note: 'Committee hesitates; could go either way.' },
-          { name: 'Pass',        range: '65–84',  note: 'Advances, with reservations to probe next round.' },
-          { name: 'Strong Pass', range: '≥ 85',   note: 'Panel advances without hesitation.' }
-        ],
-        breakdown: [
-          ['Question Addressing',   14, 20, '在 rapidly learn 题上花了大量时间讲 debugging mystery，但 "what you learned" 这条主线悬着很久才落地；case 里 "all considerations" 问题给了单线 depth 而非 breadth framework。'],
-          ['Specificity & Evidence',21, 25, 'OCR story 点出了 high-DPI scanner + area-based interpolation 的具体 fix；PySpark 提到 partition-level sort vs global sort；case 里提了 MMM vs last-touch + cookie deprecation 约束。'],
-          ['Depth & Reasoning',     19, 30, '在 case 的 location optimization 上提了 supply-demand tradeoff + confounding，但没 commit 一个具体 framework 就飘走了；从 time series 跳到 survival analysis 有点套用简历经验，没 tie 回 market share。'],
-          ['Role Fit',               8, 15, 'Lead-off 反问 travel 显得没做功课（JD 明确写了 75%）；case 里多次需要面试官 pivot 才切换框架（从 marketing 拉回 financing，从 survival 拉回 pricing）；缺少 McKinsey GMS 要的 client-facing ownership 信号。'],
-          ['Communication',          6, 10, '在 rapidly learn story 里 "challenge 不是模型" 说了三次还没说出真正的 challenge；exhibit 计算时 "4 80 84... 我忘了" 的自我怀疑面试官能听到；多处话越说越散没收住。']
-        ]
+    "summary": "",
+    "mainIssue": "",
+    "alsoNoting": "",
+    "questions": [
+      {
+        "t": 79,
+        "q": "Can you walk me through the discount cash flow model, DCF, on a very high level?",
+        "meta": ""
       },
-      summary: '技术深度扎实（OCR + PySpark 的具体 fix 都点到了），但 consulting 的 structured communication 和 client ownership 信号偏弱 —— behavioral story 绕很久才 land 到 takeaway，case 里需要面试官反复 pivot 才切换框架，lead-off 反问 travel 显得没做功课。68/100 是个 pass with reservations，下轮需要 probe business judgment 和 stakeholder influence。',
-      mainIssue: {
-        title: 'Behavioral story 的 punchline 埋得太深，takeaway 悬着很久才落地',
-        body: '在 rapidly learn 题上，面试官明确问了三个点：rapidly learn + challenging + what you did。候选人选了 OCR + Transformers receipt pipeline 的故事，技术细节很具体（high-DPI scanner、area-based interpolation），但整个叙述卡在 debugging mystery 阶段太久 —— "challenge 不是模型" 说了三次还没说出真正的 challenge 是什么，"spent the whole night... couldn\'t find anything wrong" 的悬念铺垫占了大半段，直到最后才落地 "what I rapidly learned was image preprocessing fundamentals"。\n\nCoach notes 反复出现 "还没碰到 learning 这一层" / "故事卡在 mystery 阶段太久" / "takeaway 偏弱"，说明这不是一次性失误，而是系统性的叙述习惯 —— 技术人倾向于按时间线讲完整个 debugging 过程，但 McKinsey behavioral 要的是 situation → action → learning 的因果链，punchline 要在前 30 秒就 land。\n\n这会让 hiring committee 怀疑候选人能否在 client meeting 里快速 land insight —— consulting 的节奏是 "here\'s what we found, here\'s why it matters, now let me show you the analysis"，不是 "let me walk you through how we got here"。'
+      {
+        "t": 394,
+        "q": "What is the duration for a treasury bond?",
+        "meta": ""
       },
-      alsoNoting: [
-        'Case 里需要面试官反复 pivot 才切换框架，缺少 structured breadth',
-        'Lead-off 反问 travel 显得没做功课，JD 明确写了 up to 75%',
-        'Exhibit 计算时自我怀疑（"4 80 84... 我忘了"）面试官能听到，建议写下来再口播'
+      {
+        "t": 588,
+        "q": "The treasury yield curve. Do you know, like, what does it look like in terms of the shape?",
+        "meta": ""
+      },
+      {
+        "t": 644,
+        "q": "Have you ever paid attention to the news? For example, you know, Federal Reserve, are they gonna cut or raise the benchmark rate, all that kind of news? Do you know anything about it?",
+        "meta": ""
+      },
+      {
+        "t": 804,
+        "q": "Do you know what is a prepayment",
+        "meta": ""
+      },
+      {
+        "t": 857,
+        "q": "What is the primary goal of asset liability management in a bank?",
+        "meta": ""
+      },
+      {
+        "t": 924,
+        "q": "Think about a treasury bond. There are 2 investment vehicles: 1 is a treasury bond, a 10 year treasury bond, another 1 is the 10 year mortgage. In your opinion, which 1 has a higher coupon and why?",
+        "meta": ""
+      },
+      {
+        "t": 983,
+        "q": "Do you know what happened to a bank called Silicon Valley Bank back in 3 years ago? Can you tell me about it? What happened?",
+        "meta": ""
+      },
+      {
+        "t": 1138,
+        "q": "Let's say there are 2 banks. The first bank focuses on regular retail customers with deposit size around 50 k to 100 k. The second bank focuses on high net worth clients with deposit size above $1 million. Which one has a higher liquidity risk and why?",
+        "meta": ""
+      },
+      {
+        "t": 1329,
+        "q": "What is considered HQLA? Can you give me an exact example?",
+        "meta": ""
+      },
+      {
+        "t": 1374,
+        "q": "Maybe a few statistical questions. Okay?",
+        "meta": ""
+      },
+      {
+        "t": 1384,
+        "q": "Do you know what is a regression model?",
+        "meta": ""
+      },
+      {
+        "t": 1532,
+        "q": "Can you tell me what is a normal distribution?",
+        "meta": ""
+      },
+      {
+        "t": 1693,
+        "q": "Do you know what's the p value?",
+        "meta": ""
+      },
+      {
+        "t": 1785,
+        "q": "Do you know what is a multicollinearity?",
+        "meta": ""
+      },
+      {
+        "t": 1957,
+        "q": "Imagine you have unlimited amount of coins and a round shaped table. Your job is to put all the coins on the table to cover the whole table. Once you finish covering the table, is the number of coins an odd number or an even number?",
+        "meta": ""
+      },
+      {
+        "t": 1960,
+        "q": "Once you finish cover the whole table, how many coins is that — is that an odd number or an even number?",
+        "meta": ""
+      },
+      {
+        "t": 190,
+        "q": "When you choose a discount rate to value a loan or mortgage by using the DCF model, what factors would you consider? How do you choose it?",
+        "meta": ""
+      },
+      {
+        "t": 284,
+        "q": "When you think about the benchmark rate, what would you consider for the benchmark rate?",
+        "meta": ""
+      },
+      {
+        "t": 438,
+        "q": "Do you know what convexity is?",
+        "meta": ""
+      },
+      {
+        "t": 518,
+        "q": "What's the percentage change on the bond price?",
+        "meta": ""
+      },
+      {
+        "t": 708,
+        "q": "Do you know what is the current Fed fund upper bound rate?",
+        "meta": ""
+      },
+      {
+        "t": 1463,
+        "q": "What's the difference between r-squared and adjusted r-squared?",
+        "meta": ""
+      },
+      {
+        "t": 1645,
+        "q": "Imagine there's a large dataset which is following the normal distribution curve. How much of the data fall into 1 standard deviation, and how much data fall in 2 and 3 standard deviations?",
+        "meta": ""
+      }
+    ],
+    "__puebulo_input": "https://www.puebulo.com/share/share-w7BEbFpXKb7aDw0Glvz-6HymXGDXXO9e"
+  },
+  {
+    "slug": "walmart-senior-data-scientist-2026-05-15",
+    "date": "2026.05.15",
+    "duration": "57:56",
+    "company": "Walmart",
+    "location": "Bentonville",
+    "role": "Senior Data Scientist",
+    "logo": "W",
+    "seoTitle": "Senior Data Scientist · Walmart — Mock Interview Replay",
+    "dek": "A full 57-minute Walmart Senior Data Scientist mock interview replay. Resume deep dive on tutoring pricing analytics + LLM pipeline, behavioral STAR, model selection criteria, and a Walmart AI shopping copilot product case.",
+    "tags": [
+      "Data",
+      "ML",
+      "Product"
+    ],
+    "videoSrc": "https://resources.rexpandcareer.com/videos/replays/walmart-senior-data-scientist-2026-05-25.mp4",
+    "score": {
+      "overall": 64,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "64%",
+      "label": "Committee hesitates — could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
       ],
-      questions: [
-        { t: 194,  q: 'Can you tell me a little bit more about you, like just introduction on where are you from, what is your interest, what\'s driving you to apply?',                                                                                                  meta: 'Lead · Self-Intro · Why McKinsey' },
-        { t: 458,  q: 'Can you share an example of when you had to rapidly learn something and apply something? And tell me why it was challenging for you. Something new — talk me through the situation, the context, who all were involved, and especially focus on what you did.', meta: 'Lead · Behavioral · Rapidly Learn' },
-        { t: 1466, q: 'What would it take to build a new electric vehicle charging network for Lulu in Mexico, servicing both Lulu vehicles and other EVs, considering existing but incomplete competing networks and Lulu\'s premium positioning?',                       meta: 'Lead · Case · Setup' },
-        { t: 1581, q: 'What are all the considerations that they should take into account?',                                                                                                                                                                              meta: 'Lead · Case · Breadth of Considerations' },
-        { t: 2254, q: 'How would you build the time series model for market share?',                                                                                                                                                                                      meta: 'Lead · Case · Time-Series Market Share' },
-        { t: 2436, q: 'Which pricing methodology should they use, whether they should go for flexible pricing or traditional pricing?',                                                                                                                                   meta: 'Lead · Case · Pricing Methodology' },
-        { t: 2448, q: 'How much more or less in percentage would Lulu earn if they use option 1 versus option 2?',                                                                                                                                                        meta: 'Lead · Case · Pricing Quant' }
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "多数问题最终 land 了，但经常需要面试官 probe 或 reframe 才到位 —— 比如 causal attribution 那题答成了 segmentation，面试官平淡 \"Okay. Cool.\" 就切走了。"
+        ],
+        [
+          "Specificity & Evidence",
+          16,
+          25,
+          "简历项目有数字 (20% enrollment lift, 98% latency reduction)，但展开时缺细节 —— LLM pipeline 没说具体 transformation，TDA 应用停在定义层没落到 Walmart use case。"
+        ],
+        [
+          "Depth & Reasoning",
+          15,
+          25,
+          "Product case 里多次把设计决策推回面试官 (\"is there a preference?\" / \"should I skip?\")，面试官两次明确说 \"design by yourself\" —— ownership 信号偏弱。"
+        ],
+        [
+          "Role Fit",
+          9,
+          15,
+          "JD 强调 business-oriented + translate business problems，但候选人在 self-intro 时说 \"improve workflows\" 太 generic，错过了用 20% lift 立 credibility 的机会；TDA 问题也没主动 bridge 到 JD 里的 classification / regression。"
+        ],
+        [
+          "Communication",
+          10,
+          15,
+          "铺垫偏长 —— tight deadline 题花了一分多钟还在 \"align language\"，没出现 action；product case 开场 restate 功能 30 秒后自己说 \"maybe I missed this part\"。"
+        ]
       ]
     },
-    {
-      slug: 'goldman-business-operations-analyst-2026-05-08',
-      date: '2026.05.08',
-      duration: '25:27',
-      company: 'Goldman Sachs',
-      location: 'Salt Lake City',
-      role: 'Business Operations Analyst',
-      logo: 'GS',
-      seoTitle: 'Business Operations Analyst · Goldman Sachs — Mock Interview Replay',
-      dek: 'A 25-minute Goldman Sachs Business Operations Analyst mock interview replay. Self-intro, data skill-set deep-dive, team vs solo, prioritization across competing managers, transition from real-estate BA, and relocation-to-Salt-Lake-City — mapped to settlement ops and risk framework fit.',
-      tags: ['Finance', 'Ops', 'Behavioral'],
-      videoSrc: 'https://resources.rexpandcareer.com/videos/replays/goldman-business-operations-analyst-2026-05-25.mp4',
-      score: {
-        overall: 69,
-        max: 100,
-        verdict: 'PASS',
-        verdictPct: '69%',
-        label: 'Advances, with reservations to probe next round.',
-        bands: [
-          { name: 'Fail',        range: '< 55',   note: 'Clear no — panel passes.' },
-          { name: 'Borderline',  range: '55–64',  note: 'Committee hesitates; could go either way.' },
-          { name: 'Pass',        range: '65–84',  note: 'Advances, with reservations to probe next round.' },
-          { name: 'Strong Pass', range: '≥ 85',   note: 'Panel advances without hesitation.' }
-        ],
-        breakdown: [
-          ['Question Addressing',   18, 25, '多数问题有回应，但 prioritization 题和 relocation 题都滑到相关话题而没真正 land 原问题的核心。'],
-          ['Specificity & Evidence',20, 25, 'Tableau heat map、$1M revenue、clean title 例子都具体，但 transition / team vs solo 两题停在抽象描述。'],
-          ['Depth & Reasoning',     12, 20, 'Prioritization 题缺 own judgment framework，relocation 答成了借口而非 commitment，没展现 ops 岗需要的 risk ownership。'],
-          ['Role Fit',              10, 15, 'Daily cash flow + risk framework 对标 settlement ops 是对的，但 why operations / why now 的动机空洞，且时区算错暴露准备不足。'],
-          ['Communication',          9, 15, '口误频繁（"present my funding" / "reconstruction processing"），rambling 多次滑题，但 heat map 和 clean title 两段叙述清晰。']
-        ]
+    "summary": "候选人有扎实的项目经验和数字 (20% enrollment lift, 98% latency reduction)，但在面试中经常需要面试官 probe 才能 land 到具体内容，且多次把设计决策推回面试官 (\"is there a preference?\" / \"should I skip?\")，ownership 信号偏弱。简历上的亮点在展开时缺乏细节 —— LLM pipeline 没说具体 transformation 逻辑，TDA 应用停在定义层没落到 Walmart 的 business use case。整体表现在 pass 和 borderline 之间，hiring committee 会希望下一轮看到更主动的 problem framing 和更少的 prompt-feeding。",
+    "mainIssue": {
+      "title": "把设计决策推回面试官，ownership 信号偏弱",
+      "body": "在 Walmart Copilot product case 里，候选人多次把设计决策的 ownership 让出去，面试官需要反复提醒 \"it's your project\" / \"design by yourself\"：\n• Re-ranking stage：问 \"is there a preference or whether or not to have this re-ranking?\"，面试官回 \"design by yourself\"。\n• MDE 设定：说 \"should I just skip over this part?\"，面试官放行但这是第二次把决策推走。\n• Feature selection：面试官直接喂了 price / inventory / delivery / reviews 四个 features，候选人只是复述 \"thank you for the suggestion\"，没有自己先 brainstorm。\n\n这在 senior DS 岗是明显的红旗 —— JD 明确要 \"translate business problems into analytical solutions\"，hiring committee 期待的是候选人 own the problem framing 并主动给出有 rationale 的设计选择，而不是等面试官 permission 或 prompt-feeding。Coach notes 里反复出现 \"面试官在帮他兜底\" / \"这是第 N 次把 ownership 让出去\"，说明这不是一次性失误，而是系统性沟通习惯。"
+    },
+    "alsoNoting": [
+      "简历亮点在展开时缺细节 —— 20% enrollment lift 和 LLM pipeline 都没说清楚 how",
+      "TDA 应用停在定义层，没主动 bridge 到 Walmart 的 business use case",
+      "多个问题需要面试官 probe 或 reframe 才 land —— causal attribution 答成了 segmentation",
+      "铺垫偏长 —— tight deadline 题花了一分多钟还在讲 \"align language\"，没出现 action"
+    ],
+    "questions": [
+      {
+        "t": 86,
+        "q": "Can you start with a brief self introduction? We will go through your resume for some deep-dive questions, and the second part will be behavior questions.",
+        "meta": "Lead · Self-Intro"
       },
-      summary: '候选人有具体 ops 经验（daily cash flow、Tableau、clean title 例子），但 communication 口误多、prioritization 和 relocation 两题没 land 到核心，动机薄弱。总分 69 —— pass with reservations，下轮需 probe 判断力和 commitment。',
-      mainIssue: {
-        title: 'Communication 口误频繁 + rambling 滑题，削弱了本该扎实的 ops 经验',
-        body: '面试官在多个节点需要 redirect 或帮忙接话，说明候选人的表达没有 land：\n\n• Self-intro 时出现 "present my funding"（应为 findings）、"reconstruction processing"（应为 restructuring）等口误，coach notes 明确标注 "GS ops 很看重 written/verbal communication，这些口误堆起来会扣印象分"。\n• Prioritization 题答到一半滑向 "looking for a new chapter" 这种离职动机，面试官立刻 pivot 说明没接住。\n• Relocation 题答成 "时区不方便"（且算错了时差），听起来像在找借口，面试官用 "Guys start" 帮他接话他也没接住，最后自己 pivot 到 questions 环节才结束尴尬。\n• Team vs solo 题描述了 meeting cadence 但 "play solo 那句正要展开就被切住"，说明叙述没结构、面试官等不下去。\n\n这不是一两次口误，而是系统性表达问题 —— 有料但说不清，让 hiring committee 怀疑他能否在 client-facing 或 cross-functional 场景下清晰传达 risk / settlement 信息。'
+      {
+        "t": 213,
+        "q": "Can you walk me through this project (C2 Education tuition pricing & 20% enrollment lift) in detail?",
+        "meta": "Lead · Resume Deep-Dive · Project 1"
       },
-      alsoNoting: [
-        'Prioritization 题缺 own judgment framework，只给了 escalation 没展现 ops 岗需要的独立决策能力',
-        'Why operations / why now 的动机空洞，绕在 "learning from best" 上没回答从 real estate BA 转过来的真实 trigger',
-        'Relocation 答成了时区借口（且算错时差），没 commit，让面试官需要帮忙接话才能继续',
-        'Team vs solo 题和 transition 题都停在抽象描述，没用 Mango 或 EY 的具体 moment 锚住'
+      {
+        "t": 388,
+        "q": "What exactly did this (LLM scheduling/feedback) pipeline do? Can you give me more details?",
+        "meta": "Lead · Resume Deep-Dive · LLM Pipeline"
+      },
+      {
+        "t": 709,
+        "q": "If the pipeline suddenly drops after launch, how would you detect and debug it?",
+        "meta": "Lead · Production Reliability"
+      },
+      {
+        "t": 821,
+        "q": "If you were designing a similar logging system or logging plan for Walmart's customers dropping off in January, what events or data metrics would you track?",
+        "meta": "Lead · Walmart-Context Transfer"
+      },
+      {
+        "t": 936,
+        "q": "Can you give me specific examples of how you translate or deliver your findings to your stakeholders?",
+        "meta": "Lead · Stakeholder Communication"
+      },
+      {
+        "t": 1107,
+        "q": "Let's jump into your second role — mathematics and physical science tutor at University of Florida, right?",
+        "meta": "Lead · Resume Deep-Dive · Role 2"
+      },
+      {
+        "t": 1140,
+        "q": "Can you talk about the University of Florida PhD and the machine learning research? How would you apply topological data analysis to business situations?",
+        "meta": "Lead · Research-to-Business Bridge"
+      },
+      {
+        "t": 1329,
+        "q": "Do you have any standard or criteria for choosing different models? When would you not use a complex model?",
+        "meta": "Lead · Model Selection"
+      },
+      {
+        "t": 1433,
+        "q": "Tell me about a time when you had a limited timeline to deliver and analyze your solution. What did you do?",
+        "meta": "Lead · Behavioral · STAR"
+      },
+      {
+        "t": 1649,
+        "q": "Imagine Walmart is launching a new AI-powered shopping Copilot in the app or website — it understands natural-language shopping needs, recommends products, compares options, suggests substitutions when items are out of stock, and helps build a cart.",
+        "meta": "Lead · Product Case · Setup"
+      },
+      {
+        "t": 1755,
+        "q": "How would you design this product? And after you design it, when you want to launch, how do you evaluate whether the project is a success?",
+        "meta": "Lead · Product Case · Design & Success Metrics"
+      },
+      {
+        "t": 3057,
+        "q": "How do we evaluate whether this product is a success? (Drill-down — A/B test design, primary metric, MDE, launch decision)",
+        "meta": "Lead · Experimentation Closeout"
+      }
+    ]
+  },
+  {
+    "slug": "mckinsey-senior-data-science-analyst-2026-05-13",
+    "date": "2026.05.13",
+    "duration": "1:00:00",
+    "company": "McKinsey",
+    "location": "Growth, Marketing & Sales",
+    "role": "Senior Data Science Analyst",
+    "logo": "Mc",
+    "seoTitle": "Senior Data Science Analyst · McKinsey — Mock Interview Replay",
+    "dek": "A full 60-minute McKinsey Senior Data Science Analyst (Growth, Marketing & Sales) mock interview replay. Self-intro, a rapidly-learn behavioral story (OCR pipeline + PySpark on AWS EMR), and a Lulu EV charging-network market-entry case covering supply-demand tradeoffs, time-series market share modeling, and flexible vs traditional pricing.",
+    "tags": [
+      "Consulting",
+      "Case",
+      "Data",
+      "Behavioral"
+    ],
+    "videoSrc": "https://resources.rexpandcareer.com/videos/replays/mckinsey-senior-data-science-analyst-2026-05-25.mp4",
+    "score": {
+      "overall": 68,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "68%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
       ],
-      questions: [
-        { t: 228,  q: 'Tell us about yourself.',                                                                                                                                                                              meta: 'Lead · Self-Intro' },
-        { t: 422,  q: 'Can you give us a bit more detail about your data skill set?',                                                                                                                                         meta: 'Lead · Data Skill-Set Deep-Dive' },
-        { t: 551,  q: 'Where do you thrive — being a player, in a team environment, or do you see yourself as a stronger individual contributor?',                                                                            meta: 'Lead · Team vs Solo' },
-        { t: 638,  q: 'If you have 3 projects given to you — one by a direct manager, one by someone from your team, and one from a manager on another team, all equally important — how would you prioritize?',             meta: 'Lead · Prioritization' },
-        { t: 736,  q: 'Given your current Business Analyst role in real estate, what triggered you to come back to operations and especially Goldman Sachs?',                                                                 meta: 'Lead · Transition · Why Now' },
-        { t: 1303, q: 'You\'re in Hawaii at the moment. What are your thoughts and any reservations about moving to Salt Lake City? Because that\'s where the role is, and it\'s in-person full time.',                       meta: 'Lead · Relocation · Salt Lake City' }
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "在 rapidly learn 题上花了大量时间讲 debugging mystery，但 \"what you learned\" 这条主线悬着很久才落地；case 里 \"all considerations\" 问题给了单线 depth 而非 breadth framework。"
+        ],
+        [
+          "Specificity & Evidence",
+          21,
+          25,
+          "OCR story 点出了 high-DPI scanner + area-based interpolation 的具体 fix；PySpark 提到 partition-level sort vs global sort；case 里提了 MMM vs last-touch + cookie deprecation 约束。"
+        ],
+        [
+          "Depth & Reasoning",
+          19,
+          30,
+          "在 case 的 location optimization 上提了 supply-demand tradeoff + confounding，但没 commit 一个具体 framework 就飘走了；从 time series 跳到 survival analysis 有点套用简历经验，没 tie 回 market share。"
+        ],
+        [
+          "Role Fit",
+          8,
+          15,
+          "Lead-off 反问 travel 显得没做功课（JD 明确写了 75%）；case 里多次需要面试官 pivot 才切换框架（从 marketing 拉回 financing，从 survival 拉回 pricing）；缺少 McKinsey GMS 要的 client-facing ownership 信号。"
+        ],
+        [
+          "Communication",
+          6,
+          10,
+          "在 rapidly learn story 里 \"challenge 不是模型\" 说了三次还没说出真正的 challenge；exhibit 计算时 \"4 80 84... 我忘了\" 的自我怀疑面试官能听到；多处话越说越散没收住。"
+        ]
       ]
-    }
-  ];
-  // @data:replays:end
+    },
+    "summary": "技术深度扎实（OCR + PySpark 的具体 fix 都点到了），但 consulting 的 structured communication 和 client ownership 信号偏弱 —— behavioral story 绕很久才 land 到 takeaway，case 里需要面试官反复 pivot 才切换框架，lead-off 反问 travel 显得没做功课。68/100 是个 pass with reservations，下轮需要 probe business judgment 和 stakeholder influence。",
+    "mainIssue": {
+      "title": "Behavioral story 的 punchline 埋得太深，takeaway 悬着很久才落地",
+      "body": "在 rapidly learn 题上，面试官明确问了三个点：rapidly learn + challenging + what you did。候选人选了 OCR + Transformers receipt pipeline 的故事，技术细节很具体（high-DPI scanner、area-based interpolation），但整个叙述卡在 debugging mystery 阶段太久 —— \"challenge 不是模型\" 说了三次还没说出真正的 challenge 是什么，\"spent the whole night... couldn't find anything wrong\" 的悬念铺垫占了大半段，直到最后才落地 \"what I rapidly learned was image preprocessing fundamentals\"。\n\nCoach notes 反复出现 \"还没碰到 learning 这一层\" / \"故事卡在 mystery 阶段太久\" / \"takeaway 偏弱\"，说明这不是一次性失误，而是系统性的叙述习惯 —— 技术人倾向于按时间线讲完整个 debugging 过程，但 McKinsey behavioral 要的是 situation → action → learning 的因果链，punchline 要在前 30 秒就 land。\n\n这会让 hiring committee 怀疑候选人能否在 client meeting 里快速 land insight —— consulting 的节奏是 \"here's what we found, here's why it matters, now let me show you the analysis\"，不是 \"let me walk you through how we got here\"。"
+    },
+    "alsoNoting": [
+      "Case 里需要面试官反复 pivot 才切换框架，缺少 structured breadth",
+      "Lead-off 反问 travel 显得没做功课，JD 明确写了 up to 75%",
+      "Exhibit 计算时自我怀疑（\"4 80 84... 我忘了\"）面试官能听到，建议写下来再口播"
+    ],
+    "questions": [
+      {
+        "t": 194,
+        "q": "Can you tell me a little bit more about you, like just introduction on where are you from, what is your interest, what's driving you to apply?",
+        "meta": "Lead · Self-Intro · Why McKinsey"
+      },
+      {
+        "t": 458,
+        "q": "Can you share an example of when you had to rapidly learn something and apply something? And tell me why it was challenging for you. Something new — talk me through the situation, the context, who all were involved, and especially focus on what you did.",
+        "meta": "Lead · Behavioral · Rapidly Learn"
+      },
+      {
+        "t": 1466,
+        "q": "What would it take to build a new electric vehicle charging network for Lulu in Mexico, servicing both Lulu vehicles and other EVs, considering existing but incomplete competing networks and Lulu's premium positioning?",
+        "meta": "Lead · Case · Setup"
+      },
+      {
+        "t": 1581,
+        "q": "What are all the considerations that they should take into account?",
+        "meta": "Lead · Case · Breadth of Considerations"
+      },
+      {
+        "t": 2254,
+        "q": "How would you build the time series model for market share?",
+        "meta": "Lead · Case · Time-Series Market Share"
+      },
+      {
+        "t": 2436,
+        "q": "Which pricing methodology should they use, whether they should go for flexible pricing or traditional pricing?",
+        "meta": "Lead · Case · Pricing Methodology"
+      },
+      {
+        "t": 2448,
+        "q": "How much more or less in percentage would Lulu earn if they use option 1 versus option 2?",
+        "meta": "Lead · Case · Pricing Quant"
+      }
+    ]
+  },
+  {
+    "slug": "goldman-business-operations-analyst-2026-05-08",
+    "date": "2026.05.08",
+    "duration": "25:27",
+    "company": "Goldman Sachs",
+    "location": "Salt Lake City",
+    "role": "Business Operations Analyst",
+    "logo": "GS",
+    "seoTitle": "Business Operations Analyst · Goldman Sachs — Mock Interview Replay",
+    "dek": "A 25-minute Goldman Sachs Business Operations Analyst mock interview replay. Self-intro, data skill-set deep-dive, team vs solo, prioritization across competing managers, transition from real-estate BA, and relocation-to-Salt-Lake-City — mapped to settlement ops and risk framework fit.",
+    "tags": [
+      "Finance",
+      "Ops",
+      "Behavioral"
+    ],
+    "videoSrc": "https://resources.rexpandcareer.com/videos/replays/goldman-business-operations-analyst-2026-05-25.mp4",
+    "score": {
+      "overall": 69,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "69%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          18,
+          25,
+          "多数问题有回应，但 prioritization 题和 relocation 题都滑到相关话题而没真正 land 原问题的核心。"
+        ],
+        [
+          "Specificity & Evidence",
+          20,
+          25,
+          "Tableau heat map、$1M revenue、clean title 例子都具体，但 transition / team vs solo 两题停在抽象描述。"
+        ],
+        [
+          "Depth & Reasoning",
+          12,
+          20,
+          "Prioritization 题缺 own judgment framework，relocation 答成了借口而非 commitment，没展现 ops 岗需要的 risk ownership。"
+        ],
+        [
+          "Role Fit",
+          10,
+          15,
+          "Daily cash flow + risk framework 对标 settlement ops 是对的，但 why operations / why now 的动机空洞，且时区算错暴露准备不足。"
+        ],
+        [
+          "Communication",
+          9,
+          15,
+          "口误频繁（\"present my funding\" / \"reconstruction processing\"），rambling 多次滑题，但 heat map 和 clean title 两段叙述清晰。"
+        ]
+      ]
+    },
+    "summary": "候选人有具体 ops 经验（daily cash flow、Tableau、clean title 例子），但 communication 口误多、prioritization 和 relocation 两题没 land 到核心，动机薄弱。总分 69 —— pass with reservations，下轮需 probe 判断力和 commitment。",
+    "mainIssue": {
+      "title": "Communication 口误频繁 + rambling 滑题，削弱了本该扎实的 ops 经验",
+      "body": "面试官在多个节点需要 redirect 或帮忙接话，说明候选人的表达没有 land：\n\n• Self-intro 时出现 \"present my funding\"（应为 findings）、\"reconstruction processing\"（应为 restructuring）等口误，coach notes 明确标注 \"GS ops 很看重 written/verbal communication，这些口误堆起来会扣印象分\"。\n• Prioritization 题答到一半滑向 \"looking for a new chapter\" 这种离职动机，面试官立刻 pivot 说明没接住。\n• Relocation 题答成 \"时区不方便\"（且算错了时差），听起来像在找借口，面试官用 \"Guys start\" 帮他接话他也没接住，最后自己 pivot 到 questions 环节才结束尴尬。\n• Team vs solo 题描述了 meeting cadence 但 \"play solo 那句正要展开就被切住\"，说明叙述没结构、面试官等不下去。\n\n这不是一两次口误，而是系统性表达问题 —— 有料但说不清，让 hiring committee 怀疑他能否在 client-facing 或 cross-functional 场景下清晰传达 risk / settlement 信息。"
+    },
+    "alsoNoting": [
+      "Prioritization 题缺 own judgment framework，只给了 escalation 没展现 ops 岗需要的独立决策能力",
+      "Why operations / why now 的动机空洞，绕在 \"learning from best\" 上没回答从 real estate BA 转过来的真实 trigger",
+      "Relocation 答成了时区借口（且算错时差），没 commit，让面试官需要帮忙接话才能继续",
+      "Team vs solo 题和 transition 题都停在抽象描述，没用 Mango 或 EY 的具体 moment 锚住"
+    ],
+    "questions": [
+      {
+        "t": 228,
+        "q": "Tell us about yourself.",
+        "meta": "Lead · Self-Intro"
+      },
+      {
+        "t": 422,
+        "q": "Can you give us a bit more detail about your data skill set?",
+        "meta": "Lead · Data Skill-Set Deep-Dive"
+      },
+      {
+        "t": 551,
+        "q": "Where do you thrive — being a player, in a team environment, or do you see yourself as a stronger individual contributor?",
+        "meta": "Lead · Team vs Solo"
+      },
+      {
+        "t": 638,
+        "q": "If you have 3 projects given to you — one by a direct manager, one by someone from your team, and one from a manager on another team, all equally important — how would you prioritize?",
+        "meta": "Lead · Prioritization"
+      },
+      {
+        "t": 736,
+        "q": "Given your current Business Analyst role in real estate, what triggered you to come back to operations and especially Goldman Sachs?",
+        "meta": "Lead · Transition · Why Now"
+      },
+      {
+        "t": 1303,
+        "q": "You're in Hawaii at the moment. What are your thoughts and any reservations about moving to Salt Lake City? Because that's where the role is, and it's in-person full time.",
+        "meta": "Lead · Relocation · Salt Lake City"
+      }
+    ]
+  }
+];
+// @data:replays:end
   /* PLACEHOLDER REMOVED — sample data below is intentionally commented out:
     {
       slug: 'ep-42-meta',
