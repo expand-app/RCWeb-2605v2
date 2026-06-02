@@ -8,7 +8,11 @@
 
 const State = {
   token: localStorage.getItem("token") || null,
-  apiBase: localStorage.getItem("apiBase") || "https://admin-api.rexpandcareer.com",
+  // Default API base — keep in sync with the actual deployed Worker URL.
+  // Switching to a custom domain (e.g. admin-api.rexpandcareer.com) later?
+  // Update this default and `ADMIN_ORIGIN` on the Worker side together.
+  // localStorage override still works (double-click the title to reset).
+  apiBase: localStorage.getItem("apiBase") || "https://hidden-frost-62c4.wilsonleechen.workers.dev",
   data: null, // { cases, mentors, replays, articles }
   baseline: null, // server snapshot for dirty-check
   view: "dash",
