@@ -71,7 +71,7 @@ const api = {
     }
     return r.json();
   },
-  login(password) { return this.fetch("/api/login", { method: "POST", body: { password } }); },
+  login(username, password) { return this.fetch("/api/login", { method: "POST", body: { username, password } }); },
   state() { return this.fetch("/api/state"); },
   save(updates, message) { return this.fetch("/api/save", { method: "POST", body: { ...updates, message } }); },
   uploadUrl(prefix, filename, contentType) {
@@ -119,13 +119,15 @@ function renderLogin() {
       el("form", {
         onsubmit: async (e) => {
           e.preventDefault();
+          const username = (e.target.username.value || "").trim();
           const pw = e.target.password.value;
           const errEl = $(".login-card .err");
           if (errEl) errEl.remove();
           try {
-            const r = await api.login(pw);
+            const r = await api.login(username, pw);
             State.token = r.token;
             localStorage.setItem("token", r.token);
+            localStorage.setItem("username", username);  // remember username (not password)
             await reloadState();
             State.view = "dash";
             render();
@@ -134,8 +136,17 @@ function renderLogin() {
           }
         },
       },
+        el("label", {}, "用户名"),
+        el("input", {
+          type: "text", name: "username", required: true, autofocus: true,
+          autocomplete: "username",
+          value: localStorage.getItem("username") || "",
+        }),
         el("label", {}, "密码"),
-        el("input", { type: "password", name: "password", required: true, autofocus: true }),
+        el("input", {
+          type: "password", name: "password", required: true,
+          autocomplete: "current-password",
+        }),
         el("button", { type: "submit" }, "登录"),
       ),
     ),
