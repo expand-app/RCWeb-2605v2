@@ -72,9 +72,12 @@ export async function readFile(env, path) {
 /**
  * Commit multiple files atomically via the Git Data API.
  * files: [{ path: string, content: string }, ...]
+ * author: optional { name, email } — sets commit author so the GitHub log
+ *         shows which webadmin user made the change. The PAT owner is still
+ *         the committer (which is correct — GitHub uses that for push auth).
  * Returns commit SHA.
  */
-export async function commitFiles(env, files, message) {
+export async function commitFiles(env, files, message, author) {
   const { repo, branch } = cfg(env);
 
   // 1. Latest ref → commit → tree
@@ -103,14 +106,22 @@ export async function commitFiles(env, files, message) {
     body: JSON.stringify({ base_tree: baseTreeSha, tree: treeEntries }),
   });
 
-  // 4. New commit
+  // 4. New commit (with optional author attribution)
+  const commitBody = {
+    message,
+    tree: tree.sha,
+    parents: [parentSha],
+  };
+  if (author && author.name) {
+    commitBody.author = {
+      name: author.name,
+      email: author.email || `${author.name}@webadmin.local`,
+      date: new Date().toISOString(),
+    };
+  }
   const commit = await gh(env, `/repos/${repo}/git/commits`, {
     method: "POST",
-    body: JSON.stringify({
-      message,
-      tree: tree.sha,
-      parents: [parentSha],
-    }),
+    body: JSON.stringify(commitBody),
   });
 
   // 5. Fast-forward branch

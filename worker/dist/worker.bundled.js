@@ -184,9 +184,12 @@ async function readFile(env, path) {
 /**
  * Commit multiple files atomically via the Git Data API.
  * files: [{ path: string, content: string }, ...]
+ * author: optional { name, email } — sets commit author so the GitHub log
+ *         shows which webadmin user made the change. The PAT owner is still
+ *         the committer (which is correct — GitHub uses that for push auth).
  * Returns commit SHA.
  */
-async function commitFiles(env, files, message) {
+async function commitFiles(env, files, message, author) {
   const { repo, branch } = cfg(env);
 
   // 1. Latest ref → commit → tree
@@ -215,14 +218,22 @@ async function commitFiles(env, files, message) {
     body: JSON.stringify({ base_tree: baseTreeSha, tree: treeEntries }),
   });
 
-  // 4. New commit
+  // 4. New commit (with optional author attribution)
+  const commitBody = {
+    message,
+    tree: tree.sha,
+    parents: [parentSha],
+  };
+  if (author && author.name) {
+    commitBody.author = {
+      name: author.name,
+      email: author.email || `${author.name}@webadmin.local`,
+      date: new Date().toISOString(),
+    };
+  }
   const commit = await gh(env, `/repos/${repo}/git/commits`, {
     method: "POST",
-    body: JSON.stringify({
-      message,
-      tree: tree.sha,
-      parents: [parentSha],
-    }),
+    body: JSON.stringify(commitBody),
   });
 
   // 5. Fast-forward branch
@@ -883,6 +894,30 @@ async function requireAuth(env, req) {
   return verifyJWT(m[1], env.JWT_SECRET);
 }
 
+// --- user list ---
+
+/**
+ * Resolve the user list. Two sources, in priority order:
+ *   1. env.ADMIN_USERS — JSON array `[{"username":"...","password_hash":"..."}, ...]`
+ *   2. env.ADMIN_PASSWORD_HASH (legacy single-user fallback) → treated as
+ *      one user with username "admin"
+ * Returns [{username, password_hash}, ...] or [] if neither is set.
+ */
+function getUsers(env) {
+  if (env.ADMIN_USERS) {
+    try {
+      const arr = JSON.parse(env.ADMIN_USERS);
+      if (Array.isArray(arr)) {
+        return arr.filter((u) => u && u.username && u.password_hash);
+      }
+    } catch {}
+  }
+  if (env.ADMIN_PASSWORD_HASH) {
+    return [{ username: "admin", password_hash: env.ADMIN_PASSWORD_HASH }];
+  }
+  return [];
+}
+
 // --- handlers ---
 
 async function handleLogin(env, req) {
@@ -892,9 +927,19 @@ async function handleLogin(env, req) {
   } catch {
     return err(env, 400, "invalid JSON");
   }
-  const ok = await verifyPassword(body.password || "", env.ADMIN_PASSWORD_HASH);
-  if (!ok) return err(env, 401, "wrong password");
-  const token = await signJWT({ sub: "admin" }, env.JWT_SECRET);
+  const username = String(body.username || "admin").trim();
+  const password = String(body.password || "");
+  const users = getUsers(env);
+  const user = users.find((u) => u.username === username);
+  if (!user) {
+    // Run a dummy verifyPassword so the timing matches a real user — avoids
+    // username enumeration via response time.
+    await verifyPassword(password, "pbkdf2_sha256$100000$AAAA$BBBB");
+    return err(env, 401, "wrong username or password");
+  }
+  const ok = await verifyPassword(password, user.password_hash);
+  if (!ok) return err(env, 401, "wrong username or password");
+  const token = await signJWT({ sub: username }, env.JWT_SECRET);
   return jsonResponse(env, { token, expiresIn: 8 * 3600 });
 }
 
@@ -952,10 +997,11 @@ async function handleSave(env, req) {
   if (files.length === 0) return jsonResponse(env, { commit: null, note: "no-op" });
 
   const changedTypes = Object.keys(updates).filter((k) => updates[k]);
+  const who = claims.sub || "admin";
   const message = body.message?.trim() ||
-    `webadmin: 更新 ${changedTypes.join(" / ")} (${changedTypes.map((t) => updates[t].length).join("/")} 条)`;
-  const sha = await commitFiles(env, files, message);
-  return jsonResponse(env, { commit: sha, files: files.map((f) => f.path) });
+    `webadmin (${who}): 更新 ${changedTypes.join(" / ")} (${changedTypes.map((t) => updates[t].length).join("/")} 条)`;
+  const sha = await commitFiles(env, files, message, { name: who });
+  return jsonResponse(env, { commit: sha, files: files.map((f) => f.path), author: who });
 }
 
 async function handleUploadUrl(env, req) {
