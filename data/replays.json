@@ -1,5 +1,112 @@
 [
   {
+    "slug": "first-citizens-bank-quantitative-analyst-i-2026-06-03",
+    "date": "2026.06.03",
+    "duration": "32:25",
+    "company": "First Citizens Bank",
+    "location": "",
+    "role": "Quantitative Analyst I",
+    "logo": "F",
+    "seoTitle": "Quantitative Analyst I · First Citizens Bank — Mock Interview Replay",
+    "dek": "A 32:25 First Citizens Bank Quantitative Analyst I mock interview replay, 4 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-06-03-quantitative-analyst-i-first-citizens-bank-2026-06-03.mp4",
+    "score": {
+      "overall": 58,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "58%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          11,
+          20,
+          "在 PD techniques 题上 filler 盖过内容,没讲清 end goal;在 banking motivation 题上 ramble 且没给出 deliberate choice"
+        ],
+        [
+          "Specificity & Evidence",
+          19,
+          25,
+          "点出了 Logistic / RF / LGBM / 95% recall / SHAP / negative equity coefficient 反转,但多数时候停在 model 名字层面,没展开 feature / metric / tradeoff"
+        ],
+        [
+          "Depth & Reasoning",
+          14,
+          25,
+          "发现 negative equity 导致 coefficient sign 反直觉是好 catch,但面试官反复铺 champion-challenger / interpretability / MRM 框架时,候选人只回 '100% agree' 没接出自己经验"
+        ],
+        [
+          "Role Fit",
+          8,
+          15,
+          "JD 要求 collaborate with cross-functional teams + communicate to non-technical stakeholders,但候选人在 explainability 和 business partnership 多个铺垫上都没主动 link 自己经验"
+        ],
+        [
+          "Communication",
+          6,
+          15,
+          "filler word ('like') 密度极高,coach notes 反复出现 'rambly' / 'loose' / 'filler 盖过内容';面试官多次需要 rescue 或 pivot"
+        ]
+      ]
+    },
+    "summary": "候选人技术背景对口(PD modeling / Logistic + LGBM / SHAP),且有一个不错的 sharp finding(negative equity coefficient 反转),但 delivery 问题严重拖累了内容落地 —— filler word 密度高、答案结构松散、面试官反复铺垫 interpretability / champion-challenger / MRM 框架时只回 '100% agree' 没接出具体经验。Coach notes 多次出现 'ramble' / 'filler 盖过内容' / '面试官 rescue',说明这不是一次性失误。技术匹配但 communication 和 stakeholder collaboration 信号偏弱,hiring committee 会 hesitate。",
+    "mainIssue": {
+      "title": "filler word 密度过高且答案结构松散,导致技术内容被掩盖、面试官需反复 rescue",
+      "body": "Coach notes 在多个问题上反复出现 'filler 盖过内容' / 'rambly' / 'loose',面试官多次需要 pivot 或 rescue 来拉回主线。这不是偶发的紧张,而是系统性 delivery 问题,直接削弱了候选人的技术可信度。\n\n- 在 PD techniques 题上:'开头列了三个 model 名字就卡住了,还有大量 filler(\"like, like\")... 答案彻底散掉了 —— filler 词盖过了内容,techniques 和 end goal 都没讲清楚,Kevin 已经自己切到 Python/SAS/Git 的话题救场了。'\n- 在 banking motivation 题上:'这个回答很 rambly,全是 filler word(\"like\" 出现 10+ 次),而且没真正回答 buy-side vs banking 的 motivation。'\n- 在 negative equity coefficient 故事上:'这个故事其实很有料... 但 \"like\" 太密 + 没收尾,面试官会 lose the thread。'\n\nHiring committee 看到这种 pattern 会担心候选人在 cross-functional meeting 或 MRM presentation 时无法清晰传达技术决策,这对 JD 要求的 'communicate complex concepts to non-technical stakeholders' 是直接减分项。\n\n— 如何改进 —\n在下次面试前,把简历上每个技术项目用这个模板重写一遍并背熟,计时录音确保每个回答在 90 秒内落地:\n\n- <strong>开场 15 秒</strong>:一句话 answer —— 'At Fidelity on the counterparty PD model, we used Logistic Regression as the explainable baseline, benchmarked against Random Forest and LGBM, hit 95% recall on high-risk names feeding into exposure limits.'\n- <strong>停顿</strong>:等面试官说 'tell me more' 再展开 feature engineering / SHAP / negative equity 细节,不要一口气倒出来\n- <strong>rehearsal drill</strong>:录 5 个 past projects 的 opening answer,回放时数 filler word 出现次数,目标是每 90 秒 ≤ 3 个 'like' / 'you know'\n- <strong>punchline 习惯</strong>:每个技术故事必须有一句 closing line 钉住 finding —— 比如 'So the fix was flagging that negative equity flipped the coefficient sign — once we cleaned it, the logistic model finally matched credit intuition.' 这是让面试官记住你的 anchor,不是可有可无的收尾"
+    },
+    "alsoNoting": [
+      "面试官反复铺 interpretability / champion-challenger / MRM 框架时,候选人只回 '100% agree' 没接出自己具体经验",
+      "在 banking motivation 题上没给出 deliberate choice,只说了 'banking 是金融系统一大部分' 和 'ML 是趋势' 两个 generic 理由",
+      "第一个 reverse 问题就问 on-site / remote,JD 上已写明 remote 可接受州,错过了拿 team collaboration signal 的机会",
+      "在 qualitative override 题上表达绕且没锚在监管语境,更 sharp 的问法是 'when analyst override disagrees with model PD, who owns the final call'"
+    ],
+    "questions": [
+      {
+        "t": 300,
+        "q": "Can you speak a little bit about what techniques were used there and what the end goal is with probability of default estimation?",
+        "meta": "他在强调 commercial credit risk 和 line of business 的直接关系 —— 这是他的"
+      },
+      {
+        "t": 541,
+        "q": "What made you interested in the banking side of it — it looked like you said hedge fund side experience. Just wondering if you find mutual interest across the two or if you're looking to maybe switch into a different focus area, or what your main focus is?",
+        "meta": "Kevin 在明示 PD model 就是这边的核心工作,还在试探你对当前 Fidelity 工作的兴趣度"
+      },
+      {
+        "t": 640,
+        "q": "Any particular interest or projects you've worked on across the data science and quant finance that you found especially interesting? Any particular types of models or analysis?",
+        "meta": "面试官在 bond —— 他也有双硕士,顺手问你 data science × quant finance 交叉的项目或"
+      },
+      {
+        "t": 1291,
+        "q": "Just wondering if anything particular stood out about First Citizens or how you might have come across the position or anything you might have heard and might have questions about from the company side",
+        "meta": "面试官在 setup regulatory constraint —— 暗示后面会问 ML 模型在受监管环境下的可解释性"
+      }
+    ]
+  },
+  {
     "slug": "axos-bank-junior-market-risk-analyst-2026-05-27",
     "date": "2026.05.27",
     "duration": "35:06",
