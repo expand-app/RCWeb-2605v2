@@ -85,6 +85,15 @@ jobs:
           # must always revalidate so a new deploy shows up immediately instead of
           # being served from a stale browser/CDN cache.
           ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ oss://$OSS_BUCKET/
+          # sitemap.xml + llms.txt: explicit content-type so crawlers (and AI
+          # crawlers checking /llms.txt) get text/plain or application/xml back
+          # instead of OSS guessing application/octet-stream from extension.
+          if [ -f dist/sitemap.xml ]; then
+            ossutil cp -f --meta "Content-Type:application/xml; charset=utf-8#Cache-Control:no-cache" dist/sitemap.xml oss://$OSS_BUCKET/sitemap.xml
+          fi
+          if [ -f dist/llms.txt ]; then
+            ossutil cp -f --meta "Content-Type:text/plain; charset=utf-8#Cache-Control:no-cache" dist/llms.txt oss://$OSS_BUCKET/llms.txt
+          fi
           # Nested clean-URL pages (/background/<slug>, /legal/<x>): DCDN's
           # host_redirect can't rewrite multi-segment paths on this account, so
           # we ALSO upload each as an extensionless object at its exact clean
