@@ -16,7 +16,12 @@ on:
           - staging
 
 permissions:
-  contents: read
+  contents: write       # 'write' (not 'read') so the final "Notify deploy result"
+                        # step can post commit comments when a push lands on main
+                        # without a PR (webadmin Worker auto-commits). With
+                        # 'read', commit-comment POST returns 403 and the
+                        # workflow shows red even though OSS upload + CDN
+                        # refresh already succeeded.
   pull-requests: write
 
 jobs:
