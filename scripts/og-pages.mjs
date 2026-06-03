@@ -203,7 +203,7 @@ for(const a of articles){
       name: 'Rexpand · 睿思班',
       logo: { '@type': 'ImageObject', url: ORIGIN + '/media/team/2022-founders.png' }
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': ORIGIN + '/article/' + a.slug }
+    mainEntityOfPage: { '@type': 'WebPage', '@id': ORIGIN + '/a-' + a.slug }
   };
   // BreadcrumbList — Google SERP shows breadcrumbs (Home › 求职情报 › Title)
   const breadcrumbLd = {
@@ -212,11 +212,11 @@ for(const a of articles){
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: '首页', item: ORIGIN + '/' },
       { '@type': 'ListItem', position: 2, name: '求职情报', item: ORIGIN + '/resources' },
-      { '@type': 'ListItem', position: 3, name: titleText.slice(0, 80), item: ORIGIN + '/article/' + a.slug },
+      { '@type': 'ListItem', position: 3, name: titleText.slice(0, 80), item: ORIGIN + '/a-' + a.slug },
     ],
   };
   pages.push({
-    path: '/article/' + a.slug,
+    path: '/a-' + a.slug,
     title: titleText + ' · Rexpand',
     desc: descText,
     og: img.url,
@@ -261,11 +261,11 @@ for(const r of replays){
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: '首页', item: ORIGIN + '/' },
       { '@type': 'ListItem', position: 2, name: '面试回放', item: ORIGIN + '/resources' },
-      { '@type': 'ListItem', position: 3, name: titleText.slice(0, 80), item: ORIGIN + '/replay/' + r.slug },
+      { '@type': 'ListItem', position: 3, name: titleText.slice(0, 80), item: ORIGIN + '/r-' + r.slug },
     ],
   };
   pages.push({
-    path: '/replay/' + r.slug,
+    path: '/r-' + r.slug,
     title: titleText,
     desc: descText,
     og: DEFAULT_OG,
@@ -315,7 +315,7 @@ for(const pg of pages){
     loc: ORIGIN + pg.path,
     lastmod: pg._lastmod || today,
     changefreq: pg._lastmod ? 'monthly' : 'weekly',
-    priority: pg.path.startsWith('/article/') || pg.path.startsWith('/replay/') ? '0.7' : '0.9',
+    priority: pg.path.startsWith('/a-') || pg.path.startsWith('/r-') ? '0.7' : '0.9',
   });
 }
 const sitemapXml =
@@ -352,11 +352,11 @@ Per-direction structured prep:
 
 ## Latest Articles
 
-${articles.slice(0, 15).map((a) => `- [${stripHtml(a.title)}](${ORIGIN}/article/${a.slug}): ${truncate(a.dek, 120)}`).join('\n')}
+${articles.slice(0, 15).map((a) => `- [${stripHtml(a.title)}](${ORIGIN}/a-${a.slug}): ${truncate(a.dek, 120)}`).join('\n')}
 
 ## Latest Interview Replays
 
-${replays.slice(0, 6).map((r) => `- [${r.role || r.seoTitle || r.slug} @ ${r.company || ''}](${ORIGIN}/replay/${r.slug}): ${r.duration}, score ${r.score?.overall || '—'}/100`).join('\n')}
+${replays.slice(0, 6).map((r) => `- [${r.role || r.seoTitle || r.slug} @ ${r.company || ''}](${ORIGIN}/r-${r.slug}): ${r.duration}, score ${r.score?.overall || '—'}/100`).join('\n')}
 
 ## Sitemap
 

@@ -26144,6 +26144,12 @@ function pathToRoute(pathname){
   if(p === '/legal/privacy') return 'privacy';
   if(p === '/legal/user-terms' || p === '/legal/terms') return 'user-terms';
   if(p === '/legal/mentor-terms') return 'mentor-terms';
+  // Single-segment forms (/a-<slug>, /r-<slug>) — needed because OSS website
+  // hosting can't reliably serve multi-segment extensionless objects.
+  // The old /article/<slug> and /replay/<slug> forms still resolve too, for
+  // any incoming links that haven't been updated.
+  if(p.startsWith('/a-')) return 'article';
+  if(p.startsWith('/r-')) return 'replay';
   if(p.startsWith('/replay/')) return 'replay';
   if(p.startsWith('/article/')) return 'article';
   return 'home';
@@ -26319,6 +26325,20 @@ window.addEventListener('DOMContentLoaded', () => {
   const r = pathToRoute(location.pathname);
   const bgDir = (r === 'background') ? (pathToBgDir(location.pathname) || BG_DEFAULT_DIR) : null;
   go(r, {skipPush: true, bgDir: bgDir});
+  // Path-based per-item routing: /a-<slug> → openArticleBySlug, /r-<slug> →
+  // openReplayBySlug. Defer so the data arrays are loaded first. The hash
+  // form (#/article/<slug>) is still handled by handleHashRoute on load.
+  if(r === 'article' || r === 'replay'){
+    setTimeout(() => {
+      let slug = null, fn = null;
+      const p = location.pathname.replace(/\/+$/, '');
+      if(p.startsWith('/a-'))           { slug = p.slice(3);              fn = window.openArticleBySlug; }
+      else if(p.startsWith('/article/')){ slug = p.slice('/article/'.length); fn = window.openArticleBySlug; }
+      else if(p.startsWith('/r-'))      { slug = p.slice(3);              fn = window.openReplayBySlug; }
+      else if(p.startsWith('/replay/')) { slug = p.slice('/replay/'.length);  fn = window.openReplayBySlug; }
+      if(slug && fn){ try { fn(slug); } catch(_){ go('resources'); } }
+    }, 60);
+  }
   // If we landed on /background or /background/<slug>, sync the JS state.
   // bgRender's own initial call (at the bottom of the script) defaults to 'da';
   // override it here if URL specifies a different direction. Also normalize the
