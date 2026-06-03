@@ -123,10 +123,15 @@ function applyHead(src, { title, desc, url, og, ogw, ogh, jsonLd }){
   setAttr('tw-title', 'content', title);
   setAttr('tw-description', 'content', desc);
   setAttr('tw-image', 'content', og);
-  // Inject one extra JSON-LD block right before </head>. The page already
-  // has the Organization + WebSite blocks at the top; adding here is fine.
+  // Inject extra JSON-LD blocks right before </head>. The page already has
+  // the Organization + WebSite blocks at the top; adding here is fine.
+  // Accept either one object or an array of objects (e.g. NewsArticle +
+  // BreadcrumbList for content pages).
   if(jsonLd){
-    const block = `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>\n`;
+    const arr = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+    const block = arr
+      .map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`)
+      .join('\n') + '\n';
     out = out.replace('</head>', block + '</head>');
   }
   return out;
@@ -177,8 +182,9 @@ for(const a of articles){
   const img = resolveArticleImage(a);
   const dateISO = isoDate(a.date);
   // NewsArticle JSON-LD: makes content extractable by Google Discover, AI
-  // crawlers, and helps featured snippets. articleBody truncated to ~2000
-  // chars so AI summarizers get enough context without bloating page size.
+  // crawlers, and helps featured snippets. articleBody bumped to 5000 chars
+  // so AI summarizers (Perplexity / ChatGPT search) get most of the actual
+  // analysis, not just the lede.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -190,7 +196,7 @@ for(const a of articles){
     articleSection: a.category || '求职情报',
     keywords: Array.isArray(a.keywords) ? a.keywords.join(', ') : undefined,
     image: img.url,
-    articleBody: truncate(a.body, 2000),
+    articleBody: truncate(a.body, 5000),
     author: { '@type': 'Organization', name: 'Rexpand · 睿思班', url: ORIGIN + '/' },
     publisher: {
       '@type': 'Organization',
@@ -199,13 +205,23 @@ for(const a of articles){
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': ORIGIN + '/article/' + a.slug }
   };
+  // BreadcrumbList — Google SERP shows breadcrumbs (Home › 求职情报 › Title)
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '首页', item: ORIGIN + '/' },
+      { '@type': 'ListItem', position: 2, name: '求职情报', item: ORIGIN + '/resources' },
+      { '@type': 'ListItem', position: 3, name: titleText.slice(0, 80), item: ORIGIN + '/article/' + a.slug },
+    ],
+  };
   pages.push({
     path: '/article/' + a.slug,
     title: titleText + ' · Rexpand',
     desc: descText,
     og: img.url,
     ogw: 1200, ogh: 630,
-    jsonLd,
+    jsonLd: [jsonLd, breadcrumbLd],
     _lastmod: dateISO
   });
 }
@@ -239,13 +255,22 @@ for(const r of replays){
       logo: { '@type': 'ImageObject', url: ORIGIN + '/media/team/2022-founders.png' }
     }
   };
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '首页', item: ORIGIN + '/' },
+      { '@type': 'ListItem', position: 2, name: '面试回放', item: ORIGIN + '/resources' },
+      { '@type': 'ListItem', position: 3, name: titleText.slice(0, 80), item: ORIGIN + '/replay/' + r.slug },
+    ],
+  };
   pages.push({
     path: '/replay/' + r.slug,
     title: titleText,
     desc: descText,
     og: DEFAULT_OG,
     ogw: 1200, ogh: 630,
-    jsonLd,
+    jsonLd: [jsonLd, breadcrumbLd],
     _lastmod: dateISO
   });
 }
