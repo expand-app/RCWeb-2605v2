@@ -1,5 +1,187 @@
 [
   {
+    "slug": "ibm-associate-data-engineer-2026-05-29",
+    "date": "2026.05.29",
+    "duration": "44:24",
+    "company": "IBM",
+    "location": "",
+    "role": "Associate Data Engineer",
+    "logo": "I",
+    "seoTitle": "Associate Data Engineer · IBM — Mock Interview Replay",
+    "dek": "A 44:24 IBM Associate Data Engineer mock interview replay, 19 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-06-03-live-ibm--00.11.55.895-00.55.29.692.mp4",
+    "score": {
+      "overall": 72,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "72%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "多数问题最终 landed,但常需 probe 或 pivot 才到位 —— SQL level 题先讲 story 才给 self-assessment,difficult coworker 题讲的是 scope creep 不是人际冲突,data-driven decision 题花大量时间在 tracking setup 而非 decision/recommendation。"
+        ],
+        [
+          "Specificity & Evidence",
+          23,
+          30,
+          "有具体项目和数字(500K records、27% lift、160K EMS records、ROC-AUC 0.74),但 SQL 优化题全是 conceptual(partitioning、denormalize)没点 Snowflake clustering key 或 BigQuery partition,A/B test 题没说清 tracking metrics 是 open rate 还是 conversion attribution。"
+        ],
+        [
+          "Depth & Reasoning",
+          18,
+          25,
+          "SQL 调优思路有层次(join order → column pruning → materialized view),A/B test reflection 提到 power analysis 和更多 feature,显示 reasoning 能力。但多处 probe 后才展开 tradeoff(query optimization 题、process improvement 题),且 stakeholder friction 故事缺真正的 interpersonal tension 处理。"
+        ],
+        [
+          "Role Fit",
+          11,
+          15,
+          "JD 要求 ETL/ELT、SQL、Python、data quality —— 候选人有对应经历,但 modern stack gap 明显(Snowflake/dbt/Airflow 都是概念理解,无实操)。Learning mindset 有 signal('academic vs real data'),但 first-year skill 问题答得太泛('modern data frameworks')没点名具体工具。"
+        ],
+        [
+          "Communication",
+          6,
+          10,
+          "开场卡壳('applied mathematic applied math'),多处句子散开(stakeholder communication 收尾句、'Learning you thinks is interesting'),A/B test 题 misread 了 'how did you track' 的问法。Filler 和 ramble 不算严重,但 pacing 问题让面试官需反复 reframe。"
+        ]
+      ]
+    },
+    "summary": "技术基础扎实(SQL、PySpark、A/B testing 都有实操),但 modern data stack 经验薄弱且答题常需 probe 才 land 到具体内容。Communication pacing 和 question addressing 是主要短板,影响了内容的 landing 效果。",
+    "mainIssue": {
+      "title": "答题常在 context preamble 里打转,需 probe 或 pivot 才 land 到面试官真正想听的内容",
+      "body": "面试官问具体问题时,候选人常先铺大段背景或讲相关但偏题的故事,面试官需反复 reframe 才能拉回正轨:\n- SQL level self-assessment 题:问的是 'how advanced',候选人直接跳进 EMS 项目 storytelling,面试官等了 30 秒才听到 'intermediate-to-advanced' 这个 answer\n- Difficult coworker 题:问的是 interpersonal friction,候选人讲的是 stakeholder scope creep,全程没出现一个'难搞的人',面试官没追问说明这个答案没 land\n- Data-driven decision 题:问的是 'analysis influenced decision',候选人花大量时间讲 Mailchimp sampling setup 和 supervisor 不投入,decision/recommendation 那条线一直没扔出来,简历上现成的 27% acquisition lift 也埋在中间一笔带过\n- 'How did you track' 追问:面试官问的是 tracking metrics(open rate / CTR / attribution),候选人答的是 sampling 和 Mailchimp setup,misread 了问题方向\n\nCoach notes 反复出现 'pivot'、'reframe'、'misread',说明这不是一次性失误,而是系统性 pacing 问题。Hiring committee 会读这个 pattern 为 'needs hand-holding to stay on track',在 consulting 场景(client-facing communication 是 core skill)这是 red flag。\n\n— 如何改进 —\n在下次面试前,把简历上每个 project 用这个模板重写一遍并背熟:\n- <strong>一句话 answer (15 秒内)</strong>:直接回答面试官问的那个维度 —— SQL level 题开场就说 'intermediate-to-advanced, comfortable with CTEs and window functions';difficult coworker 题开场就点 'a teammate disagreed on whether to push back on scope';data-driven decision 题开场就说 'We found X insight → stakeholder changed Y decision → resulted in 27% lift'\n- 然后停下来,等面试官说 'tell me more' 或 'walk me through the analysis' 再展开 500 campaigns / genre segmentation 细节 —— 不要自己一口气铺完\n- 用 5 个 past projects 做这个 drill,计时录音,确保每个 opening answer 都在 20 秒内落地核心维度(level / conflict / decision / tradeoff),再展开不迟\n- 特别练 behavioral 题的 STAR opening:'situation 一句话 + task 一句话 + 我做了什么(action headline)+ 结果数字',全程 30 秒,然后等 probe"
+    },
+    "alsoNoting": [
+      "Modern data stack 经验薄弱 —— Snowflake / dbt / Airflow 都停在概念理解,没实操,且答题时没主动 bridge 到 JD 要求的工具",
+      "SQL 优化题答得太 generic —— 全是 conceptual(partitioning、denormalize、materialized view),没点 Snowflake clustering key 或 BigQuery 具体 feature",
+      "First-year skill 问题答得太泛('modern data frameworks'),没点名 JD 里的 Snowflake / dbt / Airflow,错过了 show preparation 的机会",
+      "Communication 有多处卡壳和句子散开 —— 开场 'applied mathematic applied math',stakeholder communication 收尾句语法绕,影响 closing line 的 landing"
+    ],
+    "questions": [
+      {
+        "t": 286,
+        "q": "Can you introduce yourself?",
+        "meta": "面试官在 set format,还在等第二个面试官"
+      },
+      {
+        "t": 533,
+        "q": "What are you most comfortable with? Are you more comfortable with SQL or Python?",
+        "meta": "面试官在铺垫 IBM 收购 Hakoda(data engineering / Databricks 生态)和 cons"
+      },
+      {
+        "t": 846,
+        "q": "How many different databases have you worked in, or have you just worked in one?",
+        "meta": ""
+      },
+      {
+        "t": 1008,
+        "q": "You're looking at a query with 5 tables that you've joined on. It's running really slow — it's just a simple select all statement from 5 tables being joined together with no filtering. How would you help speed up the processing?",
+        "meta": "面试官刚 ack 了你上一个答案(\"good that you understand that\"),现在要 pivot "
+      },
+      {
+        "t": 1341,
+        "q": "Can you tell me about some of the behavioral stuff?",
+        "meta": "面试官在 reset — 技术轮过关了(\"really good answers\"),正要切换到下一个 section("
+      },
+      {
+        "t": 1348,
+        "q": "Tell me about you ever had to deal with any difficult coworkers",
+        "meta": ""
+      },
+      {
+        "t": 1378,
+        "q": "Tell me about you ever had to deal with any difficult coworkers or people on projects?",
+        "meta": "等等 —— 问题是 difficult coworkers,他讲的却是 stakeholder 中途加 scope"
+      },
+      {
+        "t": 1641,
+        "q": "Describe a situation where your data analysis influenced a decision or recommendation.",
+        "meta": "面试官在 validate 候选人刚说的 \"focus on strongest impact\",并加码:客户永远想要更"
+      },
+      {
+        "t": 1837,
+        "q": "If you joined our team as a junior data engineer, what technical skills would you most want to on in your first year?",
+        "meta": ""
+      },
+      {
+        "t": 1862,
+        "q": "If you joined our team as a junior data engineer, what technical skills would you most want to focus on in your first year?",
+        "meta": "答案承认 gap 但停在\"概念 transferable\",没具体说想攻哪个工具——Snowflake?Airflow?"
+      },
+      {
+        "t": 2227,
+        "q": "What I would challenge you to do in your first year is to explore exactly what you want to be in this field.",
+        "meta": "面试官在认可你说的\"概念可迁移\",还顺势铺垫\"工具玩多了会看到 pattern\"——这是闲聊式过渡,不是新问题"
+      },
+      {
+        "t": 578,
+        "q": "How advanced would your SQL skills be, do you think?",
+        "meta": "问的是 SQL 水平 self-assessment,他没先给一个 level(\"intermediate, comfo"
+      },
+      {
+        "t": 724,
+        "q": "Did you use any common table expressions or CTEs?",
+        "meta": "CTE 那段表达磕绊但意思到了,面试官 \"okay"
+      },
+      {
+        "t": 887,
+        "q": "So you haven't necessarily worked with like, Snowflake or, Redshift, SQL Server,",
+        "meta": ""
+      },
+      {
+        "t": 930,
+        "q": "Have you ever played around with, like, indexing or anything like that to try and make, like, tables faster or views operate faster?",
+        "meta": "面试官在探 query optimization 的实操经验 —— 注意他说\"depending on what you"
+      },
+      {
+        "t": 1015,
+        "q": "How would you propose increasing the proficiency of that query?",
+        "meta": "思路从 indexing 走到 pre-aggregation 和 denormalize,层次有了,但全是 conce"
+      },
+      {
+        "t": 1287,
+        "q": "Would you keep that table in the full joint, or would you create a CT or would you apply the filter to the join itself?",
+        "meta": "面试官在吐槽真实痛点:别人写 SELECT * 还来问他为什么不 work"
+      },
+      {
+        "t": 1751,
+        "q": "What did you think of that process? Was it a good process, or do you think you would have done it differently?",
+        "meta": "在 reflect \"what would you do differently\",这是好问题 —— 但前半段花太多时间"
+      },
+      {
+        "t": 1780,
+        "q": "What did you think of that process? Was it a good process, or do you think you would have improved it somewhere looking back at it?",
+        "meta": "注意 —— 上一条 question 框还停在 A/B test 上,但面试官其实切到了新问题(first-year s"
+      }
+    ]
+  },
+  {
     "slug": "first-citizens-bank-quantitative-analyst-i-2026-06-03",
     "date": "2026.06.03",
     "duration": "32:25",
