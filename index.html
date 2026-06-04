@@ -26330,13 +26330,20 @@ window.addEventListener('DOMContentLoaded', () => {
   // form (#/article/<slug>) is still handled by handleHashRoute on load.
   if(r === 'article' || r === 'replay'){
     setTimeout(() => {
-      let slug = null, fn = null;
+      let slug = null, fn = null, prefix = null;
       const p = location.pathname.replace(/\/+$/, '');
-      if(p.startsWith('/a-'))           { slug = p.slice(3);              fn = window.openArticleBySlug; }
-      else if(p.startsWith('/article/')){ slug = p.slice('/article/'.length); fn = window.openArticleBySlug; }
-      else if(p.startsWith('/r-'))      { slug = p.slice(3);              fn = window.openReplayBySlug; }
-      else if(p.startsWith('/replay/')) { slug = p.slice('/replay/'.length);  fn = window.openReplayBySlug; }
-      if(slug && fn){ try { fn(slug); } catch(_){ go('resources'); } }
+      if(p.startsWith('/a-'))           { slug = p.slice(3);                  fn = window.openArticleBySlug; prefix = '/a-'; }
+      else if(p.startsWith('/article/')){ slug = p.slice('/article/'.length); fn = window.openArticleBySlug; prefix = '/a-'; }
+      else if(p.startsWith('/r-'))      { slug = p.slice(3);                  fn = window.openReplayBySlug;  prefix = '/r-'; }
+      else if(p.startsWith('/replay/')) { slug = p.slice('/replay/'.length);  fn = window.openReplayBySlug;  prefix = '/r-'; }
+      if(slug && fn){
+        try {
+          fn(slug);
+          // openX → go(...) pushes routeMeta.{article|replay}.path = '/resources';
+          // restore the canonical clean URL so the address bar stays /a-foo or /r-foo.
+          history.replaceState(null, '', prefix + slug);
+        } catch(_){ go('resources'); }
+      }
     }, 60);
   }
   // If we landed on /background or /background/<slug>, sync the JS state.
@@ -30681,11 +30688,11 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
     gridEl.addEventListener('click', (e) => {
       const card = e.target.closest('[data-replay-slug]');
       if(!card) return;
-      // Direct nav to /r-<slug> instead of #/replay/ hash. See article click
-      // handler above for rationale.
+      // See article handler — open first, then replaceState afterwards to win
+      // against go('replay')'s internal push of routeMeta.replay.path='/resources'.
       const slug = card.dataset.replaySlug;
-      history.pushState(null, '', '/r-' + slug);
       if(window.openReplayBySlug) window.openReplayBySlug(slug);
+      history.replaceState(null, '', '/r-' + slug);
     });
   }
 
@@ -33230,13 +33237,14 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   pageRes.addEventListener('click', (e) => {
     const card = e.target.closest('[data-article-slug]');
     if(!card) return;
-    // Navigate directly to /a-<slug> (single-segment, served as pre-rendered
-    // /a-<slug>.html via DCDN host_redirect) instead of /resources#/article/<slug>.
-    // Skips the resources→article intermediate render and gives crawlers /
-    // sharers a clean URL.
+    // Open the article view, then push the canonical clean URL. Order matters:
+    // openArticleBySlug() calls go('article') which internally pushes
+    // routeMeta.article.path = '/resources' — so we have to run our pushState
+    // AFTER it to overwrite. Final URL: /a-<slug> (clean, shareable, doesn't
+    // route through /resources first when reopened).
     const slug = card.dataset.articleSlug;
-    history.pushState(null, '', '/a-' + slug);
     if(window.openArticleBySlug) window.openArticleBySlug(slug);
+    history.replaceState(null, '', '/a-' + slug);
   });
 
   const backBtn = pageArt.querySelector('[data-article-back]');
