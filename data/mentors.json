@@ -60,7 +60,7 @@
     "company": "Barclays · PwC",
     "company_sub": "资深金融分析师",
     "focus": [
-      "Financial Planning &amp; Analysis",
+      "Financial Planning &amp;amp; Analysis",
       "Investment Banking",
       "Banking Operations"
     ],
@@ -72,7 +72,7 @@
     "role_title": "Senior DA",
     "avatar_src": "/media/avatars/avatar_leo.68d2c665.png",
     "company": "Amazon Alexa",
-    "company_sub": "零售 &amp; 电商方向",
+    "company_sub": "零售 &amp;amp; 电商方向",
     "focus": [
       "Business Analyst",
       "Data Analytics",
@@ -143,7 +143,7 @@
     "company": "Morgan Stanley",
     "company_sub": "Senior VP · 投行后台",
     "focus": [
-      "Accounting &amp; Finance",
+      "Accounting &amp;amp; Finance",
       "Operations (IB)",
       "Behavioral Questions"
     ],
@@ -175,8 +175,7 @@
       "A/B Testing"
     ],
     "video_url": "https://rexpandcareer.com/videos/mentors/2026-06-08-peter.mp4",
-    "has_video": true,
-    "__uploading": false
+    "has_video": true
   },
   {
     "name": "Tom",
@@ -197,11 +196,11 @@
     "role_title": "Strategy",
     "avatar_src": "/media/avatars/avatar_vivian.51543cc3.png",
     "company": "LinkedIn",
-    "company_sub": "Strategy &amp; Ops",
+    "company_sub": "Strategy &amp;amp; Ops",
     "focus": [
       "Business Analyst",
       "Business Case Questions",
-      "Strategy &amp; Operations"
+      "Strategy &amp;amp; Operations"
     ],
     "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Vivian.mp4",
     "has_video": true
