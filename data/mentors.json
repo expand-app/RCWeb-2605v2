@@ -60,7 +60,7 @@
     "company": "Barclays · PwC",
     "company_sub": "资深金融分析师",
     "focus": [
-      "Financial Planning &amp;amp;amp; Analysis",
+      "Financial Planning &amp;amp; Analysis",
       "Investment Banking",
       "Banking Operations"
     ],
@@ -72,7 +72,7 @@
     "role_title": "Senior DA",
     "avatar_src": "/media/avatars/avatar_leo.68d2c665.png",
     "company": "Amazon Alexa",
-    "company_sub": "零售 &amp;amp;amp; 电商方向",
+    "company_sub": "零售 &amp;amp; 电商方向",
     "focus": [
       "Business Analyst",
       "Data Analytics",
@@ -143,7 +143,7 @@
     "company": "Morgan Stanley",
     "company_sub": "Senior VP · 投行后台",
     "focus": [
-      "Accounting &amp;amp;amp; Finance",
+      "Accounting &amp;amp; Finance",
       "Operations (IB)",
       "Behavioral Questions"
     ],
@@ -175,7 +175,8 @@
       "A/B Testing"
     ],
     "video_url": "https://rexpandcareer.com/videos/mentors/2026-06-08-6-8-.mp4",
-    "has_video": true
+    "has_video": true,
+    "__uploading": false
   },
   {
     "name": "Tom",
@@ -196,11 +197,11 @@
     "role_title": "Strategy",
     "avatar_src": "/media/avatars/avatar_vivian.51543cc3.png",
     "company": "LinkedIn",
-    "company_sub": "Strategy &amp;amp;amp; Ops",
+    "company_sub": "Strategy &amp;amp; Ops",
     "focus": [
       "Business Analyst",
       "Business Case Questions",
-      "Strategy &amp;amp;amp; Operations"
+      "Strategy &amp;amp; Operations"
     ],
     "video_url": "https://resources.rexpandcareer.com/videos/Instructor/mp4/Vivian.mp4",
     "has_video": true
@@ -231,7 +232,8 @@
       "Data Science"
     ],
     "video_url": "https://rexpandcareer.com/videos/mentors/2026-06-08-6-8-1-.mp4",
-    "has_video": true
+    "has_video": true,
+    "__uploading": false
   },
   {
     "name": "Xiao",
@@ -271,8 +273,9 @@
       "Data Analytics",
       "Business Case"
     ],
-    "video_url": null,
-    "has_video": false
+    "video_url": "https://rexpandcareer.com/videos/mentors/2026-06-08-6-8-1-1-.mp4",
+    "has_video": true,
+    "__uploading": false
   },
   {
     "name": "Ryan",
