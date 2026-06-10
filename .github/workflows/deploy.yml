@@ -38,8 +38,11 @@ jobs:
           cp index.html dist/
           cp robots.txt dist/
           cp sitemap.xml dist/
-          # Webmaster ownership files (Bing, etc.) — served at root.
+          # Webmaster ownership files (Bing, Baidu, etc.) — served at root.
           if [ -f BingSiteAuth.xml ]; then cp BingSiteAuth.xml dist/; fi
+          for f in baidu_verify_*.html google*.html; do
+            [ -f "$f" ] && cp "$f" dist/
+          done
           mkdir -p dist/media
           cp media/food.mp4 dist/media/
           cp media/food-*.png dist/media/
@@ -99,6 +102,11 @@ jobs:
           if [ -f dist/BingSiteAuth.xml ]; then
             ossutil cp -f --meta "Content-Type:application/xml; charset=utf-8#Cache-Control:no-cache" dist/BingSiteAuth.xml oss://$OSS_BUCKET/BingSiteAuth.xml
           fi
+          # Baidu verification file is plain-text-with-hash but named .html
+          # — Baidu's checker requires text/html content-type, not text/plain.
+          for vf in dist/baidu_verify_*.html; do
+            [ -f "$vf" ] && ossutil cp -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" "$vf" "oss://$OSS_BUCKET/$(basename "$vf")"
+          done
           # Nested clean-URL pages (/background/<slug>, /legal/<x>): DCDN's
           # host_redirect can't rewrite multi-segment paths on this account, so
           # we ALSO upload each as an extensionless object at its exact clean
