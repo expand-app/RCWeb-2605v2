@@ -30826,742 +30826,246 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // ===========================================================
   // @data:articles:start
   const ARTICLES = [
-    {
-      slug: '56000-0n9fr',
-      category: 'AI 与裁员',
-      date: '2026.06.16',
-      readTime: '8 min read',
-      title: '科技裁员浪潮后，56000人涌入市场，留学生该怎么办？',
-      dek: '全球科技裁员后，求职者一个月内激增4倍，北美留学生OPT窗口内竞争空前残酷，这篇告诉你怎么接住这波冲击。',
-      image: { url: '/og/intel-56000-0n9fr.png', alt: '科技裁员浪潮后，56000人涌入市场，留学生该怎么办？' },
-      body: `
-        <p class="lede">2026年全球科技裁员潮已将数万工程师、数据分析师同时推入求职市场——仅印度一地，来自Oracle、Meta、Amazon等20家大厂的主动求职者已从一年前的不足4,000人激增至56,000+人，涨幅超10倍。对于北美中国留学生而言，这意味着OPT窗口内竞争对手骤增、薪资议价空间压缩、H1B sponsorship更难拿到。越早做出策略调整，越能在这场供过于求的市场里脱颖而出。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>市场供给暴增</strong>：专业人才招聘机构Xpheno研究显示，过去一个月内主动求职的科技从业者从12,000人激增至56,000+人，一年前仅4,000人。</li>
-  <li><strong>初级岗和高级岗最难</strong>：Xpheno CEO Francis Padamadan明确指出，entry-level和senior-suite两端需求持续低迷，最受冲击。</li>
-  <li><strong>薪资议价能力下滑</strong>：ABC Consultants合伙人Ritu Sethi表示，中高级求职者主动联系量上涨30–35%，"很多人不再纠结薪资，先拿到offer再说"。</li>
-  <li><strong>AI/网安方向仍有机会</strong>：Michael Page区域总监Pranshu Upadhyay指出，具备AI、网络安全、多云经验的候选人可被录用率（placeability）依然较高。</li>
-  <li><strong>留学生OPT窗口紧迫</strong>：竞争加剧叠加雇主对签证sponsorship的顾虑，中国留学生需要主动用内推和差异化背景来抢占有限名额。</li>
-</ul>
-<p>---</p>
-<h2>2026年科技就业市场到底有多卷？数据一览</h2>
-<p>根据Xpheno针对20家大厂（含Oracle、Meta、Dell、Cisco、Amazon，其中超三分之二总部在美国）的研究，主动求职者数量在过去12个月呈指数级攀升：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">时间节点</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">主动求职人数（来自20家大厂）</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">一年前（约2025年6月）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">不足 4,000 人</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">六个月前（约2025年12月）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">约 5,000 人</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">一个月前（约2026年5月）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">约 12,000 人</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">当前（2026年6月）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">超过 56,000 人</td></tr></tbody></table>
-<p>这不是线性增长，是爆炸式涌入。Xpheno CEO Francis Padamadan将此定性为"全球事件与地缘政治挑战共同打乱了企业招聘节奏"，科技行业整体招聘量和招聘速度均处于不利状态。</p>
-<p><strong>对留学生最直接的影响：</strong></p>
-<ul>
-  <li>每一个data analyst、SDE、quant岗位背后，竞争者数量已今非昔比</li>
-  <li>公司以backfill（补缺）为主，开新HC极少，offer总量在缩水</li>
-  <li>雇主在签证sponsorship上更加保守——同等条件下，不需要sponsorship的候选人优先</li>
-</ul>
-<p>---</p>
-<h2>OPT窗口内求职竞争更激烈了，留学生怎么办？</h2>
-<p>OPT最长90天的失业期是悬在每个留学生头上的时钟。在当前市场，拿到第一个offer的时间中位数正在被拉长——Reddit上被裁员工的留言："搜索两个月，没有一个面试电话，精神上已经筋疲力尽。"另一条评论："现在的市场对early-career data岗来说就是噩梦。"</p>
-<p><strong>留学生应对策略清单：</strong></p>
-<ol>
-  <li><strong>缩短"冷启动"时间</strong>：不要等简历完美了再投，边投边迭代，OPT生效第一天就要有pipeline在跑。</li>
-  <li><strong>用内推替代盲投</strong>：当求职者数量是招聘名额的数十倍时，HR根本看不完盲投简历。Referral直接绕过初筛。</li>
-  <li><strong>优先选对方向</strong>：AI工程、网络安全、多云架构是Pranshu Upadhyay点名的高placeability方向；纯CRUD后端和传统BI岗竞争最惨烈。</li>
-  <li><strong>接受"先着陆"策略</strong>：Ritu Sethi描述的现象在留学生群体更明显——先拿到有sponsorship资格的offer，薪资可以之后再谈。</li>
-  <li><strong>主动管理LinkedIn可见度</strong>：数据显示近三分之二的求职者在过去一周内持续与recruiter互动，被动等待基本无效。</li>
-</ol>
-<p>---</p>
-<h2>H1B sponsorship难度上升，留学生如何提高胜算？</h2>
-<p>H1B本身的供需结构并未改变（每年约85,000个名额，抽签制），但2026年的外部压力使雇主愿意提供sponsorship的意愿在收缩：</p>
-<ul>
-  <li>大量有工作经验的本地人才涌入，雇主不需要承担sponsorship成本也能填满职位</li>
-  <li>地缘政治不确定性（新闻原文明确提及"overseas talent challenges"）让部分企业对H1B流程更谨慎</li>
-  <li>技术岗招聘已降至近28个月低点（ET此前报道），总体名额减少</li>
-</ul>
-<p><strong>提高H1B获得机会的核心逻辑：</strong></p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">策略</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">作用</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">拿到顶校/名企背书的项目经历</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">在简历初筛阶段脱颖而出</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">通过内推进入面试流程</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">绕过"不sponsor"的HR初筛规则</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">展示AI/数据/量化等高需求技能</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">让雇主觉得"sponsorship成本值得"</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">瞄准已有H1B sponsor历史的公司</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">降低企业内部审批阻力</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">提前建立Hiring Manager关系</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">从"候选人之一"变成"内定人选"</td></tr></tbody></table>
-<p>在Rexpand辅导的300+学员中，拿到Goldman Sachs、J.P. Morgan、Meta、Google等公司offer的学员，无一例外都是通过导师内推进入面试流程——而不是通过网申。当市场卷到这种程度，渠道的价值远超简历本身。</p>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>Q：现在科技裁员这么多，北美求职是不是没希望了？</strong> 不是没希望，而是策略要变。AI、网络安全、多云方向仍然供不应求；传统岗位需要通过内推和差异化背景来突围，盲投成功率已经很低。</p>
-<p><strong>Q：OPT期间找不到工作，有没有"续命"方案？</strong> OPT允许累计90天失业，超出则身份失效。如果在校，可以考虑申请CPT参与有实质项目的实习；另外尽早锁定有sponsorship资格的企业，避免浪费失业天数在没有结果的流程上。</p>
-<p><strong>Q：H1B抽签中了才给sponsorship，还是先给offer？</strong> 正常流程是先拿到offer并谈好H1B sponsorship条款，公司在抽签季（一般每年3月注册，4月抽签，10月1日生效）代为提交。你需要在当前OPT/STEM OPT期间先落地工作，等待H1B生效。</p>
-<p><strong>Q：有没有哪些公司在裁员后反而在大量吸收人才？</strong> 根据Xpheno研究，Deloitte、Google、Microsoft、Salesforce、Accenture、IBM等公司都在吸收这波裁员人才。Rexpand战绩中的Goldman Sachs、J.P. Morgan、Capital One、Moody's等金融科技公司在此轮科技寒冬中相对稳定，是值得重点布局的方向。</p>
-<p><strong>Q：entry-level候选人竞争最激烈，还有必要做背景提升项目吗？</strong> 恰恰相反，正因为entry-level竞争最残酷（Padamadan原话），有真实项目经历 + 导师referral的候选人才能从千人简历堆里被看见。没有差异点，HR根本没有理由点开你的简历。</p>
-<p>---</p>
-<p>当前市场的本质是：<strong>人才供给暴增 × 岗位缩水 × 签证门槛抬高</strong>，三重压力同时作用在留学生求职者身上。留在原地等市场好转不是策略——主动建立内推渠道、打磨高需求技能方向、在OPT窗口用最短时间拿到有效offer，才是当下唯一可控的路径。</p>
-<p>如果你正处于OPT求职期或准备2026届秋招，欢迎添加 <strong>Rexpand 企业微信</strong>，30分钟内1v1免费沟通你的具体情况——我们的1,000+名企在职导师覆盖200+公司，每周产出5–15个真实内推，帮你把简历变成面试机会。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['科技裁员2026', 'OPT求职竞争', 'H1B抽签', '留学生找工作', '北美科技求职', '软件工程师裁员', 'data analyst求职', 'H-1B工作签证'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMixgFBVV95cUxOaHJSVEd4aHV0eVZSUlo1aHNfd0ZfQUFDTVd2QUM0Vy1EMUZycUIzYmdaVTRGSFlDREY0UWdmNlJWQWE2N1pBVElkTFFtSC1KM3BYRlRlMkw0M1NNOTVvd3V4Q1laVUlxdUNoaE9BT2NESHVSQU9nOGlnay0xSmEyM2JzSkpqSGdLQkk2MnVOWVlOM1BfTENYZTBYeXFKb0Q1cHFITi1jZ1NxUjJOVklaZnNsZy05c0dUM29aSGNsZU9haHJpN2fSAcYBQVVfeXFMTmhyUlRHeGh1dHlWUlJaNWhzX3dGX0FBQ01XdkFDNFctRDFGcnFCM2JnWlU0RkhZQ0RGNFFnZjZSVkFhNjdaQVRJZExRbUgtSjNwWEZUZTJMNDNTTTk1b3d1eENZWlVJcXVDaGhPQU9jREh1UkFPZzhpZ2stMUphMjNic0pKakhnS0JJNjJ1TllZTjNQX0xDWGUwWHlxSm9ENXBxSE4tY2dTcVIyTlZJWmZzbGctOXNHVDNvWkhjbGVPYWhyaTdn?oc=5' }
-      ],
+  {
+    "slug": "google-59-ai-sde-lj5jd",
+    "category": "招聘市场",
+    "date": "2026.06.15",
+    "readTime": "9 min read",
+    "title": "全网炸锅！Google同时发59个职位，这个AI岗位比SDE还香？",
+    "dek": "FDE正成为2026年AI圈最抢手工程师职位，Google一口气开59个坑，薪资直逼$200K，留学生该怎么上车？",
+    "image": {
+      "url": "/og/intel-google-59-ai-sde-lj5jd.png",
+      "alt": "全网炸锅！Google同时发59个职位，这个AI岗位比SDE还香？"
     },
-
-    {
-      slug: 'google-59-ai-sde-lj5jd',
-      category: '招聘市场',
-      date: '2026.06.15',
-      readTime: '9 min read',
-      title: '全网炸锅！Google同时发59个职位，这个AI岗位比SDE还香？',
-      dek: 'FDE正成为2026年AI圈最抢手工程师职位，Google一口气开59个坑，薪资直逼$200K，留学生该怎么上车？',
-      image: { url: '/og/intel-google-59-ai-sde-lj5jd.png', alt: '全网炸锅！Google同时发59个职位，这个AI岗位比SDE还香？' },
-      body: `
-        <p class="lede">2026年5月，OpenAI宣布成立独立的部署业务公司并获得超过40亿美元融资，Google同期一次性发布59个 Forward Deployed Engineer（FDE）岗位，部分职位年薪基础工资高达 $183,000——这个两年前几乎没人听说过的职位，正在成为 AI 行业竞争最激烈的人才缺口。<strong>FDE 的核心职责是把通用 AI 模型嵌入客户的真实业务系统，是介于 SDE、产品经理和客户成功之间的复合角色，也是2026年留学生进入 AI 行业薪资最高的通道之一。</strong></p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>FDE 薪资高于普通 SDE</strong>：Google 发布的 FDE 岗位基础薪资区间为 $127,000–$183,000，资深级别进入 $200,000+。</li>
-  <li><strong>两大主要招聘方是 OpenAI 和 Google</strong>：OpenAI 通过收购 Tomoro 一次性纳入约 150 名 FDE；Google Cloud CEO 亲自上 LinkedIn 招人。</li>
-  <li><strong>FDE 不是顾问、不是售前</strong>：写代码、在客户侧独立完成从需求分析到上线全流程，是核心差异。</li>
-  <li><strong>该职位源自 Palantir</strong>：FDE 模式最早可追溯至2009年 Palantir 为 JPMorgan 部署系统的项目，并非 AI 时代的新发明。</li>
-  <li><strong>技术 + 产品双轮驱动</strong>：SDE 基础是必要条件，AI 模型理解 + 客户业务上下文理解是核心壁垒，留学生提前积累这两类经验至关重要。</li>
-</ul>
-<p>---</p>
-<h2>Forward Deployed Engineer 到底是什么职位？</h2>
-<p>FDE，直译为"前沿部署工程师"，字面上的军事隐喻非常准确：后方的工程师造通用武器，FDE 被派到前线，把这件武器改装成在<strong>那个特定战场</strong>上可用的东西。</p>
-<p><strong>FDE 把三个岗位压缩成一个人：</strong></p>
-<ul>
-  <li><strong>软件工程师</strong>：真实写代码，不只做 PPT 或方案。</li>
-  <li><strong>业务分析师</strong>：深入理解客户的数据结构、权限逻辑、工作流程。</li>
-  <li><strong>交付负责人</strong>：独立跑完需求分析 → 开发 → 系统集成 → 上线全链路，并根据用户反馈持续迭代。</li>
-</ul>
-<p>这与普通 SDE 的最大区别在于：SDE 为"所有客户"做一个通用产品，FDE 嵌入<strong>某一个客户</strong>，为其专门裁剪。Palantir 官方把 FDE 定位为"在客户环境中工作的 builder"，明确区分于支持人员和顾问；OpenAI 的表述是"把 AI 带入真实生产环境并构建针对企业的系统"；Anthropic 的 FDE 招聘描述是"嵌入最具战略价值的客户，推动 AI 进入生产"。三家公司独立画出了几乎相同的职位画像。</p>
-<p>---</p>
-<h2>FDE 和 SDE / 顾问 / 售前工程师有什么区别？</h2>
-<p>这是留学生求职时最容易混淆的问题。</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">维度</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">传统 SDE</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">管理咨询顾问</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">售前工程师</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;"><strong>FDE</strong></th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">主要产出</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">通用产品功能</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">报告 / 建议</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Demo / 方案</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>可运行的生产系统</strong></td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">与客户距离</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">远（通过 PM 中转）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">近（项目期）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">近（售前期）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>嵌入客户侧，长期</strong></td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">代码量</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">极低</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">低</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>高</strong></td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">业务理解要求</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">低–中</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>高</strong></td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI 模型理解</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">可选</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">可选</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">可选</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>核心要求</strong></td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">典型雇主</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">所有科技公司</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">McKinsey / BCG</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Salesforce / AWS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>Palantir / OpenAI / Google / Anthropic</strong></td></tr></tbody></table>
-<p>Google Cloud CEO Thomas Kurian 在 LinkedIn 原文中特别强调："这不是售前，而是与客户并肩写代码、交付解决方案的工程师。"这句话是目前对 FDE vs. 售前最权威的官方区分。</p>
-<p>---</p>
-<h2>2026年 FDE 岗位为何爆发？薪资是多少？</h2>
-<p><strong>根本原因是 LLM 的"最后一公里"部署问题。</strong> 调用 API 本身不难，真正困难的是把模型与企业自有数据、权限体系、业务流程对接，并调整到稳定可信赖的生产状态。AI 学者 Andrew Ng 将这个过程描述为"把通用模型变成适配特定公司的定制化 agentic workflow，是大量工作"——而这种工作既无法完全远程完成，客户短期内又无法独立完成，于是 FDE 这个角色被迫走上台前。</p>
-<p><strong>2026年5月的两个标志性事件：</strong></p>
-<ol>
-  <li><strong>OpenAI</strong>：成立独立子公司 OpenAI Deployment Company，获得超过 <strong>$40 亿</strong>融资（投资方包括多家咨询公司和系统集成商）；同期收购 applied-AI 公司 Tomoro，一次性获得约 <strong>150 名</strong> FDE 及部署专家。</li>
-  <li><strong>Google</strong>：CEO Thomas Kurian 亲自在 LinkedIn 发文招募 FDE；Google Cloud 同期发布 <strong>59 个</strong> FDE 职位，覆盖美国、伦敦、巴黎、香港等地。</li>
-</ol>
-<p><strong>Google FDE 公开薪资数据（2026年，来源：Google 官方职位发布）：</strong></p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">级别</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">基础薪资区间</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">典型区域</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">FDE（中级）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$127,000 – $183,000</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">纽约、亚特兰大等</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Senior FDE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$200,000+</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">主要科技中心城市</td></tr></tbody></table>
-<p>注：以上为 base salary，不含 RSU 和 bonus，实际 TC 更高。</p>
-<p><strong>FDE 源头：Palantir 的2009年实验。</strong> 据 Bloomberg 报道，最早的大规模 FDE 案例是2009年 Palantir 派遣约 <strong>120 名</strong>前沿部署工程师进驻 JPMorgan，协助搭建内部监控与威胁预警系统（平台代号 Metropolis）。Palantir 正式将 FDE 设立为官方职位是在 <strong>2022年</strong>——AI 浪潮只是点燃了一个已存在超过十年的角色。</p>
-<p>---</p>
-<h2>留学生怎么入场 FDE 赛道？需要哪些背景？</h2>
-<p>FDE 不是应届生随便能进的岗位，但也不是不可触及。从我们服务的 300+ 学员经历来看，能最快切入这条赛道的路径有以下几种：</p>
-<p><strong>核心能力要求：</strong></p>
-<ul>
-  <li><strong>SDE 基础</strong>：Python / Java 编写生产级代码，能独立完成系统集成。</li>
-  <li><strong>AI / LLM 产品理解</strong>：不只是会调 API，要理解 RAG、embedding、agent workflow 的原理与局限。</li>
-  <li><strong>客户/业务上下文理解</strong>：能快速读懂一家公司的数据结构和业务逻辑。</li>
-  <li><strong>沟通与 stakeholder 管理</strong>：这是与纯 SDE 岗位最大的附加要求。</li>
-</ul>
-<p><strong>留学生的常见短板与补救路径：</strong></p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">短板</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">推荐补救方式</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">无 AI 系统集成实际项目</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">参与结项即获 referral 的 SE / DS 方向实战项目</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">简历无名企背书，内推渠道有限</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">通过名企现役 Hiring Manager 做 LinkedIn 内推</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">不了解 enterprise AI 的业务场景</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">系统学习 AI 产品逻辑 + 阅读 Palantir / OpenAI 官方博客</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">面试不熟悉 FDE 特有的 case 题型</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">使用 2,000+ 面经题库专项练习</td></tr></tbody></table>
-<p>我们辅导的学员中，已有多人通过 SDE + AI 项目的组合背景拿到 Google、Amazon、Meta、Stripe 等公司的 offer，其中部分岗位就涵盖了 applied AI / deployment 方向。</p>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>FDE 适合应届留学生申请吗？</strong> 大多数 FDE 岗位要求至少 1-2 年工作经验，纯应届难度较高；但 Google 和 OpenAI 等公司也有 New Grad applied AI 或 deployment engineer 的对口职位，提前积累 AI 项目经验是关键。</p>
-<p><strong>FDE 和 MLE（机器学习工程师）有什么区别？</strong> MLE 专注于模型训练、调优和 MLOps，工作重心在后端系统；FDE 的核心是把已有模型集成到客户业务流程，代码量相当但业务接触更深、客户互动更多。两者技能有交集，但职业路径不同。</p>
-<p><strong>OpenAI 的 FDE 岗位在哪里可以找到？</strong> OpenAI 官网 careers 页面（openai.com/careers）和 LinkedIn 均有发布，关键词搜索"Forward Deployed Engineer"或"Deployment Engineer"即可。截至2026年6月，OpenAI Deployment Company 招聘仍在持续。</p>
-<p><strong>没有 Palantir 背景，能转到 FDE 吗？</strong> 可以。FDE 模式虽由 Palantir 发扬，但 Google、OpenAI、Anthropic 的 FDE 更侧重 AI 产品集成能力，不要求 Palantir 经历；SDE 背景 + AI 项目经验是更通用的入场券。</p>
-<p><strong>FDE 的 H1B 抽签竞争力如何？</strong> FDE 属于 specialty occupation，符合 H1B 申请资格；相比普通 SDE，FDE 岗位目前供给更少、竞争更集中于顶级 AI 公司，获得 sponsor 的概率与岗位本身薪资和公司体量强相关。</p>
-<p>---</p>
-<p>如果你正在规划 2026–2027 年的 AI 方向求职，想了解如何从背景包装、项目经验到内推拿到 FDE 或 applied AI 岗位的 offer，欢迎添加 Rexpand 企业微信，30 分钟内 1v1 免费咨询，我们会根据你的背景给出具体可执行的方案。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['Forward Deployed Engineer', 'FDE岗位', 'AI工程师职位2026', 'Google FDE薪资', 'OpenAI招聘', '留学生AI求职', 'SDE转型AI', '前沿部署工程师'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMiwwFBVV95cUxPT2hYdFAwSFFKY2t4Ymx5R0ZWYUczVHZucDdYR3lYU0NkNXhpYWxPX2tta2ZXTnZMZE96eDRNbnNkZWRXUEhoVGp3VkFVeTJIb1BnRkxqc0g4cmYzdkdCd29oc0Q0NVJWWGNUMWJ5SUdlN3dqeTJFd2NRZlB0Nl9QU0tVSVBxTVY0Z2RPMENUS1hBYVVzRTFCWHlmRk91cTBCalRGMHhNY1pwNHY0VWlsNkNOSEFBVE85R3lhU213S3huVnc?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">2026年5月，OpenAI宣布成立独立的部署业务公司并获得超过40亿美元融资，Google同期一次性发布59个 Forward Deployed Engineer（FDE）岗位，部分职位年薪基础工资高达 $183,000——这个两年前几乎没人听说过的职位，正在成为 AI 行业竞争最激烈的人才缺口。<strong>FDE 的核心职责是把通用 AI 模型嵌入客户的真实业务系统，是介于 SDE、产品经理和客户成功之间的复合角色，也是2026年留学生进入 AI 行业薪资最高的通道之一。</strong></p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>FDE 薪资高于普通 SDE</strong>：Google 发布的 FDE 岗位基础薪资区间为 $127,000–$183,000，资深级别进入 $200,000+。</li>\n  <li><strong>两大主要招聘方是 OpenAI 和 Google</strong>：OpenAI 通过收购 Tomoro 一次性纳入约 150 名 FDE；Google Cloud CEO 亲自上 LinkedIn 招人。</li>\n  <li><strong>FDE 不是顾问、不是售前</strong>：写代码、在客户侧独立完成从需求分析到上线全流程，是核心差异。</li>\n  <li><strong>该职位源自 Palantir</strong>：FDE 模式最早可追溯至2009年 Palantir 为 JPMorgan 部署系统的项目，并非 AI 时代的新发明。</li>\n  <li><strong>技术 + 产品双轮驱动</strong>：SDE 基础是必要条件，AI 模型理解 + 客户业务上下文理解是核心壁垒，留学生提前积累这两类经验至关重要。</li>\n</ul>\n<p>---</p>\n<h2>Forward Deployed Engineer 到底是什么职位？</h2>\n<p>FDE，直译为\"前沿部署工程师\"，字面上的军事隐喻非常准确：后方的工程师造通用武器，FDE 被派到前线，把这件武器改装成在<strong>那个特定战场</strong>上可用的东西。</p>\n<p><strong>FDE 把三个岗位压缩成一个人：</strong></p>\n<ul>\n  <li><strong>软件工程师</strong>：真实写代码，不只做 PPT 或方案。</li>\n  <li><strong>业务分析师</strong>：深入理解客户的数据结构、权限逻辑、工作流程。</li>\n  <li><strong>交付负责人</strong>：独立跑完需求分析 → 开发 → 系统集成 → 上线全链路，并根据用户反馈持续迭代。</li>\n</ul>\n<p>这与普通 SDE 的最大区别在于：SDE 为\"所有客户\"做一个通用产品，FDE 嵌入<strong>某一个客户</strong>，为其专门裁剪。Palantir 官方把 FDE 定位为\"在客户环境中工作的 builder\"，明确区分于支持人员和顾问；OpenAI 的表述是\"把 AI 带入真实生产环境并构建针对企业的系统\"；Anthropic 的 FDE 招聘描述是\"嵌入最具战略价值的客户，推动 AI 进入生产\"。三家公司独立画出了几乎相同的职位画像。</p>\n<p>---</p>\n<h2>FDE 和 SDE / 顾问 / 售前工程师有什么区别？</h2>\n<p>这是留学生求职时最容易混淆的问题。</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">维度</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">传统 SDE</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">管理咨询顾问</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">售前工程师</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\"><strong>FDE</strong></th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">主要产出</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">通用产品功能</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">报告 / 建议</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Demo / 方案</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>可运行的生产系统</strong></td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">与客户距离</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">远（通过 PM 中转）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">近（项目期）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">近（售前期）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>嵌入客户侧，长期</strong></td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">代码量</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">极低</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">低</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>高</strong></td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">业务理解要求</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">低–中</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>高</strong></td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI 模型理解</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">可选</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">可选</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">可选</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>核心要求</strong></td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">典型雇主</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">所有科技公司</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">McKinsey / BCG</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Salesforce / AWS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>Palantir / OpenAI / Google / Anthropic</strong></td></tr></tbody></table>\n<p>Google Cloud CEO Thomas Kurian 在 LinkedIn 原文中特别强调：\"这不是售前，而是与客户并肩写代码、交付解决方案的工程师。\"这句话是目前对 FDE vs. 售前最权威的官方区分。</p>\n<p>---</p>\n<h2>2026年 FDE 岗位为何爆发？薪资是多少？</h2>\n<p><strong>根本原因是 LLM 的\"最后一公里\"部署问题。</strong> 调用 API 本身不难，真正困难的是把模型与企业自有数据、权限体系、业务流程对接，并调整到稳定可信赖的生产状态。AI 学者 Andrew Ng 将这个过程描述为\"把通用模型变成适配特定公司的定制化 agentic workflow，是大量工作\"——而这种工作既无法完全远程完成，客户短期内又无法独立完成，于是 FDE 这个角色被迫走上台前。</p>\n<p><strong>2026年5月的两个标志性事件：</strong></p>\n<ol>\n  <li><strong>OpenAI</strong>：成立独立子公司 OpenAI Deployment Company，获得超过 <strong>$40 亿</strong>融资（投资方包括多家咨询公司和系统集成商）；同期收购 applied-AI 公司 Tomoro，一次性获得约 <strong>150 名</strong> FDE 及部署专家。</li>\n  <li><strong>Google</strong>：CEO Thomas Kurian 亲自在 LinkedIn 发文招募 FDE；Google Cloud 同期发布 <strong>59 个</strong> FDE 职位，覆盖美国、伦敦、巴黎、香港等地。</li>\n</ol>\n<p><strong>Google FDE 公开薪资数据（2026年，来源：Google 官方职位发布）：</strong></p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">级别</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">基础薪资区间</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">典型区域</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">FDE（中级）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$127,000 – $183,000</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">纽约、亚特兰大等</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Senior FDE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$200,000+</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">主要科技中心城市</td></tr></tbody></table>\n<p>注：以上为 base salary，不含 RSU 和 bonus，实际 TC 更高。</p>\n<p><strong>FDE 源头：Palantir 的2009年实验。</strong> 据 Bloomberg 报道，最早的大规模 FDE 案例是2009年 Palantir 派遣约 <strong>120 名</strong>前沿部署工程师进驻 JPMorgan，协助搭建内部监控与威胁预警系统（平台代号 Metropolis）。Palantir 正式将 FDE 设立为官方职位是在 <strong>2022年</strong>——AI 浪潮只是点燃了一个已存在超过十年的角色。</p>\n<p>---</p>\n<h2>留学生怎么入场 FDE 赛道？需要哪些背景？</h2>\n<p>FDE 不是应届生随便能进的岗位，但也不是不可触及。从我们服务的 300+ 学员经历来看，能最快切入这条赛道的路径有以下几种：</p>\n<p><strong>核心能力要求：</strong></p>\n<ul>\n  <li><strong>SDE 基础</strong>：Python / Java 编写生产级代码，能独立完成系统集成。</li>\n  <li><strong>AI / LLM 产品理解</strong>：不只是会调 API，要理解 RAG、embedding、agent workflow 的原理与局限。</li>\n  <li><strong>客户/业务上下文理解</strong>：能快速读懂一家公司的数据结构和业务逻辑。</li>\n  <li><strong>沟通与 stakeholder 管理</strong>：这是与纯 SDE 岗位最大的附加要求。</li>\n</ul>\n<p><strong>留学生的常见短板与补救路径：</strong></p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">短板</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">推荐补救方式</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">无 AI 系统集成实际项目</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">参与结项即获 referral 的 SE / DS 方向实战项目</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">简历无名企背书，内推渠道有限</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">通过名企现役 Hiring Manager 做 LinkedIn 内推</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">不了解 enterprise AI 的业务场景</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">系统学习 AI 产品逻辑 + 阅读 Palantir / OpenAI 官方博客</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">面试不熟悉 FDE 特有的 case 题型</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">使用 2,000+ 面经题库专项练习</td></tr></tbody></table>\n<p>我们辅导的学员中，已有多人通过 SDE + AI 项目的组合背景拿到 Google、Amazon、Meta、Stripe 等公司的 offer，其中部分岗位就涵盖了 applied AI / deployment 方向。</p>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>FDE 适合应届留学生申请吗？</strong> 大多数 FDE 岗位要求至少 1-2 年工作经验，纯应届难度较高；但 Google 和 OpenAI 等公司也有 New Grad applied AI 或 deployment engineer 的对口职位，提前积累 AI 项目经验是关键。</p>\n<p><strong>FDE 和 MLE（机器学习工程师）有什么区别？</strong> MLE 专注于模型训练、调优和 MLOps，工作重心在后端系统；FDE 的核心是把已有模型集成到客户业务流程，代码量相当但业务接触更深、客户互动更多。两者技能有交集，但职业路径不同。</p>\n<p><strong>OpenAI 的 FDE 岗位在哪里可以找到？</strong> OpenAI 官网 careers 页面（openai.com/careers）和 LinkedIn 均有发布，关键词搜索\"Forward Deployed Engineer\"或\"Deployment Engineer\"即可。截至2026年6月，OpenAI Deployment Company 招聘仍在持续。</p>\n<p><strong>没有 Palantir 背景，能转到 FDE 吗？</strong> 可以。FDE 模式虽由 Palantir 发扬，但 Google、OpenAI、Anthropic 的 FDE 更侧重 AI 产品集成能力，不要求 Palantir 经历；SDE 背景 + AI 项目经验是更通用的入场券。</p>\n<p><strong>FDE 的 H1B 抽签竞争力如何？</strong> FDE 属于 specialty occupation，符合 H1B 申请资格；相比普通 SDE，FDE 岗位目前供给更少、竞争更集中于顶级 AI 公司，获得 sponsor 的概率与岗位本身薪资和公司体量强相关。</p>\n<p>---</p>\n<p>如果你正在规划 2026–2027 年的 AI 方向求职，想了解如何从背景包装、项目经验到内推拿到 FDE 或 applied AI 岗位的 offer，欢迎添加 Rexpand 企业微信，30 分钟内 1v1 免费咨询，我们会根据你的背景给出具体可执行的方案。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "Forward Deployed Engineer",
+      "FDE岗位",
+      "AI工程师职位2026",
+      "Google FDE薪资",
+      "OpenAI招聘",
+      "留学生AI求职",
+      "SDE转型AI",
+      "前沿部署工程师"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPT2hYdFAwSFFKY2t4Ymx5R0ZWYUczVHZucDdYR3lYU0NkNXhpYWxPX2tta2ZXTnZMZE96eDRNbnNkZWRXUEhoVGp3VkFVeTJIb1BnRkxqc0g4cmYzdkdCd29oc0Q0NVJWWGNUMWJ5SUdlN3dqeTJFd2NRZlB0Nl9QU0tVSVBxTVY0Z2RPMENUS1hBYVVzRTFCWHlmRk91cTBCalRGMHhNY1pwNHY0VWlsNkNOSEFBVE85R3lhU213S3huVnc?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "openai-ipo-ai-gpsgd",
+    "category": "招聘市场",
+    "date": "2026.06.14",
+    "readTime": "7 min read",
+    "title": "OpenAI悄悄递交IPO申请，这波AI上市潮留学生该怎么上车？",
+    "dek": "OpenAI秘密向SEC提交S-1，预计2026年9月前上市。Anthropic刚走一步，AI独角兽IPO潮来了，留学生求职窗口怎么抓？",
+    "image": {
+      "url": "/og/intel-openai-ipo-ai-gpsgd.jpg",
+      "alt": "OpenAI悄悄递交IPO申请，这波AI上市潮留学生该怎么上车？"
     },
-
-    {
-      slug: 'openai-ipo-ai-gpsgd',
-      category: '招聘市场',
-      date: '2026.06.14',
-      readTime: '7 min read',
-      title: 'OpenAI悄悄递交IPO申请，这波AI上市潮留学生该怎么上车？',
-      dek: 'OpenAI秘密向SEC提交S-1，预计2026年9月前上市。Anthropic刚走一步，AI独角兽IPO潮来了，留学生求职窗口怎么抓？',
-      image: { url: '/og/intel-openai-ipo-ai-gpsgd.jpg', alt: 'OpenAI悄悄递交IPO申请，这波AI上市潮留学生该怎么上车？' },
-      body: `
-        <p class="lede">OpenAI已于2026年秘密向美国证券交易委员会（SEC）提交S-1上市申请，预计在2026年9月前完成IPO，此前一周Anthropic也完成了同样动作。对于持OPT/H1B的北美中国留学生来说，<strong>AI独角兽IPO前通常是扩招密度最高、offer最好拿的18个月</strong>——现在正是入场的黄金窗口。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>OpenAI秘密提交S-1</strong>：根据Axios 2026年6月报道，OpenAI已向SEC递交保密上市申请，目标时间节点为2026年9月前。</li>
-  <li><strong>AI上市潮全面开启</strong>：Anthropic上周已先行提交，Perplexity CEO暗示2028年IPO计划，AI独角兽估值竞争进入白热化阶段。</li>
-  <li><strong>IPO前扩招是规律</strong>：科技公司在上市前12-18个月通常大幅增加headcount，以展示营收增长能力，SWE / Data / AI Research岗位需求最旺。</li>
-  <li><strong>期权价值窗口</strong>：上市前以较低估值拿到的RSU/期权，在IPO后往往有显著增值空间（历史参考：Meta、Google上市前员工收益）。</li>
-  <li><strong>OPT/H1B留学生同等适用</strong>：AI公司普遍支持H1B抽签和OPT身份，部分（如OpenAI）已有公开的国际人才招聘记录。</li>
-</ul>
-<p>---</p>
-<h2>OpenAI IPO是真的吗？时间线是什么？</h2>
-<p>根据Axios于2026年6月报道，OpenAI已以"保密方式"（confidential filing）向SEC提交S-1注册申请。保密提交是美国IPO的标准前置步骤，允许公司在正式路演前不公开财务数据。</p>
-<p><strong>当前已知时间线：</strong></p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">时间节点</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">事件</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026年6月上旬</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Anthropic秘密提交S-1申请</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026年6月中旬</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">OpenAI秘密提交S-1申请（Axios报道）</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026年9月前（预期）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">OpenAI IPO重大进展 / 正式路演</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2028年（暗示）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Perplexity CEO暗示IPO计划</td></tr></tbody></table>
-<p>保密提交后，公司通常还需要<strong>15天公示期 + 路演准备</strong>，因此9月前上市窗口是紧迫但可信的时间表。</p>
-<p>值得注意的是，OpenAI目前估值已处于历史高位，IPO定价将成为全球AI行业估值的重要锚点，对整个科技招聘市场都有连锁影响。</p>
-<p>---</p>
-<h2>IPO前科技公司为什么大幅扩招？留学生能受益吗？</h2>
-<p>这是很多留学生不了解的底层逻辑：<strong>上市公司需要向投资人展示"可持续的营收增长"，而增长需要人来执行</strong>。因此IPO前12-18个月往往是扩招最激进的阶段。</p>
-<p><strong>IPO前招聘的典型特征：</strong></p>
-<ul>
-  <li><strong>headcount快速增加</strong>：工程、产品、数据岗位是最主要的扩张方向</li>
-  <li><strong>期权/RSU作为留人工具</strong>：上市前offer的股权成分往往比上市后更有弹性</li>
-  <li><strong>流程相对宽松</strong>：公司文化仍偏创业，层级少，决策快，国际候选人通过率更高</li>
-  <li><strong>H1B支持更积极</strong>：为了抢人才，AI独角兽普遍愿意承担签证费用和流程</li>
-</ul>
-<p>对于持F-1 OPT或准备H1B抽签的留学生，这一窗口尤其关键——<strong>在公司估值暴涨前拿到offer，意味着更高的薪酬竞争力和更有价值的股权</strong>。</p>
-<p>---</p>
-<h2>留学生应该关注哪些岗位？怎么进入OpenAI/Anthropic？</h2>
-<p>AI公司IPO前扩招最密集的岗位方向，与留学生的专业背景高度吻合：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">岗位方向</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">对应背景</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">典型职位</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">软件工程 SE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">CS / ECE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">SWE, Backend, Infrastructure</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">数据科学 DS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Stats / Math / CS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Data Scientist, ML Engineer</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">数据分析 DA</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Business / Stats</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Data Analyst, Analytics Engineer</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI Research</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">CS / PhD</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Research Engineer, Applied Scientist</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">量化/金融科技</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Math / Finance</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Quant Analyst, Risk Modeling</td></tr></tbody></table>
-<p><strong>如何提升进入这类公司的概率：</strong></p>
-<ol>
-  <li><strong>内推是最有效的渠道</strong>：AI独角兽的冷投简历通过率极低，来自内部员工的referral可以让简历直接进入hiring manager视野。</li>
-  <li><strong>提前建立背景项目</strong>：有实际可交付的项目（而不仅是课程作业）是区分候选人的关键。</li>
-  <li><strong>Email 触达 Hiring Team</strong>：系统性地联系目标公司的招聘负责人，回复率远高于平台投递。</li>
-</ol>
-<p>在Rexpand辅导的学员里，通过内推渠道拿到Meta、Google、Amazon、TikTok、Stripe等顶级科技公司offer的案例，绝大多数都发生在公司扩招周期内——时机本身就是竞争力。</p>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>OpenAI IPO后还能加入吗？上市前和上市后哪个更好？</strong> 上市前加入的核心优势是股权价值更高、招聘流程相对更快；上市后公司体系更成熟、职业发展路径更清晰，但股权折价明显。对于希望兼顾稳定性与upside的留学生，<strong>IPO前6-12个月是最优入场时间</strong>。</p>
-<p><strong>持OPT身份能申请OpenAI/Anthropic这类AI公司吗？</strong> 可以。OpenAI、Anthropic等主要AI公司均公开支持OPT和H1B身份，部分岗位甚至明确标注"will sponsor visa"。建议在offer阶段提前确认公司的H1B抽签政策和timing。</p>
-<p><strong>AI公司IPO会影响整体科技行业招聘吗？</strong> 历史上，头部科技公司IPO往往带动整个行业的招聘信心和预算释放。OpenAI、Anthropic相继上市，预计会推动2026年下半年至2027年科技行业整体招聘的回暖，对留学生求职是正面信号。</p>
-<p><strong>Perplexity是否也在招人？什么时候IPO？</strong> Perplexity CEO已暗示2028年IPO计划。这意味着Perplexity目前正处于IPO前扩张期，是值得关注的目标公司之一。</p>
-<p><strong>我没有名校背景，还能申请这些AI独角兽吗？</strong> 背景不是唯一门槛。AI公司更看重可验证的项目经验、清晰的技术表达能力和真实的referral来源。通过系统性的背景提升 + 精准内推，非名校学员同样有成功案例。</p>
-<p>---</p>
-<p>现在正是布局AI公司机会的最佳时间节点——如果你想了解如何在OpenAI、Anthropic等公司IPO扩招潮中拿到内推和offer，欢迎添加企业微信与Rexpand顾问进行<strong>1v1免费咨询，30分钟内回复</strong>，我们会根据你的背景给出具体的行动计划。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['OpenAI IPO', 'AI公司上市2026', '留学生求职', '科技公司扩招', 'H1B工作签证', 'OPT求职', 'AI独角兽招聘', 'OpenAI招聘'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMiVkFVX3lxTE9zYlJFR3NXNW5ndGtZeVFKRHUyRkdVMmNJZHF6MENydkVtODlaNWd4Zk04a0t6QktUS25QNzdwd09kLWl6VWVRZlZkLVdNNmlaeVZlR1l3?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">OpenAI已于2026年秘密向美国证券交易委员会（SEC）提交S-1上市申请，预计在2026年9月前完成IPO，此前一周Anthropic也完成了同样动作。对于持OPT/H1B的北美中国留学生来说，<strong>AI独角兽IPO前通常是扩招密度最高、offer最好拿的18个月</strong>——现在正是入场的黄金窗口。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>OpenAI秘密提交S-1</strong>：根据Axios 2026年6月报道，OpenAI已向SEC递交保密上市申请，目标时间节点为2026年9月前。</li>\n  <li><strong>AI上市潮全面开启</strong>：Anthropic上周已先行提交，Perplexity CEO暗示2028年IPO计划，AI独角兽估值竞争进入白热化阶段。</li>\n  <li><strong>IPO前扩招是规律</strong>：科技公司在上市前12-18个月通常大幅增加headcount，以展示营收增长能力，SWE / Data / AI Research岗位需求最旺。</li>\n  <li><strong>期权价值窗口</strong>：上市前以较低估值拿到的RSU/期权，在IPO后往往有显著增值空间（历史参考：Meta、Google上市前员工收益）。</li>\n  <li><strong>OPT/H1B留学生同等适用</strong>：AI公司普遍支持H1B抽签和OPT身份，部分（如OpenAI）已有公开的国际人才招聘记录。</li>\n</ul>\n<p>---</p>\n<h2>OpenAI IPO是真的吗？时间线是什么？</h2>\n<p>根据Axios于2026年6月报道，OpenAI已以\"保密方式\"（confidential filing）向SEC提交S-1注册申请。保密提交是美国IPO的标准前置步骤，允许公司在正式路演前不公开财务数据。</p>\n<p><strong>当前已知时间线：</strong></p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">时间节点</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">事件</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026年6月上旬</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Anthropic秘密提交S-1申请</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026年6月中旬</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">OpenAI秘密提交S-1申请（Axios报道）</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026年9月前（预期）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">OpenAI IPO重大进展 / 正式路演</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2028年（暗示）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Perplexity CEO暗示IPO计划</td></tr></tbody></table>\n<p>保密提交后，公司通常还需要<strong>15天公示期 + 路演准备</strong>，因此9月前上市窗口是紧迫但可信的时间表。</p>\n<p>值得注意的是，OpenAI目前估值已处于历史高位，IPO定价将成为全球AI行业估值的重要锚点，对整个科技招聘市场都有连锁影响。</p>\n<p>---</p>\n<h2>IPO前科技公司为什么大幅扩招？留学生能受益吗？</h2>\n<p>这是很多留学生不了解的底层逻辑：<strong>上市公司需要向投资人展示\"可持续的营收增长\"，而增长需要人来执行</strong>。因此IPO前12-18个月往往是扩招最激进的阶段。</p>\n<p><strong>IPO前招聘的典型特征：</strong></p>\n<ul>\n  <li><strong>headcount快速增加</strong>：工程、产品、数据岗位是最主要的扩张方向</li>\n  <li><strong>期权/RSU作为留人工具</strong>：上市前offer的股权成分往往比上市后更有弹性</li>\n  <li><strong>流程相对宽松</strong>：公司文化仍偏创业，层级少，决策快，国际候选人通过率更高</li>\n  <li><strong>H1B支持更积极</strong>：为了抢人才，AI独角兽普遍愿意承担签证费用和流程</li>\n</ul>\n<p>对于持F-1 OPT或准备H1B抽签的留学生，这一窗口尤其关键——<strong>在公司估值暴涨前拿到offer，意味着更高的薪酬竞争力和更有价值的股权</strong>。</p>\n<p>---</p>\n<h2>留学生应该关注哪些岗位？怎么进入OpenAI/Anthropic？</h2>\n<p>AI公司IPO前扩招最密集的岗位方向，与留学生的专业背景高度吻合：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">岗位方向</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">对应背景</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">典型职位</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">软件工程 SE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">CS / ECE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">SWE, Backend, Infrastructure</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">数据科学 DS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Stats / Math / CS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Data Scientist, ML Engineer</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">数据分析 DA</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Business / Stats</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Data Analyst, Analytics Engineer</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI Research</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">CS / PhD</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Research Engineer, Applied Scientist</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">量化/金融科技</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Math / Finance</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Quant Analyst, Risk Modeling</td></tr></tbody></table>\n<p><strong>如何提升进入这类公司的概率：</strong></p>\n<ol>\n  <li><strong>内推是最有效的渠道</strong>：AI独角兽的冷投简历通过率极低，来自内部员工的referral可以让简历直接进入hiring manager视野。</li>\n  <li><strong>提前建立背景项目</strong>：有实际可交付的项目（而不仅是课程作业）是区分候选人的关键。</li>\n  <li><strong>Email 触达 Hiring Team</strong>：系统性地联系目标公司的招聘负责人，回复率远高于平台投递。</li>\n</ol>\n<p>在Rexpand辅导的学员里，通过内推渠道拿到Meta、Google、Amazon、TikTok、Stripe等顶级科技公司offer的案例，绝大多数都发生在公司扩招周期内——时机本身就是竞争力。</p>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>OpenAI IPO后还能加入吗？上市前和上市后哪个更好？</strong> 上市前加入的核心优势是股权价值更高、招聘流程相对更快；上市后公司体系更成熟、职业发展路径更清晰，但股权折价明显。对于希望兼顾稳定性与upside的留学生，<strong>IPO前6-12个月是最优入场时间</strong>。</p>\n<p><strong>持OPT身份能申请OpenAI/Anthropic这类AI公司吗？</strong> 可以。OpenAI、Anthropic等主要AI公司均公开支持OPT和H1B身份，部分岗位甚至明确标注\"will sponsor visa\"。建议在offer阶段提前确认公司的H1B抽签政策和timing。</p>\n<p><strong>AI公司IPO会影响整体科技行业招聘吗？</strong> 历史上，头部科技公司IPO往往带动整个行业的招聘信心和预算释放。OpenAI、Anthropic相继上市，预计会推动2026年下半年至2027年科技行业整体招聘的回暖，对留学生求职是正面信号。</p>\n<p><strong>Perplexity是否也在招人？什么时候IPO？</strong> Perplexity CEO已暗示2028年IPO计划。这意味着Perplexity目前正处于IPO前扩张期，是值得关注的目标公司之一。</p>\n<p><strong>我没有名校背景，还能申请这些AI独角兽吗？</strong> 背景不是唯一门槛。AI公司更看重可验证的项目经验、清晰的技术表达能力和真实的referral来源。通过系统性的背景提升 + 精准内推，非名校学员同样有成功案例。</p>\n<p>---</p>\n<p>现在正是布局AI公司机会的最佳时间节点——如果你想了解如何在OpenAI、Anthropic等公司IPO扩招潮中拿到内推和offer，欢迎添加企业微信与Rexpand顾问进行<strong>1v1免费咨询，30分钟内回复</strong>，我们会根据你的背景给出具体的行动计划。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "OpenAI IPO",
+      "AI公司上市2026",
+      "留学生求职",
+      "科技公司扩招",
+      "H1B工作签证",
+      "OPT求职",
+      "AI独角兽招聘",
+      "OpenAI招聘"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9zYlJFR3NXNW5ndGtZeVFKRHUyRkdVMmNJZHF6MENydkVtODlaNWd4Zk04a0t6QktUS25QNzdwd09kLWl6VWVRZlZkLVdNNmlaeVZlR1l3?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "nvidia-2026-ai-apple-y7adt",
+    "category": "招聘市场",
+    "date": "2026.06.13",
+    "readTime": "8 min read",
+    "title": "Nvidia首次夺冠2026最佳雇主！AI芯片薪资碾压Apple和微软",
+    "dek": "WSJ 2026最佳雇主榜单出炉，Nvidia首次登顶，超越Apple、Microsoft，AI芯片赛道成留学生求职新风向标。",
+    "image": {
+      "url": "/og/intel-nvidia-2026-ai-apple-y7adt.jpg",
+      "alt": "Nvidia首次夺冠2026最佳雇主！AI芯片薪资碾压Apple和微软"
     },
-
-    {
-      slug: 'nvidia-2026-ai-apple-y7adt',
-      category: '招聘市场',
-      date: '2026.06.13',
-      readTime: '8 min read',
-      title: 'Nvidia首次夺冠2026最佳雇主！AI芯片薪资碾压Apple和微软',
-      dek: 'WSJ 2026最佳雇主榜单出炉，Nvidia首次登顶，超越Apple、Microsoft，AI芯片赛道成留学生求职新风向标。',
-      image: { url: '/og/intel-nvidia-2026-ai-apple-y7adt.jpg', alt: 'Nvidia首次夺冠2026最佳雇主！AI芯片薪资碾压Apple和微软' },
-      body: `
-        <p class="lede">2026年，Nvidia在《华尔街日报》最佳雇主榜单中<strong>首次登顶</strong>，超越Apple、Microsoft等传统科技巨头，成为全美最受认可的雇主。这对正在求职的北美中国留学生意味着：<strong>AI芯片与基础设施赛道正在取代传统大厂，成为薪资最高、增长最快的新方向</strong>。如果你还在只盯着FAANG投简历，2026年的就业市场已经悄悄换牌了。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>Nvidia 2026年首次夺冠</strong> WSJ最佳雇主榜，超越Apple、Microsoft，标志着AI基础设施公司吸引力达到历史新高。</li>
-  <li><strong>AI芯片公司薪资与期权待遇</strong>全面领先传统科技大厂，是留学生争取高TC（总薪酬）的核心赛道之一。</li>
-  <li><strong>留学生求职方向需要调整</strong>：软件工程（SDE）、数据科学（DS）、ML系统、硬件验证等岗位在AI芯片公司需求激增。</li>
-  <li><strong>H1B sponsorship</strong>：Nvidia等AI头部公司历来是留学生H-1B的重要赞助方，求职吸引力进一步上升。</li>
-  <li>内推（referral）是进入这类竞争激烈公司的最高效路径，冷投简历通过率极低。</li>
-</ul>
-<p>---</p>
-<h2>Nvidia 为什么能在2026年登顶最佳雇主？</h2>
-<p>根据《华尔街日报》2026年最佳公司榜单（来源：WSJ，2026年），Nvidia此次是<strong>首次</strong>超越Apple、Microsoft等长期霸榜巨头登顶第一，背后逻辑清晰：</p>
-<ul>
-  <li><strong>AI算力需求爆炸式增长</strong>，Nvidia GPU成为全球AI训练与推理的核心基础设施，公司地位无可替代。</li>
-  <li><strong>薪资与股权回报</strong>：AI芯片赛道的RSU（限制性股票）涨幅远超传统软件公司，员工总薪酬（TC）竞争力极强。</li>
-  <li><strong>技术挑战密度高</strong>：对工程师来说，Nvidia代表的是硬核技术影响力，不仅仅是待遇，也是简历含金量。</li>
-</ul>
-<p>对留学生而言，这一变化意味着求职目标公司清单需要更新——AI基础设施公司的吸引力已超越部分传统大厂。</p>
-<p>---</p>
-<h2>留学生在AI芯片公司能做什么岗位？</h2>
-<p>AI芯片与基础设施公司（Nvidia、AMD、Qualcomm、Broadcom等）并不只招芯片硬件工程师，留学生可以切入的方向相当多元：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">岗位方向</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">对应专业背景</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">留学生可行性</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Software Engineer (CUDA / 系统优化)</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">CS、CE、EE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐⭐</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">ML Infrastructure Engineer</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">CS、DS、统计</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐⭐</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Data Scientist / Data Analyst</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">统计、数学、CS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Hardware Verification Engineer</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">EE、CE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Quantitative Analyst / Finance</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">数学、金融工程</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Product / Program Manager</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">理工科背景优先</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐</td></tr></tbody></table>
-<p><strong>核心竞争力要求</strong>：扎实的算法基础（LeetCode Hard级别）、系统设计能力（分布式 / GPU架构加分）、以及能体现"做过真实大规模项目"的项目经验。</p>
-<p>Nvidia等公司的面试流程通常包括：</p>
-<ol>
-  <li>OA（在线测评）</li>
-  <li>1–2轮电话/视频技术面</li>
-  <li>Virtual On-site（4–6轮，含系统设计、behavioral）</li>
-</ol>
-<p>---</p>
-<h2>2026年留学生求职，为什么必须重视内推（Referral）？</h2>
-<p>无论是Nvidia还是其他AI头部公司，<strong>冷投简历（cold apply）的通过率在2026年持续下降</strong>，而内推仍是突破简历筛选的最有效方式。</p>
-<p>原因很直接：</p>
-<ul>
-  <li>AI公司JD发出后往往在24–72小时内收到数百甚至数千份申请。</li>
-  <li>没有内推的简历在ATS系统中极易被过滤，即便背景完全匹配。</li>
-  <li><strong>有Hiring Manager内推的简历</strong>，进入人工审核的概率显著更高。</li>
-</ul>
-<p>在Rexpand辅导的学员中，进入Nvidia、Meta、Amazon、Google等AI方向岗位的学员，<strong>绝大多数至少有一封来自在职员工的referral</strong>，这不是可选项，而是标配。</p>
-<p><strong>有效内推的三个层级：</strong></p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">内推来源</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">含金量</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">获取难度</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">同部门 Hiring Manager 直接推荐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">同组 Senior / Staff Engineer 推荐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中高</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">普通员工系统提交 referral</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中</td></tr></tbody></table>
-<p>Rexpand 的 LinkedIn 内推 Agent 和 Email 内推 Agent（Claude驱动Multi-Agent系统）每周可触达 <strong>100+ Hiring Team</strong>，产出 <strong>5–15 封有效内推</strong>，Email库超过 <strong>100万条</strong>，回复率约 <strong>20%</strong>——这是我们帮学员突破冷投困境的核心工具。</p>
-<p>---</p>
-<h2>H1B Sponsorship：AI芯片公司对留学生友好吗？</h2>
-<p>这是留学生在选择目标公司时必须考量的因素。</p>
-<p>根据历史USCIS公开数据（LCA数据库）：</p>
-<ul>
-  <li>Nvidia、AMD等AI芯片头部公司<strong>长期稳定提供H-1B sponsorship</strong>，是留学生OPT转H1B的可靠路径之一。</li>
-  <li>AI基础设施赛道的公司因技术人才稀缺，<strong>对H1B申请的支持力度普遍强于部分中小型公司</strong>。</li>
-  <li>2026 H-1B常规抽签已于2025年底至2026年初完成注册（FY2027抽签，注册费 $215/人），如果你尚未中签，<strong>OPT期间积累AI公司经验、争取下一轮抽签</strong>仍是主流路径。</li>
-</ul>
-<p><strong>留学生时间线参考（以2026年毕业为例）：</strong></p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">时间节点</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">关键动作</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026年6–8月</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">OPT申请/激活，全力冲刺秋招</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026年9–11月</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">秋招主力期，AI公司提前批截止</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2027年2–3月</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">FY2028 H-1B注册窗口</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2027年4月</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">H-1B抽签结果</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2027年10月1日</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">H-1B身份生效</td></tr></tbody></table>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>Nvidia 2026年是第几次上WSJ最佳雇主榜？</strong> 这是Nvidia<strong>首次</strong>登顶WSJ最佳雇主榜第一名，此前Apple、Microsoft等长期占据榜首位置。</p>
-<p><strong>AI芯片公司和传统大厂（FAANG）薪资相比哪个更高？</strong> 根据WSJ 2026年榜单背景，AI芯片与基础设施公司的薪资及股权待遇已全面领先传统大厂，但具体数字因岗位层级和地点不同差异较大，建议参考Levels.fyi等平台的最新数据。</p>
-<p><strong>没有芯片/硬件背景的留学生能进Nvidia吗？</strong> 可以。Nvidia大量招募软件工程师、ML系统工程师、数据科学家等纯软件方向岗位，CS/DS/统计背景的留学生具备申请资格，重点是算法能力和系统设计。</p>
-<p><strong>如何获得Nvidia或AI公司的内推？</strong> 主要途径：LinkedIn主动联系在职员工、校友网络、行业社群，或通过Rexpand的内推Agent系统批量触达Hiring Team获取referral，效率远高于单独冷联系。</p>
-<p><strong>OPT期间能在Nvidia等AI公司工作吗？</strong> 可以，F-1 OPT授权期内（通常12个月，STEM延期可至36个月）可在任何合法授权雇主处工作，Nvidia等公司均支持OPT身份入职并后续sponsorH1B。</p>
-<p>---</p>
-<p>2026年的求职市场已经给出了清晰信号：<strong>AI基础设施赛道是最值得押注的方向，而内推+背景提升是进入这条赛道的最短路径。</strong> 如果你正在规划Nvidia、Meta、Google、Goldman Sachs等头部公司的求职策略，欢迎添加 Rexpand 企业微信，<strong>30分钟内</strong>获得1v1免费咨询——我们的导师团队覆盖200+公司在职Hiring Manager，帮你少走弯路。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['Nvidia最佳雇主2026', 'AI芯片公司求职', '留学生求职方向2026', 'Nvidia薪资待遇', 'WSJ最佳公司榜单', 'H1B友好公司', 'AI基础设施公司offer', '留学生内推'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMihwFBVV95cUxPZEJkVmJGckNPTlZWZ2dfQWFCcHBjdWkxUmNheFlGY29mNUJjTTI5elN6R19GZHJKVllvYW5penRFdVY3Qng4eVBESUFiWnIzS09nbklhMHo0TXhQQUNrRWQwTHc4S1U2dFJEeWhDU0Y1bVp3dTU1b1hRQ3g0bkFRVTBlZGRNOUE?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">2026年，Nvidia在《华尔街日报》最佳雇主榜单中<strong>首次登顶</strong>，超越Apple、Microsoft等传统科技巨头，成为全美最受认可的雇主。这对正在求职的北美中国留学生意味着：<strong>AI芯片与基础设施赛道正在取代传统大厂，成为薪资最高、增长最快的新方向</strong>。如果你还在只盯着FAANG投简历，2026年的就业市场已经悄悄换牌了。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>Nvidia 2026年首次夺冠</strong> WSJ最佳雇主榜，超越Apple、Microsoft，标志着AI基础设施公司吸引力达到历史新高。</li>\n  <li><strong>AI芯片公司薪资与期权待遇</strong>全面领先传统科技大厂，是留学生争取高TC（总薪酬）的核心赛道之一。</li>\n  <li><strong>留学生求职方向需要调整</strong>：软件工程（SDE）、数据科学（DS）、ML系统、硬件验证等岗位在AI芯片公司需求激增。</li>\n  <li><strong>H1B sponsorship</strong>：Nvidia等AI头部公司历来是留学生H-1B的重要赞助方，求职吸引力进一步上升。</li>\n  <li>内推（referral）是进入这类竞争激烈公司的最高效路径，冷投简历通过率极低。</li>\n</ul>\n<p>---</p>\n<h2>Nvidia 为什么能在2026年登顶最佳雇主？</h2>\n<p>根据《华尔街日报》2026年最佳公司榜单（来源：WSJ，2026年），Nvidia此次是<strong>首次</strong>超越Apple、Microsoft等长期霸榜巨头登顶第一，背后逻辑清晰：</p>\n<ul>\n  <li><strong>AI算力需求爆炸式增长</strong>，Nvidia GPU成为全球AI训练与推理的核心基础设施，公司地位无可替代。</li>\n  <li><strong>薪资与股权回报</strong>：AI芯片赛道的RSU（限制性股票）涨幅远超传统软件公司，员工总薪酬（TC）竞争力极强。</li>\n  <li><strong>技术挑战密度高</strong>：对工程师来说，Nvidia代表的是硬核技术影响力，不仅仅是待遇，也是简历含金量。</li>\n</ul>\n<p>对留学生而言，这一变化意味着求职目标公司清单需要更新——AI基础设施公司的吸引力已超越部分传统大厂。</p>\n<p>---</p>\n<h2>留学生在AI芯片公司能做什么岗位？</h2>\n<p>AI芯片与基础设施公司（Nvidia、AMD、Qualcomm、Broadcom等）并不只招芯片硬件工程师，留学生可以切入的方向相当多元：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">岗位方向</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">对应专业背景</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">留学生可行性</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Software Engineer (CUDA / 系统优化)</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">CS、CE、EE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐⭐</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">ML Infrastructure Engineer</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">CS、DS、统计</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐⭐</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Data Scientist / Data Analyst</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">统计、数学、CS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Hardware Verification Engineer</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">EE、CE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Quantitative Analyst / Finance</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">数学、金融工程</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Product / Program Manager</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">理工科背景优先</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐</td></tr></tbody></table>\n<p><strong>核心竞争力要求</strong>：扎实的算法基础（LeetCode Hard级别）、系统设计能力（分布式 / GPU架构加分）、以及能体现\"做过真实大规模项目\"的项目经验。</p>\n<p>Nvidia等公司的面试流程通常包括：</p>\n<ol>\n  <li>OA（在线测评）</li>\n  <li>1–2轮电话/视频技术面</li>\n  <li>Virtual On-site（4–6轮，含系统设计、behavioral）</li>\n</ol>\n<p>---</p>\n<h2>2026年留学生求职，为什么必须重视内推（Referral）？</h2>\n<p>无论是Nvidia还是其他AI头部公司，<strong>冷投简历（cold apply）的通过率在2026年持续下降</strong>，而内推仍是突破简历筛选的最有效方式。</p>\n<p>原因很直接：</p>\n<ul>\n  <li>AI公司JD发出后往往在24–72小时内收到数百甚至数千份申请。</li>\n  <li>没有内推的简历在ATS系统中极易被过滤，即便背景完全匹配。</li>\n  <li><strong>有Hiring Manager内推的简历</strong>，进入人工审核的概率显著更高。</li>\n</ul>\n<p>在Rexpand辅导的学员中，进入Nvidia、Meta、Amazon、Google等AI方向岗位的学员，<strong>绝大多数至少有一封来自在职员工的referral</strong>，这不是可选项，而是标配。</p>\n<p><strong>有效内推的三个层级：</strong></p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">内推来源</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">含金量</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">获取难度</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">同部门 Hiring Manager 直接推荐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">同组 Senior / Staff Engineer 推荐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中高</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">普通员工系统提交 referral</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中</td></tr></tbody></table>\n<p>Rexpand 的 LinkedIn 内推 Agent 和 Email 内推 Agent（Claude驱动Multi-Agent系统）每周可触达 <strong>100+ Hiring Team</strong>，产出 <strong>5–15 封有效内推</strong>，Email库超过 <strong>100万条</strong>，回复率约 <strong>20%</strong>——这是我们帮学员突破冷投困境的核心工具。</p>\n<p>---</p>\n<h2>H1B Sponsorship：AI芯片公司对留学生友好吗？</h2>\n<p>这是留学生在选择目标公司时必须考量的因素。</p>\n<p>根据历史USCIS公开数据（LCA数据库）：</p>\n<ul>\n  <li>Nvidia、AMD等AI芯片头部公司<strong>长期稳定提供H-1B sponsorship</strong>，是留学生OPT转H1B的可靠路径之一。</li>\n  <li>AI基础设施赛道的公司因技术人才稀缺，<strong>对H1B申请的支持力度普遍强于部分中小型公司</strong>。</li>\n  <li>2026 H-1B常规抽签已于2025年底至2026年初完成注册（FY2027抽签，注册费 $215/人），如果你尚未中签，<strong>OPT期间积累AI公司经验、争取下一轮抽签</strong>仍是主流路径。</li>\n</ul>\n<p><strong>留学生时间线参考（以2026年毕业为例）：</strong></p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">时间节点</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">关键动作</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026年6–8月</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">OPT申请/激活，全力冲刺秋招</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026年9–11月</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">秋招主力期，AI公司提前批截止</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2027年2–3月</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">FY2028 H-1B注册窗口</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2027年4月</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">H-1B抽签结果</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2027年10月1日</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">H-1B身份生效</td></tr></tbody></table>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>Nvidia 2026年是第几次上WSJ最佳雇主榜？</strong> 这是Nvidia<strong>首次</strong>登顶WSJ最佳雇主榜第一名，此前Apple、Microsoft等长期占据榜首位置。</p>\n<p><strong>AI芯片公司和传统大厂（FAANG）薪资相比哪个更高？</strong> 根据WSJ 2026年榜单背景，AI芯片与基础设施公司的薪资及股权待遇已全面领先传统大厂，但具体数字因岗位层级和地点不同差异较大，建议参考Levels.fyi等平台的最新数据。</p>\n<p><strong>没有芯片/硬件背景的留学生能进Nvidia吗？</strong> 可以。Nvidia大量招募软件工程师、ML系统工程师、数据科学家等纯软件方向岗位，CS/DS/统计背景的留学生具备申请资格，重点是算法能力和系统设计。</p>\n<p><strong>如何获得Nvidia或AI公司的内推？</strong> 主要途径：LinkedIn主动联系在职员工、校友网络、行业社群，或通过Rexpand的内推Agent系统批量触达Hiring Team获取referral，效率远高于单独冷联系。</p>\n<p><strong>OPT期间能在Nvidia等AI公司工作吗？</strong> 可以，F-1 OPT授权期内（通常12个月，STEM延期可至36个月）可在任何合法授权雇主处工作，Nvidia等公司均支持OPT身份入职并后续sponsorH1B。</p>\n<p>---</p>\n<p>2026年的求职市场已经给出了清晰信号：<strong>AI基础设施赛道是最值得押注的方向，而内推+背景提升是进入这条赛道的最短路径。</strong> 如果你正在规划Nvidia、Meta、Google、Goldman Sachs等头部公司的求职策略，欢迎添加 Rexpand 企业微信，<strong>30分钟内</strong>获得1v1免费咨询——我们的导师团队覆盖200+公司在职Hiring Manager，帮你少走弯路。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "Nvidia最佳雇主2026",
+      "AI芯片公司求职",
+      "留学生求职方向2026",
+      "Nvidia薪资待遇",
+      "WSJ最佳公司榜单",
+      "H1B友好公司",
+      "AI基础设施公司offer",
+      "留学生内推"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPZEJkVmJGckNPTlZWZ2dfQWFCcHBjdWkxUmNheFlGY29mNUJjTTI5elN6R19GZHJKVllvYW5penRFdVY3Qng4eVBESUFiWnIzS09nbklhMHo0TXhQQUNrRWQwTHc4S1U2dFJEeWhDU0Y1bVp3dTU1b1hRQ3g0bkFRVTBlZGRNOUE?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "anthropic-2-ai-yrltr",
+    "category": "招聘市场",
+    "date": "2026.06.11",
+    "readTime": "8 min read",
+    "title": "Anthropic砸2亿研究AI抢饭碗，留学生该怎么看？",
+    "dek": "Anthropic宣布设立2亿美元基金，专研AI导致的失业问题。这笔钱说明了什么？对在美求职的留学生又意味着什么？",
+    "image": {
+      "url": "/og/intel-anthropic-2-ai-yrltr.png",
+      "alt": "Anthropic砸2亿研究AI抢饭碗，留学生该怎么看？"
     },
-
-    {
-      slug: 'anthropic-2-ai-yrltr',
-      category: '招聘市场',
-      date: '2026.06.11',
-      readTime: '8 min read',
-      title: 'Anthropic砸2亿研究AI抢饭碗，留学生该怎么看？',
-      dek: 'Anthropic宣布设立2亿美元基金，专研AI导致的失业问题。这笔钱说明了什么？对在美求职的留学生又意味着什么？',
-      image: { url: '/og/intel-anthropic-2-ai-yrltr.png', alt: 'Anthropic砸2亿研究AI抢饭碗，留学生该怎么看？' },
-      body: `
-        <p class="lede">Anthropic 于 2026 年宣布设立 <strong>2 亿美元（$200M）专项基金</strong>，专门研究 AI 浪潮引发的工作丧失问题，并资助经济安全保障方案。对于正在 OPT/H1B 周期内求职的北美中国留学生来说，这既是一个行业信号——AI 对白领岗位的冲击已严峻到需要顶级 AI 公司自掏腰包研究——也是一扇新开的职业窗口：AI 安全、劳动经济学、政策研究正在成为高薪新兴赛道。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>Anthropic 设立 $200M 基金</strong>，方向是研究 AI 造成的失业冲击及经济保障方案，是迄今为止 AI 头部公司在此议题上最大规模的单笔投入。</li>
-  <li><strong>AI 对就业的冲击已从"预测"变成"行动议题"</strong>，科技公司、政府、学术机构对 AI Policy / AI Safety 方向的人才需求正在快速上升。</li>
-  <li><strong>留学生直接受影响</strong>：SDE、DA、DS 等传统求职热门岗位正在被 AI 压缩 HC（headcount），同时 AI Safety Research、Economic Policy Analyst、Trust &amp; Safety 等新岗位在加速招聘。</li>
-  <li><strong>把危机变机会的关键</strong>：在简历和面试中展示"理解 AI 社会影响"的复合能力，远比单纯堆 LeetCode 更有差异化。</li>
-  <li><strong>行动窗口在 2026 年下半年</strong>：多家机构将因这笔基金的落地开始发布研究类职位，是 OPT STEM Extension 学员布局的好时机。</li>
-</ul>
-<p>---</p>
-<h2>Anthropic 为什么要花 2 亿美元研究"AI 抢饭碗"？</h2>
-<p>Anthropic 是 Claude 系列大模型的开发商，也是当前全球估值最高的 AI 安全公司之一。此次宣布 $200M 专项基金，研究方向明确指向两件事：</p>
-<ol>
-  <li><strong>AI 对就业市场的冲击机制</strong>——哪些职位、哪些行业最脆弱；</li>
-  <li><strong>经济保障方案的可行性</strong>——包括再培训、收入支持、政策设计等。</li>
-</ol>
-<p>这背后有一个行业逻辑：AI 公司如果不主动承担社会责任叙事，监管压力会更大。Anthropic 此举既是真实的研究投入，也是在华盛顿政策层面建立信誉的战略动作。</p>
-<p>对求职者的启示：<strong>这笔钱最终会流向研究人员、政策分析师、数据科学家、经济学家</strong>——而不只是 AI 工程师。</p>
-<p>---</p>
-<h2>2026 年哪些岗位因 AI 失业议题而增长？</h2>
-<p>这是留学生最应该关心的实际问题。以下是因"AI 与就业"这一议题直接受益的职位方向：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">职位方向</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">代表雇主类型</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">所需背景</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">OPT/H1B 友好度</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI Policy Analyst</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">智库、联邦机构、科技公司政策部门</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">公共政策 / 经济学 / CS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中（需英文写作强）</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI Safety Researcher</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Anthropic、OpenAI、DeepMind、学术机构</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">ML / Statistics / 哲学</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（技术背景优先）</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Labor Economist / Research Scientist</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">大学、央行、咨询公司</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">经济学 PhD/Master</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中高</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Trust &amp; Safety Analyst</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Meta、Google、TikTok、Amazon</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">社科 / 数据分析 / 法律</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（标准 Tech 流程）</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Data Analyst – Workforce Analytics</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">企业 HR Tech、咨询</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">DA / DS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（量大、标准化）</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Quantitative Researcher – Macro/ESG</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">对冲基金、投行</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">数学 / 统计 / 金融</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（量化背景）</td></tr></tbody></table>
-<p><strong>我们辅导的学员里</strong>，近两个 cycle 内转向 Trust &amp; Safety 和 Workforce Analytics 方向的同学，面试转化率明显高于纯 SDE 赛道——因为竞争密度更低，而这类岗位在 AI 浪潮下反而扩编。</p>
-<p>---</p>
-<h2>AI 抢走的到底是哪些留学生常投的岗位？</h2>
-<p>这是很多同学不愿直视但必须了解的问题。根据 2025-2026 年科技公司的招聘趋势，以下岗位受 AI 自动化冲击最明显：</p>
-<p><strong>受冲击较大的方向：</strong></p>
-<ul>
-  <li><strong>初级 SDE（Software Development Engineer）</strong>：代码生成工具已覆盖大量 entry-level 任务，多家大厂公开削减 new grad SDE HC。</li>
-  <li><strong>Junior Data Analyst</strong>：报表生成、SQL 查询类工作被 AI BI 工具快速替代。</li>
-  <li><strong>初级金融分析师（Financial Analyst）</strong>：Excel 建模、行业研报撰写已有 AI 工具介入。</li>
-</ul>
-<p><strong>受冲击较小、反而在扩张的方向：</strong></p>
-<ul>
-  <li>需要<strong>业务判断 + 数据能力</strong>复合的 Senior DA / DS。</li>
-  <li>需要<strong>跨文化沟通 + 监管理解</strong>的 Compliance、Policy 岗位。</li>
-  <li>需要<strong>真实客户关系</strong>的投行 Coverage、咨询项目交付。</li>
-</ul>
-<p>Anthropic 这笔基金恰恰说明：连最顶级的 AI 公司都承认"AI 正在破坏就业结构"——这不是危言耸听，而是 $200M 真金白银支撑的判断。</p>
-<p>---</p>
-<h2>OPT / H1B 周期内，留学生应该怎么行动？</h2>
-<p>时间窗口很关键。以 2026 年为节点，不同签证状态的同学行动优先级不同：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">签证状态</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">剩余时间</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">建议优先行动</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">F-1 OPT（初始 12 个月）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">6-12 个月窗口</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">快速投递 + 拿到 offer 锁定雇主，同步准备 STEM Extension 申请材料</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">F-1 OPT STEM Extension</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">最长 24 个月</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">布局差异化赛道（AI Policy、Quant、DS），争取内推绕过 HR 筛选</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">H1B 已中签 / 在职</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">稳定期</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">横向拓展 AI Safety / Workforce Analytics 技能，为跳槽或晋升做储备</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">H1B 抽签中 / 等待期</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">不确定</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">同步准备 Plan B（Canada、英国路线），不押注单一结果</td></tr></tbody></table>
-<p><strong>核心策略</strong>：在这个 AI 重塑就业的转折点，"被动投简历"的成功率在持续下降。内推（referral）的重要性在 2026 年比任何时候都高——因为 AI 筛简历工具让没有内推的简历越来越难进入人工审核环节。</p>
-<p>Rexpand 的 Multi-Agent 系统（Claude 驱动）每周自动触达 100+ Hiring Team，产出 5–15 个真实内推机会；我们在 Goldman Sachs、Meta、Google、Amazon、J.P. Morgan 等 200+ 公司有在职 Hiring Manager 导师，平均 5 年以上经验，可以直接帮你把简历送进用人部门。</p>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>Anthropic 的 2 亿美元基金会直接产生多少留学生可以申请的职位？</strong> 目前没有官方公布的具体职位数量。这笔基金主要用于研究项目和政策支持，相关职位将通过 Anthropic 官网、合作学术机构和智库陆续发布。留学生应关注 Anthropic Careers 页面及相关研究机构的招聘公告。</p>
-<p><strong>AI 真的会大规模替代 SDE 等技术岗位吗？2026 年情况怎样？</strong> 根据多家大厂 2025-2026 财年的招聘数据，new grad SDE 的 HC 确实在收缩，但高级工程师和具备系统设计能力的岗位仍供不应求。AI 更多替代的是"执行型"任务，而非"设计决策型"工作。提升差异化能力比单纯刷题更重要。</p>
-<p><strong>我是经济学 / 社科背景，能申请 AI Policy 相关岗位吗？</strong> 可以，而且这类背景在 AI Policy 岗位上反而是竞争优势。建议补充基础数据分析能力（Python/SQL），以及能展示"理解 AI 社会影响"的项目或论文经历，会大幅提升简历通过率。</p>
-<p><strong>内推在 2026 年还有用吗？现在公司不是都用 AI 筛简历了吗？</strong> 正是因为 AI 筛简历工具的普及，内推的价值反而更高了。内推意味着你的简历绕过了 ATS 自动筛选、直接进入用人经理视野。我们辅导的 300+ 学员中，通过内推拿到面试的比例远高于直投渠道。</p>
-<p><strong>Rexpand 的内推服务覆盖 AI Policy / Research 类岗位吗？</strong> 覆盖。我们的导师网络包含 200+ 公司的在职 Hiring Manager，除金融和科技外，也涵盖咨询（BCG、Deloitte、KPMG）等有 AI 战略实践的机构。如需了解特定方向的内推资源，可以通过企业微信预约 1v1 免费咨询。</p>
-<p>---</p>
-<p>AI 重塑就业不是未来时，而是正在发生的现在时——Anthropic 用 $200M 给这个判断盖了章。如果你正在 OPT 或 H1B 求职周期内，现在是重新审视自己赛道定位的最好时机。欢迎通过 <strong>企业微信联系 Rexpand</strong>，30 分钟内回复，1v1 免费咨询帮你梳理最适合自己背景的 2026 求职路径。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['Anthropic AI失业基金', 'AI对就业的影响', '2026留学生求职', 'AI安全职业', 'AI经济政策', 'H1B工作签证', 'OPT求职', 'AI转型职业赛道'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMi1wFBVV95cUxPME9zSWhkeldlalVIN2MtR1hsaUFSWjdDaHByc055NVNmNFpwcHhXV3Q2dHMtYmFDS09na0s4OUZlaE1Id0hTZEVoOHN5RkktV2NCZDI5QkpKbXpHZDkwWmxlQ05xLXF5ek5aZlNvbGJJV0Q2cTFMa0ZUSDhwcUd6QW94ejVqNW83UVRubnFkOXhxNGluSzZGektUckpLX09mZVJkelVOODR5M3VCaVhXeXJxMjh2cVZPTU1SRFExOWRiQkdySkxnd2xHM0xOczlBcm5HSV9WONIB3AFBVV95cUxNcy1SU1Zpd0JsUmlQWE44OVRScGMwa0ttaXZtcHVld3ppZG1LbURROG5WNmhWU0VGUmYzVUp4RWdqdk9DOTJJUzliQ3RJcS1kWll3d2xoaWdLTmlNZTdEeWxfVVlLbnhfQVNEdUhLbnpGOTNGNEh4TWplX2FMdzJ1aEtyNmlNLS1QUnIwX3VYeWxoOEFNRDVUVXhnbnhOXzdFSGE1MTRaeVYyRWFKQmFGQk1IQTRRX01Vdm9aSjVaM19BX3ltUl83dGtVVEdjaWp3UzNiUzlWRDNQMU1H?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">Anthropic 于 2026 年宣布设立 <strong>2 亿美元（$200M）专项基金</strong>，专门研究 AI 浪潮引发的工作丧失问题，并资助经济安全保障方案。对于正在 OPT/H1B 周期内求职的北美中国留学生来说，这既是一个行业信号——AI 对白领岗位的冲击已严峻到需要顶级 AI 公司自掏腰包研究——也是一扇新开的职业窗口：AI 安全、劳动经济学、政策研究正在成为高薪新兴赛道。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>Anthropic 设立 $200M 基金</strong>，方向是研究 AI 造成的失业冲击及经济保障方案，是迄今为止 AI 头部公司在此议题上最大规模的单笔投入。</li>\n  <li><strong>AI 对就业的冲击已从\"预测\"变成\"行动议题\"</strong>，科技公司、政府、学术机构对 AI Policy / AI Safety 方向的人才需求正在快速上升。</li>\n  <li><strong>留学生直接受影响</strong>：SDE、DA、DS 等传统求职热门岗位正在被 AI 压缩 HC（headcount），同时 AI Safety Research、Economic Policy Analyst、Trust &amp; Safety 等新岗位在加速招聘。</li>\n  <li><strong>把危机变机会的关键</strong>：在简历和面试中展示\"理解 AI 社会影响\"的复合能力，远比单纯堆 LeetCode 更有差异化。</li>\n  <li><strong>行动窗口在 2026 年下半年</strong>：多家机构将因这笔基金的落地开始发布研究类职位，是 OPT STEM Extension 学员布局的好时机。</li>\n</ul>\n<p>---</p>\n<h2>Anthropic 为什么要花 2 亿美元研究\"AI 抢饭碗\"？</h2>\n<p>Anthropic 是 Claude 系列大模型的开发商，也是当前全球估值最高的 AI 安全公司之一。此次宣布 $200M 专项基金，研究方向明确指向两件事：</p>\n<ol>\n  <li><strong>AI 对就业市场的冲击机制</strong>——哪些职位、哪些行业最脆弱；</li>\n  <li><strong>经济保障方案的可行性</strong>——包括再培训、收入支持、政策设计等。</li>\n</ol>\n<p>这背后有一个行业逻辑：AI 公司如果不主动承担社会责任叙事，监管压力会更大。Anthropic 此举既是真实的研究投入，也是在华盛顿政策层面建立信誉的战略动作。</p>\n<p>对求职者的启示：<strong>这笔钱最终会流向研究人员、政策分析师、数据科学家、经济学家</strong>——而不只是 AI 工程师。</p>\n<p>---</p>\n<h2>2026 年哪些岗位因 AI 失业议题而增长？</h2>\n<p>这是留学生最应该关心的实际问题。以下是因\"AI 与就业\"这一议题直接受益的职位方向：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">职位方向</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">代表雇主类型</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">所需背景</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">OPT/H1B 友好度</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI Policy Analyst</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">智库、联邦机构、科技公司政策部门</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">公共政策 / 经济学 / CS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中（需英文写作强）</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI Safety Researcher</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Anthropic、OpenAI、DeepMind、学术机构</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">ML / Statistics / 哲学</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（技术背景优先）</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Labor Economist / Research Scientist</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">大学、央行、咨询公司</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">经济学 PhD/Master</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中高</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Trust &amp; Safety Analyst</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Meta、Google、TikTok、Amazon</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">社科 / 数据分析 / 法律</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（标准 Tech 流程）</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Data Analyst – Workforce Analytics</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">企业 HR Tech、咨询</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">DA / DS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（量大、标准化）</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Quantitative Researcher – Macro/ESG</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">对冲基金、投行</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">数学 / 统计 / 金融</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（量化背景）</td></tr></tbody></table>\n<p><strong>我们辅导的学员里</strong>，近两个 cycle 内转向 Trust &amp; Safety 和 Workforce Analytics 方向的同学，面试转化率明显高于纯 SDE 赛道——因为竞争密度更低，而这类岗位在 AI 浪潮下反而扩编。</p>\n<p>---</p>\n<h2>AI 抢走的到底是哪些留学生常投的岗位？</h2>\n<p>这是很多同学不愿直视但必须了解的问题。根据 2025-2026 年科技公司的招聘趋势，以下岗位受 AI 自动化冲击最明显：</p>\n<p><strong>受冲击较大的方向：</strong></p>\n<ul>\n  <li><strong>初级 SDE（Software Development Engineer）</strong>：代码生成工具已覆盖大量 entry-level 任务，多家大厂公开削减 new grad SDE HC。</li>\n  <li><strong>Junior Data Analyst</strong>：报表生成、SQL 查询类工作被 AI BI 工具快速替代。</li>\n  <li><strong>初级金融分析师（Financial Analyst）</strong>：Excel 建模、行业研报撰写已有 AI 工具介入。</li>\n</ul>\n<p><strong>受冲击较小、反而在扩张的方向：</strong></p>\n<ul>\n  <li>需要<strong>业务判断 + 数据能力</strong>复合的 Senior DA / DS。</li>\n  <li>需要<strong>跨文化沟通 + 监管理解</strong>的 Compliance、Policy 岗位。</li>\n  <li>需要<strong>真实客户关系</strong>的投行 Coverage、咨询项目交付。</li>\n</ul>\n<p>Anthropic 这笔基金恰恰说明：连最顶级的 AI 公司都承认\"AI 正在破坏就业结构\"——这不是危言耸听，而是 $200M 真金白银支撑的判断。</p>\n<p>---</p>\n<h2>OPT / H1B 周期内，留学生应该怎么行动？</h2>\n<p>时间窗口很关键。以 2026 年为节点，不同签证状态的同学行动优先级不同：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">签证状态</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">剩余时间</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">建议优先行动</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">F-1 OPT（初始 12 个月）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">6-12 个月窗口</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">快速投递 + 拿到 offer 锁定雇主，同步准备 STEM Extension 申请材料</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">F-1 OPT STEM Extension</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">最长 24 个月</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">布局差异化赛道（AI Policy、Quant、DS），争取内推绕过 HR 筛选</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">H1B 已中签 / 在职</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">稳定期</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">横向拓展 AI Safety / Workforce Analytics 技能，为跳槽或晋升做储备</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">H1B 抽签中 / 等待期</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">不确定</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">同步准备 Plan B（Canada、英国路线），不押注单一结果</td></tr></tbody></table>\n<p><strong>核心策略</strong>：在这个 AI 重塑就业的转折点，\"被动投简历\"的成功率在持续下降。内推（referral）的重要性在 2026 年比任何时候都高——因为 AI 筛简历工具让没有内推的简历越来越难进入人工审核环节。</p>\n<p>Rexpand 的 Multi-Agent 系统（Claude 驱动）每周自动触达 100+ Hiring Team，产出 5–15 个真实内推机会；我们在 Goldman Sachs、Meta、Google、Amazon、J.P. Morgan 等 200+ 公司有在职 Hiring Manager 导师，平均 5 年以上经验，可以直接帮你把简历送进用人部门。</p>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>Anthropic 的 2 亿美元基金会直接产生多少留学生可以申请的职位？</strong> 目前没有官方公布的具体职位数量。这笔基金主要用于研究项目和政策支持，相关职位将通过 Anthropic 官网、合作学术机构和智库陆续发布。留学生应关注 Anthropic Careers 页面及相关研究机构的招聘公告。</p>\n<p><strong>AI 真的会大规模替代 SDE 等技术岗位吗？2026 年情况怎样？</strong> 根据多家大厂 2025-2026 财年的招聘数据，new grad SDE 的 HC 确实在收缩，但高级工程师和具备系统设计能力的岗位仍供不应求。AI 更多替代的是\"执行型\"任务，而非\"设计决策型\"工作。提升差异化能力比单纯刷题更重要。</p>\n<p><strong>我是经济学 / 社科背景，能申请 AI Policy 相关岗位吗？</strong> 可以，而且这类背景在 AI Policy 岗位上反而是竞争优势。建议补充基础数据分析能力（Python/SQL），以及能展示\"理解 AI 社会影响\"的项目或论文经历，会大幅提升简历通过率。</p>\n<p><strong>内推在 2026 年还有用吗？现在公司不是都用 AI 筛简历了吗？</strong> 正是因为 AI 筛简历工具的普及，内推的价值反而更高了。内推意味着你的简历绕过了 ATS 自动筛选、直接进入用人经理视野。我们辅导的 300+ 学员中，通过内推拿到面试的比例远高于直投渠道。</p>\n<p><strong>Rexpand 的内推服务覆盖 AI Policy / Research 类岗位吗？</strong> 覆盖。我们的导师网络包含 200+ 公司的在职 Hiring Manager，除金融和科技外，也涵盖咨询（BCG、Deloitte、KPMG）等有 AI 战略实践的机构。如需了解特定方向的内推资源，可以通过企业微信预约 1v1 免费咨询。</p>\n<p>---</p>\n<p>AI 重塑就业不是未来时，而是正在发生的现在时——Anthropic 用 $200M 给这个判断盖了章。如果你正在 OPT 或 H1B 求职周期内，现在是重新审视自己赛道定位的最好时机。欢迎通过 <strong>企业微信联系 Rexpand</strong>，30 分钟内回复，1v1 免费咨询帮你梳理最适合自己背景的 2026 求职路径。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "Anthropic AI失业基金",
+      "AI对就业的影响",
+      "2026留学生求职",
+      "AI安全职业",
+      "AI经济政策",
+      "H1B工作签证",
+      "OPT求职",
+      "AI转型职业赛道"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPME9zSWhkeldlalVIN2MtR1hsaUFSWjdDaHByc055NVNmNFpwcHhXV3Q2dHMtYmFDS09na0s4OUZlaE1Id0hTZEVoOHN5RkktV2NCZDI5QkpKbXpHZDkwWmxlQ05xLXF5ek5aZlNvbGJJV0Q2cTFMa0ZUSDhwcUd6QW94ejVqNW83UVRubnFkOXhxNGluSzZGektUckpLX09mZVJkelVOODR5M3VCaVhXeXJxMjh2cVZPTU1SRFExOWRiQkdySkxnd2xHM0xOczlBcm5HSV9WONIB3AFBVV95cUxNcy1SU1Zpd0JsUmlQWE44OVRScGMwa0ttaXZtcHVld3ppZG1LbURROG5WNmhWU0VGUmYzVUp4RWdqdk9DOTJJUzliQ3RJcS1kWll3d2xoaWdLTmlNZTdEeWxfVVlLbnhfQVNEdUhLbnpGOTNGNEh4TWplX2FMdzJ1aEtyNmlNLS1QUnIwX3VYeWxoOEFNRDVUVXhnbnhOXzdFSGE1MTRaeVYyRWFKQmFGQk1IQTRRX01Vdm9aSjVaM19BX3ltUl83dGtVVEdjaWp3UzNiUzlWRDNQMU1H?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "10-h1b-tqvny",
+    "category": "H1B & 签证",
+    "date": "2026.06.10",
+    "readTime": "6 min read",
+    "title": "重磅！特朗普$10万H1B费用计划被裁违法，留学生迎来好消息",
+    "dek": "美国法院裁定特朗普政府拟征收的$100,000 H1B申请费违法，雇主赞助成本大降，国际留学生求职迎来重大利好。",
+    "image": {
+      "url": "/og/intel-10-h1b-tqvny.webp",
+      "alt": "重磅！特朗普$10万H1B费用计划被裁违法，留学生迎来好消息"
     },
-
-    {
-      slug: '10-h1b-tqvny',
-      category: 'H1B & 签证',
-      date: '2026.06.10',
-      readTime: '6 min read',
-      title: '重磅！特朗普$10万H1B费用计划被裁违法，留学生迎来好消息',
-      dek: '美国法院裁定特朗普政府拟征收的$100,000 H1B申请费违法，雇主赞助成本大降，国际留学生求职迎来重大利好。',
-      image: { url: '/og/intel-10-h1b-tqvny.webp', alt: '重磅！特朗普$10万H1B费用计划被裁违法，留学生迎来好消息' },
-      body: `
-        <p class="lede">特朗普政府拟对每份 H1B 申请额外征收 <strong>$100,000</strong> 费用的计划，近日被法院裁定违法并正式撤销。这对仍在 OPT 期间找工作、或等待 H-1B 抽签结果的中国留学生来说，是 2026 年迄今最直接的政策利好——雇主赞助门槛降低，意味着更多中小公司将重新考虑为国际员工提供 H1B 支持。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>$100,000 H1B 额外申请费计划已被法院裁定违法、正式撤销</strong>，不再适用于任何 FY2027 及后续申请。</li>
-  <li>费用撤销直接<strong>降低雇主赞助 H-1B 的财务门槛</strong>，中小型科技公司、金融机构重新具备赞助可行性。</li>
-  <li>对留学生而言，愿意赞助 H1B 的公司池有望扩大，OPT → H-1B 转换路径的阻力减少。</li>
-  <li>此前因高额费用顾虑而搁置招聘国际生的 Hiring Manager，现有更强动力重启 sponsorship。</li>
-  <li><strong>现在正是主动出击、锁定内推资源的窗口期</strong>；政策窗口期竞争同样激烈，先手优势至关重要。</li>
-</ul>
-<p>---</p>
-<h2>$100,000 H1B 费用计划究竟是什么？为什么被撤销？</h2>
-<p>特朗普政府此前提出一项方案，拟在现有 USCIS 官方费用基础上，对每份 H-1B 申请额外征收 <strong>$100,000</strong>（约合人民币 72 万元）的高额附加费。该计划的公开逻辑是"保护美国工人就业"，实质上大幅推高了雇主的用工成本。</p>
-<p>近日，该费用计划经司法审查被裁定<strong>违法（unlawful）</strong>，随即被撤销。根据 NDTV 等媒体报道，数据与科技领域的雇主及行业倡导方普遍欢迎这一裁决，认为它将显著扩大国际学生获得 H1B 赞助的实际机会。</p>
-<p><strong>这一裁决对雇主的实际影响：</strong></p>
-<ul>
-  <li>无需再承担每人 $100,000 的额外合规成本</li>
-  <li>中小型公司重新具备与大厂竞争国际人才的财务能力</li>
-  <li>此前因费用顾虑而设置"不提供 H1B 赞助"门槛的公司，有重新评估的动机</li>
-</ul>
-<p>---</p>
-<h2>2026 年 H1B 抽签与费用现状是怎样的？</h2>
-<p>撤销的是<strong>额外提案费用</strong>，并非 USCIS 现行官方费用体系。目前 H-1B 申请的常规费用仍然存在，以下为参考对比：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">费用项目</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">金额（参考）</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">备注</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">USCIS H-1B 注册费</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$215</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">FY2025 起调整后标准，每个注册周期</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">I-129 申请基础费</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$730</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">标准处理</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">ACWIA 培训费</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$750–$1,500</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">视公司规模</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">反欺诈费</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$500</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">所有申请</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">律师费（市场参考）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$2,000–$5,000</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">不同律所差异较大</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">~~拟额外征收费~~</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">~~$100,000~~</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;"><strong>已被法院裁定违法，撤销</strong></td></tr></tbody></table>
-<blockquote>数据来源：USCIS 官网公布费用标准；$100,000 提案费撤销信息来自 NDTV 等媒体 2026 年 6 月报道。具体申请前请以 <a href="https://www.uscis.gov" target="_blank" rel="noopener">uscis.gov</a> 最新公告为准。</blockquote>
-<p>FY2027 H-1B 常规注册窗口通常在次年 <strong>3 月初</strong>开放，约 2 周内完成抽签。如果你目前在 OPT 阶段，<strong>现在到明年 3 月</strong>是准备材料、锁定雇主赞助意愿的黄金窗口。</p>
-<p>---</p>
-<h2>费用撤销后，留学生求职策略应该怎么调整？</h2>
-<p>政策松动本身不会自动带来 offer，但它改变了竞争格局——更多公司愿意赞助，意味着<strong>竞争的战场从"找到愿意赞助的公司"转移到"在这些公司里脱颖而出"</strong>。</p>
-<p><strong>现阶段最值得投入的三件事：</strong></p>
-<ol>
-  <li><strong>扩大目标公司范围</strong>：将此前因"不赞助 H1B"被排除的中小科技、金融公司重新纳入投递名单，主动询问最新 sponsorship 政策。</li>
-  <li><strong>提前布局内推</strong>：内推成功率远高于冷投，尤其在 H1B 政策仍有不确定性的环境下，Hiring Manager 的内部支持至关重要。</li>
-  <li><strong>强化背景竞争力</strong>：在政策窗口期，候选人质量才是最终决定因素。数据分析（DA）、数据科学（DS）、软件工程（SE）、量化投资（QI）等方向的实战项目 + referral，是在 resume screening 阶段直接拉开差距的手段。</li>
-</ol>
-<p>在 Rexpand 辅导的 300+ 学员中，我们观察到一个规律：<strong>获得 H1B 赞助 offer 的学员，往往不是"等政策变好再投"，而是在政策窗口期内最早锁定内推资源的那批人</strong>。我们的 Multi-Agent 系统（Claude 驱动）每周自动触达 100+ Hiring Team，为学员产出 5–15 个内推机会，覆盖 Goldman Sachs、Meta、Google、Amazon、J.P. Morgan、TikTok 等 200+ 公司——恰好是目前 H1B sponsorship 最稳定的雇主群体。</p>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>$100,000 H1B 费用被撤销，是否意味着 H1B 申请完全免费了？</strong> 不是。撤销的是特朗普政府拟额外征收的 $100,000 附加提案费，USCIS 现行的注册费、I-129 申请费等常规费用仍然存在，雇主申请 H-1B 仍需承担数千美元的官方及律师费用。</p>
-<p><strong>这个裁决对 FY2027 H1B 抽签有影响吗？</strong> 直接影响是雇主的赞助意愿和财务可行性提升，抽签名额本身（常规 65,000 + 硕士豁免 20,000）由国会法定，裁决不改变配额数量，但更多雇主参与意味着更多学员获得注册机会。</p>
-<p><strong>我现在在 OPT 期间，什么时候需要找到愿意赞助的公司？</strong> 通常 FY2027 H-1B 注册窗口在 2027 年 3 月初开启。USCIS 要求雇主在窗口期内完成注册，因此你需要<strong>在 2027 年 3 月之前</strong>已入职或持有有效 offer，并确认雇主愿意赞助。现在（2026 年 6 月）开始准备不算早。</p>
-<p><strong>中小公司赞助 H1B 靠谱吗？</strong> 靠谱程度取决于公司规模、财务状况和 immigration attorney 的专业度。费用撤销降低了成本门槛，但建议在谈 offer 时明确确认雇主的 H-1B sponsorship 记录（可通过 USCIS 公开数据库查询历史赞助情况）。</p>
-<p><strong>Rexpand 能帮我找到愿意赞助 H1B 的内推机会吗？</strong> 可以。我们的 LinkedIn 内推 Agent 和 Email 内推 Agent 每周定向触达 100+ Hiring Team，内推均来自覆盖 200+ 公司的 1,000+ 在职导师（平均 5+ 年经验），offer letter 全部留档可核验。</p>
-<p>---</p>
-<p>政策窗口正在打开，但先动手的人永远比"等风来"的人多拿一步——<strong>扫码添加 Rexpand 企业微信，30 分钟内获得 1v1 免费咨询</strong>，我们帮你梳理当前 H1B 备战时间线和内推资源匹配方案。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['H1B费用2026', 'H1B申请费被撤销', '留学生H1B机会', 'H1B工作签证', '国际学生求职美国', 'H-1B雇主赞助成本', 'OPT转H1B', 'H1B抽签2026'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMitwFBVV95cUxNazFUdW9BMl8wRFc3UUdWYXZDeDBUMVpjbnJFM1J4cmZFaWhtaWlDUTJlamlJYWhuZTliaWQ2cEJFbmhaYUZHRTRlM3BQOUVrc2FKUWdOREphTEVBUGtWQnAwQ1pGUVJoTzhyVnh3NUFwX0pZaGRyYjRMSEo0djEzVTFfeXJ2RVN1Z2liMm5OMDJXR1dpY2tyVGhXdFB5U2Vzak5DZDhkb3VzOFhjam11RDdHQk1HNmPSAb8BQVVfeXFMTnBQcENPOUxNZjJYOHhySVBHaVg0TFBVemVoLVY0ZnpXUXVocWhvbkp5T2ZVd21TVUd5V3REbGtZbGpEWVBRVFJfYXExOHNDcklUZlQwTWdOSjlGc2pYckFjZDdGSWJWNW5lenlNOURpUG5PaXkyVmZHSW5YaGVIMmhRWWJNN09SelJDZ3dtOUE2Z2V2RzBfdUdBSDdoWjV2MmxHTW1fck12V28zc1J3cHp5aUpkVUhtRVFzUFVibm8?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">特朗普政府拟对每份 H1B 申请额外征收 <strong>$100,000</strong> 费用的计划，近日被法院裁定违法并正式撤销。这对仍在 OPT 期间找工作、或等待 H-1B 抽签结果的中国留学生来说，是 2026 年迄今最直接的政策利好——雇主赞助门槛降低，意味着更多中小公司将重新考虑为国际员工提供 H1B 支持。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>$100,000 H1B 额外申请费计划已被法院裁定违法、正式撤销</strong>，不再适用于任何 FY2027 及后续申请。</li>\n  <li>费用撤销直接<strong>降低雇主赞助 H-1B 的财务门槛</strong>，中小型科技公司、金融机构重新具备赞助可行性。</li>\n  <li>对留学生而言，愿意赞助 H1B 的公司池有望扩大，OPT → H-1B 转换路径的阻力减少。</li>\n  <li>此前因高额费用顾虑而搁置招聘国际生的 Hiring Manager，现有更强动力重启 sponsorship。</li>\n  <li><strong>现在正是主动出击、锁定内推资源的窗口期</strong>；政策窗口期竞争同样激烈，先手优势至关重要。</li>\n</ul>\n<p>---</p>\n<h2>$100,000 H1B 费用计划究竟是什么？为什么被撤销？</h2>\n<p>特朗普政府此前提出一项方案，拟在现有 USCIS 官方费用基础上，对每份 H-1B 申请额外征收 <strong>$100,000</strong>（约合人民币 72 万元）的高额附加费。该计划的公开逻辑是\"保护美国工人就业\"，实质上大幅推高了雇主的用工成本。</p>\n<p>近日，该费用计划经司法审查被裁定<strong>违法（unlawful）</strong>，随即被撤销。根据 NDTV 等媒体报道，数据与科技领域的雇主及行业倡导方普遍欢迎这一裁决，认为它将显著扩大国际学生获得 H1B 赞助的实际机会。</p>\n<p><strong>这一裁决对雇主的实际影响：</strong></p>\n<ul>\n  <li>无需再承担每人 $100,000 的额外合规成本</li>\n  <li>中小型公司重新具备与大厂竞争国际人才的财务能力</li>\n  <li>此前因费用顾虑而设置\"不提供 H1B 赞助\"门槛的公司，有重新评估的动机</li>\n</ul>\n<p>---</p>\n<h2>2026 年 H1B 抽签与费用现状是怎样的？</h2>\n<p>撤销的是<strong>额外提案费用</strong>，并非 USCIS 现行官方费用体系。目前 H-1B 申请的常规费用仍然存在，以下为参考对比：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">费用项目</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">金额（参考）</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">备注</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">USCIS H-1B 注册费</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$215</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">FY2025 起调整后标准，每个注册周期</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">I-129 申请基础费</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$730</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">标准处理</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">ACWIA 培训费</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$750–$1,500</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">视公司规模</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">反欺诈费</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$500</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">所有申请</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">律师费（市场参考）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">$2,000–$5,000</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">不同律所差异较大</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">~~拟额外征收费~~</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">~~$100,000~~</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\"><strong>已被法院裁定违法，撤销</strong></td></tr></tbody></table>\n<blockquote>数据来源：USCIS 官网公布费用标准；$100,000 提案费撤销信息来自 NDTV 等媒体 2026 年 6 月报道。具体申请前请以 <a href=\"https://www.uscis.gov\" target=\"_blank\" rel=\"noopener\">uscis.gov</a> 最新公告为准。</blockquote>\n<p>FY2027 H-1B 常规注册窗口通常在次年 <strong>3 月初</strong>开放，约 2 周内完成抽签。如果你目前在 OPT 阶段，<strong>现在到明年 3 月</strong>是准备材料、锁定雇主赞助意愿的黄金窗口。</p>\n<p>---</p>\n<h2>费用撤销后，留学生求职策略应该怎么调整？</h2>\n<p>政策松动本身不会自动带来 offer，但它改变了竞争格局——更多公司愿意赞助，意味着<strong>竞争的战场从\"找到愿意赞助的公司\"转移到\"在这些公司里脱颖而出\"</strong>。</p>\n<p><strong>现阶段最值得投入的三件事：</strong></p>\n<ol>\n  <li><strong>扩大目标公司范围</strong>：将此前因\"不赞助 H1B\"被排除的中小科技、金融公司重新纳入投递名单，主动询问最新 sponsorship 政策。</li>\n  <li><strong>提前布局内推</strong>：内推成功率远高于冷投，尤其在 H1B 政策仍有不确定性的环境下，Hiring Manager 的内部支持至关重要。</li>\n  <li><strong>强化背景竞争力</strong>：在政策窗口期，候选人质量才是最终决定因素。数据分析（DA）、数据科学（DS）、软件工程（SE）、量化投资（QI）等方向的实战项目 + referral，是在 resume screening 阶段直接拉开差距的手段。</li>\n</ol>\n<p>在 Rexpand 辅导的 300+ 学员中，我们观察到一个规律：<strong>获得 H1B 赞助 offer 的学员，往往不是\"等政策变好再投\"，而是在政策窗口期内最早锁定内推资源的那批人</strong>。我们的 Multi-Agent 系统（Claude 驱动）每周自动触达 100+ Hiring Team，为学员产出 5–15 个内推机会，覆盖 Goldman Sachs、Meta、Google、Amazon、J.P. Morgan、TikTok 等 200+ 公司——恰好是目前 H1B sponsorship 最稳定的雇主群体。</p>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>$100,000 H1B 费用被撤销，是否意味着 H1B 申请完全免费了？</strong> 不是。撤销的是特朗普政府拟额外征收的 $100,000 附加提案费，USCIS 现行的注册费、I-129 申请费等常规费用仍然存在，雇主申请 H-1B 仍需承担数千美元的官方及律师费用。</p>\n<p><strong>这个裁决对 FY2027 H1B 抽签有影响吗？</strong> 直接影响是雇主的赞助意愿和财务可行性提升，抽签名额本身（常规 65,000 + 硕士豁免 20,000）由国会法定，裁决不改变配额数量，但更多雇主参与意味着更多学员获得注册机会。</p>\n<p><strong>我现在在 OPT 期间，什么时候需要找到愿意赞助的公司？</strong> 通常 FY2027 H-1B 注册窗口在 2027 年 3 月初开启。USCIS 要求雇主在窗口期内完成注册，因此你需要<strong>在 2027 年 3 月之前</strong>已入职或持有有效 offer，并确认雇主愿意赞助。现在（2026 年 6 月）开始准备不算早。</p>\n<p><strong>中小公司赞助 H1B 靠谱吗？</strong> 靠谱程度取决于公司规模、财务状况和 immigration attorney 的专业度。费用撤销降低了成本门槛，但建议在谈 offer 时明确确认雇主的 H-1B sponsorship 记录（可通过 USCIS 公开数据库查询历史赞助情况）。</p>\n<p><strong>Rexpand 能帮我找到愿意赞助 H1B 的内推机会吗？</strong> 可以。我们的 LinkedIn 内推 Agent 和 Email 内推 Agent 每周定向触达 100+ Hiring Team，内推均来自覆盖 200+ 公司的 1,000+ 在职导师（平均 5+ 年经验），offer letter 全部留档可核验。</p>\n<p>---</p>\n<p>政策窗口正在打开，但先动手的人永远比\"等风来\"的人多拿一步——<strong>扫码添加 Rexpand 企业微信，30 分钟内获得 1v1 免费咨询</strong>，我们帮你梳理当前 H1B 备战时间线和内推资源匹配方案。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "H1B费用2026",
+      "H1B申请费被撤销",
+      "留学生H1B机会",
+      "H1B工作签证",
+      "国际学生求职美国",
+      "H-1B雇主赞助成本",
+      "OPT转H1B",
+      "H1B抽签2026"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNazFUdW9BMl8wRFc3UUdWYXZDeDBUMVpjbnJFM1J4cmZFaWhtaWlDUTJlamlJYWhuZTliaWQ2cEJFbmhaYUZHRTRlM3BQOUVrc2FKUWdOREphTEVBUGtWQnAwQ1pGUVJoTzhyVnh3NUFwX0pZaGRyYjRMSEo0djEzVTFfeXJ2RVN1Z2liMm5OMDJXR1dpY2tyVGhXdFB5U2Vzak5DZDhkb3VzOFhjam11RDdHQk1HNmPSAb8BQVVfeXFMTnBQcENPOUxNZjJYOHhySVBHaVg0TFBVemVoLVY0ZnpXUXVocWhvbkp5T2ZVd21TVUd5V3REbGtZbGpEWVBRVFJfYXExOHNDcklUZlQwTWdOSjlGc2pYckFjZDdGSWJWNW5lenlNOURpUG5PaXkyVmZHSW5YaGVIMmhRWWJNN09SelJDZ3dtOUE2Z2V2RzBfdUdBSDdoWjV2MmxHTW1fck12V28zc1J3cHp5aUpkVUhtRVFzUFVibm8?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "salesforce-ai-agentforce-ceo-t5jwl",
+    "category": "AI 与裁员",
+    "date": "2026.06.10",
+    "readTime": "6 min read",
+    "title": "Salesforce大裁员砍到AI明星产品Agentforce，CEO说啥都不管用了",
+    "dek": "Salesforce裁员波及亲儿子Agentforce和Mulesoft，CEO再喊AI口号也护不住岗位，云计算大厂财务压力一览无余。",
+    "image": {
+      "url": "/og/intel-salesforce-ai-agentforce-ceo-t5jwl.webp",
+      "alt": "Salesforce大裁员砍到AI明星产品Agentforce，CEO说啥都不管用了"
     },
-
-    {
-      slug: 'salesforce-ai-agentforce-ceo-t5jwl',
-      category: 'AI 与裁员',
-      date: '2026.06.10',
-      readTime: '6 min read',
-      title: 'Salesforce大裁员砍到AI明星产品Agentforce，CEO说啥都不管用了',
-      dek: 'Salesforce裁员波及亲儿子Agentforce和Mulesoft，CEO再喊AI口号也护不住岗位，云计算大厂财务压力一览无余。',
-      image: { url: '/og/intel-salesforce-ai-agentforce-ceo-t5jwl.webp', alt: 'Salesforce大裁员砍到AI明星产品Agentforce，CEO说啥都不管用了' },
-      body: `
-        <p class="lede">Salesforce 近期再度裁员，波及其 AI 旗舰产品 Agentforce 及 Mulesoft 团队——这意味着即便是 CEO Marc Benioff 高调背书的 AI 产品线，也无法免疫财务重组的压力。对于持 OPT/H1B 的北美中国留学生来说，这一信号值得认真对待：选公司不能只看营销叙事，更要看现金流和裁员历史。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>Agentforce 不是护身符</strong>：Salesforce 旗帜性 AI 产品团队同样遭裁，说明"押注 AI"不等于"岗位稳定"。</li>
-  <li><strong>CEO 承诺 ≠ HC 安全</strong>：Benioff 持续对外表态加码 AI，但执行层面仍在缩编——言行不一是裁员前兆的经典模式。</li>
-  <li><strong>云计算大厂普遍承压</strong>：Salesforce 的困境折射行业共性——增长放缓、盈利压力倒逼人力成本压缩。</li>
-  <li><strong>OPT/H1B 持有者风险更高</strong>：裁员后 60 天宽限期极短，在岗时就应维护 Pipeline，而非等失业后再行动。</li>
-  <li><strong>可核验的 offer 比承诺更重要</strong>：选择求职服务时，优先看留档可核验的真实 offer，而非营销话术。</li>
-</ul>
-<p>---</p>
-<h2>Salesforce 这次裁员到底裁了什么？</h2>
-<p>Salesforce 本轮裁员同时覆盖 <strong>Agentforce</strong>（公司主推的企业级 AI Agent 产品）和 <strong>Mulesoft</strong>（API 集成平台）两条产品线。具体裁员人数截至本文发稿尚未由 Salesforce 官方披露，本文不做数字推测。</p>
-<p>值得注意的是以下几个结构性信号：</p>
-<ul>
-  <li><strong>产品热度与岗位稳定不挂钩</strong>：Agentforce 是 Benioff 2025–2026 财年对外口径中最频繁提及的增长引擎，但这并未阻止该团队被裁。</li>
-  <li><strong>Mulesoft 被裁已有先例</strong>：Salesforce 此前多轮裁员均涉及 Mulesoft，说明整合型收购产品线在财务压力下优先级偏低。</li>
-  <li><strong>高管表态与执行层落差</strong>：Benioff 在公开场合持续强调 AI 投入，而内部同步进行人员缩编——这种落差本身就是求职者需要警惕的信号。</li>
-</ul>
-<p>---</p>
-<h2>2026 年 AI 大厂裁员潮：哪些公司和岗位风险更高？</h2>
-<p>云计算与 SaaS 赛道在 2025–2026 年普遍面临"增长预期下调 + 利率高位 + AI 投入挤占预算"三重压力。以下是求职者评估雇主稳定性时可参考的维度对比：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">评估维度</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">高风险信号</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">相对安全信号</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">营收增长</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">连续两季度低于预期</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">营收增速稳定或加速</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">CEO 表态</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">频繁强调"转型""押注 AI"</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">具体列出盈利路径与时间线</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">裁员历史</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">12 个月内多轮裁员</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">近 2 年无大规模裁员</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">现金流</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">依赖融资维持运营</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">自由现金流为正</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">岗位类型</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">整合型收购团队、纯成本中心</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">核心产品研发、直接创收团队</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">HC Freeze</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">已暂停外部招聘</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">持续开放 JD，Hiring Manager 活跃</td></tr></tbody></table>
-<p><strong>对 OPT/H1B 持有者的额外提示</strong>：USCIS 规定，H1B 失业后通常有 <strong>60 天宽限期</strong>（Portability / Grace Period）寻找新雇主。一旦被裁，留给你找工作、发 offer、发 I-129 的时间极为有限。因此，<strong>在岗时就应保持求职 Pipeline 活跃</strong>，而非等到裁员通知再启动。</p>
-<p>---</p>
-<h2>OPT/H1B 持有者被大厂裁员后怎么办？</h2>
-<p>如果你正在 Salesforce 或类似公司任职，或担心所在公司有裁员风险，以下是优先级排序的行动清单：</p>
-<p><strong>立即（裁员当天起）</strong></p>
-<ul>
-  <li>确认 I-94 状态和签证有效期，联系移民律师或学校 DSO/RO</li>
-  <li>索取官方裁员文件（termination letter），明确最后工作日</li>
-  <li>OPT 持有者：向 DSO 报告失业，启动 90 天失业计时（STEM OPT 失业上限累计 <strong>150 天</strong>，需严格管控）</li>
-  <li>H1B 持有者：确认是否处于 60 天 Grace Period，立即激活求职渠道</li>
-</ul>
-<p><strong>1–2 周内</strong></p>
-<ul>
-  <li>更新 LinkedIn，开启 Open to Work（对 Recruiter 可见即可，不必公开）</li>
-  <li>盘点现有内推人脉，按公司优先级逐一触达</li>
-  <li>准备好多版本简历（针对 SDE / PM / DA / DS 等不同方向）</li>
-</ul>
-<p><strong>持续推进</strong></p>
-<ul>
-  <li>每周投递数量保持在 <strong>30–50 份</strong>以上，并追踪回复率</li>
-  <li>内推渠道优先于盲投——我们辅导的学员中，内推带来的面试转化率显著高于 JD 盲投</li>
-</ul>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>Salesforce 裁员会影响在职员工的 H1B 续签吗？</strong> 如果你仍在职且雇主继续为你提供 sponsorship，H1B 续签流程不受影响。但若被裁，需在 60 天 Grace Period 内找到新雇主并提交 H1B Transfer，否则身份失效。建议第一时间联系移民律师确认时间节点。</p>
-<p><strong>Agentforce 被裁，还值得去学 AI Agent 方向吗？</strong> 方向本身仍有价值，但要区分"技术趋势"和"雇主稳定性"。AI Agent 作为技术栈值得投入，但选择雇主时需独立评估该公司的财务健康度，而非仅凭产品热度判断。</p>
-<p><strong>怎么判断一家公司是否处于"隐性裁员"状态？</strong> 几个可观察信号：Glassdoor 近期评分骤降、Hiring Manager 在 LinkedIn 上不活跃、JD 挂出很久但无人推进面试、公司财报电话会议中多次提及"效率优化"或"重组"。</p>
-<p><strong>内推真的比自己海投有用吗？</strong> 有效内推能绕过 ATS 系统直达 Hiring Manager，大幅提升简历被看到的概率。Rexpand 的 AI Agent 每周触达 100+ Hiring Team，产出 5–15 个内推机会，学员 offer 来自 Goldman Sachs、Google、Amazon、Meta 等公司，均有 offer letter 留档可核验。</p>
-<p><strong>OPT 失业期最多可以有几天？</strong> 标准 OPT 累计失业上限为 <strong>90 天</strong>；STEM OPT 延期阶段累计失业上限为 <strong>150 天</strong>（含标准 OPT 阶段的未使用天数）。超出即视为违规，可能影响未来身份申请，务必严格追踪。</p>
-<p>---</p>
-<p>Salesforce 的这轮裁员再次证明：在 AI 叙事最响亮的地方，未必是求职最安全的地方——稳健的现金流、可核验的 offer 记录，才是你选择下一份工作应该看的东西。如果你正在评估求职方向、担忧 OPT/H1B 时间压力，欢迎添加 Rexpand 企业微信，<strong>30 分钟内</strong>获得 1v1 免费咨询，我们会根据你的背景给出具体可执行的建议。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['Salesforce裁员2026', 'AI大厂裁员', 'Agentforce裁员', '北美留学生求职', '云计算公司裁员', 'tech layoff 2026', 'H1B求职', 'OPT求职'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMijAJBVV95cUxPWkxDcWJxdVMxMXdPMjBfVnlPek02WEZCN2xKM1lSOXd3QVNSMnZZSEdEQkVjdW45UXVtMWNhZjJZQVJGb0diTkhYVWVZV3lmVWgwbU8tRXYtRVhfV0ZTZEt6azhFTVF6WmxFLXMyNmw4YXdJTmNHY0NZSE5BR0dOa3RsWlRYbzhRQVpEZzVhTHJqMzlDOVJmVTB3Zko2OUpDSTBKZ3pON2lpRm1BbjJIbUxmZ3VNdEhuVlBlSGlneXpoRFc4M3UxT0Yxb2pSUGF3SlQ5b25MSnJoMC1fd0FoY0ROYU9vV0o3TkRIRENHUEhNaE9kLXh4ay1zdHM1c2lld2w0YW5uSzBvWWU40gGSAkFVX3lxTE5TU0ZYTTJ2Y05PWGJBT3lpdE1pM09ITjg2Y2Z6b1hWMFBUOWNkSTZoT3hPcUhZa3h6eXJMQUt3dG1uREUtbnhnbUNZRXJEdDFjTHUzTVQ0U0FFbEdtdUxDbVpQTWtuUTlQMi1uY2JLczhZZTVsbVhqT3BXcnFyZ3ZQSUdDTzlER1RsN3Y3cHJMR3JybWQtSnE2aFdFbjNWeTYxNnY4NDlXUnctbHRWV3JJTUhjS2JUeld4NzBORldwcG5hX0xneHEzemZNcllWQ0o2Y1hMOU1CZmJ2WWJxalpXUkRVVGdyTGswNjFBd3hTWWNTQ0ZvcGxYU1dkUERNVFZFNVlyS3NYVVlXSXBmNXlIUlE?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">Salesforce 近期再度裁员，波及其 AI 旗舰产品 Agentforce 及 Mulesoft 团队——这意味着即便是 CEO Marc Benioff 高调背书的 AI 产品线，也无法免疫财务重组的压力。对于持 OPT/H1B 的北美中国留学生来说，这一信号值得认真对待：选公司不能只看营销叙事，更要看现金流和裁员历史。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>Agentforce 不是护身符</strong>：Salesforce 旗帜性 AI 产品团队同样遭裁，说明\"押注 AI\"不等于\"岗位稳定\"。</li>\n  <li><strong>CEO 承诺 ≠ HC 安全</strong>：Benioff 持续对外表态加码 AI，但执行层面仍在缩编——言行不一是裁员前兆的经典模式。</li>\n  <li><strong>云计算大厂普遍承压</strong>：Salesforce 的困境折射行业共性——增长放缓、盈利压力倒逼人力成本压缩。</li>\n  <li><strong>OPT/H1B 持有者风险更高</strong>：裁员后 60 天宽限期极短，在岗时就应维护 Pipeline，而非等失业后再行动。</li>\n  <li><strong>可核验的 offer 比承诺更重要</strong>：选择求职服务时，优先看留档可核验的真实 offer，而非营销话术。</li>\n</ul>\n<p>---</p>\n<h2>Salesforce 这次裁员到底裁了什么？</h2>\n<p>Salesforce 本轮裁员同时覆盖 <strong>Agentforce</strong>（公司主推的企业级 AI Agent 产品）和 <strong>Mulesoft</strong>（API 集成平台）两条产品线。具体裁员人数截至本文发稿尚未由 Salesforce 官方披露，本文不做数字推测。</p>\n<p>值得注意的是以下几个结构性信号：</p>\n<ul>\n  <li><strong>产品热度与岗位稳定不挂钩</strong>：Agentforce 是 Benioff 2025–2026 财年对外口径中最频繁提及的增长引擎，但这并未阻止该团队被裁。</li>\n  <li><strong>Mulesoft 被裁已有先例</strong>：Salesforce 此前多轮裁员均涉及 Mulesoft，说明整合型收购产品线在财务压力下优先级偏低。</li>\n  <li><strong>高管表态与执行层落差</strong>：Benioff 在公开场合持续强调 AI 投入，而内部同步进行人员缩编——这种落差本身就是求职者需要警惕的信号。</li>\n</ul>\n<p>---</p>\n<h2>2026 年 AI 大厂裁员潮：哪些公司和岗位风险更高？</h2>\n<p>云计算与 SaaS 赛道在 2025–2026 年普遍面临\"增长预期下调 + 利率高位 + AI 投入挤占预算\"三重压力。以下是求职者评估雇主稳定性时可参考的维度对比：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">评估维度</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">高风险信号</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">相对安全信号</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">营收增长</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">连续两季度低于预期</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">营收增速稳定或加速</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">CEO 表态</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">频繁强调\"转型\"\"押注 AI\"</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">具体列出盈利路径与时间线</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">裁员历史</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">12 个月内多轮裁员</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">近 2 年无大规模裁员</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">现金流</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">依赖融资维持运营</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">自由现金流为正</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">岗位类型</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">整合型收购团队、纯成本中心</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">核心产品研发、直接创收团队</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">HC Freeze</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">已暂停外部招聘</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">持续开放 JD，Hiring Manager 活跃</td></tr></tbody></table>\n<p><strong>对 OPT/H1B 持有者的额外提示</strong>：USCIS 规定，H1B 失业后通常有 <strong>60 天宽限期</strong>（Portability / Grace Period）寻找新雇主。一旦被裁，留给你找工作、发 offer、发 I-129 的时间极为有限。因此，<strong>在岗时就应保持求职 Pipeline 活跃</strong>，而非等到裁员通知再启动。</p>\n<p>---</p>\n<h2>OPT/H1B 持有者被大厂裁员后怎么办？</h2>\n<p>如果你正在 Salesforce 或类似公司任职，或担心所在公司有裁员风险，以下是优先级排序的行动清单：</p>\n<p><strong>立即（裁员当天起）</strong></p>\n<ul>\n  <li>确认 I-94 状态和签证有效期，联系移民律师或学校 DSO/RO</li>\n  <li>索取官方裁员文件（termination letter），明确最后工作日</li>\n  <li>OPT 持有者：向 DSO 报告失业，启动 90 天失业计时（STEM OPT 失业上限累计 <strong>150 天</strong>，需严格管控）</li>\n  <li>H1B 持有者：确认是否处于 60 天 Grace Period，立即激活求职渠道</li>\n</ul>\n<p><strong>1–2 周内</strong></p>\n<ul>\n  <li>更新 LinkedIn，开启 Open to Work（对 Recruiter 可见即可，不必公开）</li>\n  <li>盘点现有内推人脉，按公司优先级逐一触达</li>\n  <li>准备好多版本简历（针对 SDE / PM / DA / DS 等不同方向）</li>\n</ul>\n<p><strong>持续推进</strong></p>\n<ul>\n  <li>每周投递数量保持在 <strong>30–50 份</strong>以上，并追踪回复率</li>\n  <li>内推渠道优先于盲投——我们辅导的学员中，内推带来的面试转化率显著高于 JD 盲投</li>\n</ul>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>Salesforce 裁员会影响在职员工的 H1B 续签吗？</strong> 如果你仍在职且雇主继续为你提供 sponsorship，H1B 续签流程不受影响。但若被裁，需在 60 天 Grace Period 内找到新雇主并提交 H1B Transfer，否则身份失效。建议第一时间联系移民律师确认时间节点。</p>\n<p><strong>Agentforce 被裁，还值得去学 AI Agent 方向吗？</strong> 方向本身仍有价值，但要区分\"技术趋势\"和\"雇主稳定性\"。AI Agent 作为技术栈值得投入，但选择雇主时需独立评估该公司的财务健康度，而非仅凭产品热度判断。</p>\n<p><strong>怎么判断一家公司是否处于\"隐性裁员\"状态？</strong> 几个可观察信号：Glassdoor 近期评分骤降、Hiring Manager 在 LinkedIn 上不活跃、JD 挂出很久但无人推进面试、公司财报电话会议中多次提及\"效率优化\"或\"重组\"。</p>\n<p><strong>内推真的比自己海投有用吗？</strong> 有效内推能绕过 ATS 系统直达 Hiring Manager，大幅提升简历被看到的概率。Rexpand 的 AI Agent 每周触达 100+ Hiring Team，产出 5–15 个内推机会，学员 offer 来自 Goldman Sachs、Google、Amazon、Meta 等公司，均有 offer letter 留档可核验。</p>\n<p><strong>OPT 失业期最多可以有几天？</strong> 标准 OPT 累计失业上限为 <strong>90 天</strong>；STEM OPT 延期阶段累计失业上限为 <strong>150 天</strong>（含标准 OPT 阶段的未使用天数）。超出即视为违规，可能影响未来身份申请，务必严格追踪。</p>\n<p>---</p>\n<p>Salesforce 的这轮裁员再次证明：在 AI 叙事最响亮的地方，未必是求职最安全的地方——稳健的现金流、可核验的 offer 记录，才是你选择下一份工作应该看的东西。如果你正在评估求职方向、担忧 OPT/H1B 时间压力，欢迎添加 Rexpand 企业微信，<strong>30 分钟内</strong>获得 1v1 免费咨询，我们会根据你的背景给出具体可执行的建议。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "Salesforce裁员2026",
+      "AI大厂裁员",
+      "Agentforce裁员",
+      "北美留学生求职",
+      "云计算公司裁员",
+      "tech layoff 2026",
+      "H1B求职",
+      "OPT求职"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxPWkxDcWJxdVMxMXdPMjBfVnlPek02WEZCN2xKM1lSOXd3QVNSMnZZSEdEQkVjdW45UXVtMWNhZjJZQVJGb0diTkhYVWVZV3lmVWgwbU8tRXYtRVhfV0ZTZEt6azhFTVF6WmxFLXMyNmw4YXdJTmNHY0NZSE5BR0dOa3RsWlRYbzhRQVpEZzVhTHJqMzlDOVJmVTB3Zko2OUpDSTBKZ3pON2lpRm1BbjJIbUxmZ3VNdEhuVlBlSGlneXpoRFc4M3UxT0Yxb2pSUGF3SlQ5b25MSnJoMC1fd0FoY0ROYU9vV0o3TkRIRENHUEhNaE9kLXh4ay1zdHM1c2lld2w0YW5uSzBvWWU40gGSAkFVX3lxTE5TU0ZYTTJ2Y05PWGJBT3lpdE1pM09ITjg2Y2Z6b1hWMFBUOWNkSTZoT3hPcUhZa3h6eXJMQUt3dG1uREUtbnhnbUNZRXJEdDFjTHUzTVQ0U0FFbEdtdUxDbVpQTWtuUTlQMi1uY2JLczhZZTVsbVhqT3BXcnFyZ3ZQSUdDTzlER1RsN3Y3cHJMR3JybWQtSnE2aFdFbjNWeTYxNnY4NDlXUnctbHRWV3JJTUhjS2JUeld4NzBORldwcG5hX0xneHEzemZNcllWQ0o2Y1hMOU1CZmJ2WWJxalpXUkRVVGdyTGswNjFBd3hTWWNTQ0ZvcGxYU1dkUERNVFZFNVlyS3NYVVlXSXBmNXlIUlE?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "anthropic-10-goldmanmorgan-stanley-ai-amdg9",
+    "category": "招聘市场",
+    "date": "2026.06.04",
+    "readTime": "8 min read",
+    "title": "Anthropic 最早10月上市！Goldman+Morgan Stanley联合承销，AI求职窗口来了",
+    "dek": "Anthropic确认由Goldman Sachs、Morgan Stanley、JPMorgan主导IPO，最早2026年10月上市，AI岗位大规模扩张信号已发。",
+    "image": {
+      "url": "/og/intel-anthropic-10-goldmanmorgan-stanley-ai-amdg9.webp",
+      "alt": "Anthropic 最早10月上市！Goldman+Morgan Stanley联合承销，AI求职窗口来了"
     },
-
-    {
-      slug: 'anthropic-10-goldmanmorgan-stanley-ai-amdg9',
-      category: '招聘市场',
-      date: '2026.06.04',
-      readTime: '8 min read',
-      title: 'Anthropic 最早10月上市！Goldman+Morgan Stanley联合承销，AI求职窗口来了',
-      dek: 'Anthropic确认由Goldman Sachs、Morgan Stanley、JPMorgan主导IPO，最早2026年10月上市，AI岗位大规模扩张信号已发。',
-      image: { url: '/og/intel-anthropic-10-goldmanmorgan-stanley-ai-amdg9.webp', alt: 'Anthropic 最早10月上市！Goldman+Morgan Stanley联合承销，AI求职窗口来了' },
-      body: `
-        <p class="lede">Anthropic 已确认由 Morgan Stanley、Goldman Sachs 和 JPMorgan 联合主导 IPO，预计最早于 <strong>2026 年 10 月</strong>登陆公开市场。对北美中国留学生而言，这不只是一条财经新闻——AI 独角兽上市前后的扩张期，历来是工程师、研究员和数据岗候选人冲刺 offer 的黄金窗口。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>Anthropic IPO 主承销行确认</strong>为 Morgan Stanley、Goldman Sachs、JPMorgan，预计最早 2026 年 10 月上市。</li>
-  <li>AI 公司 IPO 前通常大规模扩编，以展示营收增长潜力，<strong>招聘窗口往往在上市前 6–12 个月开启</strong>。</li>
-  <li>此次 IPO 反映 2026 年 AI 融资市场持续高温，带动整个 AI 赛道（包括竞争对手）加速招聘。</li>
-  <li>留学生在 AI 工程、ML Research、Data Science 岗位上具有学历竞争力，但需主动解决 <strong>OPT / H-1B sponsorship</strong> 问题。</li>
-  <li>现在开始准备简历、内推网络和面试题库，才能赶上 2026 秋季校招与社招高峰。</li>
-</ul>
-<p>---</p>
-<h2>Anthropic IPO 是怎么回事？时间线如何？</h2>
-<p>Anthropic 是由前 OpenAI 核心团队创立、主打"安全优先"AI 研究的独角兽公司，旗舰产品为大语言模型 Claude 系列。根据多家媒体（包括 BanklessTimes，2026 年 6 月）披露的消息：</p>
-<ul>
-  <li><strong>主承销行</strong>：Morgan Stanley（全球协调人）、Goldman Sachs、JPMorgan</li>
-  <li><strong>预计上市时间</strong>：最早 2026 年 10 月</li>
-  <li><strong>市场背景</strong>：继 OpenAI 大规模融资、Google DeepMind 与 Meta AI 持续扩张之后，AI 赛道融资热度处于近年峰值</li>
-</ul>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">关键节点</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">时间（预计）</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">意义</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">IPO 承销行确认</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026 年 6 月（已发生）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">上市进程正式启动</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">路演 / 预披露阶段</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026 年 Q3（预估）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">公司对外曝光度大增，品牌招聘加速</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">预计上市</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026 年 10 月（最早）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">扩张期员工激励落地，新 HC 开放</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">IPO 后整合期</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026 年 Q4–2027</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">业务扩张，持续招聘</td></tr></tbody></table>
-<blockquote>⚠️ 注意：IPO 时间受市场环境影响可能推迟，以 Anthropic 官方公告为准。</blockquote>
-<p>---</p>
-<h2>AI 公司 IPO 前后，留学生有哪些求职机会？</h2>
-<p>历史规律显示，科技独角兽在 IPO 前 6–12 个月通常进入"冲刺扩编"阶段——需要展示营收、用户规模和技术壁垒，因此工程、产品、数据类 HC（headcount）会集中释放。Anthropic 此次同理。</p>
-<p><strong>对留学生最相关的岗位方向：</strong></p>
-<ul>
-  <li><strong>Software Engineer（SWE / SDE）</strong>：模型推理优化、基础设施、API 平台</li>
-  <li><strong>ML Engineer / Research Engineer</strong>：训练框架、RLHF、模型安全</li>
-  <li><strong>Data Scientist / Data Analyst</strong>：用户行为分析、模型评估指标</li>
-  <li><strong>Applied AI / Product</strong>：Claude API 落地、企业客户方向</li>
-  <li><strong>Finance &amp; Strategy</strong>（IPO 相关）：Goldman Sachs、Morgan Stanley、JPMorgan 等承销行也会同步招聘 AI 行业覆盖的 IB / ECM analyst</li>
-</ul>
-<p><strong>Sponsorship 注意事项：</strong></p>
-<p>Anthropic 作为大型科技公司，历史上提供 H-1B sponsorship，但留学生仍需在面试流程早期确认岗位是否支持 OPT 及后续 H-1B。2026 H-1B 抽签结果已公布，未中签者需重点关注 OPT Cap-Gap 和 2027 年抽签节奏。</p>
-<p>---</p>
-<h2>2026 AI 融资热潮下，整个赛道招聘有多旺？</h2>
-<p>Anthropic IPO 只是 2026 年 AI 赛道融资潮的一个切面。当资本大规模涌入，效应会扩散至整条产业链：</p>
-<p><strong>受益招聘的公司类型：</strong></p>
-<ul>
-  <li><strong>AI 原生独角兽</strong>（Anthropic、OpenAI、xAI、Cohere 等）：直接扩编</li>
-  <li><strong>BigTech AI 部门</strong>（Google DeepMind、Meta AI、Amazon AWS AI）：防御性招聘，避免人才流失</li>
-  <li><strong>AI 应用层公司</strong>（企业 SaaS、金融 AI、医疗 AI）：获得融资后批量开放实习 + 校招</li>
-  <li><strong>投行 / 咨询</strong>：AI 行业覆盖 analyst、技术尽调岗需求上升</li>
-</ul>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">赛道</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">2026 招聘热度</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">对留学生友好度</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">典型公司</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI 基础模型</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中（sponsorship 竞争激烈）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Anthropic、OpenAI</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">BigTech AI 部门</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（成熟 sponsorship 体系）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Google、Meta、Amazon</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI 应用 SaaS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">中高（视公司规模）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Stripe AI、各垂直赛道</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">投行（AI 覆盖）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（GS、MS、JPM 均有 OPT）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Goldman Sachs、Morgan Stanley</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">AI 咨询</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">⭐⭐⭐</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">高（BCG、Deloitte 等）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">BCG、Deloitte、KPMG</td></tr></tbody></table>
-<p>Rexpand 辅导的学员中，已有人拿到 Goldman Sachs、Morgan Stanley、Meta、Google、Amazon、TikTok、Stripe 等公司 offer，均有 offer letter 留档可核验。</p>
-<p>---</p>
-<h2>现在该怎么准备？留学生求职行动清单</h2>
-<p>AI 赛道窗口已经打开，但竞争同样激烈。以下是可以立即开始的行动：</p>
-<p><strong>简历与定向：</strong></p>
-<ul>
-  <li>突出 ML/AI 项目经验，量化影响（模型精度提升 X%、处理数据量 X TB 等）</li>
-  <li>针对 Anthropic / AI 公司 JD 关键词优化简历，覆盖 LLM、RLHF、inference optimization 等术语</li>
-</ul>
-<p><strong>内推网络：</strong></p>
-<ul>
-  <li>Anthropic、OpenAI 等公司内推竞争极强，需要提前 3–6 个月建立联系</li>
-  <li>Rexpand 的 LinkedIn 内推 Agent 和 Email 内推 Agent 每周触达 100+ Hiring Team，产出 5–15 条真实内推；Email 库覆盖 100 万+，回复率约 20%</li>
-</ul>
-<p><strong>背景提升：</strong></p>
-<ul>
-  <li>若 AI 项目经验不足，Rexpand 提供数据科学（DS）、软件工程（SE）、数据分析（DA）方向的背景提升项目，结项即获 referral，可直接补充简历</li>
-</ul>
-<p><strong>面试备战：</strong></p>
-<ul>
-  <li>Anthropic 技术面以 coding + system design + research discussion 为主，建议提前刷 Rexpand 2,000+ 面经题库</li>
-  <li>行为面（BQ）需准备"AI safety / alignment"相关价值观问题，这是 Anthropic 特有考点</li>
-</ul>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>Anthropic 会 sponsor H-1B 吗？</strong> 根据现有公开信息，Anthropic 历史上为技术岗提供 H-1B sponsorship，但具体政策以招聘 JD 和 HR 确认为准，建议在面试流程中主动询问。</p>
-<p><strong>Anthropic IPO 后留学生还能申请吗？</strong> 可以。IPO 后公司进入扩张整合期，通常持续 1–2 年仍有大量招聘；但 IPO 前的扩编窗口竞争相对略低，越早准备越有优势。</p>
-<p><strong>没有 AI 背景，能申请 Anthropic 相关岗位吗？</strong> Anthropic 技术岗要求较高，但 AI 应用层公司（包括使用 Claude API 的企业）门槛更多元。金融、咨询方向的 AI 覆盖岗对非纯技术背景留学生也有机会。</p>
-<p><strong>Goldman Sachs、Morgan Stanley 因为主导 IPO 会有更多招聘吗？</strong> IPO 承销会拉动 ECM（股权资本市场）、TMT 行业组的工作量，对正在申请 IB analyst / associate 的留学生是额外利好，可重点关注 2026 秋季招聘。</p>
-<p><strong>如何知道 AI 公司是否支持 OPT？</strong> 优先看招聘 JD 是否注明"We do not sponsor work visas"，有此声明则不支持。无声明时直接在 recruiter screening 阶段询问，避免浪费双方时间。</p>
-<p>---</p>
-<p>2026 AI 融资与 IPO 热潮正在真实地创造求职机会，但窗口留给有准备的人——<strong>现在扫码添加 Rexpand 企业微信，30 分钟内获得 1v1 免费职业咨询</strong>，我们帮你锁定目标公司、匹配在职导师内推，把 Anthropic IPO 这波热度变成你简历上的 offer。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['Anthropic IPO', '2026 AI公司招聘', '留学生AI工作机会', 'AI工程师求职', '北美AI实习', 'Goldman Sachs IPO', 'Morgan Stanley IPO', 'AI独角兽招聘'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMisAFBVV95cUxPS1dLaFJEdkJCRTk0cm00UWowVkxoSFJjaEd2MmtuNGZOUTdXaUs1VHE3SUl0M1Fkc2dfOF9TckF2SjVfcUJDN3U1UjhseXkzSjBPb0NyRWNqeENWWTQ1VzlROThTRHZRU1pRR3l2MzN3OGp1WGpfRmF6UGRBZHBvVWttQmcydmQwRGN3aXR4SGppREZtX0t2LUlSN1U5TFRXWlJVMmEtR0RrUURpeElteQ?oc=5' }
-      ],
+    "body": "\n        <p class=\"lede\">Anthropic 已确认由 Morgan Stanley、Goldman Sachs 和 JPMorgan 联合主导 IPO，预计最早于 <strong>2026 年 10 月</strong>登陆公开市场。对北美中国留学生而言，这不只是一条财经新闻——AI 独角兽上市前后的扩张期，历来是工程师、研究员和数据岗候选人冲刺 offer 的黄金窗口。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>Anthropic IPO 主承销行确认</strong>为 Morgan Stanley、Goldman Sachs、JPMorgan，预计最早 2026 年 10 月上市。</li>\n  <li>AI 公司 IPO 前通常大规模扩编，以展示营收增长潜力，<strong>招聘窗口往往在上市前 6–12 个月开启</strong>。</li>\n  <li>此次 IPO 反映 2026 年 AI 融资市场持续高温，带动整个 AI 赛道（包括竞争对手）加速招聘。</li>\n  <li>留学生在 AI 工程、ML Research、Data Science 岗位上具有学历竞争力，但需主动解决 <strong>OPT / H-1B sponsorship</strong> 问题。</li>\n  <li>现在开始准备简历、内推网络和面试题库，才能赶上 2026 秋季校招与社招高峰。</li>\n</ul>\n<p>---</p>\n<h2>Anthropic IPO 是怎么回事？时间线如何？</h2>\n<p>Anthropic 是由前 OpenAI 核心团队创立、主打\"安全优先\"AI 研究的独角兽公司，旗舰产品为大语言模型 Claude 系列。根据多家媒体（包括 BanklessTimes，2026 年 6 月）披露的消息：</p>\n<ul>\n  <li><strong>主承销行</strong>：Morgan Stanley（全球协调人）、Goldman Sachs、JPMorgan</li>\n  <li><strong>预计上市时间</strong>：最早 2026 年 10 月</li>\n  <li><strong>市场背景</strong>：继 OpenAI 大规模融资、Google DeepMind 与 Meta AI 持续扩张之后，AI 赛道融资热度处于近年峰值</li>\n</ul>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">关键节点</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">时间（预计）</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">意义</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">IPO 承销行确认</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026 年 6 月（已发生）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">上市进程正式启动</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">路演 / 预披露阶段</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026 年 Q3（预估）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">公司对外曝光度大增，品牌招聘加速</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">预计上市</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026 年 10 月（最早）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">扩张期员工激励落地，新 HC 开放</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">IPO 后整合期</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">2026 年 Q4–2027</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">业务扩张，持续招聘</td></tr></tbody></table>\n<blockquote>⚠️ 注意：IPO 时间受市场环境影响可能推迟，以 Anthropic 官方公告为准。</blockquote>\n<p>---</p>\n<h2>AI 公司 IPO 前后，留学生有哪些求职机会？</h2>\n<p>历史规律显示，科技独角兽在 IPO 前 6–12 个月通常进入\"冲刺扩编\"阶段——需要展示营收、用户规模和技术壁垒，因此工程、产品、数据类 HC（headcount）会集中释放。Anthropic 此次同理。</p>\n<p><strong>对留学生最相关的岗位方向：</strong></p>\n<ul>\n  <li><strong>Software Engineer（SWE / SDE）</strong>：模型推理优化、基础设施、API 平台</li>\n  <li><strong>ML Engineer / Research Engineer</strong>：训练框架、RLHF、模型安全</li>\n  <li><strong>Data Scientist / Data Analyst</strong>：用户行为分析、模型评估指标</li>\n  <li><strong>Applied AI / Product</strong>：Claude API 落地、企业客户方向</li>\n  <li><strong>Finance &amp; Strategy</strong>（IPO 相关）：Goldman Sachs、Morgan Stanley、JPMorgan 等承销行也会同步招聘 AI 行业覆盖的 IB / ECM analyst</li>\n</ul>\n<p><strong>Sponsorship 注意事项：</strong></p>\n<p>Anthropic 作为大型科技公司，历史上提供 H-1B sponsorship，但留学生仍需在面试流程早期确认岗位是否支持 OPT 及后续 H-1B。2026 H-1B 抽签结果已公布，未中签者需重点关注 OPT Cap-Gap 和 2027 年抽签节奏。</p>\n<p>---</p>\n<h2>2026 AI 融资热潮下，整个赛道招聘有多旺？</h2>\n<p>Anthropic IPO 只是 2026 年 AI 赛道融资潮的一个切面。当资本大规模涌入，效应会扩散至整条产业链：</p>\n<p><strong>受益招聘的公司类型：</strong></p>\n<ul>\n  <li><strong>AI 原生独角兽</strong>（Anthropic、OpenAI、xAI、Cohere 等）：直接扩编</li>\n  <li><strong>BigTech AI 部门</strong>（Google DeepMind、Meta AI、Amazon AWS AI）：防御性招聘，避免人才流失</li>\n  <li><strong>AI 应用层公司</strong>（企业 SaaS、金融 AI、医疗 AI）：获得融资后批量开放实习 + 校招</li>\n  <li><strong>投行 / 咨询</strong>：AI 行业覆盖 analyst、技术尽调岗需求上升</li>\n</ul>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">赛道</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">2026 招聘热度</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">对留学生友好度</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">典型公司</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI 基础模型</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中（sponsorship 竞争激烈）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Anthropic、OpenAI</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">BigTech AI 部门</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（成熟 sponsorship 体系）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Google、Meta、Amazon</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI 应用 SaaS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">中高（视公司规模）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Stripe AI、各垂直赛道</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">投行（AI 覆盖）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（GS、MS、JPM 均有 OPT）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Goldman Sachs、Morgan Stanley</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">AI 咨询</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">⭐⭐⭐</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">高（BCG、Deloitte 等）</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">BCG、Deloitte、KPMG</td></tr></tbody></table>\n<p>Rexpand 辅导的学员中，已有人拿到 Goldman Sachs、Morgan Stanley、Meta、Google、Amazon、TikTok、Stripe 等公司 offer，均有 offer letter 留档可核验。</p>\n<p>---</p>\n<h2>现在该怎么准备？留学生求职行动清单</h2>\n<p>AI 赛道窗口已经打开，但竞争同样激烈。以下是可以立即开始的行动：</p>\n<p><strong>简历与定向：</strong></p>\n<ul>\n  <li>突出 ML/AI 项目经验，量化影响（模型精度提升 X%、处理数据量 X TB 等）</li>\n  <li>针对 Anthropic / AI 公司 JD 关键词优化简历，覆盖 LLM、RLHF、inference optimization 等术语</li>\n</ul>\n<p><strong>内推网络：</strong></p>\n<ul>\n  <li>Anthropic、OpenAI 等公司内推竞争极强，需要提前 3–6 个月建立联系</li>\n  <li>Rexpand 的 LinkedIn 内推 Agent 和 Email 内推 Agent 每周触达 100+ Hiring Team，产出 5–15 条真实内推；Email 库覆盖 100 万+，回复率约 20%</li>\n</ul>\n<p><strong>背景提升：</strong></p>\n<ul>\n  <li>若 AI 项目经验不足，Rexpand 提供数据科学（DS）、软件工程（SE）、数据分析（DA）方向的背景提升项目，结项即获 referral，可直接补充简历</li>\n</ul>\n<p><strong>面试备战：</strong></p>\n<ul>\n  <li>Anthropic 技术面以 coding + system design + research discussion 为主，建议提前刷 Rexpand 2,000+ 面经题库</li>\n  <li>行为面（BQ）需准备\"AI safety / alignment\"相关价值观问题，这是 Anthropic 特有考点</li>\n</ul>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>Anthropic 会 sponsor H-1B 吗？</strong> 根据现有公开信息，Anthropic 历史上为技术岗提供 H-1B sponsorship，但具体政策以招聘 JD 和 HR 确认为准，建议在面试流程中主动询问。</p>\n<p><strong>Anthropic IPO 后留学生还能申请吗？</strong> 可以。IPO 后公司进入扩张整合期，通常持续 1–2 年仍有大量招聘；但 IPO 前的扩编窗口竞争相对略低，越早准备越有优势。</p>\n<p><strong>没有 AI 背景，能申请 Anthropic 相关岗位吗？</strong> Anthropic 技术岗要求较高，但 AI 应用层公司（包括使用 Claude API 的企业）门槛更多元。金融、咨询方向的 AI 覆盖岗对非纯技术背景留学生也有机会。</p>\n<p><strong>Goldman Sachs、Morgan Stanley 因为主导 IPO 会有更多招聘吗？</strong> IPO 承销会拉动 ECM（股权资本市场）、TMT 行业组的工作量，对正在申请 IB analyst / associate 的留学生是额外利好，可重点关注 2026 秋季招聘。</p>\n<p><strong>如何知道 AI 公司是否支持 OPT？</strong> 优先看招聘 JD 是否注明\"We do not sponsor work visas\"，有此声明则不支持。无声明时直接在 recruiter screening 阶段询问，避免浪费双方时间。</p>\n<p>---</p>\n<p>2026 AI 融资与 IPO 热潮正在真实地创造求职机会，但窗口留给有准备的人——<strong>现在扫码添加 Rexpand 企业微信，30 分钟内获得 1v1 免费职业咨询</strong>，我们帮你锁定目标公司、匹配在职导师内推，把 Anthropic IPO 这波热度变成你简历上的 offer。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "Anthropic IPO",
+      "2026 AI公司招聘",
+      "留学生AI工作机会",
+      "AI工程师求职",
+      "北美AI实习",
+      "Goldman Sachs IPO",
+      "Morgan Stanley IPO",
+      "AI独角兽招聘"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPS1dLaFJEdkJCRTk0cm00UWowVkxoSFJjaEd2MmtuNGZOUTdXaUs1VHE3SUl0M1Fkc2dfOF9TckF2SjVfcUJDN3U1UjhseXkzSjBPb0NyRWNqeENWWTQ1VzlROThTRHZRU1pRR3l2MzN3OGp1WGpfRmF6UGRBZHBvVWttQmcydmQwRGN3aXR4SGppREZtX0t2LUlSN1U5TFRXWlJVMmEtR0RrUURpeElteQ?oc=5"
+      }
+    ]
+  },
+  {
+    "slug": "spacex-177-a7wy1",
+    "category": "招聘市场",
+    "date": "2026.06.04",
+    "readTime": "8 min read",
+    "title": "SpaceX 要上市了！$1.77万亿估值，留学生有机会上车吗？",
+    "dek": "SpaceX正式启动IPO，目标估值高达1.77万亿美元，由Goldman和Morgan Stanley联合承销。这波科技大瓜对留学生求职意味着什么？",
+    "image": {
+      "url": "/og/intel-spacex-177-a7wy1.jpg",
+      "alt": "SpaceX 要上市了！$1.77万亿估值，留学生有机会上车吗？"
     },
-
-    {
-      slug: 'spacex-177-a7wy1',
-      category: '招聘市场',
-      date: '2026.06.04',
-      readTime: '8 min read',
-      title: 'SpaceX 要上市了！$1.77万亿估值，留学生有机会上车吗？',
-      dek: 'SpaceX正式启动IPO，目标估值高达1.77万亿美元，由Goldman和Morgan Stanley联合承销。这波科技大瓜对留学生求职意味着什么？',
-      image: { url: '/og/intel-spacex-177-a7wy1.jpg', alt: 'SpaceX 要上市了！$1.77万亿估值，留学生有机会上车吗？' },
-      body: `
-        <p class="lede">SpaceX 于 2026 年正式启动 IPO 进程，目标估值高达 <strong>$1.77 万亿</strong>，由 Goldman Sachs 和 Morgan Stanley 联合承销，有望成为史上规模最大的航天公司上市事件。对北美中国留学生而言，这不只是一场资本盛宴——IPO 前后往往伴随大规模扩招，航天、卫星、软件工程等方向的岗位需求可能随之快速上升。</p>
-<p>---</p>
-<h2>关键要点</h2>
-<ul>
-  <li><strong>SpaceX IPO 估值 $1.77 万亿</strong>，由 Goldman Sachs 和 Morgan Stanley 管理，是 2026 年全球最受关注的科技融资事件之一。</li>
-  <li>IPO 前后，SpaceX 及整个航天产业链（卫星通信、火箭制造、太空技术）的<strong>工程师、SDE、数据分析师岗位需求预计上升</strong>。</li>
-  <li>受 SpaceX IPO 带动，<strong>二级科技公司（供应商、竞争对手、协作方）同步扩招</strong>，留学生的机会窗口不只限于 SpaceX 本身。</li>
-  <li>OPT / H1B 身份的留学生需提前布局，通过内推渠道切入门槛较高的航天科技岗。</li>
-  <li>Rexpand 已覆盖 Goldman Sachs、Morgan Stanley、Meta、Google、Amazon 等 200+ 公司的现役 Hiring Manager 导师网络，可为你对接相关内推资源。</li>
-</ul>
-<p>---</p>
-<h2>SpaceX IPO 是什么，为什么留学生要关注？</h2>
-<p>SpaceX（美国太空探索技术公司）由 Elon Musk 创立，旗下业务涵盖可复用火箭（Falcon 9 / Starship）和卫星宽带（Starlink）。2026 年启动的 IPO 进程估值达 <strong>$1.77 万亿</strong>，承销行为 Goldman Sachs 与 Morgan Stanley，这两家投行同时也是留学生金融求职的核心目标公司。</p>
-<p>对留学生来说，IPO 事件的求职意义体现在三个层面：</p>
-<ol>
-  <li><strong>直接扩招</strong>：上市融资后，SpaceX 将有更多资金投入 R&amp;D 和商业化，工程、软件、数据团队通常是第一批扩编对象。</li>
-  <li><strong>产业链联动</strong>：卫星通信、航天制造、太空数据分析等上下游企业受益于市场热情，同步扩招。</li>
-  <li><strong>投行 / 咨询需求</strong>：IPO 本身带动 Goldman Sachs、Morgan Stanley 等承销行及四大会计师事务所（Deloitte、KPMG）的相关业务线人手需求。</li>
-</ol>
-<p>---</p>
-<h2>SpaceX IPO 会带动哪些岗位方向？留学生适合申请哪些？</h2>
-<p>根据 SpaceX 业务结构和 IPO 后典型扩招路径，以下岗位方向最值得留学生关注：</p>
-<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">岗位方向</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">所需背景</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">OPT 友好度</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">说明</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">软件工程 SDE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">CS / ECE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">★★★★</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">地面系统、卫星通信软件、内部工具</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">数据分析 DA / 数据科学 DS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Statistics / Math / CS</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">★★★★</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">运营数据、卫星遥测数据分析</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">机械 / 航空工程</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">ME / AE</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">★★★</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">火箭结构、推进系统，需具体 visa 状态核实</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">金融建模 FM</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Finance / Math</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">★★★★</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">IPO 承销行（GS、MS）相关业务线扩招</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">供应链 / 运营分析</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Operations / IEOR</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">★★★</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">制造业务扩张带动</td></tr></tbody></table>
-<blockquote><strong>注意</strong>：SpaceX 部分岗位涉及 ITAR（国际武器交通条例）合规限制，可能要求美国公民或永久居民身份。留学生在申请前务必仔细核对岗位描述中的身份要求（"U.S. Person" 条款），OPT / H1B 持有者优先申请<strong>不含 ITAR 限制</strong>的软件、数据类岗位。</blockquote>
-<p>---</p>
-<h2>OPT / H1B 留学生怎么切入 SpaceX 这类头部科技公司？</h2>
-<p>SpaceX 是公认的高门槛雇主，网申竞争极为激烈。根据我们辅导的 300+ 学员经验，<strong>内推几乎是唯一显著提升简历通过率的手段</strong>，尤其是对 OPT 身份的候选人。</p>
-<p>以下是一套可执行的行动路径：</p>
-<p><strong>Step 1：明确目标岗位，确认身份可申请</strong></p>
-<ul>
-  <li>检查 JD 中是否含 "U.S. citizenship required" 或 "ITAR" 字样</li>
-  <li>OPT STEM 延期可申请大多数 SDE / DA / DS 类岗位</li>
-</ul>
-<p><strong>Step 2：建立内推渠道（优先级从高到低）</strong></p>
-<ul>
-  <li>找到目标团队在职员工 → 请求 referral</li>
-  <li>通过校友网络 / LinkedIn 触达 Hiring Manager</li>
-  <li>借助专业机构（如 Rexpand）的导师网络获得直推</li>
-</ul>
-<p><strong>Step 3：同步布局 SpaceX 产业链公司</strong></p>
-<ul>
-  <li>Goldman Sachs / Morgan Stanley（IPO 承销行，金融方向）</li>
-  <li>Amazon（AWS 为 SpaceX 云服务商之一，SDE 方向）</li>
-  <li>Google / Meta（竞争性科技公司同步扩招）</li>
-  <li>Stripe / Capital One（金融科技方向）</li>
-</ul>
-<p><strong>Step 4：准备针对性面试</strong></p>
-<ul>
-  <li>SpaceX SDE 面试偏重系统设计 + coding（LeetCode Hard 级别）</li>
-  <li>数据类岗位考察 SQL + Python + 业务 case</li>
-  <li>投行方向（GS / MS）考察建模 + behavioral</li>
-</ul>
-<blockquote>Rexpand 自研的 Multi-Agent 系统（Claude 驱动）每周可触达 100+ Hiring Team，产出 5–15 个有效内推，Email 库覆盖 100 万+，回复率约 20%。</blockquote>
-<p>---</p>
-<h2>IPO 热潮中，留学生最容易踩的坑是什么？</h2>
-<p><strong>误区 1：SpaceX 很热，我直接海投就行</strong> 现实是，SpaceX 收到的简历量极大，网申通过率极低。没有内推的情况下，背景平平的简历几乎不会被 recruiter 打开。</p>
-<p><strong>误区 2：只盯着 SpaceX，忽略产业链机会</strong> IPO 带动的是整个航天 + 科技生态的热度。Goldman Sachs、Morgan Stanley、Deloitte 等承销和审计方同步有人手需求，竞争相对更公平。</p>
-<p><strong>误区 3：ITAR 岗位也投，浪费时间</strong> 部分航天岗位明确要求 U.S. Citizenship，OPT / H1B 持有者申请无效。仔细读 JD 是最基础的时间管理。</p>
-<p>---</p>
-<h2>常见问题</h2>
-<p><strong>SpaceX 招国际学生（OPT / H1B）吗？</strong> SpaceX 部分岗位可以招 OPT 和 H1B 持有者，主要集中在软件工程、数据分析、数据科学方向。涉及 ITAR 合规的岗位通常要求 U.S. Person（公民或永久居民）。申请前务必逐条核对 JD 中的身份要求。</p>
-<p><strong>SpaceX IPO 之后岗位数量会增加吗？</strong> 历史规律显示，大型科技公司在 IPO 完成后通常会加速扩张，尤其是工程和产品方向。但具体招聘计划需以 SpaceX 官方发布为准；本文基于公开信息和行业规律进行分析，不构成招聘承诺。</p>
-<p><strong>Goldman Sachs 和 Morgan Stanley 承销 SpaceX IPO，这对金融方向留学生有什么机会？</strong> 两家投行在承销期间会扩充相关业务线团队，包括 ECM（股权资本市场）、技术行业投行组等。金融建模、数据分析背景的留学生可重点关注这两家的暑期和全职 Analyst 岗位。Rexpand 已有学员拿到 Goldman Sachs 和 Morgan Stanley 的 offer，均可核验。</p>
-<p><strong>没有航天背景，能申请 SpaceX 的软件岗吗？</strong> 可以。SpaceX SDE 岗位更看重编程能力、系统设计和解决问题的能力，不强制要求航天专业背景。CS、ECE 专业的留学生是主要候选群体。</p>
-<p><strong>如何快速获得 SpaceX 或相关公司的内推？</strong> 最高效的路径是通过在职员工或 Hiring Manager 直接推荐。Rexpand 拥有覆盖 200+ 公司的 1,000+ 名企现役导师，包括 Goldman Sachs、Morgan Stanley、Google、Amazon 等，可以帮你匹配目标公司的内推资源。</p>
-<p>---</p>
-<p>SpaceX IPO 是 2026 年科技就业市场最值得关注的催化剂之一，留学生现在开始布局并不算早——<strong>扫描下方二维码，企业微信 1v1 免费咨询 Rexpand 顾问，30 分钟内回复，帮你梳理最适合自己身份和背景的求职路径</strong>。</p>
-        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
-  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
-  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
-  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
-    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
-  </div>
-</section>
-      `,
-      keywords: ['SpaceX IPO 2026', '航天公司留学生求职', 'SpaceX 工程师岗位', '北美科技公司内推', '留学生找工作', '软件工程 SDE 求职', 'OPT 求职', 'H1B 科技公司'],
-      sources: [
-        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMihAFBVV95cUxNNmlxR21TZ0dBTjhibWRadWhpVzNuSkVoZkQtdm9jVEF3cXNYblRmMjdkcXhlRnQtdkJ0bHhTa0NjcTc0Y0Q2Nk5NbmJIWEFaMzBJVW1VLVZYUk54M2ZMOV9Yb3dzR0tWYm41ZjdfNl9Gc3ZBUlBXV3V5UFFVWUNJZ2FGX0g?oc=5' }
-      ],
-    },
-
+    "body": "\n        <p class=\"lede\">SpaceX 于 2026 年正式启动 IPO 进程，目标估值高达 <strong>$1.77 万亿</strong>，由 Goldman Sachs 和 Morgan Stanley 联合承销，有望成为史上规模最大的航天公司上市事件。对北美中国留学生而言，这不只是一场资本盛宴——IPO 前后往往伴随大规模扩招，航天、卫星、软件工程等方向的岗位需求可能随之快速上升。</p>\n<p>---</p>\n<h2>关键要点</h2>\n<ul>\n  <li><strong>SpaceX IPO 估值 $1.77 万亿</strong>，由 Goldman Sachs 和 Morgan Stanley 管理，是 2026 年全球最受关注的科技融资事件之一。</li>\n  <li>IPO 前后，SpaceX 及整个航天产业链（卫星通信、火箭制造、太空技术）的<strong>工程师、SDE、数据分析师岗位需求预计上升</strong>。</li>\n  <li>受 SpaceX IPO 带动，<strong>二级科技公司（供应商、竞争对手、协作方）同步扩招</strong>，留学生的机会窗口不只限于 SpaceX 本身。</li>\n  <li>OPT / H1B 身份的留学生需提前布局，通过内推渠道切入门槛较高的航天科技岗。</li>\n  <li>Rexpand 已覆盖 Goldman Sachs、Morgan Stanley、Meta、Google、Amazon 等 200+ 公司的现役 Hiring Manager 导师网络，可为你对接相关内推资源。</li>\n</ul>\n<p>---</p>\n<h2>SpaceX IPO 是什么，为什么留学生要关注？</h2>\n<p>SpaceX（美国太空探索技术公司）由 Elon Musk 创立，旗下业务涵盖可复用火箭（Falcon 9 / Starship）和卫星宽带（Starlink）。2026 年启动的 IPO 进程估值达 <strong>$1.77 万亿</strong>，承销行为 Goldman Sachs 与 Morgan Stanley，这两家投行同时也是留学生金融求职的核心目标公司。</p>\n<p>对留学生来说，IPO 事件的求职意义体现在三个层面：</p>\n<ol>\n  <li><strong>直接扩招</strong>：上市融资后，SpaceX 将有更多资金投入 R&amp;D 和商业化，工程、软件、数据团队通常是第一批扩编对象。</li>\n  <li><strong>产业链联动</strong>：卫星通信、航天制造、太空数据分析等上下游企业受益于市场热情，同步扩招。</li>\n  <li><strong>投行 / 咨询需求</strong>：IPO 本身带动 Goldman Sachs、Morgan Stanley 等承销行及四大会计师事务所（Deloitte、KPMG）的相关业务线人手需求。</li>\n</ol>\n<p>---</p>\n<h2>SpaceX IPO 会带动哪些岗位方向？留学生适合申请哪些？</h2>\n<p>根据 SpaceX 业务结构和 IPO 后典型扩招路径，以下岗位方向最值得留学生关注：</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">岗位方向</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">所需背景</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">OPT 友好度</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">说明</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">软件工程 SDE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">CS / ECE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">★★★★</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">地面系统、卫星通信软件、内部工具</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">数据分析 DA / 数据科学 DS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Statistics / Math / CS</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">★★★★</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">运营数据、卫星遥测数据分析</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">机械 / 航空工程</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">ME / AE</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">★★★</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">火箭结构、推进系统，需具体 visa 状态核实</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">金融建模 FM</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Finance / Math</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">★★★★</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">IPO 承销行（GS、MS）相关业务线扩招</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">供应链 / 运营分析</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">Operations / IEOR</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">★★★</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">制造业务扩张带动</td></tr></tbody></table>\n<blockquote><strong>注意</strong>：SpaceX 部分岗位涉及 ITAR（国际武器交通条例）合规限制，可能要求美国公民或永久居民身份。留学生在申请前务必仔细核对岗位描述中的身份要求（\"U.S. Person\" 条款），OPT / H1B 持有者优先申请<strong>不含 ITAR 限制</strong>的软件、数据类岗位。</blockquote>\n<p>---</p>\n<h2>OPT / H1B 留学生怎么切入 SpaceX 这类头部科技公司？</h2>\n<p>SpaceX 是公认的高门槛雇主，网申竞争极为激烈。根据我们辅导的 300+ 学员经验，<strong>内推几乎是唯一显著提升简历通过率的手段</strong>，尤其是对 OPT 身份的候选人。</p>\n<p>以下是一套可执行的行动路径：</p>\n<p><strong>Step 1：明确目标岗位，确认身份可申请</strong></p>\n<ul>\n  <li>检查 JD 中是否含 \"U.S. citizenship required\" 或 \"ITAR\" 字样</li>\n  <li>OPT STEM 延期可申请大多数 SDE / DA / DS 类岗位</li>\n</ul>\n<p><strong>Step 2：建立内推渠道（优先级从高到低）</strong></p>\n<ul>\n  <li>找到目标团队在职员工 → 请求 referral</li>\n  <li>通过校友网络 / LinkedIn 触达 Hiring Manager</li>\n  <li>借助专业机构（如 Rexpand）的导师网络获得直推</li>\n</ul>\n<p><strong>Step 3：同步布局 SpaceX 产业链公司</strong></p>\n<ul>\n  <li>Goldman Sachs / Morgan Stanley（IPO 承销行，金融方向）</li>\n  <li>Amazon（AWS 为 SpaceX 云服务商之一，SDE 方向）</li>\n  <li>Google / Meta（竞争性科技公司同步扩招）</li>\n  <li>Stripe / Capital One（金融科技方向）</li>\n</ul>\n<p><strong>Step 4：准备针对性面试</strong></p>\n<ul>\n  <li>SpaceX SDE 面试偏重系统设计 + coding（LeetCode Hard 级别）</li>\n  <li>数据类岗位考察 SQL + Python + 业务 case</li>\n  <li>投行方向（GS / MS）考察建模 + behavioral</li>\n</ul>\n<blockquote>Rexpand 自研的 Multi-Agent 系统（Claude 驱动）每周可触达 100+ Hiring Team，产出 5–15 个有效内推，Email 库覆盖 100 万+，回复率约 20%。</blockquote>\n<p>---</p>\n<h2>IPO 热潮中，留学生最容易踩的坑是什么？</h2>\n<p><strong>误区 1：SpaceX 很热，我直接海投就行</strong> 现实是，SpaceX 收到的简历量极大，网申通过率极低。没有内推的情况下，背景平平的简历几乎不会被 recruiter 打开。</p>\n<p><strong>误区 2：只盯着 SpaceX，忽略产业链机会</strong> IPO 带动的是整个航天 + 科技生态的热度。Goldman Sachs、Morgan Stanley、Deloitte 等承销和审计方同步有人手需求，竞争相对更公平。</p>\n<p><strong>误区 3：ITAR 岗位也投，浪费时间</strong> 部分航天岗位明确要求 U.S. Citizenship，OPT / H1B 持有者申请无效。仔细读 JD 是最基础的时间管理。</p>\n<p>---</p>\n<h2>常见问题</h2>\n<p><strong>SpaceX 招国际学生（OPT / H1B）吗？</strong> SpaceX 部分岗位可以招 OPT 和 H1B 持有者，主要集中在软件工程、数据分析、数据科学方向。涉及 ITAR 合规的岗位通常要求 U.S. Person（公民或永久居民）。申请前务必逐条核对 JD 中的身份要求。</p>\n<p><strong>SpaceX IPO 之后岗位数量会增加吗？</strong> 历史规律显示，大型科技公司在 IPO 完成后通常会加速扩张，尤其是工程和产品方向。但具体招聘计划需以 SpaceX 官方发布为准；本文基于公开信息和行业规律进行分析，不构成招聘承诺。</p>\n<p><strong>Goldman Sachs 和 Morgan Stanley 承销 SpaceX IPO，这对金融方向留学生有什么机会？</strong> 两家投行在承销期间会扩充相关业务线团队，包括 ECM（股权资本市场）、技术行业投行组等。金融建模、数据分析背景的留学生可重点关注这两家的暑期和全职 Analyst 岗位。Rexpand 已有学员拿到 Goldman Sachs 和 Morgan Stanley 的 offer，均可核验。</p>\n<p><strong>没有航天背景，能申请 SpaceX 的软件岗吗？</strong> 可以。SpaceX SDE 岗位更看重编程能力、系统设计和解决问题的能力，不强制要求航天专业背景。CS、ECE 专业的留学生是主要候选群体。</p>\n<p><strong>如何快速获得 SpaceX 或相关公司的内推？</strong> 最高效的路径是通过在职员工或 Hiring Manager 直接推荐。Rexpand 拥有覆盖 200+ 公司的 1,000+ 名企现役导师，包括 Goldman Sachs、Morgan Stanley、Google、Amazon 等，可以帮你匹配目标公司的内推资源。</p>\n<p>---</p>\n<p>SpaceX IPO 是 2026 年科技就业市场最值得关注的催化剂之一，留学生现在开始布局并不算早——<strong>扫描下方二维码，企业微信 1v1 免费咨询 Rexpand 顾问，30 分钟内回复，帮你梳理最适合自己身份和背景的求职路径</strong>。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "SpaceX IPO 2026",
+      "航天公司留学生求职",
+      "SpaceX 工程师岗位",
+      "北美科技公司内推",
+      "留学生找工作",
+      "软件工程 SDE 求职",
+      "OPT 求职",
+      "H1B 科技公司"
+    ],
+    "sources": [
+      {
+        "title": "news.google.com",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNNmlxR21TZ0dBTjhibWRadWhpVzNuSkVoZkQtdm9jVEF3cXNYblRmMjdkcXhlRnQtdkJ0bHhTa0NjcTc0Y0Q2Nk5NbmJIWEFaMzBJVW1VLVZYUk54M2ZMOV9Yb3dzR0tWYm41ZjdfNl9Gc3ZBUlBXV3V5UFFVWUNJZ2FGX0g?oc=5"
+      }
+    ]
+  },
   {
     "slug": "anthropic-ipo-965b-openai-ai-u2jfa",
     "category": "薪资数据",
