@@ -29339,6 +29339,178 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:replays:start
   const REPLAYS = [
   {
+    "slug": "walmart-senior-data-analyst-2026-06-17",
+    "date": "2026.06.17",
+    "duration": "54:13",
+    "company": "Walmart",
+    "location": "",
+    "role": "Senior Data Analyst",
+    "logo": "W",
+    "seoTitle": "Senior Data Analyst · Walmart — Mock Interview Replay",
+    "dek": "A 54:13 Walmart Senior Data Analyst mock interview replay, 17 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-06-17-video.mp4",
+    "score": {
+      "overall": 85,
+      "max": 100,
+      "verdict": "STRONG PASS",
+      "verdictPct": "85%",
+      "label": "Panel advances without hesitation.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          18,
+          20,
+          "每题都最终 land 到了问题核心,包括 ambiguous problem / disagreement / mistake 的 STAR 结构和 case study 的 funnel 拆解,虽然有时需要面试官 probe 才展开细节"
+        ],
+        [
+          "Specificity & Evidence",
+          27,
+          30,
+          "EvenUp case assignment 项目细节扎实:3500 cases、10+ mins latency reduction、8 天 turnaround、190+ drafters、BigQuery/dbt stack 都点到了;A/B test 给了 conversion / open rate / unsubscribe 三层 metric"
+        ],
+        [
+          "Depth & Reasoning",
+          25,
+          30,
+          "Case study 展现了 senior 思维:data quality 优先排查、funnel segmentation by new vs returning、failure reason 作为 root cause 锚点;disagreement 故事用 simulation 让讨论 objective 也很 senior"
+        ],
+        [
+          "Role Fit",
+          8,
+          10,
+          "SQL / Tableau / cross-functional 都有覆盖,case study 把 last-mile fulfillment 维度带进 dashboard 设计正中 JD 的 ecommerce transportation 场景;但简历里 Volvo/JD.com last-mile 经验没主动展开"
+        ],
+        [
+          "Communication",
+          7,
+          10,
+          "结构感强(STAR / 3-question framing / funnel stages),但有明显 filler 和重复('like', 'somehow', 'definitely definitely'),case study 后段 hypotheses 堆砌时 pacing 略散"
+        ]
+      ]
+    },
+    "summary": "整体表现扎实,specificity 和 depth 都够 senior bar —— EvenUp case assignment 项目的 3500 cases / 8-day turnaround / BigQuery+dbt stack 都点到了,case study 的 funnel segmentation 和 data quality 优先排查思路也很 senior。Communication 有 filler 和 pacing 问题但不影响内容落地。Role fit 层面简历里 Volvo/JD.com last-mile 经验没主动展开是小遗憾。",
+    "mainIssue": {
+      "title": "Case study 后段 hypotheses 堆砌时没有 prioritize,funnel 的 shape 在散",
+      "body": "面试官在 checkout failure 那轮明确收窄范围要 schema / table / field,候选人给了三张表(event / transaction / performance)并点出 failure reason 是最有价值字段,这部分很 senior。但在更早的 funnel walk-through 阶段,候选人在每个 stage 堆了一长串 potential causes 却没给出 prioritization logic:\n- Product view → add-to-cart 阶段列了 price increase / competitor promotion / out-of-stock / product page issues,但没说先查哪个\n- Checkout start 阶段列了 shipping cost / delivery time / pickup / 比价 / bugs / address validation,同样没 sequence\n- 面试官给了 new vs returning 的 segmentation hypothesis 后,候选人花了好几轮才把这条线串回 funnel,中间一直在堆 cause list\n\n这会让 hiring committee 怀疑候选人在 ambiguous case 下的 scoping 能力 —— senior analyst 应该能快速收窄假设空间,而不是把所有可能性平铺。\n\n— 如何改进 —\n下次遇到 open-ended case,在列完 hypothesis tree 后立刻给出 prioritization rule 并计时演练:\n- 比如这个 case 可以说:'我会先排查 data quality(最便宜),再看 platform segmentation(isolate web vs app),最后才深入 funnel stages — 因为前两步能 rule out 整个 branch。'\n- 用 5 个 past case studies 做这个 drill:每个 case 限时 8 分钟,必须在前 2 分钟内给出 prioritized hypothesis tree(3-4 branches,每个 branch 标注 cost / signal ratio),后 6 分钟才展开细节\n- 录音回放时检查:如果你在某个 branch 上花了超过 90 秒但面试官没追问,说明你在 over-elaborate 一个他不 care 的方向 — 学会读 interviewer cues 并 pivot"
+    },
+    "alsoNoting": [
+      "简历里 Volvo/JD.com last-mile logistics 经验没主动展开,错失 role fit 最强信号",
+      "Filler words 和重复表达拖慢 pacing,尤其在 case study 后段",
+      "Disagreement 故事的 self-awareness 层偏轻,没正面承认对方观点的合理性",
+      "Mistake 故事没正面承认判断错在哪,全程在讲 redesign 和 learning"
+    ],
+    "questions": [
+      {
+        "t": 143,
+        "q": "Could you please pick 1 project from your resume that is most relevant to warm us deliver data or analyze team?",
+        "meta": "Wait — this sounds like the candidate is talking, not the in"
+      },
+      {
+        "t": 773,
+        "q": "Could you please tell me what is your purpose that you are using AB test?",
+        "meta": "Interviewer is recapping your own due-date prediction logic "
+      },
+      {
+        "t": 779,
+        "q": "What is your purpose that you are using AB test? What kind of target or things were you using to evaluate?",
+        "meta": ""
+      },
+      {
+        "t": 787,
+        "q": "Could you please tell me what is your purpose that you are using AB test?",
+        "meta": ""
+      },
+      {
+        "t": 792,
+        "q": "What is your purpose that you are using AB test? What kind of target or things were you using to evaluate?",
+        "meta": ""
+      },
+      {
+        "t": 976,
+        "q": "Could you please tell me about the time you had to solve ambiguous or unclear business problems?",
+        "meta": "经典 ambiguous problem behavioral 题 —— 他要听的是你怎么 frame问题、做assum"
+      },
+      {
+        "t": 1180,
+        "q": "Tell me about a time you disagree with your leader or a stakeholder.",
+        "meta": ""
+      },
+      {
+        "t": 1206,
+        "q": "Tell me about a time you disagree with your leader or a stakeholder",
+        "meta": "用 data 来反驳 leader 的 framing 很 on-brand,而且\"先收集 evidence 再 cha"
+      },
+      {
+        "t": 1371,
+        "q": "Could you describe a time when you make a mistake?",
+        "meta": "Setup 铺得稳,executive dashboard 的场景跟 JD 的 Tableau 工作高度相关"
+      },
+      {
+        "t": 1615,
+        "q": "Identify the most likely causes and design a dashboard to monitor this issue. Consider delivery, fulfillment, checkout, or operational data qualities as possible drivers.",
+        "meta": "面试官刚开 case study,正在铺 Walmart website traffic stable 的背景"
+      },
+      {
+        "t": 1627,
+        "q": "So the question is, like, we want to diagnose the reasons and to build a dashboard to monitor this issue in the future.",
+        "meta": "开场就 clarify conversion definition 是对的,而且在尝试 narrow 到 funnel "
+      },
+      {
+        "t": 380,
+        "q": "For this project, the goal was to move from a manual assignment process to a rules based data driven workflow that could decide 2 things automatically — when the case should be due, and how urgently it should be assigned. Which correlating to the waterfall logic and the case assignment platform. So for the first part, due to prediction, can you walk through how you worked with operations to understand the business rules behind turnaround time?",
+        "meta": "Wait — this sounds like you describing your EvenUp case assi"
+      },
+      {
+        "t": 817,
+        "q": "What kind of target or things were you used to evaluate?",
+        "meta": "很干净的 metric 分层:primary / secondary / guardrail 都点到了,而且解释了为什么"
+      },
+      {
+        "t": 2374,
+        "q": "Could you please give me more of the detailed analyze of the user journey in this background? Like, what does each step tell you? What would you use, and what does each step tell you?",
+        "meta": "面试官在 think out loud,猜 conversion drop 可能发生在 search → checkou"
+      },
+      {
+        "t": 2713,
+        "q": "What kind of data tables, fields or metrics would you need for this analyze to make sure?",
+        "meta": "面试官把范围收窄到 checkout failure 了 —— 他要的是具体的 table / field / metr"
+      },
+      {
+        "t": 2740,
+        "q": "What kind of data tables, fields or metrics would you need for this analyze?",
+        "meta": "在很 systematically 拆 schema:event 表 + transaction 表,字段也点到 pla"
+      },
+      {
+        "t": 2965,
+        "q": "What would the dashboard look like?",
+        "meta": "开头很 structured —— 用 \"3 个问题\" 框住 dashboard 的目的,比直接列 chart 高一个 "
+      }
+    ]
+  },
+  {
     "slug": "ibm-associate-data-engineer-2026-05-29",
     "date": "2026.05.29",
     "duration": "44:24",
