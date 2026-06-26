@@ -1,5 +1,197 @@
 [
   {
+    "slug": "apple-business-systems-analyst-2026-06-26",
+    "date": "2026.06.26",
+    "duration": "31:46",
+    "company": "Apple",
+    "location": "",
+    "role": "Business Systems Analyst",
+    "logo": "A",
+    "seoTitle": "Business Systems Analyst · Apple — Mock Interview Replay",
+    "dek": "A 31:46 Apple Business Systems Analyst mock interview replay, 21 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-06-26-video.mp4",
+    "score": {
+      "overall": 42,
+      "max": 100,
+      "verdict": "FAIL",
+      "verdictPct": "42%",
+      "label": "Clear no — panel passes.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          11,
+          20,
+          "自我介绍和 project walkthrough 都 land 了,但 cloud cost case 里反复被 probe 才勉强回到题面 —— 问的是 storage spike investigation,答的是 inflation + tariff + industry benchmark,偏离核心"
+        ],
+        [
+          "Specificity & Evidence",
+          14,
+          30,
+          "简历有具体数字(20,000 students / 67 tickets / hours to minutes),但面试里全程没点出一个:Power BI 项目没说节省多少小时、cloud cost case 没提 S3 tier / Cloudability / resource tag,全是 abstract framework"
+        ],
+        [
+          "Depth & Reasoning",
+          10,
+          30,
+          "Cloud cost case 暴露了 reasoning 薄弱:问 storage spike root cause,答 macroeconomic + tariff + industry peer,完全没碰 usage logs / lifecycle policy / untagged resources 这些 cloud cost 的真实杠杆;问 persuade stakeholder,答 'keep communicating' 没给 conflict resolution 实例"
+        ],
+        [
+          "Role Fit",
+          3,
+          10,
+          "JD 核心是 cloud cost optimization + capital/OpEx reporting + cross-functional influence,候选人把自己定位成 'junior analyst' 依赖 supervisor escalate,完全没展示 ownership;cloud cost case 答成了宏观经济分析,跟 JD 要的 drill-into-usage 思路不在一个频道"
+        ],
+        [
+          "Communication",
+          4,
+          10,
+          "Filler 密集('you know' / 'like' / 'so so' / 重复三次 'how how how'),句子断在半空多次未收尾;面试官反复 reframe / probe 才能拉回 scope,说明 pacing 和 structure 都偏弱"
+        ]
+      ]
+    },
+    "summary": "候选人有 Power BI + data validation 的扎实经验,但面试表现偏弱:specificity 不够(没点出简历里的数字和工具),cloud cost case 答成了宏观经济分析而非 usage drill-down,把自己定位成 junior 依赖上报而非主动 influence stakeholder,跟 JD 要的 senior BSA ownership 有明显 gap。Communication 上 filler 密集、结构松散,面试官需反复 probe 才能拉回 scope。",
+    "mainIssue": {
+      "title": "Cloud cost case 答非所问 —— 问 storage spike root cause,答 inflation + industry benchmark,完全没碰 usage logs / lifecycle policy / resource tag 这些 cloud cost 的真实抓手",
+      "body": "面试官问:'某团队某月 cloud storage cost 突增,其他月稳定,怎么 investigate root cause 并 optimize?'\n候选人答案的三大支柱是:historical baseline(过去 5 年同期对比)、peer benchmark(行业横向对比)、macroeconomic factors(inflation / tariff / government policy)。\n\n这个框架的问题:\n- **完全没碰 cloud cost 的内部 drill-down**:JD 明确要 'drive third-party cloud cost management' 和 'optimization programs',真实场景里第一步是拉 cost-by-service / cost-by-resource-tag / usage logs,看是 storage volume 涨了、egress 涨了、还是 untagged resources / orphaned snapshots 没清理。候选人全程没提这些。\n- **Tariff / inflation 跟单团队单月 storage spike 基本无关**:这些是宏观因素,影响的是全公司所有团队的 unit price,不会只让一个团队某月突增。面试官问的是 anomaly detection,不是经济分析。\n- **Industry peer benchmark 在 cloud cost 场景里不可操作**:你拿不到其他公司某团队的 S3 账单,这个对比在真实工作里做不了。\n\n面试官反复 probe('what kind of data' / 'how do you define spike' / 'what's the next step'),试图把候选人拉回 usage data 和 optimization levers,但候选人每次都绕回 historical + peer + macro 这个循环,说明他没有 cloud cost management 的实操经验,只能套一个通用的 problem-solving framework。\n\n这对 hiring committee 的信号是:候选人可能能做 Power BI reporting,但 JD 要的 'cloud cost optimization' 这条线他完全没摸过,入职后需要从零学 Cloudability / AWS Cost Explorer / resource tagging / rightsizing 这些工具和概念。\n\n— 如何改进 —\n在下次面试前,把 cloud cost optimization 的标准 playbook 写成一页 cheat sheet 并背熟,包含:\n- **Root cause 三步走**:(1) 拉 cost-by-service breakdown(storage / compute / egress),定位哪个 SKU 涨了;(2) 按 resource tag / team / workload drill down,找到具体 bucket 或 instance;(3) 查 usage logs 看是 volume 涨了还是 lifecycle policy 没配。\n- **Optimization 五大杠杆**:rightsizing(杀 idle instances)、reserved instances / savings plans、storage tiering(S3 Intelligent-Tiering)、egress optimization(CDN / VPC endpoint)、orphaned resource cleanup(unattached EBS / old snapshots)。\n- **一个完整 case 演练**:假设某团队 S3 cost 从 $10k 涨到 $50k,你会怎么做?写出:pull cost report → isolate bucket X → check lifecycle policy missing → propose Glacier transition for 90d+ data → pilot 2 weeks → measure $30k savings → scale。\n\n把这个 playbook 用在 3 个 mock case 上(storage spike / compute spike / egress spike),计时 5 分钟内答完,确保每次都能在 30 秒内点出 cost-by-service breakdown 和一个具体 optimization lever,再展开细节。"
+    },
+    "alsoNoting": [
+      "Specificity 全程缺失 —— 简历有 20,000 students / 67 tickets / hours to minutes,面试里一个数字都没点出来",
+      "把自己定位成 junior analyst 依赖 supervisor escalate,跟 JD 要的 cross-functional influence 和 senior ownership 不匹配",
+      "Power BI project walkthrough 答得很散 —— 花了 8 轮 probe 才勉强拼出 problem → solution → impact,没有清晰的 STAR 结构",
+      "Communication filler 密集('you know' / 'like' / 'so so' / 'how how how' 重复三次),句子断在半空多次未收尾,面试官需反复 reframe 才能拉回 scope"
+    ],
+    "questions": [
+      {
+        "t": 35,
+        "q": "Can you tell me a little bit about your backgrounds, and let's start from there?",
+        "meta": "开头有 scope(20,000 students, 10 schools)和一个清晰的自我定位 \"bridge\",这个"
+      },
+      {
+        "t": 149,
+        "q": "Can you walk me through 1 of the projects you did either in your current role or previous experience that fits the best of criteria as using the data and the modeling to help drive business decision?",
+        "meta": "他要的是一个 data + modeling → business decision 的完整故事,不是单纯 dashbo"
+      },
+      {
+        "t": 1162,
+        "q": "If in a particular month you suddenly notice there's a large increase in the call storage cost for a particular engineering team, and the other month's data is relatively stable for the same team, how would you take action to investigate?",
+        "meta": "进入 case study 环节了 —— setup 是 Apple infrastructure 团队、每月 revi"
+      },
+      {
+        "t": 1187,
+        "q": "If in a particular month you suddenly notice there's a large increase in the call storage cost for a particular engineering team, and the other month's data is relatively stable for the same team, how would you take action to investigate this cause, whether it's anomaly or normal, and how would you help the team to optimize their cost?",
+        "meta": "他在往 seasonality 和 YoY 对比走,方向对,但问的是 cloud cost spike,\"sales a"
+      },
+      {
+        "t": 273,
+        "q": "Do you find this like a gap — I just want to understand the thought process and also how did you come up with a solution out of it?",
+        "meta": "面试官想听thought process:你怎么发现这个 gap 的?是谁抱怨、花了多少时间、还是你自己观察到的?讲清楚"
+      },
+      {
+        "t": 309,
+        "q": "How did you come up with a solution out of it?",
+        "meta": "在讲一个通用的\"define problem → clarify scope → map workflow → subm"
+      },
+      {
+        "t": 467,
+        "q": "Why exactly changed to have this implemented?",
+        "meta": "面试官在 paraphrase 你的方案 —— 从 manual entry 到 click-and-automate,"
+      },
+      {
+        "t": 588,
+        "q": "What's the technical work you had to do to basically have this set it up?",
+        "meta": ""
+      },
+      {
+        "t": 625,
+        "q": "Was there any initial feedback about that solution?",
+        "meta": ""
+      },
+      {
+        "t": 643,
+        "q": "You set it up a new way of reporting data — what's the technical work you had to do to achieve that solution?",
+        "meta": ""
+      },
+      {
+        "t": 657,
+        "q": "Was there any initial feedback about that solution?",
+        "meta": "抓到了一个真实的 friction point(\"they got used to the traditional wa"
+      },
+      {
+        "t": 718,
+        "q": "How did you convince them to adopt a new tool? And is there any changes you need to make to help the tool getting better? Or how does the process go with that?",
+        "meta": "面试官在追问 change management 的具体动作 —— 你怎么 convince 用户、以及你根据反馈对 t"
+      },
+      {
+        "t": 759,
+        "q": "How does the process go with your user and your tool?",
+        "meta": "答得有点 abstract——\"they feel oh this is good\" 这种描述偏感性,没具体说 proc"
+      },
+      {
+        "t": 870,
+        "q": "Do you see the improvements, and what's the results of using that tool?",
+        "meta": "答到了 daily refresh 和可视化的对比,方向对,但全是定性描述 —— 没有 quantified impac"
+      },
+      {
+        "t": 978,
+        "q": "Do you see any drawbacks of this solution?",
+        "meta": "答到了 entity resolution 的痛点(BSW、Pillars Got 命名不统一),这是真实的 drawb"
+      },
+      {
+        "t": 1398,
+        "q": "In terms of data, what kind of data are you thinking about?",
+        "meta": ""
+      },
+      {
+        "t": 1405,
+        "q": "If you have the data access, what kind of data can you use to find out the problem and perform your analysis?",
+        "meta": "思路有亮点 —— historical baseline + peer benchmark + macro contex"
+      },
+      {
+        "t": 1507,
+        "q": "How do you define whether cost is real, and how do you define whether this is a spike or anomaly, whether there's room for improvements in this case?",
+        "meta": "思路对了——historical baseline + peer benchmark 这两个轴是 anomaly det"
+      },
+      {
+        "t": 1637,
+        "q": "Suppose you find the reason, what's gonna be the next step? For cost saving?",
+        "meta": "\"Pilot in small scope then validate\" 这个思路对,但全程都很 abstract — "
+      },
+      {
+        "t": 1716,
+        "q": "How do you persuade the stakeholders on the findings you got and the solutions you propose?",
+        "meta": "这个答案把自己定位成 \"junior\",完全依赖 supervisor 去 reach out,听起来像在 escala"
+      },
+      {
+        "t": 1842,
+        "q": "When your data analysis is being challenged, or how do you handle situations like pushback or align with the team?",
+        "meta": "面试官在 push 你给一个具体场景——当你的 data analysis 被质疑时怎么办"
+      }
+    ]
+  },
+  {
     "slug": "walmart-senior-data-analyst-2026-06-17",
     "date": "2026.06.17",
     "duration": "54:13",
