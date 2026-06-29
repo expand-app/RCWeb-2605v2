@@ -34822,7 +34822,11 @@ function triggerReveal(){
     entries.forEach(e => {
       if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.12 });
+    // threshold:0 (任意像素进入即触发) 而非按比例：移动端单列时 #mentors 等 section
+    // 高度可达 8000px+，远超视口，若用 threshold:0.12 则永远凑不够 12% 露出 → 永不
+    // reveal、整块内容停在 opacity:0（桌面多列矮、不受影响）。rootMargin 保留进入视口
+    // 一段距离后再淡入的手感。
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
   items.forEach(el => io.observe(el));
 }
 
