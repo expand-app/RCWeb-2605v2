@@ -1069,5 +1069,22 @@
     "has_narrative": false,
     "name_label": "K 同学",
     "quote": ""
+  },
+  {
+    "id": "10068",
+    "display_id": "16745",
+    "avatar": "M",
+    "school": "Columbia",
+    "major": "Computer Science & Applied Mathematics",
+    "dir": "Quant",
+    "dir_key": "quant",
+    "company": "Trexquant Investment LP",
+    "role": "Alpha Researcher",
+    "degree": "学士",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false,
+    "name_label": "M 同学",
+    "quote": ""
   }
 ]
