@@ -1,5 +1,201 @@
 [
   {
+    "slug": "aws-senior-ml-engineer-2026-07-03",
+    "date": "2026.07.03",
+    "duration": "24:13",
+    "company": "AWS",
+    "location": "",
+    "role": "Senior ML Engineer",
+    "logo": "A",
+    "seoTitle": "Senior ML Engineer · AWS — Mock Interview Replay",
+    "dek": "A 24:13 AWS Senior ML Engineer mock interview replay, 22 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-07-03-amazon-.mp4",
+    "score": {
+      "overall": 56,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "56%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          11,
+          20,
+          "多数问题最终 land 到了 prompt(AI characterization、LHC imbalanced data),但常需面试官 probe 或 reframe 才收敛 —— 比如 'what metrics' 绕了三轮才从 loss function 切到 business metrics。"
+        ],
+        [
+          "Specificity & Evidence",
+          19,
+          30,
+          "点出了 <strong>100× speedup</strong>、<strong>&lt;2% error</strong>、<strong>kernel ridge / GPR</strong>、<strong>10% signal significance lift</strong>,但缺 feature 名称和 dataset 规模数字 —— 'millions of data' 太模糊,没说 PVT sweep 具体几个 corner。"
+        ],
+        [
+          "Depth & Reasoning",
+          17,
+          30,
+          "展示了 tradeoff 意识(dense PVT sweep → sparse sampling + interpolation、simulation noise floor → 2% threshold),但 imbalanced data 那题没落到 ML 手段(class weighting / PR-AUC),停在物理直觉层面。"
+        ],
+        [
+          "Role Fit",
+          4,
+          10,
+          "JD 要 'design + evangelize + implement AI/ML solutions' 和 'trusted advisor' —— 候选人展示了 implementation depth,但 customer-facing ownership 信号弱:反问环节问 'what quality do you want' 而非评估 team fit。"
+        ],
+        [
+          "Communication",
+          5,
+          10,
+          "Filler 密集('1 1 1 simpler'、'you know'、'how to say'),多次需面试官 redirect 才收敛答案,面试官后半段 pivot 到简单题且 wrap up 迅速 —— read-the-room 信号偏负面。"
+        ]
+      ]
+    },
+    "summary": "候选人有扎实的 ML 工程经验(100× speedup、BDT classification、feature engineering),但 communication pacing 拖累了内容落地 —— 多数答案需 probe 才收敛,filler 密集,面试官后半段明显 disengage。Specificity 和 Depth 够 pass bar,但 Role Fit(customer-facing ownership)和 Communication 是明显短板。总分 56/100,borderline —— hiring committee 会犹豫,可能要求额外轮次确认 articulation 能力能否支撑 customer delivery。",
+    "mainIssue": {
+      "title": "Communication pacing 拖累内容落地 —— 多数答案需面试官 probe 或 reframe 才收敛到具体 deliverable,filler 密集且结构松散",
+      "body": "面试官问 'what metrics beyond accuracy' 时,候选人绕了三轮从 loss function 讲到 absolute/relative difference,始终没落到 business-level metrics(worst-case error、coverage、runtime speedup)。类似模式在多个问题重复:\n- AI characterization 开场:花 90 秒讲入职困惑和 'big picture',简历里的 <strong>100× speedup</strong> 埋在后半段,面试官需主动 probe 'why does it reduce time' 才拉出 PVT sparse sampling 的核心 insight。\n- Imbalanced data 问题:用 'find shrimp in ocean' metaphor 铺垫,但没切到 ML 手段(class weighting / PR-AUC),面试官 redirect 后仍停在 'keep signal while removing background' 物理直觉层面,最终 wrap up 迅速。\n- Filler 密集('1 1 1 simpler'、'you know'、'how to say')且句子常断开重启,面试官后半段 reactions 平淡('okay'、immediate topic pivot),read-the-room 信号明显偏负面。\n\n这不是内容问题 —— 候选人确实有 100× speedup、BDT classification、feature engineering 等硬货 —— 而是 delivery 习惯让面试官需反复 pull 才能拿到 signal,hiring committee 会担心这种 pacing 在 customer delivery 场景下能否 land technical guidance。\n\n— 如何改进 —\n在下次面试前,把简历上每个 ML project 用这个模板重写一遍并背熟,确保 opening answer 在 20 秒内落地 punch number + core insight:\n- <strong>一句话 answer(15 秒内)</strong>:我们做了什么 → 结果数字是什么 → 最难的部分是什么。比如 AI characterization 题应该开场就说:'At Empyrean I built an ML pipeline for IC library characterization — cut characterization time by 100× at under 2% error. The hardest part was generalization across process corners.'\n- 然后停下来,等面试官说 'tell me more about generalization' 或 'how did you achieve 100×' 再展开 PVT sparse sampling / feature engineering 细节 —— 别在 opening 里铺 'I was confused when I joined' 这种 context,那是 filler。\n- 用 5 个 past projects 做这个 drill,计时录音,确保每个 opening answer 都在 20 秒内落地 number + insight,再展开不迟。\n- Filler 控制:rehearse 时每次说 'you know' / 'how to say' / '1 1 1' 就重录,强制自己用完整句替代断句重启 —— 'At first I used simpler datasets' 比 '1 1 1 simpler type of datasets' 清晰 10 倍。"
+    },
+    "alsoNoting": [
+      "Imbalanced data 问题没落到 ML 手段 —— 停在物理直觉('keep signal while removing background')层面,没点 class weighting / PR-AUC / threshold tuning",
+      "Feature engineering 问题跑题 —— 面试官问 'what features you engineered',候选人讲的是 data partitioning strategy(按 string 类型分组),不是 feature 本身",
+      "反问环节问 'what quality do you want' 和 'how can I improve' —— 这把面试官放在尴尬位置,且 signal 出找 validation 而非评估 job fit"
+    ],
+    "questions": [
+      {
+        "t": 104,
+        "q": "briefly explain what is the most challenging obstacles",
+        "meta": ""
+      },
+      {
+        "t": 133,
+        "q": "briefly explain what is the most challenging obstacles in this in this product",
+        "meta": "回答很 vague —— \"big picture\"、\"need time\"、\"transferable experie"
+      },
+      {
+        "t": 378,
+        "q": "You have been a senior machine learning engineer at Imperial Technology for a long time. So you done a few, many products — can you walk us through some of those?",
+        "meta": "面试官要 deep dive Empyrean 那段 4 年经历 —— 准备好挑一个最能打的项目讲 impact + 你"
+      },
+      {
+        "t": 383,
+        "q": "Can you talk about the AI characterization product you mentioned here?",
+        "meta": "开头绕了一圈讲自己入职时的困惑,还没落到 product 本身 —— 100× speedup,  这种硬指标简历上有,"
+      },
+      {
+        "t": 1148,
+        "q": "Can you briefly talk about this large scale statistic data analysis?",
+        "meta": ""
+      },
+      {
+        "t": 1176,
+        "q": "Can you briefly talk about this large scale statistic data analysis that you did on the large Hydrocollider?",
+        "meta": "面试官要你讲 LHC large-scale statistical analysis 项目 —— 关键词是 \"brie"
+      },
+      {
+        "t": 241,
+        "q": "Do you consider this project as a success? Why do you think so?",
+        "meta": ""
+      },
+      {
+        "t": 284,
+        "q": "Knowing what you know now, is there anything you would have done differently?",
+        "meta": ""
+      },
+      {
+        "t": 314,
+        "q": "Why do you think that is a promising route?",
+        "meta": ""
+      },
+      {
+        "t": 554,
+        "q": "What is the fundamental question you want to solve using your model?",
+        "meta": "讲清楚了 bottleneck(3 months simulation)和 business stake,这是好的 fr"
+      },
+      {
+        "t": 637,
+        "q": "Why does it reduce the preparation time?",
+        "meta": "解释在往点子上走了 —— dense PVT sweep + 良好 linearity → AI 可插值,这是核心 in"
+      },
+      {
+        "t": 749,
+        "q": "What kind of machine learning methods you use here?",
+        "meta": ""
+      },
+      {
+        "t": 763,
+        "q": "Can you name a few and explain how they work?",
+        "meta": ""
+      },
+      {
+        "t": 776,
+        "q": "What kind of machine learning methods you use? Can you name a few and explain how they work?",
+        "meta": ""
+      },
+      {
+        "t": 781,
+        "q": "Can you name a few and explain how they work?",
+        "meta": ""
+      },
+      {
+        "t": 788,
+        "q": "What kind of machine learning methods you use here? Can you name a few and explain how they work?",
+        "meta": ""
+      },
+      {
+        "t": 792,
+        "q": "Can you name a few and explain how they work?",
+        "meta": ""
+      },
+      {
+        "t": 830,
+        "q": "What kind of important features you engineered to make the algorithm much better than before?",
+        "meta": "他其实在讲 data partitioning strategy,不是 feature engineering —— 稍"
+      },
+      {
+        "t": 959,
+        "q": "Other than accuracy, what other metrics you use for this product? Why do you think those metrics are important?",
+        "meta": "问的是 \"accuracy 之外还有什么 metrics\",他绕回到 loss function 上,没答到 busin"
+      },
+      {
+        "t": 1029,
+        "q": "So what how do you define accuracy in this product? Because it's not a classification problem. It looks like a regression problem.",
+        "meta": ""
+      },
+      {
+        "t": 1035,
+        "q": "So how do you define accuracy in this particular product?",
+        "meta": "定义 accuracy 用了 &lt;2% error vs golden,还挺具体,而且顺势提到 simulation"
+      },
+      {
+        "t": 1305,
+        "q": "What are some characteristic about the imbalance of the data? And when we do machine learning on those dataset, what are some important things we need to keep in mind?",
+        "meta": "面试官抓住简历里 imbalanced data 那句在追问 —— 他要两层:数据本身的 characteristic("
+      }
+    ]
+  },
+  {
     "slug": "apple-business-systems-analyst-2026-06-26",
     "date": "2026.06.26",
     "duration": "31:46",
