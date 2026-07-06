@@ -21,7 +21,7 @@
 <!-- Primary SEO (overridden per-route by JS) -->
 <title id="meta-title">Rexpand · 睿思班 — AI-Powered Career Placement</title>
 <meta id="meta-description" name="description" content="Rexpand 睿思班 是一家 AI 驱动的北美留学生求职公司。自研 Multi-Agent 自动化触达 Hiring Team，结合 1,000+ 名企现役导师辅导网络，覆盖背景提升、内推、H1B 全周期求职落地服务。拿不到 offer 按合同退款。">
-<meta name="keywords" content="Rexpand,睿思班,北美留学生求职,AI Agent 求职,保 offer,H1B 求职,背景提升,数据分析实习,数据科学实习,量化投资实习,投行建模实习,软件工程实习,LinkedIn 内推,Hiring Team,FAANG 求职">
+<meta name="keywords" content="Rexpand,睿思班,北美留学生求职,AI Agent 求职,保 offer,H1B 求职,背景提升,AI数据分析实习,数据科学实习,量化投资实习,投行建模实习,软件工程实习,LinkedIn 内推,Hiring Team,FAANG 求职">
 <meta name="author" content="Rexpand · 睿思班">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="googlebot" content="index,follow">
@@ -5897,7 +5897,7 @@ footer{
         <a href="/background" data-route="background" class="nav-item has-sub">背景提升<span class="caret"></span></a>
         <div class="nav-dropdown">
           <a href="/bg-data-analytics" class="dd-item bg-jump" data-dir="da">
-            <span class="dd-name">数据分析<small>Data Analytics</small></span>
+            <span class="dd-name">AI数据分析<small>AI Data Analytics</small></span>
           </a>
           <a href="/bg-data-science" class="dd-item bg-jump" data-dir="ds">
             <span class="dd-name">数据科学<small>Data Science</small></span>
@@ -6018,8 +6018,8 @@ footer{
     <div class="prog-grid-sv">
       <a class="prog-tile bg-jump" href="/bg-data-analytics" data-dir="da">
         <div class="pt-dir">DA</div>
-        <div class="pt-title">数据分析</div>
-        <div class="pt-en">Data Analytics</div>
+        <div class="pt-title">AI数据分析</div>
+        <div class="pt-en">AI Data Analytics</div>
         <div class="pt-arr">→</div>
       </a>
       <a class="prog-tile bg-jump" href="/bg-data-science" data-dir="ds">
@@ -14883,7 +14883,7 @@ footer{
         <div class="method-info">
           <h3>背景提升<span class="en">Resume Depth Upgrade</span></h3>
           <p>没有相关工作经验 → 简历过不了 HR 筛选 → 0 面试。</p>
-          <p style="margin-top: 12px;">补充 <strong style="color:var(--ink);">真实工业级项目经历</strong>（不是水项目）—— 数据分析 / 数据科学 / 量化投资 / 投行建模 / 软件工程，五大方向可选。</p>
+          <p style="margin-top: 12px;">补充 <strong style="color:var(--ink);">真实工业级项目经历</strong>（不是水项目）—— AI数据分析 / 数据科学 / 量化投资 / 投行建模 / 软件工程，五大方向可选。</p>
         </div>
 
         <div class="bg-boost" id="bgBoost">
@@ -26001,7 +26001,7 @@ const routeMeta = {
   background: {
     path: '/background',
     title: '背景提升项目 · 工业级远程实习 — Rexpand 睿思班',
-    desc: '五大方向背景提升:数据分析、数据科学、量化投资、投行建模、软件工程。企业级远程实习,名企现役工程师与分析师带教,结项即获 referral。',
+    desc: '五大方向背景提升:AI数据分析、数据科学、量化投资、投行建模、软件工程。企业级远程实习,名企现役工程师与分析师带教,结项即获 referral。',
     og: ORIGIN + '/media/team/2024-training.jpg'
   },
   resources: {
@@ -26043,8 +26043,8 @@ const BG_DEFAULT_DIR = 'da';
 
 const BG_ROUTE_META = {
   da: {
-    title: '数据分析实习 · 北美零售 Marketing 团队远程项目 — Rexpand 睿思班',
-    desc: '在北美零售头部企业 Marketing 团队任职。Mailchimp + SQL + AI Agent 全栈技术栈，覆盖 Email Automation、A/B Testing、PostgreSQL 数据清洗与端到端营销管线。结项即获 referral。',
+    title: 'AI数据分析实习 · 北美零售 Marketing 团队远程项目 — Rexpand 睿思班',
+    desc: '在北美零售头部企业 Marketing 团队任职。用 Claude Code 等 AI Agent 亲手搭建 ETL 数据管线、库存抓取爬虫与端到端营销自动化 —— Mailchimp + SQL + AI Agent 全栈技术栈，覆盖 Email Automation、A/B Testing、PostgreSQL 数据清洗。结项即获 referral。',
     og: ORIGIN + '/og/rexpand_01_data-analytics.png', ogw: 1080, ogh: 1080
   },
   ds: {
@@ -26086,11 +26086,11 @@ function pathToBgDir(pathname){
 =========================================================== */
 const BG_COURSE_INFO = {
   da: {
-    en: 'Data Analytics Internship Program',
+    en: 'AI Data Analytics Internship Program',
     workload: 'PT19H',         // ~19 lessons × 1h average (ISO 8601 duration)
     timeRequired: 'P10W',      // 10-week cadence (2 sessions/wk)
     occupation: 'Data Analyst / Marketing Analyst / Analytics Engineer',
-    teaches: 'Mailchimp, SQL, PostgreSQL, Email Automation, A/B Testing, Window Functions, Dynamic SQL, Claude Code, AI Agent, Marketing Dashboards'
+    teaches: 'Claude Code, AI Agent, ETL Pipeline Automation, Mailchimp, SQL, PostgreSQL, Email Automation, A/B Testing, Window Functions, Dynamic SQL, Marketing Dashboards'
   },
   ds: {
     en: 'Data Science Internship Program',
@@ -26547,28 +26547,28 @@ document.addEventListener('keydown', (e) => {
 =========================================================== */
 const BG_DATA = {
   da: {
-    name: '数据分析',
-    titleCn: '数据分析实习',
-    titleEn: 'Data Analytics Internship',
+    name: 'AI数据分析',
+    titleCn: 'AI数据分析实习',
+    titleEn: 'AI Data Analytics Internship',
     eyebrow: 'Background Boost · 工业级远程实习',
-    lead: '在北美零售头部企业的 Marketing 团队任职，使用 Mailchimp、SQL 与 AI Agent 完成从受众清洗、Email Automation、A/B Testing 到端到端自动化营销管线的全链路工作。',
+    lead: '在北美零售头部企业的 Marketing 团队任职，前期用 Mailchimp、SQL 打通 Email Marketing 基本功，后期全部切换到 Claude Code 等 AI Agent —— 亲手搭建库存抓取爬虫、ETL 数据管线与端到端自动化营销系统，这是留学生实习里少有的真实 AI 工程经历。',
     facts: [
       { k: 'Duration', v: '20 – 40 小时', s: '19 节课 · 每周 2 节 · 单节 1–2 小时' },
       { k: 'Industry', v: '北美零售 / Marketing', s: '头部零售客户 · Marketing 团队' },
       { k: 'Suited For', v: 'DA / Analytics Eng', s: '缺少美国工作经验的留学生' },
       { k: 'Format', v: '远程直播', s: '录播回放 · 助教 Office Hour' }
     ],
-    overviewLead: '实习生将在北美头部零售客户的 Marketing 团队任职，完整经历从 Email Campaign 到自动化数据管线的端到端营销技术栈。',
+    overviewLead: '实习生将在北美头部零售客户的 Marketing 团队任职，完整经历从 Email Campaign 到 AI Agent 驱动的自动化数据管线的端到端营销技术栈。',
     overviewBody: [
       '前期围绕 Mailchimp 完成 Audience 上传、Tagging、Segmentation、Warm-up Campaign、Email Automation 与 A/B Testing 全流程，理解 Email Marketing 在汽车零售场景下的真实业务逻辑。',
-      '后期切入 SQL / PostgreSQL，构建第三方邮件数据的清洗与人群圈选脚本，并使用 Claude Code 等 AI Agent 工具搭建库存抓取 → 受众入库 → 邮件渲染发送 → 编排 → 监控的端到端自动化营销管线。'
+      '后期全部工作交给 Claude Code：用 AI Agent 搭建库存抓取爬虫、第三方邮件数据的清洗与人群圈选脚本，并端到端完成受众入库 → 邮件渲染发送 → 任务编排 → 监控告警的整条自动化营销管线 —— ETL、爬虫、pipeline 编排，这些原本需要数据工程师手写的活儿，全部由 AI Agent 完成。'
     ],
-    tags: ['Mailchimp', 'SQL', 'PostgreSQL', 'Email Automation', 'A/B Testing', 'Window Functions', 'Dynamic SQL', 'Claude Code', 'AI Agent', 'Dashboard'],
+    tags: ['Claude Code', 'AI Agent', 'ETL Pipeline', 'Mailchimp', 'SQL', 'PostgreSQL', 'Email Automation', 'A/B Testing', 'Window Functions', 'Dynamic SQL', 'Dashboard'],
     highlights: [
+      { t: 'AI Agent 端到端产出', d: '库存抓取爬虫、ETL 数据管线、自动化编排全部用 Claude Code 搭建 —— 真实的 AI 工程项目，简历可直接附带 GitHub 链接展示。', svg: '<path d="M4.5 16.5L3 21l4.5-1.5L18 9l-3-3z"/><path d="M15 6l3 3"/>' },
       { t: '真实工作经验', d: '完成项目后，可直接写入简历的 4 条工业级 bullet points。点击预览 →', svg: '<rect x="5" y="2" width="14" height="20" rx="1.5"/><path d="M9 7h6M9 11h6M9 15h4"/>', action: 'open-resume' },
-      { t: '营销技术全栈', d: 'Mailchimp + SQL + AI Agent 三段式技术栈，覆盖现代 Marketing Analytics 团队 90% 工作场景。', svg: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>' },
-      { t: 'SQL 实战训练', d: 'PostgreSQL 数据清洗、Joins、Window Functions、Dynamic SQL，配套 LeetCode SQL 50 与面经训练。', svg: '<ellipse cx="12" cy="6" rx="9" ry="3"/><path d="M3 6v12c0 1.7 4 3 9 3s9-1.3 9-3V6"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/>' },
-      { t: 'AI Agent 项目产出', d: 'Claude Code 端到端营销自动化项目 + Dashboard，简历可直接附带 GitHub 链接展示。', svg: '<path d="M4.5 16.5L3 21l4.5-1.5L18 9l-3-3z"/><path d="M15 6l3 3"/>' }
+      { t: '营销技术全栈', d: 'Mailchimp + SQL + Claude Code 三段式技术栈，覆盖现代 Marketing Analytics 团队 90% 工作场景。', svg: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>' },
+      { t: 'SQL 实战训练', d: 'PostgreSQL 数据清洗、Joins、Window Functions、Dynamic SQL，配套 LeetCode SQL 50 与面经训练。', svg: '<ellipse cx="12" cy="6" rx="9" ry="3"/><path d="M3 6v12c0 1.7 4 3 9 3s9-1.3 9-3V6"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/>' }
     ],
     modules: [
       {
@@ -31643,7 +31643,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
 </ul>
 <p><strong>身份规划：</strong></p>
 <table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">身份</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">适合申请的实习类型</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">需注意</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">F-1（在读）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">暑期 CPT 实习</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">需学校授权，部分岗位不接受第一学期 CPT</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">F-1 OPT（毕业后）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">全职 / Part-time 实习</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">12 个月上限，STEM 可延至 36 个月</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">STEM OPT 延期</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">科技类银行岗位友好</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">需雇主签署 E-Verify，提前确认</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">H-1B 持有者</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">全职</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">注意签证转换时间窗口</td></tr></tbody></table>
-<p>Rexpand 提供五大背景提升方向：<strong>数据分析（DA）/ 数据科学（DS）/ 量化投资（QI）/ 投行建模（FM）/ 软件工程（SE）</strong>，每个方向结项即获导师 Referral，直接打通内推链路。导师均为名企在职 Hiring Manager，平均 5 年以上经验，覆盖 Goldman Sachs、JPMorgan、Capital One 等本文提到的所有核心雇主。</p>
+<p>Rexpand 提供五大背景提升方向：<strong>AI数据分析（DA）/ 数据科学（DS）/ 量化投资（QI）/ 投行建模（FM）/ 软件工程（SE）</strong>，每个方向结项即获导师 Referral，直接打通内推链路。导师均为名企在职 Hiring Manager，平均 5 年以上经验，覆盖 Goldman Sachs、JPMorgan、Capital One 等本文提到的所有核心雇主。</p>
 <p>---</p>
 <h2>常见问题</h2>
 <p><strong>美国银行SDE实习生月薪能到多少？</strong> 根据 Levels.fyi 2025–2026 实习季数据，Capital One 纽约岗最高达 $12,300/月，JPMorgan Palo Alto 为 $10,400/月，部分岗位另有 $5,000–$8,000 的 sign-on bonus 或住房补贴。</p>
