@@ -29366,6 +29366,132 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:replays:start
   const REPLAYS = [
   {
+    "slug": "indeed-senior-data-scientist-2026-07-10",
+    "date": "2026.07.10",
+    "duration": "22:30",
+    "company": "Indeed",
+    "location": "",
+    "role": "Senior Data Scientist",
+    "logo": "I",
+    "seoTitle": "Senior Data Scientist · Indeed — Mock Interview Replay",
+    "dek": "A 22:30 Indeed Senior Data Scientist mock interview replay, 8 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-07-10-video.mp4",
+    "score": {
+      "overall": 61,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "61%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          8,
+          15,
+          "多次跑题或延迟落地:AI tools 问题答成了 mentoring,causal inference 问题讲成了 LDA 数据量,data quality 问题讲成了 feature engineering monologue"
+        ],
+        [
+          "Specificity & Evidence",
+          24,
+          30,
+          "具体项目点出来了(LDA + 17% gameplay、Transformer recommender + 9% IAP、KMeans + 25 features、Snowflake + Airflow),但 AI tools 只说了 'cloud AI' 没点名 Claude/Cortex"
+        ],
+        [
+          "Depth & Reasoning",
+          18,
+          30,
+          "建模细节扎实(LDA topic clustering → 3 A/B tests、correlation analysis),但 causal inference 问题完全没接住,cross-team influence 讲成了纯技术 monologue,缺 senior ownership"
+        ],
+        [
+          "Role Fit",
+          7,
+          15,
+          "JD 要求 influence + mentor + communicate to diverse audiences,但 data quality 题没讲 escalation 路径,storytelling 题铺 framework 不落例子,mentoring 题被 AI 问题打断后没补回来"
+        ],
+        [
+          "Communication",
+          4,
+          10,
+          "严重 disfluency 反复出现('I I I'、'for the for the for the'、'Did that work?'),多处语言 breakdown,面试官多次 redirect 才拉回正题"
+        ]
+      ]
+    },
+    "summary": "技术深度扎实(LDA、Transformer、KMeans 都有具体 impact 数字),但 communication 和 question addressing 是系统性弱项 —— 多次跑题、语言 breakdown 频繁、cross-team influence 没讲出来。Coach notes 反复出现 'pivot'/'redirect'/'完全跑偏',说明面试官需持续拉回才能拿到想要的答案,这会让 hiring committee 怀疑候选人在 senior stakeholder 场景下的 storytelling 能力。",
+    "mainIssue": {
+      "title": "Question addressing 系统性弱 —— 多次答非所问或延迟落地,面试官需反复 redirect 才拉回正题",
+      "body": "被问到 experimentation process + causal inference 时,候选人先讲了 LDA 数据量,再讲 decision tree feature importance,完全没接 'causal inference 怎么和 A/B test 结合' 这半个问题,面试官只能 pivot 到新话题。\n- AI tools 问题答成了 mentoring junior DA,面试官明确问 'AI experience & tools',候选人讲的是 'I mentored an entry-level analyst'。\n- Data quality + influence without authority 问题,候选人讲了 ad frequency 的 KMeans + 25 features 建模细节,但原题问的是 'how you raise issue + convince counterpart',cross-team 的部分一个字没提,coach notes 说 '完全变成了技术方法论 monologue'。\n- Storytelling 问题铺了 framework('problem provocation... assumptions coming from...'),但面试官要的 specific example 始终没落地,coach notes 反复出现 '再不切例子就会 drift 成纯 methodology 讲义'。\n\n这会让 hiring committee 怀疑候选人在 senior stakeholder 场景下能否快速 land 到对方关心的点 —— JD 明确要求 'communicate findings clearly to diverse audiences',但这场面试里候选人需要面试官持续 probe 才能拿到想要的答案。\n\n— 如何改进 —\n在下次面试前,把简历上每个 project 用这个模板重写一遍并背熟:\n- <strong>一句话 answer (15 秒内)</strong>:直接回答问题的核心 ask,不铺 context。比如 causal inference 问题应该开场就说:'My default is A/B when we can randomize, but for rollouts I pivot to DiD or CUPED — let me walk through a geo-based example.'\n- 然后停下来,等面试官说 'tell me more' 再展开建模细节。\n- 用 5 个 past projects 做这个 drill,计时录音,确保每个 opening answer 都在 20 秒内落地问题的核心 ask,再展开不迟。\n- 特别演练 'influence without authority' 和 'data quality issue' 这两类 behavioral 问题 —— 用 situation → issue → how I raised it → how I convinced counterpart → outcome 的 shape,别陷在技术细节里。"
+    },
+    "alsoNoting": [
+      "Communication disfluency 严重 —— 多处语言 breakdown('I I I'、'for the for the for the'),面试官难以 follow",
+      "Cross-team influence 没讲出来 —— data quality 和 storytelling 两题都没落到 'how you convinced stakeholder',错过 senior role 核心信号",
+      "AI tools 只说了 'cloud AI' 没点名 Claude/Cortex —— 简历明明列了这两个,错过了和 JD 的直接 match"
+    ],
+    "questions": [
+      {
+        "t": 77,
+        "q": "Could you share what is the most accomplished projects you have in your latest role? What's the problem you solved? What's the impact you have?",
+        "meta": "这段是候选人自己在说(不是面试官),而且在讲\"why this role\"时有点绕、还卡壳了"
+      },
+      {
+        "t": 339,
+        "q": "What kind of scale complexity of the data you deal with? And for your projects, what are something you wish you did differently? And if you have more time, more resources, anything you imagine, what would you do next you think will really enhance your impact of these projects to another level?",
+        "meta": "这段其实是**候选人自己**在讲 LDA review 项目 —— 提到 25% 玩家投诉 game unfairnes"
+      },
+      {
+        "t": 677,
+        "q": "Can you give me a data quality issue? How you raise the issue, how you solve the problem. And how you lead without influence with your counterpart to solve this successfully?",
+        "meta": "面试官明确说了 —— 他不 care 问题类型,他 care 的是 how you raise 和 how you so"
+      },
+      {
+        "t": 958,
+        "q": "What is generally your principle when you share your modeling or analysis results with business stakeholders, how you drive the data story part of it? If you have any specific example, like how you share your results, what potential blocker you run into, how you convince your partners to make certain decision and achieve results?",
+        "meta": "面试官在铺垫 senior role 的重量 —— high stake、influence important dec"
+      },
+      {
+        "t": 1141,
+        "q": "This is a senior role. So on the team, we have several data science. Do you have any experience working or coaching junior team members?",
+        "meta": "面试官明说这是 senior role,团队有多个 DS —— 他要听的是具体 mentoring 故事,不是 \"I l"
+      },
+      {
+        "t": 1177,
+        "q": "What is your experience on the AI perspective, and what's your general view? What kind of tool you are familiar with?",
+        "meta": "完全跑题了 —— 问的是 AI experience & tools,他答的是 mentoring junior DA"
+      },
+      {
+        "t": 353,
+        "q": "When it comes to experimentation, what is the general process you like to lead the team through? You mentioned you also have causal inference skills — how do you usually align those statistical methodology with the task you envision to do?",
+        "meta": "完全跑偏了 —— 问的是 experimentation process 和 causal inference,他在讲 "
+      },
+      {
+        "t": 594,
+        "q": "Is there a scenario where you really help team to improve the data quality or you identify a critical issue about the products that make a potential impact?",
+        "meta": "面试官在 pivot 到新话题:data pipeline robustness 和 scalability"
+      }
+    ]
+  },
+  {
     "slug": "aws-senior-ml-engineer-2026-07-03",
     "date": "2026.07.03",
     "duration": "24:13",
