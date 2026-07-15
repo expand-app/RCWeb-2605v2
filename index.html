@@ -29366,6 +29366,157 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:replays:start
   const REPLAYS = [
   {
+    "slug": "tiktok-ads-data-scientist-2026-07-15",
+    "date": "2026.07.15",
+    "duration": "21:50",
+    "company": "TikTok Ads",
+    "location": "",
+    "role": "Data Scientist",
+    "logo": "T",
+    "seoTitle": "Data Scientist · TikTok Ads — Mock Interview Replay",
+    "dek": "A 21:50 TikTok Ads Data Scientist mock interview replay, 13 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-07-15-video.mp4",
+    "score": {
+      "overall": 41,
+      "max": 100,
+      "verdict": "FAIL",
+      "verdictPct": "41%",
+      "label": "Clear no — panel passes.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          11,
+          20,
+          "多数问题最终 landed,但需大量 probe 才到位 —— DAU drop 题从 vague 'something going on' 到 segmentation hypothesis 用了 6 轮追问"
+        ],
+        [
+          "Specificity & Evidence",
+          14,
+          25,
+          "Lead Scoring 提到 220K records + AUC 0.86,但 Tencent 实习只说 'collect data',没 name annotation workflow 或 disagreement rate"
+        ],
+        [
+          "Depth & Reasoning",
+          8,
+          30,
+          "Decision tree vs XGBoost 答到 bias-variance 后卡住直接要答案;DAU paradox 没主动 segment by cohort,全靠面试官 lead"
+        ],
+        [
+          "Role Fit",
+          4,
+          15,
+          "JD 要 'self-direction' + 'selecting right tools',但多次推设计回面试官('could you give me hints' / 'what is the expected answer')"
+        ],
+        [
+          "Communication",
+          4,
+          10,
+          "Filler 密集('like' 每句 2-3 次)+ 自我怀疑插话('Is that right?' / 'Explain this bit')打断逻辑,面试官需反复 rescue"
+        ]
+      ]
+    },
+    "summary": "候选人有扎实的 project 经验(Lead Scoring AUC 0.86、Duke research pipeline),但在 senior-level reasoning 和 ownership 上明显不足 —— 核心概念(ensemble mechanics、metric tradeoff)需面试官多轮 probe 才能 articulate,且多次主动要答案,这与 JD 的 'self-direction' 和 'leadership' bar 有较大 gap。Communication 的 filler 和自我怀疑进一步削弱了 technical content 的 landing。",
+    "mainIssue": {
+      "title": "反复推设计决策回面试官,ownership signal 严重不足",
+      "body": "在 decision tree vs XGBoost 和 DAU drop investigation 两题上,候选人多次主动要答案或 hints,而非自己 frame hypothesis 后让面试官 validate:\n- Decision tree tradeoff 题:答到 bias-variance 后直接说 'Could you give me the expected answer for this question',这在 senior IC 面试里是 red flag —— 即使卡住,应该给 partial answer('XGBoost 用 boosting 降 bias,单棵 tree 更好解释')而非要标准答案\n- DAU paradox 题:面试官描述完 time-per-user 上升但 DAU 下降后,候选人答了一轮 vague hypothesis 就说 'could you please give me the answers to all these questions',完全放弃 ownership\n- 反问环节:问面试官 'any analytical project you have worked on',这个 framing 把对方当成 peer 而非 hiring manager,audience calibration 错位\n\nJD 明确要 'demonstrated leadership and self-direction' —— TikTok Ads 的 senior DS 需要在模糊问题上 own the scoping 和 hypothesis generation,而非等 PM 或 manager 喂答案。这个模式如果延续到 onsite,panel 会直接 flag 'lacks senior ownership'。\n\n— 如何改进 —\n在下次面试前,把 'I don't know, can you tell me the answer' 这个反应彻底 ban 掉,换成 structured partial answer + explicit gap acknowledgment:\n- 遇到卡住的技术问题,先说你确定的部分,再 flag 不确定的:'Let me anchor on what I'm sure of — XGBoost uses boosting to reduce bias by sequentially correcting errors... I'm less clear on the variance side, but I believe the regularization terms in the objective help control overfitting compared to a single deep tree.'\n- 遇到开放 case(DAU drop),先给 2-3 个 scoped hypotheses,再问 clarifying questions:'My first hypotheses would be: (1) new feature raised friction for casual users, (2) seasonal effect we haven't seen before, (3) tracking pipeline issue. Let me ask — is the drop uniform across geos, or concentrated in specific markets?'\n- 用 5 个 past case studies(简历上的 Lead Scoring / MIMIC pipeline / Vitamin D project)做这个 drill:每个 case 写出 3 个你当时 didn't know 的 moments,然后 script 出你应该怎么 frame partial answer + ask for validation,录音计时确保每个 response 在 45 秒内 land hypothesis 而非要答案"
+    },
+    "alsoNoting": [
+      "核心概念(ensemble mechanics、metric tradeoff)需多轮 probe 才 articulate,depth 不足",
+      "Communication filler 密集 + 自我怀疑插话('Is that right?')打断逻辑,面试官需反复 rescue",
+      "Tencent 实习答得太 abstract —— 只说 'collect and annotate',没 name annotation workflow 或 quality control metrics"
+    ],
+    "questions": [
+      {
+        "t": 386,
+        "q": "What do you expect to do as a data scientist at TikTok?",
+        "meta": "面试官的话断断续续 —— 看起来他在 回应候选人刚才说的某个点(可能是 team culture / learning)"
+      },
+      {
+        "t": 508,
+        "q": "What about your mathematics or statistics background?",
+        "meta": ""
+      },
+      {
+        "t": 557,
+        "q": "What's the difference between a decision tree and extra boost?",
+        "meta": ""
+      },
+      {
+        "t": 759,
+        "q": "Imagine you have a TikTok, overall, you have a daily active user. You have a DAU. So the DAU, the number is dropping. A stakeholder comes to you once you investigate why the DAU is dropping. How would you go investigate?",
+        "meta": "面试官正在 setup 一个经典的 metrics drop case —— TikTok 的 DAU 下降"
+      },
+      {
+        "t": 429,
+        "q": "So what do you think a data scientist's expectation are, at TikTok? Or, you know, and any, at any company?",
+        "meta": "面试官在问一个 meta 问题:抛开具体业务(ads),DS 在任何公司的 universal expectations"
+      },
+      {
+        "t": 470,
+        "q": "What can you contribute to this position?",
+        "meta": ""
+      },
+      {
+        "t": 645,
+        "q": "What are the pro and cons for using the decision tree over the XGBoost?",
+        "meta": "他在 bias-variance 里转了几圈后卡住,直接向面试官要答案了 —— 这在真实面试里是很危险的信号,显示他对核"
+      },
+      {
+        "t": 890,
+        "q": "So what are top 3 factors internal factors you can think of?",
+        "meta": ""
+      },
+      {
+        "t": 948,
+        "q": "How would you know if the new feature launch causes the daily active user drop?",
+        "meta": ""
+      },
+      {
+        "t": 1011,
+        "q": "How would you want to do the AB test?",
+        "meta": ""
+      },
+      {
+        "t": 1067,
+        "q": "When you launch the AB testing, besides the DAU, what else gonna be looking at?",
+        "meta": ""
+      },
+      {
+        "t": 1157,
+        "q": "What do you mean by usage?",
+        "meta": "面试官在追问 attribution —— 他想听你怎么把 DAU drop isolate 到具体 feature 而"
+      },
+      {
+        "t": 1212,
+        "q": "At the end of the experiment, you're observing the overall user's usage measured by total time they spend within the app is increased. However, the daily active user, the number of user using this app is decreasing. Why would you think, what causes that?",
+        "meta": "面试官在描述一个 paradox metric:总使用时长上升,但 DAU 下降 —— 这是典型的 engagement"
+      }
+    ]
+  },
+  {
     "slug": "indeed-senior-data-scientist-2026-07-10",
     "date": "2026.07.10",
     "duration": "22:30",
