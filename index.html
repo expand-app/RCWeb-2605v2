@@ -29366,6 +29366,243 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:replays:start
   const REPLAYS = [
   {
+    "slug": "uber-software-engineer-i-2026-07-17",
+    "date": "2026.07.17",
+    "duration": "56:51",
+    "company": "Uber",
+    "location": "",
+    "role": "Software Engineer I",
+    "logo": "U",
+    "seoTitle": "Software Engineer I · Uber — Mock Interview Replay",
+    "dek": "A 56:51 Uber Software Engineer I mock interview replay, 30 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-07-17-video.mp4",
+    "score": {
+      "overall": 57,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "57%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          11,
+          20,
+          "多数问题最终 land 了答案,但经常需要 probe 才能到位 —— infrastructure challenge 题花了大量时间讲 proposal 演变而非技术难点,unclear requirement 题答成了技术选型而非 clarification 过程"
+        ],
+        [
+          "Specificity & Evidence",
+          21,
+          30,
+          "EchoLog 项目点出了 Redis Sets/Lists、TimescaleDB continuous aggregates、bcrypt cost factor 12 等具体技术,但关键数字缺失 —— latency overhead 被问了 3 次都没给出 p50/p99,90% compression 也没说怎么算出来的"
+        ],
+        [
+          "Depth & Reasoning",
+          16,
+          30,
+          "技术选型缺少 tradeoff 推理 —— Redis vs Kafka 那题只说'够用了'没点出 sync queue 需要亚秒响应 + TTL 这个 constraint;Traefik 选型被问'为什么不用 K8s native CRD'时答不出来;LFU coding 逻辑对但口述得太碎,没 zoom out 说清 frequency bucket 设计"
+        ],
+        [
+          "Role Fit",
+          5,
+          10,
+          "JD 要求 backend + distributed systems + DevOps,简历匹配,但面试中多次把设计决策推回面试官('我们觉得 Redis 够用' / 'mentor 负责部署'),缺少 Software Engineer I 应有的 ownership"
+        ],
+        [
+          "Communication",
+          4,
+          10,
+          "结构松散,经常在细节里绕圈不收 —— LFU coding 时逐句念赋值语句('self key to note key here')而不是先讲清整体设计;多处 fragment('delayed the the put' / 'LinkedIn list')显示思路没组织好就开口"
+        ]
+      ]
+    },
+    "summary": "技术栈扎实(FastAPI + Redis + TimescaleDB + K8s 都有实战),但面试表现偏弱:关键数字答不上来(latency overhead 被追问 3 次),tradeoff 推理浅(Redis vs Kafka 只说'够用'),communication 结构松散(coding 时逐句念代码而非讲设计)。总分 57 —— borderline,committee 会犹豫。",
+    "mainIssue": {
+      "title": "关键性能数字答不上来,面试官反复 probe 仍然没给出具体观测值",
+      "body": "在被问到 gateway latency overhead 时,候选人三次回避数字,只说'数据规模小所以不是问题' / 'Redis 够快',面试官不得不 rephrase 三次才放弃。简历上明确写了'real-time analytics dashboards tracking latency',这个项目如果真的上了生产,p50/p99 latency 是第一个要监控的指标 —— 答不出来会让 panel 怀疑:要么项目是 demo 没真跑过,要么候选人没关心过系统实际表现,只是把功能堆起来了。\n- Gateway latency 问题:面试官问'how many latency added',候选人答'我们数据规模小,只有几百 requests' —— 这不是在回答 latency,是在回避问题\n- 90% storage compression:面试官问'how did you calculate the 90%',候选人答'TimescaleDB naturally reduced 90%' —— 这是在复述 feature 不是在解释计算方法\n- Metrics tracking:被问'what metrics you're tracking'时,候选人说了 token cost / latency / success rate,但没给出任何一个的实际数值或 baseline\n\nHiring committee 看重的是 data-driven decision making —— 如果连自己做的系统的核心指标都说不清,很难相信候选人能在生产环境 debug 性能问题或做 capacity planning。\n\n— 如何改进 —\n在下次面试前,把简历上每个 production system 的核心指标整理成一张表并背熟:\n- <strong>EchoLog gateway</strong>:p50 latency = X ms(breakdown:Redis lookup Y ms + auth Z ms),p99 = W ms;QPS = N;queue depth p95 = M\n- <strong>PaddleOCR backend</strong>:throughput = 10K docs/day ÷ 8 hours = ~21 docs/min;accuracy = 95% 怎么测的(ground truth 多少条?哪些 edge case 会 fail?)\n- <strong>TimescaleDB compression</strong>:raw log size = X GB/week,compressed = Y GB,ratio = 90% 是 TimescaleDB 自动算的还是你手动 query pg_total_relation_size 对比的?\n\n把这些数字写在一张 cheat sheet 上,mock interview 时计时:面试官问到性能问题,15 秒内必须给出数字 + 一句话 context,不能绕到'数据规模小'这种回避性答案。"
+    },
+    "alsoNoting": [
+      "技术选型缺少 constraint-driven reasoning,只说'够用'没说为什么其他选项不 fit",
+      "Coding 时口述得太碎,逐句念赋值语句而不是先讲清整体设计",
+      "多次把设计决策推回面试官或 mentor,缺少 ownership signal",
+      "Teamwork 问题答得 generic,没有具体的 conflict resolution 故事"
+    ],
+    "questions": [
+      {
+        "t": 47,
+        "q": "Can you give me a quick self introduction?",
+        "meta": ""
+      },
+      {
+        "t": 82,
+        "q": "Could you tell me 1 of your most challenging project in the infrastructure?",
+        "meta": "他点到了 problem(GPU tracking)和 initiative(build a platform),但现在"
+      },
+      {
+        "t": 706,
+        "q": "Tell me about the time you have given a task that the requirement is not clear. And how did you move it forward?",
+        "meta": "他在往技术细节走(distributed transaction、failure node、isolation),但原问"
+      },
+      {
+        "t": 856,
+        "q": "Could you also tell me about, like, you have a project and you work as part of the team. How was the work divided? And like, what is the specific parts you are working on? Or you can, like, introduce some, like, challenge in your teamwork.",
+        "meta": "面试官要你讲 team collaboration 和 你的具体贡献 —— 这是在验证简历里那些\"we built\"背后"
+      },
+      {
+        "t": 884,
+        "q": "Could you also tell me about you have a project and you work as part of the team. How was the work divided? And what is the specific parts you are working on? Or you can introduce some challenge in your teamwork.",
+        "meta": ""
+      },
+      {
+        "t": 908,
+        "q": "How do you call with your team? Any story, any question any answer would be good.",
+        "meta": "面试官那句 \"who is helping to separate the work\" 是在 probe decisio"
+      },
+      {
+        "t": 1012,
+        "q": "Have you ever had a conflict with your teammate during the teamwork, and how did you solve it?",
+        "meta": "技术细节(semantic cache, vector similarity)开始出现了,但故事的**冲突点**还没讲清"
+      },
+      {
+        "t": 1109,
+        "q": "What's the final final decision of this scenario?",
+        "meta": ""
+      },
+      {
+        "t": 1163,
+        "q": "How did you make it, and how did you calculate the 90%?",
+        "meta": "面试官刚给了个 positive signal(\"Got it"
+      },
+      {
+        "t": 2738,
+        "q": "Could you also try to write some simple pseudo code for some test case. You can only write comments here for which test case you wanna cover.",
+        "meta": "面试官在切换到 coding 环节 —— 他正在准备 Google Doc 和代码环境,这是个自然的 pause"
+      },
+      {
+        "t": 199,
+        "q": "When you're saying that you add additional central gateway for each API call, how many latency added into the request?",
+        "meta": "面试官在 probe latency overhead —— 这是生产系统的核心指标,他想知道你的 gateway 会不"
+      },
+      {
+        "t": 222,
+        "q": "When you're saying that you add additional central gateway for each API call, how many latency added into the request and what's exactly works the central gateway will do?",
+        "meta": "讲清楚了 gateway 做什么(auth + queue + logging),但 latency 那个问题直接略过了"
+      },
+      {
+        "t": 318,
+        "q": "When saying the important metrics you're tracking, what kind of metrics you're tracking?",
+        "meta": "面试官在追 observability 的深度 —— 他说\"I assume you already mentioned"
+      },
+      {
+        "t": 392,
+        "q": "Are you tracking the metrics of a 3rd party model like Gemini or OpenAI, or are you tracking the metrics of your self deployed open source model?",
+        "meta": "面试官在确认 EchoLog 监控的是哪一层 —— 是外部 API(Gemini/OpenAI)还是 self-host"
+      },
+      {
+        "t": 435,
+        "q": "You also have some on prem deployed model on the A100?",
+        "meta": ""
+      },
+      {
+        "t": 482,
+        "q": "Could you introduce the Kubernetes ingress routing layer more?",
+        "meta": ""
+      },
+      {
+        "t": 510,
+        "q": "Could you, like, introduce this part more?",
+        "meta": ""
+      },
+      {
+        "t": 526,
+        "q": "Is this traffic for load balancing or something else?",
+        "meta": ""
+      },
+      {
+        "t": 541,
+        "q": "Why not choose some native Kubernetes CRD for the load balancing?",
+        "meta": ""
+      },
+      {
+        "t": 615,
+        "q": "How do you compare different kinds of options for the queue, like Kafka and so on, with the Redis and choose the Redis?",
+        "meta": "面试官在挖 design tradeoff —— 他想听你为什么选 Redis 而不是 Kafka 做 queue"
+      },
+      {
+        "t": 626,
+        "q": "Why you choose the Redis for the message key?",
+        "meta": ""
+      },
+      {
+        "t": 979,
+        "q": "Who is helping to separate the work, and how did you decide to separate which work to assign to which people?",
+        "meta": ""
+      },
+      {
+        "t": 1200,
+        "q": "Is the timescale DB based on the post SQL?",
+        "meta": "回答了架构分工(PostgreSQL 放 auth，TimescaleDB 放 metrics),但面试官 re-ask"
+      },
+      {
+        "t": 1300,
+        "q": "How did you do the observability? Like, how did you show the data from the timescale DB to your user or the customer?",
+        "meta": "他提到了 continuous aggregates(7-day / monthly token cost, p95 l"
+      },
+      {
+        "t": 1396,
+        "q": "Do you have any technical challenge in this part?",
+        "meta": "面试官在确认你的 data aggregation pipeline —— 他想听你怎么从 TimescaleDB 拿原"
+      },
+      {
+        "t": 1442,
+        "q": "How can you confirm that your aggregation pipeline is not missing data?",
+        "meta": ""
+      },
+      {
+        "t": 1486,
+        "q": "Have you ever handled this kind of issue, like edge case or failure scenario?",
+        "meta": "面试官在 probe 数据完整性保证 —— 他关心的是:你怎么验证 batch insert 过程中没有丢日志?这是 p"
+      },
+      {
+        "t": 2897,
+        "q": "How should we start? For example, we can start from very regular functional test case. Like, if you set capacity to 2, if you try to add 3 new key and value into the cache — if the LRU cache can retire the oldest 1. And also, you can do another functional test. If you put 1 2 3 in the cache and then get 2 again, will your cache update 2 into the correct position?",
+        "meta": "面试官在引导你设计 test cases —— 他刚给了第一个例子(capacity=2 时加第三个 key,验证是否 "
+      },
+      {
+        "t": 3052,
+        "q": "What if there's multiple threads calling this cache? How can you make it stress safe?",
+        "meta": "面试官加了一个 thread-safety follow-up —— 这是经典的 system design 延伸,他想"
+      },
+      {
+        "t": 3124,
+        "q": "What issue you think you are having and how you can resolve this issue? Lots of call, lot very high QPS for this cache.",
+        "meta": "面试官在问 并发 场景下的 cache 问题 —— 多线程、高 QPS 同时 get/put 会有什么 issue(ra"
+      }
+    ]
+  },
+  {
     "slug": "tiktok-ads-data-scientist-2026-07-15",
     "date": "2026.07.15",
     "duration": "21:50",
