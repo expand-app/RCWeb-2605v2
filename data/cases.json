@@ -1,22 +1,5 @@
 [
   {
-    "id": "10069",
-    "display_id": "23659",
-    "avatar": "X",
-    "name_label": "X同学",
-    "school": "Columbia",
-    "major": "Applied Analytics",
-    "dir": "Financial Analyst / Data Analyst",
-    "dir_key": "data",
-    "company": "Goldman Sachs",
-    "role": "Operations | Associate | Salt Lake City",
-    "degree": "硕士",
-    "quote": "",
-    "reason": "",
-    "focus": "",
-    "has_narrative": true
-  },
-  {
     "id": "10001",
     "display_id": "13870",
     "avatar": "C",
@@ -1103,5 +1086,22 @@
     "has_narrative": false,
     "name_label": "M 同学",
     "quote": ""
+  },
+  {
+    "id": "10069",
+    "display_id": "23659",
+    "avatar": "X",
+    "school": "Columbia",
+    "major": "Applied Analytics",
+    "dir": "Financial Analyst / Data Analyst",
+    "dir_key": "data",
+    "company": "Goldman Sachs",
+    "role": "Operations | Associate | Salt Lake City",
+    "degree": "硕士",
+    "reason": "",
+    "focus": "",
+    "has_narrative": true,
+    "name_label": "X同学",
+    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
   }
 ]
