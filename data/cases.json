@@ -1,5 +1,22 @@
 [
   {
+    "id": "10069",
+    "display_id": "23659",
+    "avatar": "X",
+    "name_label": "X同学",
+    "school": "Columbia",
+    "major": "Applied Analytics",
+    "dir": "Financial Analyst / Data Analyst",
+    "dir_key": "data",
+    "company": "Goldman Sachs",
+    "role": "Operations | Associate | Salt Lake City",
+    "degree": "硕士",
+    "quote": "",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false
+  },
+  {
     "id": "10001",
     "display_id": "13870",
     "avatar": "C",
