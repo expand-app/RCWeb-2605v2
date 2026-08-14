@@ -4859,6 +4859,17 @@ h1.page-title .accent{
   color: var(--ink-3); letter-spacing: 0.04em; gap: 12px; flex-wrap: wrap;
 }
 .pd-cost-head-r{ color: var(--green-dark); font-weight: 500; }
+.pd-vendors{
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line);
+}
+.pd-vendor{
+  font-family: var(--mono); font-size: 10px; color: var(--ink-4);
+  padding: 5px 10px; border-radius: 6px;
+  background: #fff; border: 1px solid var(--line);
+  display: inline-flex; align-items: baseline; gap: 6px;
+}
+.pd-vendor b{ color: var(--green-dark); font-weight: 500; }
 .pd-cost-rows{ display: flex; flex-direction: column; gap: 8px; }
 .pd-cost-row{
   display: grid;
@@ -26341,7 +26352,7 @@ const BG_ROUTE_META = {
   },
   pd: {
     title: 'AI 产品实习 · 零代码交付一款上线产品 — Rexpand 睿思班',
-    desc: '在 Puebulo 任职，从 0 到 1 交付一款 AI 面试教练产品。全程不写一行代码——代码与界面全部由 Claude 产出，你负责定义需求、审查产出、做决策。覆盖用户访谈、多模态采集、AI 评分、实时语音面试与三轮线上迭代。零代码基础可参与，结项即获 referral。'
+    desc: '在 Puebulo 任职，从 0 到 1 交付一款 AI 面试教练产品。全程不写一行代码——代码与界面全部由 Claude 产出，你负责定义需求、审查产出、做决策。跨厂商多模型编排：Deepgram 做语音转写与说话人分离、Claude API 做评分点评、OpenAI Realtime 做实时语音面试官。零代码基础可参与，结项即获 referral。'
   },
   se: {
     title: '软件工程实习 · Full-Stack + AI Agent 项目 — Rexpand 睿思班',
@@ -26399,7 +26410,7 @@ const BG_COURSE_INFO = {
     workload: 'PT24H',
     timeRequired: 'P12W',
     occupation: 'Product Manager / Product Analyst / Product Designer / AI Product Engineer',
-    teaches: 'User Research, PRD Writing, MVP Scoping, AI-Assisted Development, Claude Code, Prompt Engineering, Spec Review, Multimodal Data Pipeline, Speech-to-Text, Speaker Diarization, LLM Evaluation, Model Tier Selection, Cost Modeling, Production Deployment'
+    teaches: 'User Research, PRD Writing, MVP Scoping, AI-Assisted Development, Claude Code, Claude API, OpenAI Realtime API, Deepgram, Multi-Model Orchestration, Prompt Engineering, Spec Review, Multimodal Data Pipeline, Speech-to-Text, Speaker Diarization, LLM Evaluation, Model Tier Selection, Cost Modeling, Production Deployment'
   },
   se: {
     en: 'Software Engineering Internship Program',
@@ -28910,10 +28921,10 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
     overviewLead: '实习生将在 Puebulo（AI 面试科技公司）任职，从零参与一款真实上线产品的完整生命周期：需求定义 → 产品设计 → 开发上线 → 三轮迭代。整个过程不需要写代码——所有实现都交给 Claude，学员的工作是把需求说清楚、把产出看明白、把问题定位准。',
     overviewBody: [
       '第一阶段是产品定义。从用户访谈出发，把「我想多练几次面试」这样一句模糊的诉求，收敛成一条能指导决策的 User Story；再通过竞品调研找到市场空白——「实时作弊」赛道很拥挤，「事后复盘」几乎是空的；最后产出需求文档与可测的验收标准。这一阶段完全由自然语言驱动，同学会亲眼看到 AI 把边界情况列全，是怎么把返工挡在开发之前的。',
-      '第二阶段是开发与上线，同样一行代码都不用写。界面不经过静态设计稿——直接让 Claude 产出可运行的真实界面，然后在跑起来的产品上迭代，这是有了 AI 之后设计流程最大的变化。产品要同时处理音频、视频与文本三种模态，因此要连续翻过三道坎：听得见（采集与流式转写）、分得清（说话人分离与角色识别）、抓得准（从连续对话流里锁定真正的面试问题）。随后是数据完整性与云端部署。',
-      '第三阶段是迭代与 AI 质量工程。三轮迭代分别对应三类典型难题：录播花屏（当修复本身就是故障）、打分不稳定（如何给一个会瞎编的概率系统设计守门规则与可复现性）、Retake 实时语音面试（一次架构再决策，以及推翻自己的勇气）。最后一周做模型分层选型与单位成本建模——这是 AI 产品岗真正的隐藏必修课。'
+      '第二阶段是开发与上线，同样一行代码都不用写。界面不经过静态设计稿——直接让 Claude 产出可运行的真实界面，然后在跑起来的产品上迭代，这是有了 AI 之后设计流程最大的变化。产品要同时处理音频、视频与文本三种模态，因此要连续翻过三道坎：听得见（Deepgram 流式转写）、分得清（Deepgram 说话人分离与角色识别）、抓得准（从连续对话流里锁定真正的面试问题）。随后是数据完整性与云端部署。',
+      '第三阶段是迭代与 AI 质量工程。三轮迭代分别对应三类典型难题：录播花屏（当修复本身就是故障）、打分不稳定（用 Claude API 给一个会瞎编的概率系统设计守门规则与可复现性）、Retake 实时语音面试（接入 OpenAI Realtime API 做实时 AI 面试官，一次架构再决策，以及推翻自己的勇气）。最后一周做跨厂商多模型选型与单位成本建模——同一个产品里 Deepgram 负责听、Claude 负责评、OpenAI 负责说，凭什么这样分工、各自贵在哪、能不能换，这是 AI 产品岗真正的隐藏必修课。'
     ],
-    tags: ['No-Code', 'Claude Code', 'AI-Assisted Development', 'User Research', 'PRD Writing', 'MVP Scoping', 'Prompt Engineering', 'Multimodal', 'Speech-to-Text', 'LLM Evaluation', 'Cost Modeling', 'AWS'],
+    tags: ['No-Code', 'Claude Code', 'Claude API', 'OpenAI Realtime', 'Deepgram', 'Multi-Model Orchestration', 'AI-Assisted Development', 'User Research', 'PRD Writing', 'MVP Scoping', 'Prompt Engineering', 'Speech-to-Text', 'Speaker Diarization', 'LLM Evaluation', 'Cost Modeling', 'AWS'],
     highlights: [
       {
         t: '零代码交付上线产品',
@@ -28932,9 +28943,9 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
         svg: '<path d="M12 2l8 4v6c0 5-3.4 9.2-8 10-4.6-.8-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>'
       },
       {
-        t: '可验证的作品集',
-        d: '上线产品链接 + 完整需求与迭代决策记录，简历可直接附 link 展示。',
-        svg: '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/>'
+        t: '跨厂商多模型编排',
+        d: '同一个产品里 Deepgram 负责听、Claude 负责评、OpenAI Realtime 负责说。学会按任务选模型、算清各自成本、判断能不能换——这是 AI 产品岗的核心竞争力。',
+        svg: '<circle cx="12" cy="12" r="3"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M7 7l3 3M17 7l-3 3M12 15v3"/>'
       }
     ],
     modules: [
@@ -29010,7 +29021,7 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
         tname: '开发与上线',
         title: '零代码开发与上线',
         titleEn: 'Ship It Without Writing Code',
-        meta: [['Duration', '5 周'], ['Stack', 'Claude Code + AWS'], ['Per Session', '1 – 2 小时']],
+        meta: [['Duration', '5 周'], ['Stack', 'Claude Code · Deepgram · AWS'], ['Per Session', '1 – 2 小时']],
         desc: '把需求变成一个真实可访问的产品，全程用自然语言驱动 Claude 完成实现。界面不画静态稿——直接产出可运行的真实界面，在跑起来的产品上迭代。核心难点是多模态：音频、视频、文本三条流要同时可靠。',
         visual: `
           <div class="curr-visual">
@@ -29020,7 +29031,7 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
                 <div class="pd-hurdle-num">01</div>
                 <div class="pd-hurdle-body">
                   <div class="pd-hurdle-t">听得见</div>
-                  <div class="pd-hurdle-en">Capture &amp; Streaming Transcription</div>
+                  <div class="pd-hurdle-en">Deepgram · Streaming Transcription</div>
                   <div class="pd-hurdle-chips"><span>音频采集</span><span>设备权限</span><span>流式转写</span><span>断线降级</span></div>
                 </div>
               </div>
@@ -29028,7 +29039,7 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
                 <div class="pd-hurdle-num">02</div>
                 <div class="pd-hurdle-body">
                   <div class="pd-hurdle-t">分得清</div>
-                  <div class="pd-hurdle-en">Speaker Diarization</div>
+                  <div class="pd-hurdle-en">Deepgram · Speaker Diarization</div>
                   <div class="pd-hurdle-chips"><span>说话人分离</span><span>角色识别</span><span>重连缓冲</span></div>
                 </div>
               </div>
@@ -29061,12 +29072,12 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
           {
             n: '05',
             title: '多模态第一道坎：听得见',
-            items: ['音频采集与设备权限', '流式转写接入', '断线与降级策略']
+            items: ['音频采集与设备权限', '接入 Deepgram 流式转写', '断线与降级策略']
           },
           {
             n: '06',
             title: '多模态第二道坎：分得清',
-            items: ['说话人分离', '面试官 / 候选人角色识别', '重连与缓冲']
+            items: ['Deepgram 说话人分离（diarization）', '面试官 / 候选人角色识别', '重连与缓冲']
           },
           {
             n: '07',
@@ -29086,7 +29097,7 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
         tname: '迭代与质量工程',
         title: '迭代与 AI 质量工程',
         titleEn: 'Iteration & AI Quality Engineering',
-        meta: [['Duration', '4 周'], ['Stack', 'LLM Evaluation + 成本建模'], ['Per Session', '1 – 2 小时']],
+        meta: [['Duration', '4 周'], ['Stack', 'Claude API · OpenAI Realtime · 成本建模'], ['Per Session', '1 – 2 小时']],
         desc: '上线只是开始。三轮真实迭代，每一轮都对应一类 AI 产品的典型难题；最后一周做模型分层选型与单位成本建模——这是校内项目几乎不会涉及、但工作第一天就会遇到的能力。',
         visual: `
           <div class="curr-visual">
@@ -29095,6 +29106,11 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
               <div class="pd-cost-head">
                 <span>一场 30 分钟面试 · 1,000+ 次模型调用</span>
                 <span class="pd-cost-head-r">95% 为轻量档</span>
+              </div>
+              <div class="pd-vendors">
+                <span class="pd-vendor"><b>Deepgram</b>转写 · 说话人分离</span>
+                <span class="pd-vendor"><b>Claude API</b>评分 · 点评</span>
+                <span class="pd-vendor"><b>OpenAI Realtime</b>实时语音面试官</span>
               </div>
               <div class="pd-cost-rows">
                 <div class="pd-cost-row">
@@ -29137,17 +29153,17 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
           {
             n: '10',
             title: '迭代二：让打分稳定',
-            items: ['评分体系设计', '业务规则该写在哪一层', '可复现性与硬性守门']
+            items: ['基于 Claude API 的评分与点评体系', '业务规则该写在哪一层', '可复现性与硬性守门']
           },
           {
             n: '11',
             title: '迭代三：Retake 实时语音',
-            items: ['一次架构再决策', '实时语音对话', '打断与回声', '推翻自己的勇气']
+            items: ['一次架构再决策', '接入 OpenAI Realtime API 做实时语音面试官', '打断与回声', '推翻自己的勇气']
           },
           {
             n: '12',
             title: '成本控制与结课 Demo',
-            items: ['模型分层选型', '单位成本模型', '首字延迟 vs 总耗时', '上线复盘与 Demo']
+            items: ['跨厂商多模型选型（Deepgram / Claude / OpenAI）', '模型分层与单位成本模型', '首字延迟 vs 总耗时', '上线复盘与 Demo']
           }
         ]
       }
@@ -29160,7 +29176,7 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
       { q: '简历上公司名称怎么写？', a: '项目公司是 Puebulo，一家 AI 教育科技公司，主要业务是面向北美求职者的 AI 面试复盘与模拟面试产品。' },
       {
         q: '简历 Skills 可以添加哪些技能？',
-        a: '<ul><li>Product Requirement Definition / User Research</li><li>MVP Scoping / Acceptance Criteria</li><li>AI-Assisted Development / Claude Code</li><li>Prompt Engineering / LLM Evaluation</li><li>Product Analytics / A-B Testing</li><li>Cost Modeling / Unit Economics</li><li>Production Deployment / Incident Review</li></ul>'
+        a: '<ul><li>Product Requirement Definition / User Research</li><li>MVP Scoping / Acceptance Criteria</li><li>AI-Assisted Development / Claude Code</li><li>Multi-Model Orchestration (Deepgram / Claude API / OpenAI Realtime)</li><li>Prompt Engineering / LLM Evaluation</li><li>Product Analytics / A-B Testing</li><li>Cost Modeling / Unit Economics</li><li>Production Deployment / Incident Review</li></ul>'
       },
       { q: '没有编程经验能学吗？', a: '这正是本项目的设计前提。全程不写一行代码——所有实现都由 Claude 完成，你的工作是把需求说清楚、审查产出、定位问题、做决策。四个方向都不要求编程基础，也不要求会用设计软件。' },
       { q: '完全不写代码，产出还能算数吗？', a: '产品是真实上线的，有真实用户、真实故障和回滚记录，链接可直接放进简历。区别在于你交付它的方式——这恰恰是现在企业最想要的能力：能指挥 AI 完成交付、并且判断得出产出是对是错。判断力比手写代码更难被替代。' },
@@ -29656,7 +29672,7 @@ RESUME_ROLES_BY_DIR.pd = {
       'Led 0→1 product definition for an AI interview-coaching platform — ran user interviews and converted a vague "I want more practice" request into a decision-guiding user story, scoping an MVP shipped to production in 12 weeks',
       'Specified the full product surface in natural language and drove implementation through an AI coding agent, covering 30+ edge cases surfaced in structured pre-build review and cutting mid-build scope changes',
       'Owned three post-launch iterations (recording reliability, scoring stability, real-time voice mock interview), each defined by a measurable acceptance bar rather than a feature list',
-      'Drove model-tier selection across a 1,000+ call-per-session inference pipeline based on call frequency × output value, cutting per-session cost ~80% with no quality regression'
+      'Drove multi-vendor model selection across a 1,000+ call-per-session pipeline — Deepgram for streaming transcription and diarization, Claude for scoring and commentary, OpenAI Realtime for live voice — tiering each call class by frequency × output value and cutting per-session cost ~80% with no quality regression'
     ]
   },
   pa: {
@@ -29668,7 +29684,7 @@ RESUME_ROLES_BY_DIR.pd = {
     title: 'Product Analyst Intern',
     date: 'Jan 2026 – Apr 2026',
     bullets: [
-      'Built the unit-economics model for an AI product, decomposing 1,000+ inference calls per 30-minute session into five call classes and isolating the 95% of calls that drove under 5% of user-facing value',
+      'Built the unit-economics model for a multi-vendor AI product (Deepgram + Claude + OpenAI Realtime), decomposing 1,000+ inference calls per 30-minute session into five call classes and isolating the 95% of calls that drove under 5% of user-facing value',
       'Reconciled server-side session statistics against model-assigned scores, surfacing a silent gate failure that let 3-minute sessions receive full scores',
       'Defined acceptance metrics for a probabilistic system — reproducibility, refusal rate, insufficient-data rate — where deterministic pass/fail testing did not apply',
       'Ran tier-level comparisons on latency and time-to-first-token, demonstrating that a cheaper model tier improved perceived responsiveness for streaming feedback'
@@ -29686,7 +29702,7 @@ RESUME_ROLES_BY_DIR.pd = {
       'Designed end-to-end flows for a multimodal interview product spanning live capture, post-session replay, and AI-driven mock interview',
       'Worked directly on running builds instead of static mockups — specified interfaces in natural language, generated them through an AI agent, and iterated against real usage',
       'Restructured the session-review interface to align transcript, speaker timeline, and per-question feedback into a single scannable view',
-      'Specified voice-interaction states (listening / speaking / interrupted) for a real-time AI interviewer and removed intrusive status warnings that broke conversational immersion'
+      'Specified voice-interaction states (listening / speaking / interrupted) for an OpenAI Realtime-powered AI interviewer and removed intrusive status warnings that broke conversational immersion'
     ]
   },
   aie: {
@@ -29699,8 +29715,8 @@ RESUME_ROLES_BY_DIR.pd = {
     date: 'Jan 2026 – Apr 2026',
     bullets: [
       'Delivered and shipped a production web application to AWS entirely through AI-assisted development — specifying, reviewing, and debugging rather than hand-writing implementation',
-      'Directed integration of streaming speech-to-text with speaker diarization, reconnect buffering, and echo suppression for speakerphone use',
-      'Specified and validated a real-time voice interview built on WebRTC against a realtime speech model — ephemeral-token auth, server-side turn detection, barge-in, and function-call session termination',
+      'Directed integration of Deepgram streaming speech-to-text with speaker diarization, reconnect buffering, and echo suppression for speakerphone use',
+      'Specified and validated a real-time voice interview built on WebRTC against the OpenAI Realtime API — ephemeral-token auth, server-side turn detection, barge-in, and function-call session termination',
       'Root-caused a site-wide stale-UI incident traced to a year-long CDN cache on page HTML, and added cache invalidation to the deploy pipeline'
     ]
   }
