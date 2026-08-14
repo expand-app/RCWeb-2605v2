@@ -331,7 +331,7 @@ fs.writeFileSync(path.join(ROOT, 'dist', 'sitemap.xml'), sitemapXml);
 // entry-point summary that's easier for LLMs to index than scraping the SPA.
 const llmsTxt = `# Rexpand · 睿思班
 
-> AI-driven career placement for international students in North America. Multi-Agent automation + a 1,000+ mentor network for software engineering, data analytics, data science, quantitative finance, and investment banking placements. Money-back guarantee.
+> AI-driven career placement for international students in North America. Multi-Agent automation + a 1,000+ mentor network for software engineering, AI product management, data analytics, data science, quantitative finance, and investment banking placements. Money-back guarantee.
 
 ## Core Services
 
@@ -349,6 +349,7 @@ Per-direction structured prep:
 - [Quantitative Finance](${ORIGIN}/bg-quant)
 - [Investment Banking](${ORIGIN}/bg-investment-banking)
 - [Software Engineering](${ORIGIN}/bg-software-engineering)
+- [AI Product](${ORIGIN}/bg-ai-product)
 
 ## Latest Articles
 
