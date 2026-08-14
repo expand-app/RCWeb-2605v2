@@ -78,13 +78,33 @@ def _node_parse(literal: str, prelude: str = "") -> object:
 def extract_cases():
     m = re.search(r"const CASES_DATA\s*=\s*(\{[^\n]*?\});", HTML)
     base = json.loads(m.group(1))  # already strict JSON
+
+    # Isolate each case-card's own HTML block before searching within it.
+    # A single monolithic regex with unbounded `[\s\S]*?` between cc-name and
+    # cc-quote can leak across sibling cards: has_narrative:false cards render
+    # a placeholder with a NESTED <span class="cc-archive-id"> inside
+    # cc-quote-soft, which breaks the naive `[^<]+` content match. When that
+    # happens the non-greedy search doesn't fail closed — it keeps expanding
+    # rightward past this card's closing tags looking for the next div that
+    # DOES match, silently grabbing a later sibling card's name/quote instead.
+    card_starts = [
+        mm.start() for mm in re.finditer(r'<div class="case-card"', HTML)
+    ]
+    card_blocks = {}
+    for i, start in enumerate(card_starts):
+        end = card_starts[i + 1] if i + 1 < len(card_starts) else start + 4000
+        block = HTML[start:end]
+        cid_m = re.search(r'data-case="(\d+)"', block)
+        if cid_m:
+            card_blocks[cid_m.group(1)] = block
+
     out = []
     for cid, fields in base.items():
+        block = card_blocks.get(cid, "")
         card = re.search(
-            r'<div class="case-card"[^>]*data-case="' + cid + r'"[\s\S]*?'
             r'<div class="cc-name">([^<]+)</div>[\s\S]*?'
             r'<div class="cc-quote(?:[^"]*)">([^<]+)</div>',
-            HTML,
+            block,
         )
         if card:
             name_label = card.group(1).strip()
