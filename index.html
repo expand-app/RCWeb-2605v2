@@ -21,7 +21,7 @@
 <!-- Primary SEO (overridden per-route by JS) -->
 <title id="meta-title">Rexpand · 睿思班 — AI-Powered Career Placement</title>
 <meta id="meta-description" name="description" content="Rexpand 睿思班 是一家 AI 驱动的北美留学生求职公司。自研 Multi-Agent 自动化触达 Hiring Team，结合 1,000+ 名企现役导师辅导网络，覆盖背景提升、内推、H1B 全周期求职落地服务。拿不到 offer 按合同退款。">
-<meta name="keywords" content="Rexpand,睿思班,北美留学生求职,AI Agent 求职,保 offer,H1B 求职,背景提升,AI数据分析实习,数据科学实习,量化投资实习,投行建模实习,软件工程实习,LinkedIn 内推,Hiring Team,FAANG 求职">
+<meta name="keywords" content="Rexpand,睿思班,北美留学生求职,AI Agent 求职,保 offer,H1B 求职,背景提升,AI数据分析实习,数据科学实习,量化投资实习,投行建模实习,软件工程实习,AI产品实习,LinkedIn 内推,Hiring Team,FAANG 求职">
 <meta name="author" content="Rexpand · 睿思班">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
 <meta name="googlebot" content="index,follow">
@@ -1643,11 +1643,11 @@ h1.page-title .accent{
 .man-cta:hover{ background: #66D17F; color: var(--ink); transform: translateX(2px); }
 .man-cta .arr{ font-family: var(--mono); }
 
-/* --- Programs SV: minimal 5-tile grid, no descriptions --- */
+/* --- Programs SV: minimal 6-tile grid, no descriptions --- */
 .programs-sv{ border-top: 1px solid var(--line); }
 .prog-grid-sv{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 16px;
 }
 .prog-tile{
@@ -4744,6 +4744,165 @@ h1.page-title .accent{
   width: 6px; height: 1px; background: var(--ink-4);
 }
 
+/* ============================================================
+   AI 产品方向 (pd) — module visual styles
+   Staging file; injected into index.html's <style> by
+   scripts/add_pd_direction.py, then deleted.
+   Follows the same design tokens as the existing .curr-visual blocks.
+============================================================ */
+
+/* --- Module 01 · User need → product definition flow --- */
+.pd-flow{ display: flex; flex-direction: column; gap: 18px; }
+.pd-flow-row{ display: flex; align-items: stretch; gap: 12px; }
+.pd-node{
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.pd-node-lbl{
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px;
+}
+.pd-node-quote{
+  font-family: var(--serif-cn); font-size: 15px; color: var(--ink-3);
+  font-style: italic; line-height: 1.5;
+}
+.pd-node-body{ font-size: 13px; line-height: 1.6; color: var(--ink); }
+.pd-node-meta{
+  font-family: var(--mono); font-size: 10px; color: var(--ink-4);
+  margin-top: 10px; letter-spacing: 0.04em;
+}
+.pd-node-story{ border-color: rgba(31,169,64,0.28); background: rgba(31,169,64,0.03); }
+.pd-arrow{
+  align-self: center; color: var(--green-dark);
+  font-size: 18px; flex-shrink: 0;
+}
+
+.pd-matrix-lbl, .pd-ac-lbl{
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--ink-4); margin-bottom: 10px;
+}
+.pd-matrix-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pd-cell{
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px 14px;
+}
+.pd-cell-k{ font-size: 13px; font-weight: 500; color: var(--ink); }
+.pd-cell-v{
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+  margin-top: 3px; color: var(--ink-4);
+}
+.pd-cell-dots{ display: flex; gap: 4px; margin-top: 10px; }
+.pd-cell-dots span{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--line-2); border: 1px solid var(--line);
+}
+.pd-cell-dots span.on{ background: var(--green); border-color: var(--green); }
+.pd-cell-gap{ border-color: rgba(31,169,64,0.28); background: rgba(31,169,64,0.03); }
+.pd-cell-gap .pd-cell-v{ color: var(--green-dark); }
+
+.pd-ac{ margin-top: 4px; }
+.pd-ac-row{
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 12.5px; color: var(--ink-2); line-height: 1.7;
+}
+.pd-ac-chk{ color: var(--green-dark); flex-shrink: 0; }
+
+/* --- Module 02 · Three multimodal hurdles --- */
+.pd-hurdles{ display: flex; flex-direction: column; gap: 10px; }
+.pd-hurdle{
+  display: flex; gap: 14px; align-items: flex-start;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 14px 16px;
+}
+.pd-hurdle-num{
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--green-dark); padding-top: 2px; flex-shrink: 0;
+  letter-spacing: 0.06em;
+}
+.pd-hurdle-t{ font-size: 14px; font-weight: 600; color: var(--ink); }
+.pd-hurdle-en{
+  font-family: var(--mono); font-size: 10px; color: var(--ink-4);
+  letter-spacing: 0.06em; margin-top: 2px;
+}
+.pd-hurdle-chips{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.pd-hurdle-chips span{
+  font-family: var(--mono); font-size: 10px;
+  padding: 3px 9px; border-radius: 100px;
+  background: rgba(31,169,64,0.06); color: var(--green-dark);
+  border: 1px solid rgba(31,169,64,0.16);
+}
+.pd-ship{ margin-top: 16px; }
+.pd-ship-lbl{
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--ink-4); margin-bottom: 10px;
+}
+.pd-ship-row{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pd-ship-step{
+  font-family: var(--mono); font-size: 10.5px;
+  padding: 6px 12px; border-radius: 6px;
+  background: #fff; border: 1px solid var(--line); color: var(--ink-2);
+}
+.pd-ship-arr{ color: var(--ink-4); font-size: 13px; }
+.pd-ship-live{
+  border-color: rgba(31,169,64,0.28);
+  background: rgba(31,169,64,0.05); color: var(--green-dark);
+}
+
+/* --- Module 03 · Model-tier cost model --- */
+.pd-cost{ display: flex; flex-direction: column; gap: 14px; }
+.pd-cost-head{
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-size: 10.5px;
+  color: var(--ink-3); letter-spacing: 0.04em; gap: 12px; flex-wrap: wrap;
+}
+.pd-cost-head-r{ color: var(--green-dark); font-weight: 500; }
+.pd-cost-rows{ display: flex; flex-direction: column; gap: 8px; }
+.pd-cost-row{
+  display: grid;
+  grid-template-columns: 76px 1fr 62px 58px;
+  align-items: center; gap: 10px;
+}
+.pd-cost-k{ font-size: 12.5px; color: var(--ink-2); }
+.pd-cost-bar{
+  height: 8px; background: var(--line-2);
+  border-radius: 100px; overflow: hidden;
+}
+.pd-bar{ display: block; height: 100%; border-radius: 100px; }
+.pd-bar-light{ background: var(--green); }
+.pd-bar-mid{ background: var(--ink-4); }
+.pd-cost-n{
+  font-family: var(--mono); font-size: 10.5px;
+  color: var(--ink-4); text-align: right;
+}
+.pd-cost-tier{
+  font-family: var(--mono); font-size: 9.5px;
+  padding: 3px 7px; border-radius: 4px; text-align: center;
+  letter-spacing: 0.04em;
+}
+.pd-tier-light{
+  background: rgba(31,169,64,0.08); color: var(--green-dark);
+  border: 1px solid rgba(31,169,64,0.18);
+}
+.pd-tier-mid{
+  background: #fff; color: var(--ink-3); border: 1px solid var(--line);
+}
+.pd-cost-note{
+  font-size: 12.5px; line-height: 1.8; color: var(--ink-3);
+  padding-top: 12px; border-top: 1px solid var(--line);
+}
+.pd-cost-note strong{ color: var(--green-dark); }
+
+@media (max-width: 760px){
+  .pd-flow-row{ flex-direction: column; }
+  .pd-arrow{ transform: rotate(90deg); }
+  .pd-matrix-grid{ grid-template-columns: 1fr; }
+  .pd-cost-row{ grid-template-columns: 68px 1fr 52px; }
+  .pd-cost-tier{ display: none; }
+}
+
 /* ============ FAQ ============ */
 .faq{ border-top: 1px solid var(--line); }
 .faq-item{ border-bottom: 1px solid var(--line); }
@@ -5911,6 +6070,9 @@ footer{
           <a href="/bg-software-engineering" class="dd-item bg-jump" data-dir="se">
             <span class="dd-name">软件工程<small>Software Engineering</small></span>
           </a>
+          <a href="/bg-ai-product" class="dd-item bg-jump" data-dir="pd">
+            <span class="dd-name">AI 产品<small>AI Product</small></span>
+          </a>
         </div>
       </div>
       <a href="/resources" data-route="resources" class="nav-item">免费资源</a>
@@ -6010,7 +6172,7 @@ footer{
     <div class="sec-header">
       <div>
         <div class="sec-num">01 / Background Boost</div>
-        <h2 class="sec-title">五大方向<br><em>背景提升项目.</em></h2>
+        <h2 class="sec-title">六大方向<br><em>背景提升项目.</em></h2>
       </div>
       <p class="sec-desc">企业级远程实习 · 名企导师带教 · 结项即获 referral。<a class="hl-link" href="/background" data-route="background">查看所有项目 →</a></p>
     </div>
@@ -6044,6 +6206,12 @@ footer{
         <div class="pt-dir">SE</div>
         <div class="pt-title">软件工程</div>
         <div class="pt-en">Software Engineering</div>
+        <div class="pt-arr">→</div>
+      </a>
+      <a class="prog-tile bg-jump" href="/bg-ai-product" data-dir="pd">
+        <div class="pt-dir">PD</div>
+        <div class="pt-title">AI 产品</div>
+        <div class="pt-en">AI Product</div>
         <div class="pt-arr">→</div>
       </a>
     </div>
@@ -13722,7 +13890,7 @@ footer{
           </div>
           <div class="bp-item">
             <span class="bp-num">— 05</span>
-            <div class="bp-name">背景提升项目<small>5 大方向工业级实习 · 简历加分</small></div>
+            <div class="bp-name">背景提升项目<small>6 大方向工业级实习 · 简历加分</small></div>
             <span class="bp-metric">INCLUDED</span>
           </div>
         </div>
@@ -14883,7 +15051,7 @@ footer{
         <div class="method-info">
           <h3>背景提升<span class="en">Resume Depth Upgrade</span></h3>
           <p>没有相关工作经验 → 简历过不了 HR 筛选 → 0 面试。</p>
-          <p style="margin-top: 12px;">补充 <strong style="color:var(--ink);">真实工业级项目经历</strong>（不是水项目）—— AI数据分析 / 数据科学 / 量化投资 / 投行建模 / 软件工程，五大方向可选。</p>
+          <p style="margin-top: 12px;">补充 <strong style="color:var(--ink);">真实工业级项目经历</strong>（不是水项目）—— AI数据分析 / 数据科学 / 量化投资 / 投行建模 / 软件工程 / AI 产品，六大方向可选。</p>
         </div>
 
         <div class="bg-boost" id="bgBoost">
@@ -15294,7 +15462,7 @@ footer{
                 <div class="rm-bullet">
                   <div class="ic">— ADD</div>
                   <strong>缺经验 → 加项目</strong>
-                  <small>对接背景提升 5 大方向</small>
+                  <small>对接背景提升 6 大方向</small>
                 </div>
                 <div class="rm-bullet">
                   <div class="ic">— PASS</div>
@@ -26109,7 +26277,7 @@ const routeMeta = {
   background: {
     path: '/background',
     title: '背景提升项目 · 工业级远程实习 — Rexpand 睿思班',
-    desc: '五大方向背景提升:AI数据分析、数据科学、量化投资、投行建模、软件工程。企业级远程实习,名企现役工程师与分析师带教,结项即获 referral。',
+    desc: '六大方向背景提升:AI数据分析、数据科学、量化投资、投行建模、软件工程、AI 产品。企业级远程实习,名企现役工程师与分析师带教,结项即获 referral。',
     og: ORIGIN + '/media/team/2024-training.jpg'
   },
   resources: {
@@ -26143,7 +26311,8 @@ const BG_DIR_BY_SLUG = {
   'data-science':         'ds',
   'quant':                'qi',
   'investment-banking':   'fm',
-  'software-engineering': 'se'
+  'software-engineering': 'se',
+  'ai-product':           'pd'
 };
 const BG_SLUG_BY_DIR = {};
 for(const s in BG_DIR_BY_SLUG){ BG_SLUG_BY_DIR[BG_DIR_BY_SLUG[s]] = s; }
@@ -26169,6 +26338,10 @@ const BG_ROUTE_META = {
     title: '投行建模实习 · Transaction Advisory 项目 — Rexpand 睿思班',
     desc: '在咨询公司 Transaction Advisory Services 部门任职。为客户的并购交易提供金融建模、公司估值与财务预测支持 —— 投行 / 估值 / 财务咨询求职的硬通货实习。',
     og: ORIGIN + '/og/rexpand_04_investment-banking.png', ogw: 1080, ogh: 1080
+  },
+  pd: {
+    title: 'AI 产品实习 · 零代码交付一款上线产品 — Rexpand 睿思班',
+    desc: '在 Puebulo 任职，从 0 到 1 交付一款 AI 面试教练产品。全程不写一行代码——代码与界面全部由 Claude 产出，你负责定义需求、审查产出、做决策。覆盖用户访谈、多模态采集、AI 评分、实时语音面试与三轮线上迭代。零代码基础可参与，结项即获 referral。'
   },
   se: {
     title: '软件工程实习 · Full-Stack + AI Agent 项目 — Rexpand 睿思班',
@@ -26220,6 +26393,13 @@ const BG_COURSE_INFO = {
     timeRequired: 'P10W',
     occupation: 'Investment Banking Analyst / Valuation Analyst / Transaction Advisory',
     teaches: 'DCF Modeling, LBO Modeling, Comparable Companies Analysis, Precedent Transactions, Three-Statement Modeling, Pitchbook Construction'
+  },
+  pd: {
+    en: 'AI Product Internship Program',
+    workload: 'PT24H',
+    timeRequired: 'P12W',
+    occupation: 'Product Manager / Product Analyst / Product Designer / AI Product Engineer',
+    teaches: 'User Research, PRD Writing, MVP Scoping, AI-Assisted Development, Claude Code, Prompt Engineering, Spec Review, Multimodal Data Pipeline, Speech-to-Text, Speaker Diarization, LLM Evaluation, Model Tier Selection, Cost Modeling, Production Deployment'
   },
   se: {
     en: 'Software Engineering Internship Program',
@@ -28714,6 +28894,323 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
       { q: '两个项目可以只选一个吗？', a: '推荐两个都做，可以同时获得两段不同维度的简历经验。也支持先做完一个之后再决定是否继续。' },
       { q: '需要付费的云服务吗？', a: 'AWS Lambda 在 Free Tier 内基本够用；项目会指导使用 OpenAI 与 Anthropic 的低成本模型版本，整体成本可控。' }
     ]
+  },
+  pd: {
+    name: 'AI 产品',
+    titleCn: 'AI 产品实习',
+    titleEn: 'AI Product Internship',
+    eyebrow: 'Background Boost · 工业级远程实习',
+    lead: '在 Puebulo（AI 面试科技公司）任职，从 0 到 1 交付一款面向北美求职者的 AI 面试教练产品——从用户访谈、需求定义、界面设计，到多模态采集、AI 评分、实时语音模拟面试，再到上线、线上故障与三轮迭代。全程不写一行代码：代码与界面全部由 Claude 产出，你负责定义、审查与决策。零代码基础也能交付一款真实上线的产品。',
+    facts: [
+      {
+        k: 'Duration',
+        v: '60 – 80 小时',
+        s: '12 周 · 三大模块 · 单节 1–2 小时'
+      },
+      {
+        k: 'Industry',
+        v: 'AI / 教育科技',
+        s: '真实上线产品 · 真实用户 · 真实线上故障'
+      },
+      {
+        k: 'Suited For',
+        v: '零代码基础',
+        s: 'PM / Product Analytics / UI-UX / AI 产品工程 四方向'
+      },
+      {
+        k: 'Format',
+        v: '远程直播',
+        s: '录播回放 · Office Hour · 需求与产出走查'
+      }
+    ],
+    overviewLead: '实习生将在 Puebulo（AI 面试科技公司）任职，从零参与一款真实上线产品的完整生命周期：需求定义 → 产品设计 → 开发上线 → 三轮迭代。整个过程不需要写代码——所有实现都交给 Claude，学员的工作是把需求说清楚、把产出看明白、把问题定位准。',
+    overviewBody: [
+      '第一阶段是产品定义。从用户访谈出发，把「我想多练几次面试」这样一句模糊的诉求，收敛成一条能指导决策的 User Story；再通过竞品调研找到市场空白——「实时作弊」赛道很拥挤，「事后复盘」几乎是空的；最后产出需求文档与可测的验收标准。这一阶段完全由自然语言驱动，同学会亲眼看到 AI 把边界情况列全，是怎么把返工挡在开发之前的。',
+      '第二阶段是开发与上线，同样一行代码都不用写。界面不经过静态设计稿——直接让 Claude 产出可运行的真实界面，然后在跑起来的产品上迭代，这是有了 AI 之后设计流程最大的变化。产品要同时处理音频、视频与文本三种模态，因此要连续翻过三道坎：听得见（采集与流式转写）、分得清（说话人分离与角色识别）、抓得准（从连续对话流里锁定真正的面试问题）。随后是数据完整性与云端部署。',
+      '第三阶段是迭代与 AI 质量工程。三轮迭代分别对应三类典型难题：录播花屏（当修复本身就是故障）、打分不稳定（如何给一个会瞎编的概率系统设计守门规则与可复现性）、Retake 实时语音面试（一次架构再决策，以及推翻自己的勇气）。最后一周做模型分层选型与单位成本建模——这是 AI 产品岗真正的隐藏必修课。'
+    ],
+    tags: [
+      '零代码',
+      'Claude Code',
+      'AI-Assisted Development',
+      'User Research',
+      '需求定义',
+      'MVP Scoping',
+      'Prompt Engineering',
+      'Multimodal',
+      'Speech-to-Text',
+      'LLM Evaluation',
+      'Cost Modeling',
+      'AWS'
+    ],
+    highlights: [
+      {
+        t: '零代码交付上线产品',
+        d: '不写一行代码，但产品真实上线、有真实用户、有真实故障与回滚记录。完成后可直接写入简历的 4 条工业级 bullet points。点击预览 →',
+        svg: '<rect x="5" y="2" width="14" height="20" rx="1.5"/><path d="M9 7h6M9 11h6M9 15h4"/>',
+        action: 'open-resume'
+      },
+      {
+        t: 'AI-Native 工作方式',
+        d: '需求、界面、实现、文档全部由 Claude 产出。你练的是新岗位真正要的能力：把需求说清楚、把产出审明白、把问题定位准。',
+        svg: '<path d="M4.5 16.5L3 21l4.5-1.5L18 9l-3-3z"/><path d="M15 6l3 3"/>'
+      },
+      {
+        t: '概率系统的质量工程',
+        d: '学会给「会瞎编的系统」设计验收标准、守门规则与可复现性——传统 QA 那套在这里失效。',
+        svg: '<path d="M12 2l8 4v6c0 5-3.4 9.2-8 10-4.6-.8-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>'
+      },
+      {
+        t: '可验证的作品集',
+        d: '上线产品链接 + 完整需求与迭代决策记录，简历可直接附 link 展示。',
+        svg: '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/>'
+      }
+    ],
+    modules: [
+      {
+        id: 'pd-m1',
+        tnum: '01',
+        tname: '需求与定义',
+        title: '从用户需求到产品定义',
+        titleEn: 'From User Need to Product Definition',
+        meta: [['Duration', '3 周'], ['Stack', 'User Research + Claude'], ['Per Session', '1 – 2 小时']],
+        desc: '不碰实现的三周。从用户访谈开始，走完需求定义、竞品调研、需求文档与验收标准的完整链路。重点不是「文档模板长什么样」，而是有了 AI 之后，这三件事哪些变了、哪些完全没变、哪些反而更难了。',
+        visual: `
+          <div class="curr-visual">
+            <div class="cv-label">Module Preview <span class="cv-sub">User Research → PRD · Definition Pipeline</span></div>
+            <div class="pd-flow">
+              <div class="pd-flow-row">
+                <div class="pd-node pd-node-raw">
+                  <div class="pd-node-lbl">RAW INPUT</div>
+                  <div class="pd-node-quote">"我想多练几次面试"</div>
+                  <div class="pd-node-meta">用户访谈 · 12 段录音</div>
+                </div>
+                <div class="pd-arrow">→</div>
+                <div class="pd-node pd-node-story">
+                  <div class="pd-node-lbl">USER STORY</div>
+                  <div class="pd-node-body">作为求职者，我希望在面试结束后立刻看到自己哪一题答砸了、砸在哪，以便下一场不再犯同样的错。</div>
+                  <div class="pd-node-meta">可指导决策 · 可验收</div>
+                </div>
+              </div>
+              <div class="pd-matrix">
+                <div class="pd-matrix-lbl">— 竞品矩阵 · 切入点定位</div>
+                <div class="pd-matrix-grid">
+                  <div class="pd-cell pd-cell-crowded">
+                    <div class="pd-cell-k">实时作弊</div>
+                    <div class="pd-cell-v">拥挤</div>
+                    <div class="pd-cell-dots"><span></span><span></span><span></span><span></span><span></span></div>
+                  </div>
+                  <div class="pd-cell pd-cell-gap">
+                    <div class="pd-cell-k">事后复盘</div>
+                    <div class="pd-cell-v">空白</div>
+                    <div class="pd-cell-dots"><span class="on"></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="pd-ac">
+                <div class="pd-ac-lbl">— 验收标准（节选）</div>
+                <div class="pd-ac-row"><span class="pd-ac-chk">✓</span> 面试结束后 60 秒内生成完整复盘</div>
+                <div class="pd-ac-row"><span class="pd-ac-chk">✓</span> 每道题可定位到原始音频时间点</div>
+                <div class="pd-ac-row"><span class="pd-ac-chk">✓</span> 数据不足时明确拒答，不允许编造</div>
+              </div>
+            </div>
+          </div>`,
+        weeks: [
+          {
+            n: '01',
+            title: 'User Story & 问题定义',
+            items: ['用户访谈脚本设计', '从「我想多练几次」到一句能指导决策的 User Story', '需求真伪判定']
+          },
+          {
+            n: '02',
+            title: '竞品调研与切入点',
+            items: ['拆解实时作弊赛道 vs 事后复盘空白', '竞品矩阵', '定位陈述与差异化']
+          },
+          {
+            n: '03',
+            title: '需求文档与验收标准',
+            items: ['用 AI 把边界情况列全', 'MVP 范围切割', '验收标准怎么写才可测', '什么该砍掉']
+          }
+        ]
+      },
+      {
+        id: 'pd-m2',
+        tnum: '02',
+        tname: '开发与上线',
+        title: '零代码开发与上线',
+        titleEn: 'Ship It Without Writing Code',
+        meta: [['Duration', '5 周'], ['Stack', 'Claude Code + AWS'], ['Per Session', '1 – 2 小时']],
+        desc: '把需求变成一个真实可访问的产品，全程用自然语言驱动 Claude 完成实现。界面不画静态稿——直接产出可运行的真实界面，在跑起来的产品上迭代。核心难点是多模态：音频、视频、文本三条流要同时可靠。',
+        visual: `
+          <div class="curr-visual">
+            <div class="cv-label">Module Preview <span class="cv-sub">Multimodal Pipeline · 三道坎</span></div>
+            <div class="pd-hurdles">
+              <div class="pd-hurdle">
+                <div class="pd-hurdle-num">01</div>
+                <div class="pd-hurdle-body">
+                  <div class="pd-hurdle-t">听得见</div>
+                  <div class="pd-hurdle-en">Capture &amp; Streaming Transcription</div>
+                  <div class="pd-hurdle-chips"><span>音频采集</span><span>设备权限</span><span>流式转写</span><span>断线降级</span></div>
+                </div>
+              </div>
+              <div class="pd-hurdle">
+                <div class="pd-hurdle-num">02</div>
+                <div class="pd-hurdle-body">
+                  <div class="pd-hurdle-t">分得清</div>
+                  <div class="pd-hurdle-en">Speaker Diarization</div>
+                  <div class="pd-hurdle-chips"><span>说话人分离</span><span>角色识别</span><span>重连缓冲</span></div>
+                </div>
+              </div>
+              <div class="pd-hurdle">
+                <div class="pd-hurdle-num">03</div>
+                <div class="pd-hurdle-body">
+                  <div class="pd-hurdle-t">抓得准</div>
+                  <div class="pd-hurdle-en">Question Detection</div>
+                  <div class="pd-hurdle-chips"><span>锁定真问题</span><span>提示词阶梯</span><span>四层过滤</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="pd-ship">
+              <div class="pd-ship-lbl">— 上线</div>
+              <div class="pd-ship-row">
+                <span class="pd-ship-step">数据完整性</span>
+                <span class="pd-ship-arr">→</span>
+                <span class="pd-ship-step">云端部署</span>
+                <span class="pd-ship-arr">→</span>
+                <span class="pd-ship-step pd-ship-live">第一批真实故障</span>
+              </div>
+            </div>
+          </div>`,
+        weeks: [
+          {
+            n: '04',
+            title: '界面直出与交互定义',
+            items: ['跳过静态设计稿', '让 Claude 直接产出可运行界面', '在真实产品上迭代交互']
+          },
+          {
+            n: '05',
+            title: '多模态第一道坎：听得见',
+            items: ['音频采集与设备权限', '流式转写接入', '断线与降级策略']
+          },
+          {
+            n: '06',
+            title: '多模态第二道坎：分得清',
+            items: ['说话人分离', '面试官 / 候选人角色识别', '重连与缓冲']
+          },
+          {
+            n: '07',
+            title: '多模态第三道坎：抓得准',
+            items: ['从连续对话流锁定真问题', '提示词升级阶梯', '先便宜后昂贵的四层过滤']
+          },
+          {
+            n: '08',
+            title: '数据完整性与上线',
+            items: ['用户以为存好了其实没有', '上传失败的兜底', '云端部署', '上线后第一批真实故障']
+          }
+        ]
+      },
+      {
+        id: 'pd-m3',
+        tnum: '03',
+        tname: '迭代与质量工程',
+        title: '迭代与 AI 质量工程',
+        titleEn: 'Iteration & AI Quality Engineering',
+        meta: [['Duration', '4 周'], ['Stack', 'LLM Evaluation + 成本建模'], ['Per Session', '1 – 2 小时']],
+        desc: '上线只是开始。三轮真实迭代，每一轮都对应一类 AI 产品的典型难题；最后一周做模型分层选型与单位成本建模——这是校内项目几乎不会涉及、但工作第一天就会遇到的能力。',
+        visual: `
+          <div class="curr-visual">
+            <div class="cv-label">Module Preview <span class="cv-sub">Model Tiering · 单位成本模型</span></div>
+            <div class="pd-cost">
+              <div class="pd-cost-head">
+                <span>一场 30 分钟面试 · 1,000+ 次模型调用</span>
+                <span class="pd-cost-head-r">95% 为轻量档</span>
+              </div>
+              <div class="pd-cost-rows">
+                <div class="pd-cost-row">
+                  <div class="pd-cost-k">状态分类</div>
+                  <div class="pd-cost-bar"><span class="pd-bar pd-bar-light" style="width:70%"></span></div>
+                  <div class="pd-cost-n">~700 次</div>
+                  <div class="pd-cost-tier pd-tier-light">轻量档</div>
+                </div>
+                <div class="pd-cost-row">
+                  <div class="pd-cost-k">问题检测</div>
+                  <div class="pd-cost-bar"><span class="pd-bar pd-bar-light" style="width:30%"></span></div>
+                  <div class="pd-cost-n">~300 次</div>
+                  <div class="pd-cost-tier pd-tier-light">轻量档</div>
+                </div>
+                <div class="pd-cost-row">
+                  <div class="pd-cost-k">实时点评</div>
+                  <div class="pd-cost-bar"><span class="pd-bar pd-bar-mid" style="width:4%"></span></div>
+                  <div class="pd-cost-n">~40 次</div>
+                  <div class="pd-cost-tier pd-tier-mid">中档</div>
+                </div>
+                <div class="pd-cost-row">
+                  <div class="pd-cost-k">整场评分</div>
+                  <div class="pd-cost-bar"><span class="pd-bar pd-bar-mid" style="width:1%"></span></div>
+                  <div class="pd-cost-n">1 次</div>
+                  <div class="pd-cost-tier pd-tier-mid">中档</div>
+                </div>
+              </div>
+              <div class="pd-cost-note">
+                全用旗舰档 → 总成本 <strong>5×</strong>，质量几乎无提升。<br>
+                压上下文比换模型更省：数千字资料压到约 50 字，效果不变、token 省一个数量级。
+              </div>
+            </div>
+          </div>`,
+        weeks: [
+          {
+            n: '09',
+            title: '迭代一：录播花屏',
+            items: ['当修复本身就是故障', '四部曲复盘', '先加可观测性再猜原因']
+          },
+          {
+            n: '10',
+            title: '迭代二：让打分稳定',
+            items: ['评分体系设计', '业务规则该写在哪一层', '可复现性与硬性守门']
+          },
+          {
+            n: '11',
+            title: '迭代三：Retake 实时语音',
+            items: ['一次架构再决策', '实时语音对话', '打断与回声', '推翻自己的勇气']
+          },
+          {
+            n: '12',
+            title: '成本控制与结课 Demo',
+            items: ['模型分层选型', '单位成本模型', '首字延迟 vs 总耗时', '上线复盘与 Demo']
+          }
+        ]
+      }
+    ],
+    faq: [
+      {
+        q: '实习岗位 title 可以写成什么？',
+        a: '可根据求职方向选用：<ul><li>Product Manager Intern</li><li>Product Analyst Intern</li><li>Product Designer (UX) Intern</li><li>AI Product Engineer Intern</li></ul>'
+      },
+      {
+        q: '简历上公司名称怎么写？',
+        a: '项目公司是 Puebulo，一家 AI 教育科技公司，主要业务是面向北美求职者的 AI 面试复盘与模拟面试产品。'
+      },
+      {
+        q: '简历 Skills 可以添加哪些技能？',
+        a: '<ul><li>Product Requirement Definition / User Research</li><li>MVP Scoping / Acceptance Criteria</li><li>AI-Assisted Development / Claude Code</li><li>Prompt Engineering / LLM Evaluation</li><li>Product Analytics / A-B Testing</li><li>Cost Modeling / Unit Economics</li><li>Production Deployment / Incident Review</li></ul>'
+      },
+      {
+        q: '没有编程经验能学吗？',
+        a: '这正是本项目的设计前提。全程不写一行代码——所有实现都由 Claude 完成，你的工作是把需求说清楚、审查产出、定位问题、做决策。四个方向都不要求编程基础，也不要求会用设计软件。'
+      },
+      {
+        q: '完全不写代码，产出还能算数吗？',
+        a: '产品是真实上线的，有真实用户、真实故障和回滚记录，链接可直接放进简历。区别在于你交付它的方式——这恰恰是现在企业最想要的能力：能指挥 AI 完成交付、并且判断得出产出是对是错。判断力比手写代码更难被替代。'
+      },
+      {
+        q: '四个方向可以只选一个吗？',
+        a: '主线课程是同一条——所有人一起走完从需求到上线的全流程。四个方向的差异在交付物与简历呈现：PM 交需求定义与迭代决策记录，PA 交指标体系与成本模型，UX 交交互规范与可用性迭代记录，AI 产品工程交系统设计与线上故障复盘。'
+      },
+      {
+        q: '需要付费的 AI / 云服务吗？',
+        a: '课程会专门带你做模型分层选型与成本控制，整体在低成本档位内可控；云服务在 Free Tier 内基本够用。'
+      }
+    ]
   }
 };
 
@@ -28777,6 +29274,7 @@ function bgRender(dirKey, opts){
     qi: 'https://work.weixin.qq.com/ca/cawcdec5b629f54ba9',   // 量化投资
     fm: 'https://work.weixin.qq.com/ca/cawcde400d65e0859e',   // 投行建模
     se: 'https://work.weixin.qq.com/ca/cawcdefb3aa5b5a6c1',   // 软件工程 / 全栈
+    pd: 'https://work.weixin.qq.com/ca/cawcdefe06cca86b8b',   // AI 产品 (uses generic — no dedicated QR yet)
   };
   const bgSignupBtn = document.getElementById('bg-cta-signup');
   if (bgSignupBtn) bgSignupBtn.href = bgConsultMap[dirKey] || 'https://work.weixin.qq.com/ca/cawcdefe06cca86b8b';
@@ -29189,6 +29687,69 @@ RESUME_ROLES_BY_DIR.se = {
 };
 
 /* Back-compat alias used by older code paths. */
+RESUME_ROLES_BY_DIR.pd = {
+  pm: {
+    name: 'Product Manager',
+    sub: 'AI Product Track',
+    tag: 'Role · PM',
+    company: 'Puebulo',
+    location: 'Austin, TX',
+    title: 'Product Manager Intern',
+    date: 'Jan 2026 – Apr 2026',
+    bullets: [
+      'Led 0→1 product definition for an AI interview-coaching platform — ran user interviews and converted a vague "I want more practice" request into a decision-guiding user story, scoping an MVP shipped to production in 12 weeks',
+      'Specified the full product surface in natural language and drove implementation through an AI coding agent, covering 30+ edge cases surfaced in structured pre-build review and cutting mid-build scope changes',
+      'Owned three post-launch iterations (recording reliability, scoring stability, real-time voice mock interview), each defined by a measurable acceptance bar rather than a feature list',
+      'Drove model-tier selection across a 1,000+ call-per-session inference pipeline based on call frequency × output value, cutting per-session cost ~80% with no quality regression'
+    ]
+  },
+  pa: {
+    name: 'Product Analyst',
+    sub: 'Analytics & Unit Economics Track',
+    tag: 'Role · PA',
+    company: 'Puebulo',
+    location: 'Austin, TX',
+    title: 'Product Analyst Intern',
+    date: 'Jan 2026 – Apr 2026',
+    bullets: [
+      'Built the unit-economics model for an AI product, decomposing 1,000+ inference calls per 30-minute session into five call classes and isolating the 95% of calls that drove under 5% of user-facing value',
+      'Reconciled server-side session statistics against model-assigned scores, surfacing a silent gate failure that let 3-minute sessions receive full scores',
+      'Defined acceptance metrics for a probabilistic system — reproducibility, refusal rate, insufficient-data rate — where deterministic pass/fail testing did not apply',
+      'Ran tier-level comparisons on latency and time-to-first-token, demonstrating that a cheaper model tier improved perceived responsiveness for streaming feedback'
+    ]
+  },
+  ux: {
+    name: 'Product Designer',
+    sub: 'Multimodal Interaction Track',
+    tag: 'Role · UX',
+    company: 'Puebulo',
+    location: 'Austin, TX',
+    title: 'Product Design (UX) Intern',
+    date: 'Jan 2026 – Apr 2026',
+    bullets: [
+      'Designed end-to-end flows for a multimodal interview product spanning live capture, post-session replay, and AI-driven mock interview',
+      'Worked directly on running builds instead of static mockups — specified interfaces in natural language, generated them through an AI agent, and iterated against real usage',
+      'Restructured the session-review interface to align transcript, speaker timeline, and per-question feedback into a single scannable view',
+      'Specified voice-interaction states (listening / speaking / interrupted) for a real-time AI interviewer and removed intrusive status warnings that broke conversational immersion'
+    ]
+  },
+  aie: {
+    name: 'AI Product Engineer',
+    sub: 'AI-Native Delivery Track',
+    tag: 'Role · AIE',
+    company: 'Puebulo',
+    location: 'Austin, TX',
+    title: 'AI Product Engineer Intern',
+    date: 'Jan 2026 – Apr 2026',
+    bullets: [
+      'Delivered and shipped a production web application to AWS entirely through AI-assisted development — specifying, reviewing, and debugging rather than hand-writing implementation',
+      'Directed integration of streaming speech-to-text with speaker diarization, reconnect buffering, and echo suppression for speakerphone use',
+      'Specified and validated a real-time voice interview built on WebRTC against a realtime speech model — ephemeral-token auth, server-side turn detection, barge-in, and function-call session termination',
+      'Root-caused a site-wide stale-UI incident traced to a year-long CDN cache on page HTML, and added cache invalidation to the deploy pipeline'
+    ]
+  }
+};
+
 const RESUME_ROLES = RESUME_ROLES_BY_DIR.da;
 
 const RESUME_SCENARIOS = [
