@@ -28902,26 +28902,10 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
     eyebrow: 'Background Boost · 工业级远程实习',
     lead: '在 Puebulo（AI 面试科技公司）任职，从 0 到 1 交付一款面向北美求职者的 AI 面试教练产品——从用户访谈、需求定义、界面设计，到多模态采集、AI 评分、实时语音模拟面试，再到上线、线上故障与三轮迭代。全程不写一行代码：代码与界面全部由 Claude 产出，你负责定义、审查与决策。零代码基础也能交付一款真实上线的产品。',
     facts: [
-      {
-        k: 'Duration',
-        v: '60 – 80 小时',
-        s: '12 周 · 三大模块 · 单节 1–2 小时'
-      },
-      {
-        k: 'Industry',
-        v: 'AI / 教育科技',
-        s: '真实上线产品 · 真实用户 · 真实线上故障'
-      },
-      {
-        k: 'Suited For',
-        v: '零代码基础',
-        s: 'PM / Product Analytics / UI-UX / AI 产品工程 四方向'
-      },
-      {
-        k: 'Format',
-        v: '远程直播',
-        s: '录播回放 · Office Hour · 需求与产出走查'
-      }
+      { k: 'Duration', v: '60 – 80 小时', s: '12 周 · 三大模块 · 单节 1–2 小时' },
+      { k: 'Industry', v: 'AI / 教育科技', s: '真实上线产品 · 真实用户 · 真实线上故障' },
+      { k: 'Suited For', v: '零代码基础', s: 'PM / Product Analytics / UI-UX / AI 产品工程 四方向' },
+      { k: 'Format', v: '远程直播', s: '录播回放 · Office Hour · 需求与产出走查' }
     ],
     overviewLead: '实习生将在 Puebulo（AI 面试科技公司）任职，从零参与一款真实上线产品的完整生命周期：需求定义 → 产品设计 → 开发上线 → 三轮迭代。整个过程不需要写代码——所有实现都交给 Claude，学员的工作是把需求说清楚、把产出看明白、把问题定位准。',
     overviewBody: [
@@ -28929,20 +28913,7 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
       '第二阶段是开发与上线，同样一行代码都不用写。界面不经过静态设计稿——直接让 Claude 产出可运行的真实界面，然后在跑起来的产品上迭代，这是有了 AI 之后设计流程最大的变化。产品要同时处理音频、视频与文本三种模态，因此要连续翻过三道坎：听得见（采集与流式转写）、分得清（说话人分离与角色识别）、抓得准（从连续对话流里锁定真正的面试问题）。随后是数据完整性与云端部署。',
       '第三阶段是迭代与 AI 质量工程。三轮迭代分别对应三类典型难题：录播花屏（当修复本身就是故障）、打分不稳定（如何给一个会瞎编的概率系统设计守门规则与可复现性）、Retake 实时语音面试（一次架构再决策，以及推翻自己的勇气）。最后一周做模型分层选型与单位成本建模——这是 AI 产品岗真正的隐藏必修课。'
     ],
-    tags: [
-      '零代码',
-      'Claude Code',
-      'AI-Assisted Development',
-      'User Research',
-      '需求定义',
-      'MVP Scoping',
-      'Prompt Engineering',
-      'Multimodal',
-      'Speech-to-Text',
-      'LLM Evaluation',
-      'Cost Modeling',
-      'AWS'
-    ],
+    tags: ['No-Code', 'Claude Code', 'AI-Assisted Development', 'User Research', 'PRD Writing', 'MVP Scoping', 'Prompt Engineering', 'Multimodal', 'Speech-to-Text', 'LLM Evaluation', 'Cost Modeling', 'AWS'],
     highlights: [
       {
         t: '零代码交付上线产品',
@@ -29186,30 +29157,15 @@ $$ <span class="kw">LANGUAGE</span> plpgsql;</pre>
         q: '实习岗位 title 可以写成什么？',
         a: '可根据求职方向选用：<ul><li>Product Manager Intern</li><li>Product Analyst Intern</li><li>Product Designer (UX) Intern</li><li>AI Product Engineer Intern</li></ul>'
       },
-      {
-        q: '简历上公司名称怎么写？',
-        a: '项目公司是 Puebulo，一家 AI 教育科技公司，主要业务是面向北美求职者的 AI 面试复盘与模拟面试产品。'
-      },
+      { q: '简历上公司名称怎么写？', a: '项目公司是 Puebulo，一家 AI 教育科技公司，主要业务是面向北美求职者的 AI 面试复盘与模拟面试产品。' },
       {
         q: '简历 Skills 可以添加哪些技能？',
         a: '<ul><li>Product Requirement Definition / User Research</li><li>MVP Scoping / Acceptance Criteria</li><li>AI-Assisted Development / Claude Code</li><li>Prompt Engineering / LLM Evaluation</li><li>Product Analytics / A-B Testing</li><li>Cost Modeling / Unit Economics</li><li>Production Deployment / Incident Review</li></ul>'
       },
-      {
-        q: '没有编程经验能学吗？',
-        a: '这正是本项目的设计前提。全程不写一行代码——所有实现都由 Claude 完成，你的工作是把需求说清楚、审查产出、定位问题、做决策。四个方向都不要求编程基础，也不要求会用设计软件。'
-      },
-      {
-        q: '完全不写代码，产出还能算数吗？',
-        a: '产品是真实上线的，有真实用户、真实故障和回滚记录，链接可直接放进简历。区别在于你交付它的方式——这恰恰是现在企业最想要的能力：能指挥 AI 完成交付、并且判断得出产出是对是错。判断力比手写代码更难被替代。'
-      },
-      {
-        q: '四个方向可以只选一个吗？',
-        a: '主线课程是同一条——所有人一起走完从需求到上线的全流程。四个方向的差异在交付物与简历呈现：PM 交需求定义与迭代决策记录，PA 交指标体系与成本模型，UX 交交互规范与可用性迭代记录，AI 产品工程交系统设计与线上故障复盘。'
-      },
-      {
-        q: '需要付费的 AI / 云服务吗？',
-        a: '课程会专门带你做模型分层选型与成本控制，整体在低成本档位内可控；云服务在 Free Tier 内基本够用。'
-      }
+      { q: '没有编程经验能学吗？', a: '这正是本项目的设计前提。全程不写一行代码——所有实现都由 Claude 完成，你的工作是把需求说清楚、审查产出、定位问题、做决策。四个方向都不要求编程基础，也不要求会用设计软件。' },
+      { q: '完全不写代码，产出还能算数吗？', a: '产品是真实上线的，有真实用户、真实故障和回滚记录，链接可直接放进简历。区别在于你交付它的方式——这恰恰是现在企业最想要的能力：能指挥 AI 完成交付、并且判断得出产出是对是错。判断力比手写代码更难被替代。' },
+      { q: '四个方向可以只选一个吗？', a: '主线课程是同一条——所有人一起走完从需求到上线的全流程。四个方向的差异在交付物与简历呈现：PM 交需求定义与迭代决策记录，PA 交指标体系与成本模型，UX 交交互规范与可用性迭代记录，AI 产品工程交系统设计与线上故障复盘。' },
+      { q: '需要付费的 AI / 云服务吗？', a: '课程会专门带你做模型分层选型与成本控制，整体在低成本档位内可控；云服务在 Free Tier 内基本够用。' }
     ]
   }
 };
