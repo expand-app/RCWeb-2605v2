@@ -1,5 +1,39 @@
 [
   {
+    "id": "10072",
+    "display_id": "24756",
+    "avatar": "S",
+    "name_label": "S同学",
+    "school": "USC",
+    "major": "Computer Science",
+    "dir": "Software Development Engineer ",
+    "dir_key": "sde",
+    "company": "Bot Auto TX Inc.",
+    "role": "Software Engineer",
+    "degree": "学士",
+    "quote": "",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false
+  },
+  {
+    "id": "10071",
+    "display_id": "16589",
+    "avatar": "J",
+    "name_label": "J同学",
+    "school": "NYU",
+    "major": "Computer Science",
+    "dir": "Software Development Engineer",
+    "dir_key": "sde",
+    "company": "Bot Auto TX Inc. ",
+    "role": "Software Engineer",
+    "degree": "硕士",
+    "quote": "",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false
+  },
+  {
     "id": "10001",
     "display_id": "13870",
     "avatar": "C",
@@ -235,7 +269,7 @@
     "focus": "1.结合同学每日岗位投递情况，进行有针对性的内推，并且及时提醒同学follow up\n2.根据同学面试情况帮助准备BQ文档，和老师约课进行面试辅导\n3.面试之前reach out同岗位职员，获得面试帮助",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10016",
@@ -252,7 +286,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10017",
@@ -269,7 +303,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10018",
@@ -286,7 +320,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "P 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10019",
@@ -303,7 +337,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "L 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10020",
@@ -320,7 +354,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "C 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10021",
@@ -337,7 +371,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "W 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10022",
@@ -354,7 +388,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "M 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10024",
@@ -371,7 +405,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10025",
@@ -388,7 +422,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "A 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10026",
@@ -405,7 +439,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "L 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10028",
@@ -422,7 +456,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "C 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10029",
@@ -439,7 +473,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "X 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10030",
@@ -456,7 +490,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "D 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10031",
@@ -473,7 +507,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10032",
@@ -490,7 +524,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10033",
@@ -507,7 +541,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "S 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10034",
@@ -524,7 +558,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "S 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10035",
@@ -541,7 +575,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "K 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10036",
@@ -558,7 +592,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "T 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10037",
@@ -575,7 +609,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10038",
@@ -592,7 +626,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "S 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10039",
@@ -609,7 +643,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10040",
@@ -626,7 +660,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10041",
@@ -643,7 +677,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10042",
@@ -660,7 +694,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10043",
@@ -677,7 +711,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "S 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10045",
@@ -694,7 +728,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "P 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10046",
@@ -711,7 +745,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10047",
@@ -728,7 +762,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10048",
@@ -745,7 +779,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "C 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10049",
@@ -762,7 +796,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "B 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10050",
@@ -779,7 +813,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "M 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10051",
@@ -796,7 +830,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "H 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10052",
@@ -813,7 +847,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Z 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10053",
@@ -830,7 +864,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10054",
@@ -847,7 +881,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Y 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10055",
@@ -864,7 +898,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "K 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10056",
@@ -881,7 +915,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "X 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10057",
@@ -898,7 +932,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10058",
@@ -915,7 +949,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "E 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10059",
@@ -932,7 +966,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "B 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10060",
@@ -949,7 +983,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "X 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10061",
@@ -966,7 +1000,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "S 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10062",
@@ -983,7 +1017,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "E 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10063",
@@ -1000,7 +1034,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "Z 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10064",
@@ -1017,7 +1051,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "R 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10065",
@@ -1034,7 +1068,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10066",
@@ -1051,7 +1085,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "K 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10067",
@@ -1068,7 +1102,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "K 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10068",
@@ -1085,7 +1119,7 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "M 同学",
-    "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
+    "quote": ""
   },
   {
     "id": "10069",
@@ -1118,24 +1152,7 @@
     "reason": "",
     "focus": "",
     "has_narrative": false,
-    "name_label": "L 同学",
-    "quote": ""
-  },
-  {
-    "id": "10071",
-    "display_id": "16589",
-    "avatar": "J",
-    "school": "NYU",
-    "major": "Computer Science",
-    "dir": "Software Development Engineer",
-    "dir_key": "sde",
-    "company": "Bot Auto TX Inc. ",
-    "role": "Software Engineer",
-    "degree": "硕士",
-    "reason": "",
-    "focus": "",
-    "has_narrative": false,
-    "name_label": "J同学",
+    "name_label": "L同学",
     "quote": "\"签约前我有面试但拿不到 offer。老师帮我梳理出风控和数据两个明确方向，又通过 networking 找到 JPMC 校友辅助面试 —— 后来 CADP 就签下来了。\""
   }
 ]
