@@ -1,5 +1,22 @@
 [
   {
+    "id": "10071",
+    "display_id": "16589",
+    "avatar": "J",
+    "name_label": "J同学",
+    "school": "NYU",
+    "major": "Computer Science",
+    "dir": "Software Development Engineer",
+    "dir_key": "sde",
+    "company": "Bot Auto TX Inc. ",
+    "role": "Software Engineer",
+    "degree": "硕士",
+    "quote": "",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false
+  },
+  {
     "id": "10001",
     "display_id": "13870",
     "avatar": "C",
