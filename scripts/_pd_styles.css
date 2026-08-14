@@ -1,0 +1,158 @@
+/* ============================================================
+   AI 产品方向 (pd) — module visual styles
+   Staging file; injected into index.html's <style> by
+   scripts/add_pd_direction.py, then deleted.
+   Follows the same design tokens as the existing .curr-visual blocks.
+============================================================ */
+
+/* --- Module 01 · User need → product definition flow --- */
+.pd-flow{ display: flex; flex-direction: column; gap: 18px; }
+.pd-flow-row{ display: flex; align-items: stretch; gap: 12px; }
+.pd-node{
+  flex: 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.pd-node-lbl{
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px;
+}
+.pd-node-quote{
+  font-family: var(--serif-cn); font-size: 15px; color: var(--ink-3);
+  font-style: italic; line-height: 1.5;
+}
+.pd-node-body{ font-size: 13px; line-height: 1.6; color: var(--ink); }
+.pd-node-meta{
+  font-family: var(--mono); font-size: 10px; color: var(--ink-4);
+  margin-top: 10px; letter-spacing: 0.04em;
+}
+.pd-node-story{ border-color: rgba(31,169,64,0.28); background: rgba(31,169,64,0.03); }
+.pd-arrow{
+  align-self: center; color: var(--green-dark);
+  font-size: 18px; flex-shrink: 0;
+}
+
+.pd-matrix-lbl, .pd-ac-lbl{
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--ink-4); margin-bottom: 10px;
+}
+.pd-matrix-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pd-cell{
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px 14px;
+}
+.pd-cell-k{ font-size: 13px; font-weight: 500; color: var(--ink); }
+.pd-cell-v{
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+  margin-top: 3px; color: var(--ink-4);
+}
+.pd-cell-dots{ display: flex; gap: 4px; margin-top: 10px; }
+.pd-cell-dots span{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--line-2); border: 1px solid var(--line);
+}
+.pd-cell-dots span.on{ background: var(--green); border-color: var(--green); }
+.pd-cell-gap{ border-color: rgba(31,169,64,0.28); background: rgba(31,169,64,0.03); }
+.pd-cell-gap .pd-cell-v{ color: var(--green-dark); }
+
+.pd-ac{ margin-top: 4px; }
+.pd-ac-row{
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 12.5px; color: var(--ink-2); line-height: 1.7;
+}
+.pd-ac-chk{ color: var(--green-dark); flex-shrink: 0; }
+
+/* --- Module 02 · Three multimodal hurdles --- */
+.pd-hurdles{ display: flex; flex-direction: column; gap: 10px; }
+.pd-hurdle{
+  display: flex; gap: 14px; align-items: flex-start;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 10px; padding: 14px 16px;
+}
+.pd-hurdle-num{
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  color: var(--green-dark); padding-top: 2px; flex-shrink: 0;
+  letter-spacing: 0.06em;
+}
+.pd-hurdle-t{ font-size: 14px; font-weight: 600; color: var(--ink); }
+.pd-hurdle-en{
+  font-family: var(--mono); font-size: 10px; color: var(--ink-4);
+  letter-spacing: 0.06em; margin-top: 2px;
+}
+.pd-hurdle-chips{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.pd-hurdle-chips span{
+  font-family: var(--mono); font-size: 10px;
+  padding: 3px 9px; border-radius: 100px;
+  background: rgba(31,169,64,0.06); color: var(--green-dark);
+  border: 1px solid rgba(31,169,64,0.16);
+}
+.pd-ship{ margin-top: 16px; }
+.pd-ship-lbl{
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--ink-4); margin-bottom: 10px;
+}
+.pd-ship-row{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pd-ship-step{
+  font-family: var(--mono); font-size: 10.5px;
+  padding: 6px 12px; border-radius: 6px;
+  background: #fff; border: 1px solid var(--line); color: var(--ink-2);
+}
+.pd-ship-arr{ color: var(--ink-4); font-size: 13px; }
+.pd-ship-live{
+  border-color: rgba(31,169,64,0.28);
+  background: rgba(31,169,64,0.05); color: var(--green-dark);
+}
+
+/* --- Module 03 · Model-tier cost model --- */
+.pd-cost{ display: flex; flex-direction: column; gap: 14px; }
+.pd-cost-head{
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono); font-size: 10.5px;
+  color: var(--ink-3); letter-spacing: 0.04em; gap: 12px; flex-wrap: wrap;
+}
+.pd-cost-head-r{ color: var(--green-dark); font-weight: 500; }
+.pd-cost-rows{ display: flex; flex-direction: column; gap: 8px; }
+.pd-cost-row{
+  display: grid;
+  grid-template-columns: 76px 1fr 62px 58px;
+  align-items: center; gap: 10px;
+}
+.pd-cost-k{ font-size: 12.5px; color: var(--ink-2); }
+.pd-cost-bar{
+  height: 8px; background: var(--line-2);
+  border-radius: 100px; overflow: hidden;
+}
+.pd-bar{ display: block; height: 100%; border-radius: 100px; }
+.pd-bar-light{ background: var(--green); }
+.pd-bar-mid{ background: var(--ink-4); }
+.pd-cost-n{
+  font-family: var(--mono); font-size: 10.5px;
+  color: var(--ink-4); text-align: right;
+}
+.pd-cost-tier{
+  font-family: var(--mono); font-size: 9.5px;
+  padding: 3px 7px; border-radius: 4px; text-align: center;
+  letter-spacing: 0.04em;
+}
+.pd-tier-light{
+  background: rgba(31,169,64,0.08); color: var(--green-dark);
+  border: 1px solid rgba(31,169,64,0.18);
+}
+.pd-tier-mid{
+  background: #fff; color: var(--ink-3); border: 1px solid var(--line);
+}
+.pd-cost-note{
+  font-size: 12.5px; line-height: 1.8; color: var(--ink-3);
+  padding-top: 12px; border-top: 1px solid var(--line);
+}
+.pd-cost-note strong{ color: var(--green-dark); }
+
+@media (max-width: 760px){
+  .pd-flow-row{ flex-direction: column; }
+  .pd-arrow{ transform: rotate(90deg); }
+  .pd-matrix-grid{ grid-template-columns: 1fr; }
+  .pd-cost-row{ grid-template-columns: 68px 1fr 52px; }
+  .pd-cost-tier{ display: none; }
+}
