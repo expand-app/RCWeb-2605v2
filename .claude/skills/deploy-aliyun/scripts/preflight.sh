@@ -196,5 +196,5 @@ if [ "$WARN" -gt 0 ]; then
 else
   printf '%s✓ 全部通过%s\n' "$GRN" "$OFF"
 fi
-printf '%s下一步: python serve.py 8765 本地看一眼，确认没问题再 push%s\n' "$DIM" "$OFF"
+printf '%s下一步: python3 serve.py 8765 本地看一眼，确认没问题再 push%s\n' "$DIM" "$OFF"
 exit 0

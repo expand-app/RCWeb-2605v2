@@ -34,6 +34,33 @@ GitHub Secrets 里（`ACCESS_KEY_ID` / `ACCESS_KEY_SECRET`），本机不需要�
 
 ---
 
+## 第一次接手？先确认环境
+
+如果是这个人第一次用（或者你发现某个命令报 command not found），先花一分钟核对：
+
+```bash
+git rev-parse --show-toplevel   # 必须落在 RCWeb-2605v2 仓库根目录
+python3 --version               # 本地预览要用
+node --version                  # 发布前自检的 JS 语法检查要用
+gh auth status                  # 可选，见下
+```
+
+- **必须在仓库根目录开会话**。在别的目录开，这个 skill 根本不会被加载。
+- **`python3` 缺了** → 本地预览起不来。macOS 自带，一般不会缺；缺了装 Xcode command line tools。
+- **`node` 缺了** → 自检会跳过 JS 语法检查并给出警告。能发布，但少了一道最关键的防线
+  （见第 2 步），建议先 `brew install node`。
+- **`gh` 没装或没登录** → 只影响"盯部署"那一步，改用浏览器看，不影响发布本身。
+  仓库是 public，**看 Actions 不需要登录**。
+
+推送权限有两种可能，直接影响第 5 步怎么走：
+
+| 他手上是什么 | `gh` 能用吗 | 第 5 步怎么盯部署 |
+|---|---|---|
+| GitHub 账号 / PAT | ✅ | `gh run watch` |
+| Deploy key（仓库级 SSH key） | ❌ | 浏览器打开 Actions 页面 |
+
+---
+
 ## 完整流程
 
 ### 第 0 步 · 先跟 main 对齐
@@ -90,7 +117,7 @@ node .claude/skills/deploy-aliyun/scripts/check-inline-js.mjs
 改动是给人看的，一定要真在浏览器里看过再发。
 
 ```bash
-python serve.py 8765
+python3 serve.py 8765
 ```
 
 然后打开 `http://localhost:8765`，跳到改动那一页确认。`serve.py` 带 SPA 回退，
@@ -125,10 +152,17 @@ commit message 用中文说清楚改了什么，格式跟仓库现有习惯一�
 gh run watch --exit-status $(gh run list --workflow=deploy.yml --limit 1 --json databaseId --jq '.[0].databaseId')
 ```
 
-正常 90 秒到 2 分钟跑完。没装 / 没登录 `gh` 的话，让用户打开
-<https://github.com/expand-app/RCWeb-2605v2/actions/workflows/deploy.yml> 自己看。
+正常 90 秒到 2 分钟跑完。
 
-跑完之后你会在 commit 下面看到机器人回评 `✅ Deploy success — production`。
+**如果 `gh` 用不了**（没装、没登录，或者他用的是 deploy key —— deploy key 撑不起 `gh`），
+让他直接开浏览器看，**仓库是 public，看 Actions 不需要登录**：
+
+<https://github.com/expand-app/RCWeb-2605v2/actions/workflows/deploy.yml>
+
+最上面那条就是他刚推的，黄点=在跑，绿勾=成功，红叉=失败。别因为 `gh` 用不了就跳过这一步 ——
+不确认跑没跑成，等于不知道有没有上线。
+
+跑完之后会在 commit 下面看到机器人回评 `✅ Deploy success — production`。
 
 > 你还会看到 **`Sync data/*.json from index.html`** 这个 workflow 也跟着跑，并且多推
 > 一个 `auto-sync: data/*.json` 的 commit。这是正常的 —— 改了 `index.html` 就会自动
