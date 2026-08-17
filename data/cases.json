@@ -1137,22 +1137,5 @@
     "has_narrative": false,
     "name_label": "J 同学",
     "quote": ""
-  },
-  {
-    "id": "10072",
-    "display_id": "24756",
-    "avatar": "S",
-    "school": "USC",
-    "major": "Computer Science",
-    "dir": "Software Development Engineer",
-    "dir_key": "sde",
-    "company": "Bot Auto TX Inc.",
-    "role": "Software Engineer",
-    "degree": "学士",
-    "reason": "",
-    "focus": "",
-    "has_narrative": false,
-    "name_label": "S 同学",
-    "quote": ""
   }
 ]
