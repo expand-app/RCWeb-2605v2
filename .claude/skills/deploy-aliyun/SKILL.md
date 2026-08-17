@@ -132,17 +132,64 @@ python3 serve.py 8765
 给用户一个明确的确认点：「本地这样对吗？确认了我就推上线。」等他点头再走第 4 步。
 推到 `main` 之后就是直接改生产站，没有中间缓冲。
 
-### 第 4 步 · 提交并推送
+### 第 4 步 · 提交并推送到 main
+
+**改动只有推到 `main` 才会上线。** 改完文件不提交、或者提交了不推，本地看着都是好的，
+线上一点变化都没有 —— 这是最容易发生的"我明明改了啊"。所以别假设当前是什么状态，
+先看一眼再动手：
 
 ```bash
-git add -A
-git commit -m "content: 首页 hero 文案调整"
+git status --short
+git log --oneline origin/main..HEAD
+```
+
+自检的第 2 步已经替你分好类了，三种情况分别这么走：
+
+#### A. 有改了但没提交的文件（最常见）
+
+先把改动念给用户听，确认**每一条都是他想发的**，再提交。
+
+**别 `git add -A` 一把梭。** 运营同事的工作目录里常有跟这次发布无关的东西 ——
+下载的原图、临时截图、自己记的备注。全提交进去会污染仓库，图片还可能被误当成
+站点资源。逐个 add 你确认过的文件：
+
+```bash
+git add index.html media/team/2024-annual-gala.png
+git commit -m "content: 关于我们 团队照片更新"
 git push origin main
 ```
 
-commit message 用中文说清楚改了什么，格式跟仓库现有习惯一致（`content: …` /
-`fix: …`）。改动明确、用户已确认时直接推即可 —— 这个仓库没有分支保护，日常内容
-发布就是直推 `main`。
+如果 `git status` 里有你判断不了的文件（不知道是不是他要发的），**停下来问**，
+别自己决定加不加。
+
+#### B. 已经提交了，但没推
+
+```bash
+git push origin main
+```
+
+推上去就会触发部署。先跟用户念一遍这些 commit 里都改了什么，确认是他要发的内容。
+
+#### C. 工作区干净，也没有未推送的提交
+
+这次没有新东西可发布。**别造一个空 commit 硬凑一次部署。** 先问清楚他想干什么：
+
+- 内容其实还没改 → 回到第 1 步
+- 上次 run 挂了想重跑 / 想强制刷一遍 CDN → 用手动触发，见
+  [references/troubleshooting.md](references/troubleshooting.md) 的「不改代码，手动触发一次部署」
+
+#### 如果发现不在 `main` 分支上
+
+日常内容发布就是直推 `main`（这个仓库没有分支保护，webadmin 后台也是这么发的）。
+不在 main 上时别自作主张切分支或强行合并，先告诉用户当前在哪个分支，然后按情况问他：
+
+- 改动还没提交 → `git stash` → `git checkout main && git pull --rebase origin main` → `git stash pop`
+- 改动已经提交在别的分支上 → 开 PR 合并到 main，或者把那几个 commit cherry-pick 过来
+
+#### commit message
+
+用中文写清楚改了哪一页的什么，跟仓库现有习惯一致：`content: …`（内容改动）/
+`fix: …`（修问题）。以后线上出问题要回滚时，是靠这行字找到该撤哪一次的。
 
 ### 第 5 步 · 盯部署
 
