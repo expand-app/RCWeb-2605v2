@@ -92,11 +92,12 @@ gh run rerun --failed
 gh workflow run deploy.yml --ref main -f environment=production
 ```
 
-**`environment` 一定选 `production`。** 那个 `staging` 选项是历史遗留，
-`staging.rexpandcareer.com` 已经废弃了，选了只会白跑一次、传到一个没人看的 bucket。
-
 网页上触发也一样：Actions → Deploy to Aliyun OSS → Run workflow → 保持
 `production` → Run。
+
+下拉框里现在只有 `production` 一个选项 —— 原来那个 `staging` 已经在 `deploy.yml`
+里注释掉了（`staging.rexpandcareer.com` 不再维护，选了只会白跑一次）。所以不用挑，
+默认就是对的。
 
 ---
 

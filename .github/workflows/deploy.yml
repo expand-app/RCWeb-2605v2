@@ -13,7 +13,11 @@ on:
         type: choice
         options:
           - production
-          - staging
+          # staging 已废弃 —— staging.rexpandcareer.com 不再维护,选中只会把这次
+          # 改动传到一个没人看的 bucket,还白跑一次 CDN 刷新。留在下拉框里迟早被
+          # 误选,所以注释掉。下面 "Set environment variables" 里对应的 staging
+          # 分支一并保留但已不可达,将来真要恢复预发环境时两处一起解开即可。
+          # - staging
 
 permissions:
   contents: write       # 'write' (not 'read') so the final "Notify deploy result"
