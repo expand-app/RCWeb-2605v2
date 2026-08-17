@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "static",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "python3",
       "runtimeArgs": ["serve.py", "8765"],
       "port": 8765
     }
