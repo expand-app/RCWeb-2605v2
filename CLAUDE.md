@@ -12,3 +12,6 @@
 ## 部署
 - 部署通过合并到 `main` 触发(GitHub Actions),完成后机器人会在 PR 上回评部署结果。
 - 改动静态资源后,记得在 deploy.yml 的 "Stage deployable files" 步骤中确认对应目录已被打包。
+- **改完文案/图片要上线时,走 `deploy-aliyun` skill**(`.claude/skills/deploy-aliyun/`):
+  发布前自检 → 本地预览 → push main → 盯 run → 线上校验 → 出错回滚。别自己临时拼
+  git + ossutil 命令。`staging.rexpandcareer.com` 已废弃,不要再用。
