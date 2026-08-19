@@ -1127,7 +1127,7 @@
     "avatar": "J",
     "school": "NYU",
     "major": "Computer Science",
-    "dir": "Software Development Engineer",
+    "dir": "SDE",
     "dir_key": "sde",
     "company": "Bot Auto TX Inc.",
     "role": "Software Engineer",
@@ -1136,6 +1136,23 @@
     "focus": "",
     "has_narrative": false,
     "name_label": "J 同学",
+    "quote": ""
+  },
+  {
+    "id": "10072",
+    "display_id": "18975",
+    "avatar": "S",
+    "school": "USC",
+    "major": "Computer Science",
+    "dir": "SDE",
+    "dir_key": "sde",
+    "company": "Bot Auto TX Inc.",
+    "role": "Software Engineer",
+    "degree": "学士",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false,
+    "name_label": "S 同学",
     "quote": ""
   }
 ]
