@@ -30007,6 +30007,183 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:replays:start
   const REPLAYS = [
   {
+    "slug": "nomura-risk-model-validation-associate-2026-08-21",
+    "date": "2026.08.21",
+    "duration": "39:44",
+    "company": "Nomura",
+    "location": "",
+    "role": "Risk Model Validation Associate",
+    "logo": "N",
+    "seoTitle": "Risk Model Validation Associate · Nomura — Mock Interview Replay",
+    "dek": "A 39:44 Nomura Risk Model Validation Associate mock interview replay, 18 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-08-21-video.mp4",
+    "score": {
+      "overall": 61,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "61%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "多数问题最终 land 了答案(VaR 三种方法、E[Y] 计算、CDF transform),但在 self-intro 和 20-year horizon 题上花了大量时间 setup 却没落到具体案例,面试官需反复 probe 才能拉出实质内容"
+        ],
+        [
+          "Specificity & Evidence",
+          18,
+          30,
+          "点出了 VaR 三种方法(historical sim / parametric / Monte Carlo)、regime indicators(VIX)、backtesting framework(rolling window / breach rate),但全程没给出一个完整的项目数字 —— 简历上的'10% drawdown reduction'在面试里从未展开,多数答案停在 methodology label 层面"
+        ],
+        [
+          "Depth & Reasoning",
+          19,
+          30,
+          "在 20-year horizon 问题上识别了 survivorship bias / regime change / data sparsity 三个 tradeoff,在 nonlinear expectation 题上 catch 到 Jensen's inequality,显示出 quantitative reasoning —— 但 operationalization 薄弱:提了 stressed-period overlay / regime-switching VaR 却没说怎么 implement"
+        ],
+        [
+          "Role Fit",
+          6,
+          10,
+          "简历 match(VaR / Python / risk models),但 JD 要的 conceptual soundness + sensitivity analysis + benchmark models 在面试里只出现了碎片 —— backtesting 那段有 validation 思路,但没 show 过完整的 model review cycle 或 regulatory rigor"
+        ],
+        [
+          "Communication",
+          4,
+          10,
+          "delivery 卡顿严重,多处答案中途散掉('I would rather try that as new as of. I I thought sooner than I say' / 'day to day base... understanding the model'),面试官反复出现礼貌收场信号('that's fine' / 'let's move on' / 'we're over time'),说明内容没能清晰 land"
+        ]
+      ]
+    },
+    "summary": "候选人具备扎实的 quantitative foundation(识别 Jensen's inequality、regime change tradeoffs、backtesting framework),但 delivery 和 specificity 是明显短板 —— 技术概念能点出来,却无法用完整案例或具体数字把它们 operationalize,导致面试官需反复 probe 才能拉出实质内容,最终因超时被礼貌收场。",
+    "mainIssue": {
+      "title": "答案结构散乱,技术含量被 delivery 拖垮 —— 多处关键回答中途崩溃或被面试官打断",
+      "body": "在被问到 VaR backtesting 和 20-year horizon challenges 时,候选人的技术思路其实到位(breach rate analysis / stressed-period overlay / regime-switching),但表达反复卡顿、半句话说不完就放弃,导致面试官听到的是碎片而非完整逻辑。\n- VaR backtesting 那题:候选人说了 'backtesting 加上 coverage check(5% exceedance)' 后立刻卡住,面试官只能从磕绊中猜测他想说什么 —— coach notes 明确写 '技术含量其实够了,delivery 拖了后腿'。\n- 20-year data challenge:候选人列举了 regime change / survivorship bias / data quality 三个方向,但每个都只说了 bullet point 没展开,最后那句 'I would rather try that as new as of. I I thought sooner than I say' 完全散掉,连自己都没说完。\n- CDF transformation 题:答案对了(probability integral transform),但表达卡到面试官说 'I know we're actually over time' 礼貌收场。\n这不是一次性失误 —— 面试官在多处用 'that's fine' / 'let's move on' / 'we're over time' 打断,说明 delivery issue 是系统性的,直接影响了 hireability。\n\n— 如何改进 —\n在下次面试前,把简历上每个 quantitative project 用这个模板重写一遍并背熟,确保每个答案都有清晰的 opening statement + 1-2 supporting details + closing insight:\n- <strong>Opening (15 秒)</strong>:一句话 answer —— 比如 VaR backtesting 题应该开场就说 'I'd backtest by comparing daily P&L to the 95% VaR forecast, and verify that actual losses exceed the threshold roughly 5% of the time.'\n- <strong>Supporting (30 秒)</strong>:补一个具体数字或方法 —— '在 Intelliimpact 我们用 250-day rolling window,实际 breach rate 是 6%,略高于理论值,我们归因到 2022 年 volatility spike.'\n- <strong>Closing (10 秒)</strong>:收到 validation insight —— 'This told us the model was conservative but not broken — we documented the regime sensitivity in the model card.'\n用 5 个 past projects 做这个 drill,<strong>计时录音</strong>,听自己有没有半句话说不完的地方。如果一个点还没想清楚,<strong>停在上一句完整的话</strong>,别硬推半成品 —— 'let me restate that cleanly' 比卡顿 20 秒更专业。"
+    },
+    "alsoNoting": [
+      "Self-intro 和 behavioral 问题全是职能列表,没落一个完整的项目案例",
+      "简历上的 '10% drawdown reduction' 在面试里从未展开 —— 错失了最强的 specificity 锚点",
+      "20-year horizon 问题上列举了 3 个 challenges 但没 operationalize 任何一个解法",
+      "面试官礼貌收场时('we're over time')没 catch 信号,继续塞内容而非 pivot 到提问"
+    ],
+    "questions": [
+      {
+        "t": 180,
+        "q": "Can you give a kind of brief background on model risk at banks, the different models that are validated, the different categories like pricing models and risk models, and how this position for risk model validation fits in, especially with global projects, region-specific trades or products, US-specific work, and regulatory issues?",
+        "meta": "面试官在介绍自己的 role 和团队职能 —— 他说\"我不确定你对 bank model risk 有多熟\"是在试探你的"
+      },
+      {
+        "t": 224,
+        "q": "Why don't you tell me a little bit about yourself?",
+        "meta": "开头能量不错,tech stack 也对上了(VaR, stress testing, Python),但全是职能列表 "
+      },
+      {
+        "t": 415,
+        "q": "Can you explain just a bar model to me?",
+        "meta": "他在走一个清晰的 pipeline(position-level data → clean → construct re"
+      },
+      {
+        "t": 1424,
+        "q": "Which 1 is more likely to see observations right at the mean?",
+        "meta": "面试官在 pivot 到 technical deep-dive 环节,并且明确说\"我更关心你的 train of th"
+      },
+      {
+        "t": 1533,
+        "q": "Let's assume we have a continuous uniform random variable. Let's call it x. So between 1 and 3. So x is equally likely to be 1, 1.5, 2.1, between 1 and 3. Then we have a function y equals 2 x.",
+        "meta": "面试官在 setup 一道 random variable transformation 题 —— X ~ Unifor"
+      },
+      {
+        "t": 1823,
+        "q": "We have a sample or a random draw from a normal distribution. We need a uniform distribution between 0 and 5. Where our random draws are from a normal distribution — how do we transform that to a uniform between 0 and 1?",
+        "meta": "面试官在 wrap up 这道题 —— 他说 \"that's fine\" 两次 + \"let's move on\",说明"
+      },
+      {
+        "t": 1830,
+        "q": "How do we convert the random draws to our desired distribution?",
+        "meta": "他抓到了核心(probability integral transform),但表达卡住了——面试官听到的是碎片而不是完"
+      },
+      {
+        "t": 592,
+        "q": "How many different equities are in this portfolio?",
+        "meta": ""
+      },
+      {
+        "t": 621,
+        "q": "You built this model for use for the different clients, essentially? Or 1 particular client?",
+        "meta": "面试官在 probe 你简历里的 IntelliImpact 项目细节 —— 他明说了\"不熟悉这家公司\",所以接下来要给"
+      },
+      {
+        "t": 642,
+        "q": "How far back did you pull historical data for?",
+        "meta": ""
+      },
+      {
+        "t": 694,
+        "q": "What if instead of that, I wanted, let's say, a 20 year horizon? What would you do? What challenges would you face? And how would you solve those challenges?",
+        "meta": "面试官在 push data availability 和 long-horizon modeling 的 tradeo"
+      },
+      {
+        "t": 1022,
+        "q": "You hold space X, it started trading last week. For all the names you have history going back 20 years, but for SpaceX you don't. What's your approach there?",
+        "meta": "面试官在 **validate** 你刚才的答案 —— 他抓住了 documentation 这个点,说明他认同\"清晰的"
+      },
+      {
+        "t": 1090,
+        "q": "Factor models would be applicable for the entire history. Is that your argument?",
+        "meta": ""
+      },
+      {
+        "t": 1130,
+        "q": "Did you back test the model at all? And did you run any tests to assess the historical performance?",
+        "meta": "面试官在追问 backtesting 的具体方法 —— 他想听的不是\"有没有做\",而是你用了什么 test framew"
+      },
+      {
+        "t": 1179,
+        "q": "So did you compare your model output to this threshold? How often did you breach your bar? Did you try to assess how it would have performed in the past?",
+        "meta": "面试官在问 backtesting —— 不是理论定义,是你实际做没做 breach analysis"
+      },
+      {
+        "t": 1186,
+        "q": "How did you determine the satisfactory performance of the model?",
+        "meta": "思路对了 —— backtesting 加上 coverage check(5% exceedance),这是 VaR "
+      },
+      {
+        "t": 1543,
+        "q": "What is the average value of y?",
+        "meta": "数学对了,面试官确认了\"correct\",但那句 \"But yeah…\" 加立刻换题,是在暗示答案太 mechanica"
+      },
+      {
+        "t": 1660,
+        "q": "What is the mean of y? Can you follow the same approach?",
+        "meta": "面试官刚把 linear function 换成了 nonlinear (x²) —— 这是个陷阱:候选人上一题用的 E"
+      }
+    ]
+  },
+  {
     "slug": "wells-fargo-market-risk-specialist-2026-07-31",
     "date": "2026.07.31",
     "duration": "59:31",
