@@ -34,6 +34,33 @@ GitHub Secrets 里（`ACCESS_KEY_ID` / `ACCESS_KEY_SECRET`），本机不需要�
 
 ---
 
+## 第一次接手？先确认环境
+
+如果是这个人第一次用（或者你发现某个命令报 command not found），先花一分钟核对：
+
+```bash
+git rev-parse --show-toplevel   # 必须落在 RCWeb-2605v2 仓库根目录
+python3 --version               # 本地预览要用
+node --version                  # 发布前自检的 JS 语法检查要用
+gh auth status                  # 可选，见下
+```
+
+- **必须在仓库根目录开会话**。在别的目录开，这个 skill 根本不会被加载。
+- **`python3` 缺了** → 本地预览起不来。macOS 自带，一般不会缺；缺了装 Xcode command line tools。
+- **`node` 缺了** → 自检会跳过 JS 语法检查并给出警告。能发布，但少了一道最关键的防线
+  （见第 2 步），建议先 `brew install node`。
+- **`gh` 没装或没登录** → 只影响"盯部署"那一步，改用浏览器看，不影响发布本身。
+  仓库是 public，**看 Actions 不需要登录**。
+
+推送权限有两种可能，直接影响第 5 步怎么走：
+
+| 他手上是什么 | `gh` 能用吗 | 第 5 步怎么盯部署 |
+|---|---|---|
+| GitHub 账号 / PAT | ✅ | `gh run watch` |
+| Deploy key（仓库级 SSH key） | ❌ | 浏览器打开 Actions 页面 |
+
+---
+
 ## 完整流程
 
 ### 第 0 步 · 先跟 main 对齐
@@ -90,7 +117,7 @@ node .claude/skills/deploy-aliyun/scripts/check-inline-js.mjs
 改动是给人看的，一定要真在浏览器里看过再发。
 
 ```bash
-python serve.py 8765
+python3 serve.py 8765
 ```
 
 然后打开 `http://localhost:8765`，跳到改动那一页确认。`serve.py` 带 SPA 回退，
@@ -105,17 +132,64 @@ python serve.py 8765
 给用户一个明确的确认点：「本地这样对吗？确认了我就推上线。」等他点头再走第 4 步。
 推到 `main` 之后就是直接改生产站，没有中间缓冲。
 
-### 第 4 步 · 提交并推送
+### 第 4 步 · 提交并推送到 main
+
+**改动只有推到 `main` 才会上线。** 改完文件不提交、或者提交了不推，本地看着都是好的，
+线上一点变化都没有 —— 这是最容易发生的"我明明改了啊"。所以别假设当前是什么状态，
+先看一眼再动手：
 
 ```bash
-git add -A
-git commit -m "content: 首页 hero 文案调整"
+git status --short
+git log --oneline origin/main..HEAD
+```
+
+自检的第 2 步已经替你分好类了，三种情况分别这么走：
+
+#### A. 有改了但没提交的文件（最常见）
+
+先把改动念给用户听，确认**每一条都是他想发的**，再提交。
+
+**别 `git add -A` 一把梭。** 运营同事的工作目录里常有跟这次发布无关的东西 ——
+下载的原图、临时截图、自己记的备注。全提交进去会污染仓库，图片还可能被误当成
+站点资源。逐个 add 你确认过的文件：
+
+```bash
+git add index.html media/team/2024-annual-gala.png
+git commit -m "content: 关于我们 团队照片更新"
 git push origin main
 ```
 
-commit message 用中文说清楚改了什么，格式跟仓库现有习惯一致（`content: …` /
-`fix: …`）。改动明确、用户已确认时直接推即可 —— 这个仓库没有分支保护，日常内容
-发布就是直推 `main`。
+如果 `git status` 里有你判断不了的文件（不知道是不是他要发的），**停下来问**，
+别自己决定加不加。
+
+#### B. 已经提交了，但没推
+
+```bash
+git push origin main
+```
+
+推上去就会触发部署。先跟用户念一遍这些 commit 里都改了什么，确认是他要发的内容。
+
+#### C. 工作区干净，也没有未推送的提交
+
+这次没有新东西可发布。**别造一个空 commit 硬凑一次部署。** 先问清楚他想干什么：
+
+- 内容其实还没改 → 回到第 1 步
+- 上次 run 挂了想重跑 / 想强制刷一遍 CDN → 用手动触发，见
+  [references/troubleshooting.md](references/troubleshooting.md) 的「不改代码，手动触发一次部署」
+
+#### 如果发现不在 `main` 分支上
+
+日常内容发布就是直推 `main`（这个仓库没有分支保护，webadmin 后台也是这么发的）。
+不在 main 上时别自作主张切分支或强行合并，先告诉用户当前在哪个分支，然后按情况问他：
+
+- 改动还没提交 → `git stash` → `git checkout main && git pull --rebase origin main` → `git stash pop`
+- 改动已经提交在别的分支上 → 开 PR 合并到 main，或者把那几个 commit cherry-pick 过来
+
+#### commit message
+
+用中文写清楚改了哪一页的什么，跟仓库现有习惯一致：`content: …`（内容改动）/
+`fix: …`（修问题）。以后线上出问题要回滚时，是靠这行字找到该撤哪一次的。
 
 ### 第 5 步 · 盯部署
 
@@ -125,10 +199,17 @@ commit message 用中文说清楚改了什么，格式跟仓库现有习惯一�
 gh run watch --exit-status $(gh run list --workflow=deploy.yml --limit 1 --json databaseId --jq '.[0].databaseId')
 ```
 
-正常 90 秒到 2 分钟跑完。没装 / 没登录 `gh` 的话，让用户打开
-<https://github.com/expand-app/RCWeb-2605v2/actions/workflows/deploy.yml> 自己看。
+正常 90 秒到 2 分钟跑完。
 
-跑完之后你会在 commit 下面看到机器人回评 `✅ Deploy success — production`。
+**如果 `gh` 用不了**（没装、没登录，或者他用的是 deploy key —— deploy key 撑不起 `gh`），
+让他直接开浏览器看，**仓库是 public，看 Actions 不需要登录**：
+
+<https://github.com/expand-app/RCWeb-2605v2/actions/workflows/deploy.yml>
+
+最上面那条就是他刚推的，黄点=在跑，绿勾=成功，红叉=失败。别因为 `gh` 用不了就跳过这一步 ——
+不确认跑没跑成，等于不知道有没有上线。
+
+跑完之后会在 commit 下面看到机器人回评 `✅ Deploy success — production`。
 
 > 你还会看到 **`Sync data/*.json from index.html`** 这个 workflow 也跟着跑，并且多推
 > 一个 `auto-sync: data/*.json` 的 commit。这是正常的 —— 改了 `index.html` 就会自动
