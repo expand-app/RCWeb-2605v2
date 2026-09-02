@@ -1154,5 +1154,22 @@
     "has_narrative": false,
     "name_label": "S 同学",
     "quote": ""
+  },
+  {
+    "id": "10073",
+    "display_id": "17809",
+    "avatar": "S",
+    "school": "USC",
+    "major": "Computer Science",
+    "dir": "SDE",
+    "dir_key": "sde",
+    "company": "Google",
+    "role": "Software Engineer",
+    "degree": "学士",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false,
+    "name_label": "S 同学",
+    "quote": ""
   }
 ]
