@@ -6161,7 +6161,7 @@ footer{
         <div class="man-tile">
           <div class="man-num">— REPEATABLE · 01</div>
           <div class="man-k">流程可复制</div>
-          <div class="man-v">自研 Multi-Agent 24/7 在 LinkedIn + Email 双通道触达 Hiring Team · 每周 100+ 触达、5–15 个内推。</div>
+          <div class="man-v">自研 Multi-Agent 24/7 双通道触达 Hiring Team，每周 100+ 触达、5–15 个内推；再叠加 100 万职业人脉与 1,000+ 合作企业的内部资源直推。</div>
         </div>
         <div class="man-tile">
           <div class="man-num">— SCALED · 02</div>
@@ -6589,6 +6589,21 @@ footer{
     align-items: center;
   }
   #page-offer .bp-item:last-child{ border-bottom: none; }
+  /* 内部资源内推 —— 唯一非 AI 通道的服务,在地图里做视觉区分:
+     浅绿底 + 左侧绿色竖条 + 实心绿徽章(其余项是浅绿底徽章)。 */
+  #page-offer .bp-item.featured{
+    background: var(--green-soft);
+    margin: 0 -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-left: 2px solid var(--green);
+    border-radius: 2px;
+  }
+  #page-offer .bp-item.featured .bp-num{ color: var(--green-dark); }
+  #page-offer .bp-item.featured .bp-metric{
+    background: var(--green-dark);
+    color: #fff;
+  }
   #page-offer .bp-item .bp-num{
     font-family: var(--mono);
     font-size: 10px;
@@ -6620,6 +6635,68 @@ footer{
     border-radius: 100px;
     letter-spacing: 0.04em;
     white-space: nowrap;
+  }
+  /* ---- 内部资源内推 · Insider Network 可视化 ---- */
+  #page-offer .insider-net{
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+  }
+  #page-offer .in-head{
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-soft);
+  }
+  #page-offer .in-head strong{ font-family: var(--serif-cn); font-size: 14px; font-weight: 500; }
+  #page-offer .in-tag{
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em;
+    color: var(--green-dark); background: var(--green-soft);
+    padding: 4px 10px; border-radius: 100px;
+  }
+  #page-offer .in-pools{
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  #page-offer .in-pool{
+    padding: 22px 18px;
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  #page-offer .in-pool:last-child{ border-right: none; }
+  #page-offer .in-num{
+    font-family: var(--serif-cn); font-size: 30px; font-weight: 500;
+    color: var(--ink); line-height: 1.1; letter-spacing: -0.01em;
+  }
+  #page-offer .in-num span{ font-size: 15px; margin-left: 2px; color: var(--green-dark); }
+  #page-offer .in-k{ font-size: 13px; color: var(--ink); margin-top: 8px; }
+  #page-offer .in-s{
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.1em;
+    color: var(--ink-4); margin-top: 4px;
+  }
+  #page-offer .in-flow{
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
+    padding: 16px 20px;
+    border-top: 1px solid var(--line);
+    background: var(--bg-soft);
+  }
+  #page-offer .in-step{
+    font-family: var(--mono); font-size: 10px; color: var(--ink-3);
+    background: #fff; border: 1px solid var(--line);
+    padding: 6px 12px; border-radius: 6px;
+  }
+  #page-offer .in-step-live{
+    color: var(--green-dark); border-color: var(--green);
+    background: var(--green-soft);
+  }
+  #page-offer .in-arr{ color: var(--ink-4); font-size: 12px; }
+  @media (max-width: 760px){
+    #page-offer .in-pools{ grid-template-columns: 1fr; }
+    #page-offer .in-pool{ border-right: none; border-bottom: 1px solid var(--line); padding: 16px; }
+    #page-offer .in-pool:last-child{ border-bottom: none; }
+    #page-offer .in-flow{ flex-direction: column; align-items: stretch; }
+    #page-offer .in-arr{ transform: rotate(90deg); text-align: center; }
   }
   #page-offer .bp-foot{
     display: grid;
@@ -13881,23 +13958,23 @@ footer{
 
           <div class="bp-item">
             <span class="bp-num">— 01</span>
-            <div class="bp-name">岗位筛选 Agent<small>每天扫描 4 大 job board · 自然语言匹配</small></div>
+            <div class="bp-name">岗位 Mapping 服务<small>每天筛完数百个新岗位 · 只留下最匹配你的</small></div>
             <span class="bp-metric">DAILY · 24/7</span>
           </div>
           <div class="bp-item">
             <span class="bp-num">— 02</span>
-            <div class="bp-name">岗位代投服务<small>人工把关 · 第一时间投递</small></div>
-            <span class="bp-metric">EVERY POSTING</span>
-          </div>
-          <div class="bp-item">
-            <span class="bp-num">— 03</span>
-            <div class="bp-name">LinkedIn 内推 Agent<small>定位 Hiring Team · 自动沟通</small></div>
+            <div class="bp-name">AI 内推服务<small>AI 定位 Hiring Team · LinkedIn + Email 双通道 24/7 沟通</small></div>
             <span class="bp-metric">5–15 / WEEK</span>
+          </div>
+          <div class="bp-item featured">
+            <span class="bp-num">— 03</span>
+            <div class="bp-name">内部资源内推服务<small>100 万职业人脉 · 上万社群内推 · 1,000+ 合作企业</small></div>
+            <span class="bp-metric">INSIDER</span>
           </div>
           <div class="bp-item">
             <span class="bp-num">— 04</span>
-            <div class="bp-name">Email 内推 Agent<small>绑定个人邮箱 · 自动跟进</small></div>
-            <span class="bp-metric">50–100 / DAY</span>
+            <div class="bp-name">岗位投递服务<small>人工把关 · 24 小时内完成投递</small></div>
+            <span class="bp-metric">&lt; 24 HRS</span>
           </div>
           <div class="bp-item">
             <span class="bp-num">— 05</span>
@@ -13969,14 +14046,14 @@ footer{
         <div class="solution-tag">— STEP 01</div>
         <h2>拿面试<span class="en">Get the Interview.</span></h2>
       </div>
-      <p>四个并行武器：AI Agent 自动找岗位、投递团队代投、Linkedin + Email 双通道内推、背景提升填补简历短板。一周内启动，每天产出。</p>
+      <p>五个并行武器：AI 每天筛岗位、双通道 AI 内推、内部人脉直推、投递团队 24 小时内代投、背景提升填补简历短板。一周内启动，每天产出。</p>
     </div>
 
     <!-- 3.1 Agent Search HERO visual -->
     <div class="agent-search">
       <div class="agent-search-text">
-        <div class="solution-tag" style="font-size:10px;">— 01 · JOB SOURCING</div>
-        <h3>岗位筛选<span class="badge">AI AGENT</span></h3>
+        <div class="solution-tag" style="font-size:10px;">— 01 · JOB MAPPING</div>
+        <h3>岗位 Mapping<span class="badge">AI AGENT</span></h3>
         <p>Agent 每天扫描 LinkedIn / Indeed / Dice / Glassdoor 全部主流 job board，<strong style="color:var(--ink);">用自然语言搜索</strong> —— 不是关键词匹配，是真正理解你想要什么。</p>
         <p>由 <strong style="color:var(--ink);">Claude 框架</strong> 驱动，世界上最先进的 Agent 架构 + 最强模型。每天为你筛选数百个机会，匹配出真正值得申请的。</p>
         <div class="powered-by">
@@ -14108,95 +14185,11 @@ footer{
     <!-- 3.2-3.4 Method strip -->
     <div class="method-strip">
 
-      <!-- 代投 -->
-      <div class="method-row">
-        <div class="method-num">— 02 · APPLY</div>
-        <div class="method-info">
-          <h3>代投服务<span class="en">Application Submission</span></h3>
-          <p>投递团队人工把关每一份岗位的投递，确保你的简历 <strong style="color:var(--ink);">在岗位发布后的第一时间</strong> 送到对方手里 —— 早 6 小时 vs 晚 6 小时，简历过筛率相差数倍。</p>
-          <p style="margin-top: 12px;">每一次投递完成后，会 <strong style="color:var(--ink);">同步到 4 个通道</strong>：学员服务中心 dashboard、企业微信服务群、邮件通知、每日投递报告 PDF。投递记录透明可查。</p>
-        </div>
-        <div class="apply-flow" id="applyFlow">
-          <div class="apply-head">
-            <strong>今日已代投</strong>
-            <span class="live-tag">LIVE · WED 14:32</span>
-          </div>
-
-          <div class="apply-feed" id="applyFeed">
-            <div class="apply-item" data-fit="94">
-              <div class="a-check">✓</div>
-              <div class="a-co">Citadel<small>QUANT RESEARCHER · NYC</small></div>
-              <div class="a-fit">FIT 94%</div>
-              <div class="a-status">APPLIED</div>
-            </div>
-            <div class="apply-item" data-fit="91">
-              <div class="a-check">✓</div>
-              <div class="a-co">Jane Street<small>QUANT TRADER · NYC</small></div>
-              <div class="a-fit">FIT 91%</div>
-              <div class="a-status">APPLIED</div>
-            </div>
-            <div class="apply-item" data-fit="88">
-              <div class="a-check">✓</div>
-              <div class="a-co">Two Sigma<small>QUANT RESEARCHER · NYC</small></div>
-              <div class="a-fit">FIT 88%</div>
-              <div class="a-status">APPLIED</div>
-            </div>
-            <div class="apply-item" data-fit="85">
-              <div class="a-check">✓</div>
-              <div class="a-co">DRW<small>QUANT STRATEGIST · NYC</small></div>
-              <div class="a-fit">FIT 85%</div>
-              <div class="a-status">APPLIED</div>
-            </div>
-          </div>
-
-          <div class="apply-sync">
-            <div class="sync-head">
-              <strong>同步到 4 个通道</strong>
-              <span class="sync-ts" id="syncTs">— 等待同步</span>
-            </div>
-            <div class="sync-channels" id="syncChannels">
-              <div class="sync-ch" data-ch="0">
-                <div class="ch-check">✓</div>
-                <div class="ch-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg>
-                </div>
-                <div class="ch-name">服务中心</div>
-                <div class="ch-status">DASHBOARD</div>
-              </div>
-              <div class="sync-ch" data-ch="1">
-                <div class="ch-check">✓</div>
-                <div class="ch-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-                </div>
-                <div class="ch-name">企微服务群</div>
-                <div class="ch-status">WECHAT</div>
-              </div>
-              <div class="sync-ch" data-ch="2">
-                <div class="ch-check">✓</div>
-                <div class="ch-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h12l4 4v16H4z"/><path d="M16 2v4h4M8 12h8M8 16h8M8 8h4"/></svg>
-                </div>
-                <div class="ch-name">投递报告</div>
-                <div class="ch-status">PDF · DAILY</div>
-              </div>
-              <div class="sync-ch" data-ch="3">
-                <div class="ch-check">✓</div>
-                <div class="ch-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-                </div>
-                <div class="ch-name">邮件通知</div>
-                <div class="ch-status">EMAIL</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- LinkedIn 内推 · Full Pipeline -->
       <div class="method-row">
-        <div class="method-num">— 03 · LINKEDIN</div>
+        <div class="method-num">— 02 · AI REFERRAL · LINKEDIN</div>
         <div class="method-info">
-          <h3>LinkedIn 内推<span class="en">Find Team & Auto Chat</span></h3>
+          <h3>AI 内推 · LinkedIn<span class="en">Find Team & Auto Chat</span></h3>
           <p>Agent 干两件事 —— <strong style="color:var(--ink);">找到对的人</strong>，<strong style="color:var(--ink);">代你跟对的人聊</strong>。整个过程都可视化、可干预。</p>
           <p style="margin-top: 12px;">每周 <strong style="color:var(--ink);">100-200 个 connection · 产出 5-15 次内推</strong>。</p>
         </div>
@@ -14552,9 +14545,9 @@ footer{
 
       <!-- Email 内推 — Email Client UI Triptych -->
       <div class="method-row">
-        <div class="method-num">— 04 · EMAIL</div>
+        <div class="method-num">— 02 · AI REFERRAL · EMAIL</div>
         <div class="method-info">
-          <h3>Email 内推<span class="en">Outbound to Professionals</span></h3>
+          <h3>AI 内推 · Email<span class="en">Outbound to Professionals</span></h3>
           <p>从 <strong style="color:var(--ink);">100 万+</strong> Professional 邮箱库精准 outreach，AI 自动写个性化邮件、自动跟进、有进展立刻通知。</p>
           <p style="margin-top: 12px;">每天 <strong style="color:var(--ink);">50-100 封</strong> · 回复率 <strong style="color:var(--ink);">~20%</strong> · 本月内推 <strong style="color:var(--ink);">17</strong></p>
         </div>
@@ -15055,6 +15048,129 @@ footer{
         </div>
       </div>
 
+
+      <!-- 内部资源内推 · Insider Network -->
+      <div class="method-row">
+        <div class="method-num">— 03 · INSIDER</div>
+        <div class="method-info">
+          <h3>内部资源内推<span class="en">Insider Referral Network</span></h3>
+          <p>AI 通道触达的是 <strong style="color:var(--ink);">陌生人</strong>，这一条走的是 <strong style="color:var(--ink);">熟人</strong> —— 多年积累的职业人脉网络、内推社群与合作企业，直接把你的简历递到认识的人手里。</p>
+          <p style="margin-top: 12px;">同一个岗位，AI 通道负责广度（每周 100+ 触达），内部资源负责深度（有人愿意替你说一句话）。<strong style="color:var(--ink);">两条通道并行推进，不互相占用。</strong></p>
+        </div>
+        <div class="insider-net">
+          <div class="in-head">
+            <strong>内部资源池</strong>
+            <span class="in-tag">INSIDER NETWORK</span>
+          </div>
+          <div class="in-pools">
+            <div class="in-pool">
+              <div class="in-num">100<span>万</span></div>
+              <div class="in-k">职业人脉网络</div>
+              <div class="in-s">PROFESSIONAL CONNECTIONS</div>
+            </div>
+            <div class="in-pool">
+              <div class="in-num">10,000<span>+</span></div>
+              <div class="in-k">社群内推咨询</div>
+              <div class="in-s">COMMUNITY REFERRALS</div>
+            </div>
+            <div class="in-pool">
+              <div class="in-num">1,000<span>+</span></div>
+              <div class="in-k">合作导师企业</div>
+              <div class="in-s">PARTNER COMPANIES</div>
+            </div>
+          </div>
+          <div class="in-flow">
+            <span class="in-step">你的目标岗位</span>
+            <span class="in-arr">→</span>
+            <span class="in-step">在网络里找到认识的人</span>
+            <span class="in-arr">→</span>
+            <span class="in-step in-step-live">内部直推</span>
+          </div>
+        </div>
+      </div>
+      <!-- 代投 -->
+      <div class="method-row">
+        <div class="method-num">— 04 · APPLY</div>
+        <div class="method-info">
+          <h3>岗位投递服务<span class="en">Application Submission</span></h3>
+          <p>投递团队人工把关每一份岗位的投递，确保你的简历 <strong style="color:var(--ink);">在岗位发布后的第一时间</strong> 送到对方手里 —— 早 6 小时 vs 晚 6 小时，简历过筛率相差数倍。</p>
+          <p style="margin-top: 12px;">每一次投递完成后，会 <strong style="color:var(--ink);">同步到 4 个通道</strong>：学员服务中心 dashboard、企业微信服务群、邮件通知、每日投递报告 PDF。投递记录透明可查。</p>
+        </div>
+        <div class="apply-flow" id="applyFlow">
+          <div class="apply-head">
+            <strong>今日已代投</strong>
+            <span class="live-tag">LIVE · WED 14:32</span>
+          </div>
+
+          <div class="apply-feed" id="applyFeed">
+            <div class="apply-item" data-fit="94">
+              <div class="a-check">✓</div>
+              <div class="a-co">Citadel<small>QUANT RESEARCHER · NYC</small></div>
+              <div class="a-fit">FIT 94%</div>
+              <div class="a-status">APPLIED</div>
+            </div>
+            <div class="apply-item" data-fit="91">
+              <div class="a-check">✓</div>
+              <div class="a-co">Jane Street<small>QUANT TRADER · NYC</small></div>
+              <div class="a-fit">FIT 91%</div>
+              <div class="a-status">APPLIED</div>
+            </div>
+            <div class="apply-item" data-fit="88">
+              <div class="a-check">✓</div>
+              <div class="a-co">Two Sigma<small>QUANT RESEARCHER · NYC</small></div>
+              <div class="a-fit">FIT 88%</div>
+              <div class="a-status">APPLIED</div>
+            </div>
+            <div class="apply-item" data-fit="85">
+              <div class="a-check">✓</div>
+              <div class="a-co">DRW<small>QUANT STRATEGIST · NYC</small></div>
+              <div class="a-fit">FIT 85%</div>
+              <div class="a-status">APPLIED</div>
+            </div>
+          </div>
+
+          <div class="apply-sync">
+            <div class="sync-head">
+              <strong>同步到 4 个通道</strong>
+              <span class="sync-ts" id="syncTs">— 等待同步</span>
+            </div>
+            <div class="sync-channels" id="syncChannels">
+              <div class="sync-ch" data-ch="0">
+                <div class="ch-check">✓</div>
+                <div class="ch-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg>
+                </div>
+                <div class="ch-name">服务中心</div>
+                <div class="ch-status">DASHBOARD</div>
+              </div>
+              <div class="sync-ch" data-ch="1">
+                <div class="ch-check">✓</div>
+                <div class="ch-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+                </div>
+                <div class="ch-name">企微服务群</div>
+                <div class="ch-status">WECHAT</div>
+              </div>
+              <div class="sync-ch" data-ch="2">
+                <div class="ch-check">✓</div>
+                <div class="ch-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h12l4 4v16H4z"/><path d="M16 2v4h4M8 12h8M8 16h8M8 8h4"/></svg>
+                </div>
+                <div class="ch-name">投递报告</div>
+                <div class="ch-status">PDF · DAILY</div>
+              </div>
+              <div class="sync-ch" data-ch="3">
+                <div class="ch-check">✓</div>
+                <div class="ch-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                </div>
+                <div class="ch-name">邮件通知</div>
+                <div class="ch-status">EMAIL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- 背景提升 -->
       <div class="method-row">
@@ -16971,7 +17087,7 @@ footer{
         <div class="pkg-cell"><span class="num">10<small>次</small></span></div>
 
         <!-- 代投 + 内推 -->
-        <div class="pkg-cell row-label">岗位代投 + 内推<small>AI AGENT · DAILY</small></div>
+        <div class="pkg-cell row-label">岗位投递 + 内推<small>AI AGENT · DAILY</small></div>
         <div class="pkg-cell diamond"><span class="check">✓</span></div>
         <div class="pkg-cell"><span class="dash">—</span></div>
         <div class="pkg-cell"><span class="dash">—</span></div>
