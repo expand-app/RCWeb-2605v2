@@ -1,5 +1,176 @@
 [
   {
+    "slug": "amazon-trust-safety-data-scientist-2026-09-04",
+    "date": "2026.09.04",
+    "duration": "27:50",
+    "company": "Amazon Trust & Safety",
+    "location": "",
+    "role": "Data Scientist",
+    "logo": "A",
+    "seoTitle": "Data Scientist · Amazon Trust & Safety — Mock Interview Replay",
+    "dek": "A 27:50 Amazon Trust & Safety Data Scientist mock interview replay, 17 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-09-04-video.mp4",
+    "score": {
+      "overall": 65,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "65%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "Bias-variance 题上绕了三轮才勉强碰到 flexibility → boundary 的因果链;fraud detection 题主动 clarify scope 后最终 land 了 transaction → seller aggregation,但中间有明显的空转和 hedge。"
+        ],
+        [
+          "Specificity & Evidence",
+          21,
+          30,
+          "点出了 tenure / listing volume / withdrawal velocity / title-description consistency 等 JD 要的 feature dimensions,但 feature selection 那段承认'不能清楚说出 Random Forest 怎么做 importance',缺一个完整的技术细节。"
+        ],
+        [
+          "Depth & Reasoning",
+          18,
+          30,
+          "Class imbalance 处理(oversample / exclude clean negatives)和 early vs. late intervention trade-off 都摸到了 JD 要的 tradeoff 思维,但 bias-variance 那段用'negatively correlated'空转、decision boundary 没建立因果链,显示推理深度不稳定。"
+        ],
+        [
+          "Role Fit",
+          7,
+          10,
+          "主动区分 transaction-level detection 和 seller-level decision 体现了 senior ownership,但 feature selection 卡壳后没有 pivot 到替代方案(如 L1 regularization),遇阻时的 recovery 偏弱。"
+        ],
+        [
+          "Communication",
+          5,
+          10,
+          "Filler 密度高('like' 每句必现),多处句子没说完就断('I would… like… maybe I would…'),面试官多次用 pivot 或 'Got it' 收场,说明内容没有清晰 land。"
+        ]
+      ]
+    },
+    "summary": "候选人在 fraud detection case 上展示了对 JD 核心概念的理解(class imbalance / feature dimensions / early intervention trade-off),但技术深度和表达都不稳定 —— bias-variance 绕了三轮才勉强接上 flexibility,feature selection 直接承认说不清,communication 的 filler 和断句让面试官频繁 redirect。总分 65/100,勉强 pass 但 hiring committee 会有 reservations。",
+    "mainIssue": {
+      "title": "Bias-variance 和 model flexibility 的因果链没建立,绕了三轮才勉强碰到 decision boundary",
+      "body": "面试官问 flexibility 和 bias-variance 的关系时,候选人连续三次答案都在空转:\n- 第一次:'bias and variance tends to be negatively correlated' —— 这是结论不是机制,面试官立刻 probe flexibility。\n- 第二次:'decision boundary would shift as we make the tradeoff' —— 又是 circular reasoning,没说 WHY boundary 会变、HOW flexibility 影响 variance。\n- 第三次:'whether boundary expands or contracts depends on direction of tradeoff' —— 还是绕回原问题,面试官那句平淡的 'Alright.' 后立刻换题,说明这个答案没 land。\n\nJD 明确要求'solid understanding of how model flexibility affects overfitting',这三轮答案都没给出 flexible boundary → fit training noise → high variance 这条因果链,hiring committee 会怀疑候选人是否真的理解 bias-variance tradeoff 还是只是背了结论。\n\n— 如何改进 —\n在下次面试前,把 bias-variance tradeoff 用这个模板重写一遍并背熟:\n- **一句话 answer (15 秒内)**:Flexibility 指 decision boundary 能拟合多复杂的 pattern —— 高 flexibility(如 deep tree)能 fit training noise,所以 bias 低但 variance 高;低 flexibility(如 linear boundary)只能 average over noise,bias 高但 variance 低。\n- 然后停下来,等面试官说 'can you give an example' 再展开 random forest vs. logistic regression 的具体对比。\n- 用 3 个 past ML projects 做这个 drill,计时录音,确保每个 opening answer 都在 20 秒内落地因果链(flexibility → boundary shape → bias/variance),再展开不迟。"
+    },
+    "alsoNoting": [
+      "Feature selection 直接承认'不能清楚说出 Random Forest 怎么做 importance'后没有 pivot 到替代方案",
+      "Filler 密度极高('like' 每句必现)且多处句子没说完就断,面试官频繁用 'Got it' 收场",
+      "Fraud detection case 里 decision boundary 的 quantification 停在定性描述,没给出具体的 threshold logic"
+    ],
+    "questions": [
+      {
+        "t": 145,
+        "q": "What is the variance and bias trade off?",
+        "meta": "面试官在做 opening setup，明确今天重点是 ML round"
+      },
+      {
+        "t": 326,
+        "q": "What's the difference between boosting and bagging?",
+        "meta": "定義清楚,sequential dependency 那個點抓到了 boosting 的核心——但 JD 明確要求能 e"
+      },
+      {
+        "t": 488,
+        "q": "How would you detect seller fraud on amazon.com?",
+        "meta": "开场很稳 —— 他在主动 clarify scope,而且正在搭一个 seller representation → b"
+      },
+      {
+        "t": 209,
+        "q": "Does the flexibility of the model have anything to do with the bias and variance trade off?",
+        "meta": "面试官在追 model flexibility 和 bias-variance 的具体关系 —— 特别是 decisio"
+      },
+      {
+        "t": 266,
+        "q": "When you think about how flexible that decision boundary is, how do you think that is related to the variance and bias trade off of a model?",
+        "meta": "答案很 circular,绕回了原问题的词(\"bias-variance tradeoff depends on dir"
+      },
+      {
+        "t": 412,
+        "q": "As you're increasing the number of trees, how do you think that affects the variance and bias of the boosting based model versus the bagging based model?",
+        "meta": "面试官在 setup 一个经典的 bias-variance trade-off 问题 —— 他想听你区分\"加树\"在 b"
+      },
+      {
+        "t": 869,
+        "q": "Using that label along with signals that you're proposing, what is the next step for you?",
+        "meta": "他在 loop 里卡住了 —— 连续两个\"what I would do\"都没落地,句子还在用\"maybe I woul"
+      },
+      {
+        "t": 1054,
+        "q": "Can you talk a little bit more about the feature engineering, selection process during the model?",
+        "meta": "面试官已经接受了 class imbalance 的处理,现在要深挖 feature engineering —— 这是"
+      },
+      {
+        "t": 1205,
+        "q": "How do you ultimately apply feature selection to decide which signals should belong in the model and which should not?",
+        "meta": "面试官在确认你懂 feature engineering 后正在推进 —— \"suppose you continue "
+      },
+      {
+        "t": 1233,
+        "q": "How do you ultimately apply feature selection to decide which signals should belong in the model and which shouldn't?",
+        "meta": "他承认\"不能清楚说出 Random Forest 怎么做 feature importance\"但还是硬往下走了 —— "
+      },
+      {
+        "t": 1283,
+        "q": "What are the metrics for evaluation?",
+        "meta": ""
+      },
+      {
+        "t": 1305,
+        "q": "What are the metrics you would use to evaluate the performance of your model?",
+        "meta": ""
+      },
+      {
+        "t": 1336,
+        "q": "What about accuracy? Can you use accuracy to basically value the performance of this classification model?",
+        "meta": "他抓住了 accuracy 在 imbalanced data 下会误导这个核心点,但表达有点磕绊 —— \"biased"
+      },
+      {
+        "t": 1392,
+        "q": "Is your model predicting at like a transactional level, or is it making a prediction that a particular seller is fraudulent?",
+        "meta": ""
+      },
+      {
+        "t": 1410,
+        "q": "Do you have follow-up questions on that?",
+        "meta": ""
+      },
+      {
+        "t": 1455,
+        "q": "So how do you use that information as a way to extrapolate whether a particular seller is a fraud or not?",
+        "meta": "面试官在 setup 一个 decision timing 的具体场景 —— seller 有 5 笔交易,前两笔都是 "
+      },
+      {
+        "t": 1565,
+        "q": "At what transaction do you make a prediction that a seller is fraudulent or not?",
+        "meta": "面试官在问一个 modeling design 的核心问题:在哪个时间点(which transaction)做预测?这"
+      }
+    ]
+  },
+  {
     "slug": "nomura-risk-model-validation-associate-2026-08-21",
     "date": "2026.08.21",
     "duration": "39:44",
