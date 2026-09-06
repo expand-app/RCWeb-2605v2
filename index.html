@@ -33178,6 +33178,101 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:articles:start
   const ARTICLES = [
     {
+      slug: 'ai-6-google-85mms',
+      category: '招聘市场',
+      date: '2026.09.06',
+      readTime: '9 min read',
+      title: 'AI巨头6周内三发新品！Google这次真的追上来了？',
+      dek: 'Google 6周内第三次发布Flash模型，声称以竞品零头的价格匹敌Claude/GPT性能，AI军备竞赛加速，对留学生求职意味着什么？',
+      image: { url: '/og/intel-ai-6-google-85mms.png', alt: 'AI巨头6周内三发新品！Google这次真的追上来了？' },
+      body: `
+        <p class="lede">2026年9月3日，Google CEO Sundar Pichai在X上宣布发布 <strong>Gemini 3.8 Flash</strong>，声称该模型在编程性能上可媲美 Claude Opus 5 和 GPT-5.6 Sol，但价格仅为竞品的一小部分。对北美求职的中国留学生来说，这场AI模型军备竞赛的直接意义是：<strong>AI Engineer、Prompt Engineer、AI产品经理等岗位的需求窗口正在加速打开</strong>，现在布局比明年早一个招聘季。</p>
+<p>---</p>
+<h2>关键要点</h2>
+<ul>
+  <li><strong>Gemini 3.8 Flash</strong>（2026年9月3日上线）是Google 6周内的第3款Flash模型，主打低成本高性能编程，introductory定价 $0.75/百万输入token、$3.75/百万输出token，远低于Claude Opus 5（$5/$25）和GPT-5.6 Sol（$4/$20）。</li>
+  <li>Google同步发布 <strong>Gemini 3.8 Flash Cyber</strong>，专注自主漏洞发现，Chrome Security团队数据显示其修复正确率是同类大型商业模型的 <strong>2.6倍</strong>。</li>
+  <li>AI模型成本下降 + 能力提升，正在驱动企业大规模落地AI工具，<strong>直接拉动AI相关岗位的招聘需求</strong>。</li>
+  <li>中国开源模型（如Kimi K3）也在以更低价格抢占市场，竞争格局持续分化，求职者了解技术栈差异是加分项。</li>
+  <li>越早积累AI项目经验和相关背景，越能在下一波招聘潮中站到前排。</li>
+</ul>
+<p>---</p>
+<h2>Gemini 3.8 Flash到底有多强？性能和价格数据说话</h2>
+<p>Sundar Pichai在发布帖中写道，Gemini 3.8 Flash在基准测试中"以极低成本自主解决复杂工程问题，超过大多数大型前沿模型"。这里的"大型"指的是千亿甚至万亿参数量级的模型；Flash系列属于小型高效模型，参数量级通常在数百亿。</p>
+<p>关键benchmark数据（来源：Google官方，2026年9月3日）：</p>
+<ul>
+  <li><strong>HLE-Verified得分：54.9%</strong>，涵盖STEM、人文和专业领域的多步骤推理能力</li>
+  <li>知识截止日期：部分领域为2026年3月，部分领域仅到2025年1月</li>
+  <li>与Gemini 3.7 Flash相比，软件工程和多步骤推理能力均有显著提升</li>
+</ul>
+<p>独立评测机构 Artificial Analysis 评价 Gemini 3.8 Flash 是"我们在这个智能水平上测过的最便宜的模型"，但同时指出，由于更多推理步骤和更长输出，实际总使用量比3.7 Flash <strong>上升约40%</strong>。也就是说，token单价低，但完成复杂任务时消耗的token更多——这是开发者需要权衡的。</p>
+<h3>三大主流AI模型2026定价对比</h3>
+<table style="border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;"><thead><tr><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">模型</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">输入价格（/百万token）</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">输出价格（/百万token）</th><th style="border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;">备注</th></tr></thead><tbody><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Gemini 3.8 Flash（促销价，截至2026-12-31）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$0.75</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$3.75</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">2026年12月31日后涨至 $1.5/$7.5</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Gemini 3.8 Flash（2027年起正价）</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$1.5</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$7.5</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">—</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">Anthropic Claude Opus 5</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$5</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$25</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">—</td></tr><tr><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">OpenAI GPT-5.6 Sol</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$4</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">$20</td><td style="border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;">—</td></tr></tbody></table>
+<p>数据来源：Google官方定价页、Anthropic/OpenAI公开定价，2026年9月。</p>
+<p>对企业来说，在编程场景中使用Gemini 3.8 Flash可以显著压缩AI成本，这正是Google在企业市场切入的核心卖点。</p>
+<p>---</p>
+<h2>AI模型竞速背后，哪些岗位需求在增长？</h2>
+<p>AI模型能力的快速迭代，意味着企业在"如何用好这些模型"上的人力缺口越来越大。以下是2026年需求增长最明显的几类岗位：</p>
+<p><strong>技术方向（适合CS/工程背景）</strong></p>
+<ul>
+  <li><strong>AI/ML Engineer</strong>：负责模型集成、fine-tuning、inference优化</li>
+  <li><strong>Software Engineer（AI方向）</strong>：将LLM能力嵌入产品，如coding copilot、agent开发</li>
+  <li><strong>Cybersecurity Engineer（AI专项）</strong>：Google 3.8 Flash Cyber的发布证明AI+安全已是独立赛道</li>
+</ul>
+<p><strong>产品/策略方向（适合商科/交叉背景）</strong></p>
+<ul>
+  <li><strong>AI Product Manager</strong>：定义AI功能边界，协调工程与业务</li>
+  <li><strong>Prompt Engineer / AI Solutions Engineer</strong>：企业部署LLM的落地负责人</li>
+  <li><strong>AI Strategy &amp; Partnerships</strong>：大厂/咨询公司布局AI生态的战略岗</li>
+</ul>
+<p><strong>数据方向（适合DA/DS背景）</strong></p>
+<ul>
+  <li><strong>Data Scientist（LLM Evaluation）</strong>：评估模型输出质量，设计benchmark</li>
+  <li><strong>ML Data Analyst</strong>：构建训练/测试数据集，分析模型行为</li>
+</ul>
+<p>Google、Meta、Anthropic以及下游企业的AI工具采购扩张，都在直接或间接拉动上述岗位的开放数量。</p>
+<p>---</p>
+<h2>留学生怎么抓住这波AI求职窗口？</h2>
+<p>这是很多同学问Rexpand最多的问题：<strong>我现在没有AI项目经验，还来得及吗？</strong></p>
+<p>来得及，但要快。</p>
+<p>从我们辅导的300+学员经验来看，面试官最看重的不是你用过哪个模型，而是你能否把AI工具嵌入真实业务场景并量化出结果。以下是几个务实建议：</p>
+<p><strong>第一步：选定一个方向，做出可展示的项目</strong></p>
+<p>不需要5个方向都覆盖。选一个和你背景最近的：</p>
+<ul>
+  <li>工程背景 → SE方向，用Gemini/Claude API做一个agent项目</li>
+  <li>数据背景 → DA/DS方向，做一个基于LLM的数据分析pipeline</li>
+  <li>金融/商科背景 → QI或FM方向，结合AI工具做投资模型或财务分析</li>
+</ul>
+<p>Rexpand提供 SE / DA / DS / QI / FM 五大背景提升方向，项目结项即可获得名企导师referral——这在AI岗位竞争中是直接的简历加分项。</p>
+<p><strong>第二步：拿到内推，不要只投网申</strong></p>
+<p>AI相关岗位竞争激烈，网申通过率极低。Rexpand的AI Agent每周触达100+家公司的Hiring Team，平均产出5–15个内推机会；同时有1,000+名企在职导师（含Hiring Manager）覆盖Google、Meta、Amazon、Goldman Sachs、Morgan Stanley等200+公司，可以直接帮你对接。</p>
+<p><strong>第三步：针对AI岗位特训面试</strong></p>
+<p>AI岗位面试考察点与传统SDE有差异，System Design会涉及LLM架构、RAG、agent设计；行为面试会考AI伦理和产品判断。Rexpand面试精品课 + 2,000+题面经库，覆盖AI方向专项题目。</p>
+<p>---</p>
+<h2>常见问题</h2>
+<p><strong>Gemini 3.8 Flash和Claude Opus 5、GPT-5.6 Sol相比，哪个更适合企业用于编程场景？</strong> 根据Google官方数据和Artificial Analysis的评测，Gemini 3.8 Flash在编程benchmark上可媲美Claude Opus 5和GPT-5.6 Sol，且introductory价格（$0.75/百万输入token）远低于两者（$5和$4），对成本敏感的企业更有吸引力；但实际总使用量因更长推理链而上升约40%，需结合具体任务评估。</p>
+<p><strong>Gemini 3.8 Flash Cyber是什么？和普通版有什么区别？</strong> Gemini 3.8 Flash Cyber是专门针对网络安全场景优化的版本，替代此前的3.5 Flash Cyber，面向受信任的防御方（trusted defenders），重点在漏洞发现和修复，而非进攻能力。Google数据显示其修复Chrome漏洞的正确率是大型商业模型的2.6倍。</p>
+<p><strong>AI模型竞争激烈，AI工程师岗位会不会很快饱和？</strong> 目前来看不会。模型能力提升反而在扩大应用边界，企业需要更多人来落地这些能力。短期内，懂得如何将LLM集成进真实产品的工程师和产品经理，供给依然远小于需求。</p>
+<p><strong>我是商科背景的留学生，能申请AI相关岗位吗？</strong> 可以，但需要有方向选择。AI Product Manager、AI Strategy、AI Solutions Engineer等岗位对商科背景友好，关键是要能讲清楚AI工具的业务价值和落地路径，这需要有真实项目经验支撑。</p>
+<p><strong>Gemini 3.8 Flash目前在哪里可以访问？</strong> 目前Gemini 3.8 Flash已面向Google AI Pro和Ultra订阅用户在Gemini app上线，开发者可通过Google AI Studio、Google Antigravity平台以及Gemini API调用。</p>
+<p>---</p>
+<p>如果你正在思考如何用AI赛道的岗位需求增长窗口加速求职，欢迎找Rexpand进行1v1免费咨询——我们会根据你的背景，帮你制定最短路径的AI方向求职策略，30分钟内回复。</p>
+        <section style="margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;">
+  <p style="font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;">不确定自己的求职路怎么走?</p>
+  <p style="font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>
+  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+    <a href="https://work.weixin.qq.com/ca/cawcde33679f282bca" target="_blank" rel="noopener" style="display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;">立即免费咨询 →</a>
+    <img src="https://wandover.com/assets/rexpand-consult-qr.png" alt="扫码添加 Rexpand 求职顾问" style="width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;">
+  </div>
+</section>
+      `,
+      keywords: ['AI工程师求职', 'Gemini 3.8 Flash', 'AI模型2026', 'AI相关岗位', '留学生AI求职', 'Prompt Engineer', 'AI产品经理', 'AI就业市场'],
+      sources: [
+        { title: 'news.google.com', host: 'news.google.com', url: 'https://news.google.com/rss/articles/CBMi_AFBVV95cUxNUnNidkVsOU1oSm4tVTNEdHZsLXFSUy1PTEVDZTFrQ3g5bFR6SkJGTzNXU3BhLXpaTnhPdmVqSDU2czlKMFRKbVY0QTlDQkFtN1VTRWRQWXVCdEktZXdteG42U3lxNnhWdXhaQVMxZ2tzZHgwbmhlLUJPcGRrSWhCWjlrNzRjdElNdUw1SWVCRHJnbHdxU25WSmo3Q0pkY2lxMmpFNENwZm93TFhobEp5RFNKZ3lablMxVzJucHdBT2hSVDdmZnlWWGlIdnB0bFFuUWl5MzdlejNtVkxUQmtzUHl5UDZjOWU2YVV3Wklkd293NmlFZFNLU3RPQ3fSAYICQVVfeXFMTnFaMzJiaEVrZnRVWHoxV2NjajlMOG5NbGVHaUIxRFFnRXZaMmRxdE90NXNoSE9ZVjlSSFlOU243eXM5ZDM3Zk1WV284cklNenA1OGUteXNMS0p0TUtKTThmdnpkQVdsRUQ3Z2RSWTlaOTZMS19uSUQ4cl9mbGdtMzZEcFd6QzExVlRMY3NiV2xOMmJNNEtXdW41dElEWThhWTVyc2NEeEdOdzFzdDdmdFZfbXhVNkZseTZ1NTNFaWwyVzV4OFJwNU9Fa2xfNTBsUEh1dzRyS2w5T3dPZTU1WElfUnFibVMxLThiUm9hdVdiUzZxV1Z3STRMYU9kcTZrYTJR?oc=5' }
+      ],
+    },
+
+    {
       slug: 'ai-22-25-16-qjtds',
       category: 'AI 与裁员',
       date: '2026.09.05',
