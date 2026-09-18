@@ -1,5 +1,152 @@
 [
   {
+    "slug": "meta-data-scientist-analytics-2026-09-18",
+    "date": "2026.09.18",
+    "duration": "28:23",
+    "company": "Meta",
+    "location": "",
+    "role": "Data Scientist, Analytics",
+    "logo": "M",
+    "seoTitle": "Data Scientist, Analytics · Meta — Mock Interview Replay",
+    "dek": "A 28:23 Meta Data Scientist, Analytics mock interview replay, 12 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-09-18-9-18-2-.mp4",
+    "score": {
+      "overall": 63,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "63%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "engagement 题最终落到 activation/interaction/retention 三层,AB 题也走完 hypothesis→metric→randomization,但多次需 probe 才收束。"
+        ],
+        [
+          "Specificity & Evidence",
+          15,
+          25,
+          "指标停在 DAU/WAU、video call time 等泛口径,没给具体数字、阈值或真实项目;简历也无 product/engagement 经历支撑。"
+        ],
+        [
+          "Depth & Reasoning",
+          21,
+          30,
+          "主动提 seasonality、novelty effect、SUTVA、user-level randomization,方向对;但 scope creep 到 revenue/ARPU,priority 理由停在表面。"
+        ],
+        [
+          "Role Fit",
+          9,
+          15,
+          "命中 ambiguous question→framework 与 experiment design 信号,但缺 multi-arm/UI vs algorithm 隔离,也无 consumer hardware 经验。"
+        ],
+        [
+          "Communication",
+          4,
+          10,
+          "filler 密度极高('like, a like, a'),句子被切断,面试官多次插不进话,delivery 明显拖累内容。"
+        ]
+      ]
+    },
+    "summary": "框架意识与实验 vocabulary 在线,但 specificity 薄弱、filler 严重拖累 delivery,整体是 pass-with-reservations 偏下的表现。",
+    "mainIssue": {
+      "title": "指标口径停在泛泛层面,缺具体数字与真实项目支撑",
+      "body": "被问到 Portal engagement 与 exec dashboard 时,候选人给的是 DAU/WAU、video call time、total number of calls 这类通用口径,始终没落到具体阈值、per-user vs aggregate 的明确选择,也没引用任何自己真实做过的 product/engagement 项目。\n- engagement 题里说 'I think login is activation',把 activation 定义讲松了,没收敛到'首次成功发起 video call'这种 value action。\n- dashboard 题里两次都用 aggregate 口径('total number of video calls per month'),exec 盯总量会掩盖人均下滑,面试官明显在等 per-user 口径。\n- 简历上完全没有 product/engagement 经历,候选人是在凭空搭框架,而非从真实经验里拉证据。\n这会让 hiring committee 怀疑候选人能否独立把 ambiguous question 落成可执行、可量化的 metrics framework,而这正是 JD 的核心要求。\n\n— 如何改进 —\n下次面试前,把每个 engagement/retention 类问题都准备成'口径 + 单位 + 阈值'三件套,并绑定一个真实项目:\n- 开场 15 秒内给出定义:'engagement = repeat device usage,我按 activation(7 天内首次成功 video call)、weekly distinct-feature usage per household、30-day retention 三层拆。'\n- 每个指标强制补单位与 per-user/aggregate 选择:'average call minutes per active user per month,不是 total,这样 base 增长时也能抓到人均变化。'\n- 用 3 个自己真实做过的项目做 drill,每个都练到能说出具体数字(如 'retention 从 X 提到 Y'),避免凭空搭框架。"
+    },
+    "alsoNoting": [
+      "scope creep:问 engagement 却把 revenue/ARPU/CLV 全扯进来,稀释主线",
+      "priority 排序给了 rank 但 rationale 停在表面,没解释为何 #1 优于 #2 #3",
+      "filler 密度过高('like, a like, a'),句子被切断,面试官多次插不进话",
+      "缺 multi-arm / UI vs algorithm 隔离设计,未命中 JD 的 confounder 控制要求"
+    ],
+    "questions": [
+      {
+        "t": 89,
+        "q": "Hope you've done some research prior to this interview about Meta's Portal device — could you figure out ways to measure engagement on Meta's Portal?",
+        "meta": "面试官抛出 Portal engagement 的 open-ended case —— 他希望你先搭 framewor"
+      },
+      {
+        "t": 94,
+        "q": "Could you figure out ways to measure engagement on Meta's Portal?",
+        "meta": "问题抛得很抽象，他没有硬答，先反问 business purpose —— 这个动作是加分项，也正好压中 JD 里\"tr"
+      },
+      {
+        "t": 1074,
+        "q": "Suppose a new feature is introduced in Portal called call suggestion, which recommends calls to users. How would you design an AB experiment on this feature?",
+        "meta": "面试官刚把场景切成一个 AB experiment design case —— \"call suggestion\" 是"
+      },
+      {
+        "t": 1099,
+        "q": "How would you design an AB experiment on this feature?",
+        "meta": ""
+      },
+      {
+        "t": 1102,
+        "q": "Suppose a new feature is introduced in Portal called call suggestion, which recommends calls to users. How would you design an AB experiment on this feature?",
+        "meta": ""
+      },
+      {
+        "t": 1108,
+        "q": "How would you design an AB experiment on this feature?",
+        "meta": "从 success metric 切入是对的起点，还挂到了 feature 的 purpose（让发起通话更容易），这个"
+      },
+      {
+        "t": 603,
+        "q": "Can you pick out maybe 3 metrics that you think will be important, suppose that you need to create some sort of a dashboard for an executive who's part of the device and hardware?",
+        "meta": "面试官把 engagement 直接钉到 business viability —— 他要的不是定义,是\"这个硬件值不值"
+      },
+      {
+        "t": 627,
+        "q": "Can you pick out maybe 3 metrics that you think will be important, suppose that you need to create some sort of a dashboard for an executive who's part of the device and hardware — and then rank order those metrics from the most important to the least important?",
+        "meta": "他把 prompt 复述成了\"选 3 个 metrics 帮 exec 监控\",这一步 framing 是对的,而且主动"
+      },
+      {
+        "t": 897,
+        "q": "Just leaving that monetization aside, can you think about perhaps any other metric that you may wanna display in this metric based dashboard?",
+        "meta": "面试官在把你从 monetization 拉回 engagement —— \"no ads\" 是明确 constrain"
+      },
+      {
+        "t": 963,
+        "q": "Among these 3 metrics you have outlined, how would you go ahead and prioritize them, ranking from 1 to 3?",
+        "meta": "回答里 \"let me move the daily attribution to the 1st\" 这个排序动作做对了"
+      },
+      {
+        "t": 1538,
+        "q": "Are there any other details you may wanna populate?",
+        "meta": "方向对——他主动补 validity checks、seasonality、novelty effect,这些正是 JD"
+      },
+      {
+        "t": 1612,
+        "q": "What do you think would happen if this change was made over a Christmas weekend?",
+        "meta": "方向是对的——他抓到了 seasonality，也说出圣诞假期行为会推高 call volume、导致结果 inflat"
+      }
+    ]
+  },
+  {
     "slug": "amazon-trust-safety-data-scientist-2026-09-04",
     "date": "2026.09.04",
     "duration": "27:50",
