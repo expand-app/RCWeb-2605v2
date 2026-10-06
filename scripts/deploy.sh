@@ -49,6 +49,7 @@ AK_SECRET="${ACCESS_KEY_SECRET:-${OSS_ACCESS_KEY_SECRET:-}}"
 
 command -v ossutil >/dev/null 2>&1 || die "ossutil not found. Install: curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash"
 command -v aliyun  >/dev/null 2>&1 || die "aliyun CLI not found. See: https://github.com/aliyun/aliyun-cli/releases"
+python3 -c 'from PIL import Image' >/dev/null 2>&1 || die "Pillow not found. Install scripts/image-optimizer-requirements.txt in a Python environment."
 
 log "Deploying to '$ENVIRONMENT'  (bucket: $OSS_BUCKET)"
 
@@ -63,6 +64,7 @@ cp media/food.mp4 dist/media/
 cp media/food-*.png dist/media/
 cp media/meetfood-logo.png dist/media/
 cp -r media/team dist/media/
+python3 scripts/optimize-deploy-images.py dist
 echo "--- dist tree ---"
 find dist -maxdepth 3 -type f | sort
 du -sh dist

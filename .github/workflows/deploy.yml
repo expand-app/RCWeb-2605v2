@@ -36,6 +36,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install image optimizer
+        run: |
+          python3 -m venv /tmp/rexpand-image-venv
+          /tmp/rexpand-image-venv/bin/pip install --disable-pip-version-check -r scripts/image-optimizer-requirements.txt
+
       - name: Stage deployable files
         run: |
           mkdir -p dist
@@ -60,6 +65,7 @@ jobs:
           # Pre-render per-route static HTML so shared deep links get the right
           # title/description/og:image for crawlers that don't run JS (WeChat etc.)
           node scripts/og-pages.mjs
+          /tmp/rexpand-image-venv/bin/python scripts/optimize-deploy-images.py dist
           echo "--- dist tree ---"
           find dist -maxdepth 3 -type f | sort
           du -sh dist
