@@ -41091,7 +41091,11 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
     // Render grid (all articles — no featured separation)
     gridEl.innerHTML = ARTICLES.map(a => {
       const dateShort = a.date.replace(/\./g, '/');
-      const img = a.image ? `<img src="${a.image.url}" alt="${a.image.alt||''}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
+      const imageUrl = a.image && a.image.url;
+      const localOg = imageUrl && imageUrl.startsWith('/og/') && !imageUrl.includes('?');
+      const cardSource = localOg ? `/thumbs${imageUrl}-720.webp` : imageUrl;
+      const cardSet = localOg ? ` srcset="/thumbs${imageUrl}-360.webp 360w, /thumbs${imageUrl}-720.webp 720w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 360px"` : '';
+      const img = imageUrl ? `<img src="${cardSource}"${cardSet} alt="${a.image.alt||''}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
       return `
       <article class="article-card" data-article-slug="${a.slug}" data-cat="${a.category}">
         <div class="ac-thumb">

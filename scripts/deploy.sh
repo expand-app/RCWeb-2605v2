@@ -65,7 +65,10 @@ cp media/food.mp4 dist/media/
 cp media/food-*.png dist/media/
 cp media/meetfood-logo.png dist/media/
 cp -r media/team dist/media/
+mkdir -p dist/og
+cp -r public/og/. dist/og/
 python3 scripts/optimize-deploy-images.py dist
+python3 scripts/build-card-thumbnails.py dist
 echo "--- dist tree ---"
 find dist -maxdepth 3 -type f | sort
 du -sh dist
