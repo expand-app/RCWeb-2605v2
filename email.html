@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1fa940">
+  <meta name="robots" content="noindex,follow">
+  <title>Rexpand 睿思班｜北美求职，从这里开始</title>
+  <meta name="description" content="了解 Rexpand 睿思班的北美求职服务，与顾问讨论你的下一步。">
+  <meta property="og:title" content="Rexpand 睿思班｜北美求职，从这里开始">
+  <meta property="og:description" content="名企导师带教，覆盖求职规划、岗位投递、内推与面试辅导。">
+  <meta property="og:url" content="https://www.rexpandcareer.com/email.html">
+  <link rel="canonical" href="https://www.rexpandcareer.com/email.html">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-56CSPCF34B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-56CSPCF34B');
+  </script>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #162119; background: #f7faf7; }
+    .shell { width: min(100% - 40px, 1080px); margin: auto; }
+    header { padding: 28px 0; }
+    .brand { color: #173a22; font-size: 22px; font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+    .brand span { color: #1fa940; }
+    main { min-height: calc(100svh - 156px); display: grid; align-items: center; padding: 48px 0 80px; }
+    .card { max-width: 760px; }
+    .eyebrow { color: #188336; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 18px 0 22px; font-size: clamp(40px, 7vw, 76px); line-height: 1.13; letter-spacing: -.055em; }
+    p { margin: 0; max-width: 650px; color: #526055; font-size: clamp(17px, 2.1vw, 21px); line-height: 1.8; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; }
+    .button-primary { color: #fff; background: #1fa940; }
+    .button-secondary { color: #17652d; background: #e8f5e9; }
+    .button:focus-visible { outline: 3px solid #113e20; outline-offset: 3px; }
+    .note { margin-top: 28px; color: #718075; font-size: 14px; line-height: 1.6; }
+    footer { border-top: 1px solid #e1e9e1; padding: 22px 0; color: #718075; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header class="shell"><a class="brand" href="/" aria-label="Rexpand 睿思班首页">Rexpand<span> · </span>睿思班</a></header>
+  <main class="shell">
+    <div class="card">
+      <div class="eyebrow">Career placement · North America</div>
+      <h1>北美求职，<br>从清晰的下一步开始。</h1>
+      <p>从求职规划、岗位投递和内推，到面试准备与 offer 选择，Rexpand 睿思班陪你把每一步走扎实。</p>
+      <div class="actions">
+        <a class="button button-primary" href="https://work.weixin.qq.com/ca/cawcde33679f282bca">联系求职顾问</a>
+        <a class="button button-secondary" id="explore" href="/">了解我们的服务</a>
+      </div>
+      <div class="note">想先看看详细介绍？点击“了解我们的服务”进入完整网站。</div>
+    </div>
+  </main>
+  <footer><div class="shell">© Rexpand 睿思班</div></footer>
+  <script>
+    const campaign = new URLSearchParams(location.search);
+    const kept = new URLSearchParams();
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term']) {
+      if (campaign.has(key)) kept.set(key, campaign.get(key));
+    }
+    document.getElementById('explore').href = '/' + (kept.size ? '?' + kept : '');
+  </script>
+</body>
+</html>
