@@ -58,6 +58,7 @@ log "Staging deployable files into dist/"
 rm -rf dist
 mkdir -p dist/media
 cp index.html dist/
+cp email.html dist/
 cp robots.txt dist/
 cp sitemap.xml dist/
 cp media/food.mp4 dist/media/

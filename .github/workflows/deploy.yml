@@ -45,6 +45,7 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html dist/
+          cp email.html dist/
           cp robots.txt dist/
           cp sitemap.xml dist/
           # Webmaster ownership files (Bing, Baidu, etc.) — served at root.
