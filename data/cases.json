@@ -1171,5 +1171,22 @@
     "has_narrative": false,
     "name_label": "S 同学",
     "quote": ""
+  },
+  {
+    "id": "10074",
+    "display_id": "19863",
+    "avatar": "L",
+    "school": "UCR",
+    "major": "Ph.D. in Physics",
+    "dir": "Physics",
+    "dir_key": "physics",
+    "company": "Lam Research",
+    "role": "Product Engineer",
+    "degree": "博士",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false,
+    "name_label": "L 同学",
+    "quote": ""
   }
 ]
