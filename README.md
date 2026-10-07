@@ -73,7 +73,7 @@ Or any static server (`python -m http.server 8765`, `npx serve`, etc.).
 
 ## 📞 Contact
 
-For bulk email campaigns, link to `https://www.rexpandcareer.com/email.html` with the campaign's existing `utm_*` parameters. This lightweight page does not load the full article image grid; its “了解我们的服务” link passes the UTM parameters through to the main site.
+For bulk email campaigns, link to `https://www.rexpandcareer.com/email.html` with the campaign's existing `utm_*` parameters. Existing homepage links with `utm_medium=email` redirect to this lightweight page. Its “了解我们的服务” link passes the UTM parameters through to the full `/offer` page.
 
 - Site: https://rexpandcareer.com
 - Email: hello@rexpandcareer.com

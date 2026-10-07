@@ -49,7 +49,7 @@
       <p>从求职规划、岗位投递和内推，到面试准备与 offer 选择，Rexpand 睿思班陪你把每一步走扎实。</p>
       <div class="actions">
         <a class="button button-primary" href="https://work.weixin.qq.com/ca/cawcde33679f282bca">联系求职顾问</a>
-        <a class="button button-secondary" id="explore" href="/">了解我们的服务</a>
+        <a class="button button-secondary" id="explore" href="/offer">了解我们的服务</a>
       </div>
       <div class="note">想先看看详细介绍？点击“了解我们的服务”进入完整网站。</div>
     </div>
@@ -58,10 +58,10 @@
   <script>
     const campaign = new URLSearchParams(location.search);
     const kept = new URLSearchParams();
-    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term']) {
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
       if (campaign.has(key)) kept.set(key, campaign.get(key));
     }
-    document.getElementById('explore').href = '/' + (kept.size ? '?' + kept : '');
+    document.getElementById('explore').href = '/offer' + (kept.size ? '?' + kept : '');
   </script>
 </body>
 </html>
