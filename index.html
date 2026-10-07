@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<script>
+  // Older email links target the homepage. Route them to the lightweight page
+  // before the full homepage can request its images; keep campaign attribution.
+  if ((location.pathname === '/' || location.pathname === '/index.html') &&
+      new URLSearchParams(location.search).get('utm_medium') === 'email') {
+    location.replace('/email.html' + location.search + location.hash);
+  }
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-56CSPCF34B"></script>
 <script>
