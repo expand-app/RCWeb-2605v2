@@ -36,6 +36,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Guard the approved site baseline
+        run: python3 scripts/check_site_baseline.py
+
       - name: Install image optimizer
         run: |
           python3 -m venv /tmp/rexpand-image-venv
