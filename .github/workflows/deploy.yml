@@ -19,6 +19,13 @@ on:
           # 分支一并保留但已不可达,将来真要恢复预发环境时两处一起解开即可。
           # - staging
 
+# A publishing run must finish before the next one starts. Keep pending runs
+# queued so an older manual dispatch cannot replace a newer main push.
+concurrency:
+  group: rexpand-production-oss
+  queue: max
+  cancel-in-progress: false
+
 permissions:
   contents: write       # 'write' (not 'read') so the final "Notify deploy result"
                         # step can post commit comments when a push lands on main
@@ -89,6 +96,19 @@ jobs:
           else
             echo "OSS_BUCKET=rexpand-official-website" >> $GITHUB_ENV
             echo "CDN_DOMAINS=https://www.rexpandcareer.com/ https://rexpandcareer.com/" >> $GITHUB_ENV
+          fi
+
+      - name: Refuse to publish an outdated main revision
+        run: |
+          set -euo pipefail
+          latest_main="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [[ -z "$latest_main" ]]; then
+            echo "::error::Could not determine the latest main revision."
+            exit 1
+          fi
+          if [[ "$latest_main" != "$GITHUB_SHA" ]]; then
+            echo "::error::main is now $latest_main; refusing to publish outdated revision $GITHUB_SHA."
+            exit 1
           fi
 
       - name: Upload build to Aliyun OSS
