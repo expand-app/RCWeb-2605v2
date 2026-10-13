@@ -37,7 +37,10 @@ try:
     article_start = html.index("// @data:articles:start")
     article_end = html.index("// @data:articles:end", article_start)
     page_slugs = re.findall(r"[\"']?slug[\"']?\s*:\s*[\"']([^\"']+)[\"']", html[article_start:article_end])
-    if len(data_slugs) != len(set(data_slugs)) or set(data_slugs) != set(page_slugs):
+    if (len(data_slugs) != len(set(data_slugs))
+            or len(page_slugs) != len(set(page_slugs))
+            or len(data_slugs) != len(page_slugs)
+            or set(data_slugs) != set(page_slugs)):
         errors.append("index.html 与 data/articles.json 的文章清单不一致")
 except (OSError, ValueError, KeyError) as exc:
     errors.append(f"无法核对文章清单：{exc}")
