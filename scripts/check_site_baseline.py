@@ -9,7 +9,7 @@ root = Path(__file__).resolve().parents[1]
 html = (root / "index.html").read_text(encoding="utf-8")
 errors = []
 required = {
-    "SSAR 首页": "SSAR · 核心求职服务",
+    "SAR 首页": "SAR · 核心求职服务",
     "完整服务图": "Full Service Map.",
     "智能搜岗": "Job Smart Search Service",
     "岗位投递": "Application Service",
