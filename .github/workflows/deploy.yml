@@ -95,7 +95,6 @@ jobs:
             echo "CDN_DOMAINS=http://staging.rexpandcareer.com/" >> $GITHUB_ENV
           else
             echo "OSS_BUCKET=rexpand-official-website" >> $GITHUB_ENV
-            echo "CDN_DOMAINS=https://www.rexpandcareer.com/ https://rexpandcareer.com/" >> $GITHUB_ENV
           fi
 
       - name: Refuse to publish an outdated main revision
@@ -143,9 +142,8 @@ jobs:
             [ -f "$vf" ] && ossutil cp -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" "$vf" "oss://$OSS_BUCKET/$(basename "$vf")"
           done
           # Publish every clean URL as an extensionless object. ESA Basic cannot
-          # match DCDN's regex host_redirect, while DCDN can keep serving the
-          # matching .html files during the rollback window. OSS needs an
-          # explicit HTML Content-Type for objects without an extension.
+          # match the old DCDN regex host_redirect, so OSS needs an explicit
+          # HTML Content-Type for objects without an extension.
           ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-root/ "oss://$OSS_BUCKET/"
           ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-nested/ "oss://$OSS_BUCKET/"
           # Keep the existing website fallback for unknown SPA paths. ESA
@@ -170,7 +168,7 @@ jobs:
           # made from now on. Re-run each deploy keeps it on (self-healing).
           ossutil bucket-versioning --method put oss://$OSS_BUCKET enabled || true
 
-      - name: Refresh DCDN and ESA caches during migration
+      - name: Refresh edge cache
         env:
           CDN_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           CDN_ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
@@ -190,44 +188,23 @@ jobs:
             --access-key-secret $CDN_ACCESS_KEY_SECRET \
             --region cn-hangzhou
 
-          # Ensure the single-segment clean-URL -> .html rewrite exists on both
-          # domains:  ^/([^/.]+)$ -> /$1.html  — so crawlers fetching /offer,
-          # /cases, /background, /resources, /about etc. get the pre-rendered
-          # per-page .html. (Multi-segment paths like /background/quant cannot
-          # be rewritten by DCDN host_redirect on this account — verified by
-          # adding literal zero-capture rules that never matched — so nested
-          # pages are served directly by OSS as extensionless objects with
-          # SupportSubDir=false; see the upload step.) Idempotent: grep -F.
-          for d in www.rexpandcareer.com rexpandcareer.com; do
-            cfg=$(aliyun dcdn DescribeDcdnDomainConfigs --DomainName "$d" --FunctionNames host_redirect 2>/dev/null)
-            echo "$cfg" | grep -qF '^/([^/.]+)$' || aliyun dcdn BatchSetDcdnDomainConfigs --DomainNames "$d" --Functions '[{"functionName":"host_redirect","functionArgs":[{"argName":"regex","argValue":"^/([^/.]+)$"},{"argName":"replacement","argValue":"/$1.html"},{"argName":"flag","argValue":"break"}]}]' || true
-          done
-          # One-off: drop broad/captured rules that turned out unreliable. The
-          # zero-capture literal rules above supersede them.
-          for id in 499118684882944 499119391651840 499122086494208 499122090661888; do
-            aliyun dcdn DeleteDcdnSpecificConfig --DomainName www.rexpandcareer.com --ConfigId "$id" || true
-          done
-          for id in 499118691213312 499119395856384 499122094891008 499122099087360; do
-            aliyun dcdn DeleteDcdnSpecificConfig --DomainName rexpandcareer.com --ConfigId "$id" || true
-          done
-
-          # Directory refresh purges every cached object under each domain so the
-          # new .html pages (and the rewrite) take effect immediately. Runs after
-          # the rules are set; OSS is strongly consistent for object PUTs.
-          for url in $CDN_DOMAINS; do
-            aliyun dcdn RefreshDcdnObjectCaches \
-              --region cn-hangzhou \
-              --ObjectPath "$url" \
-              --ObjectType Directory
-          done
-          # The site ID is added as a repository variable after ESA is
-          # provisioned. Keep DCDN refreshes until rollback is no longer needed.
-          if [[ "$ENVIRONMENT" == "production" && -n "$ESA_SITE_ID" ]]; then
+          if [[ "$ENVIRONMENT" == "production" ]]; then
+            if [[ -z "$ESA_SITE_ID" ]]; then
+              echo "::error::ESA_SITE_ID repository variable is required for production cache refresh."
+              exit 1
+            fi
             aliyun esa PurgeCaches \
-              --force --version 2024-09-10 \
+              --force --method POST --version 2024-09-10 \
               --endpoint esa.cn-hangzhou.aliyuncs.com \
               --SiteId "$ESA_SITE_ID" --Type directory \
               --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
+          else
+            for url in $CDN_DOMAINS; do
+              aliyun dcdn RefreshDcdnObjectCaches \
+                --region cn-hangzhou \
+                --ObjectPath "$url" \
+                --ObjectType Directory
+            done
           fi
           ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
           ossutil rm -f "oss://${OSS_BUCKET}/_diag-hr.txt" || true
