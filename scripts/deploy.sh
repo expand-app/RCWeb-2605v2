@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Deploy the static site to Aliyun OSS + refresh the edge caches.
+# Deploy the static site to Aliyun OSS + refresh the edge cache.
 # Mirrors .github/workflows/deploy.yml so it can run locally or in CI.
 #
 # Usage:
@@ -12,6 +12,8 @@
 # Optional:
 #   OSS_ENDPOINT        default: oss-cn-hangzhou.aliyuncs.com
 #   ALIYUN_REGION       default: cn-hangzhou
+# Required for production:
+#   ESA_SITE_ID         ESA site to purge after publishing
 
 set -euo pipefail
 
@@ -30,7 +32,7 @@ die() { printf '\033[1;31merror:\033[0m %s\n' "$*" >&2; exit 1; }
 case "$ENVIRONMENT" in
   production)
     OSS_BUCKET="rexpand-official-website"
-    CDN_DOMAINS="https://www.rexpandcareer.com/ https://rexpandcareer.com/"
+    [ -n "${ESA_SITE_ID:-}" ] || die "ESA_SITE_ID is required for production"
     ;;
   staging)
     OSS_BUCKET="staging-rexpand-official-website"
@@ -84,8 +86,7 @@ ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ "oss
 ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-root/ "oss://$OSS_BUCKET/"
 ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-nested/ "oss://$OSS_BUCKET/"
 
-# --- Refresh CDN ------------------------------------------------------------
-log "Refreshing Aliyun DCDN cache"
+# --- Refresh edge cache -----------------------------------------------------
 aliyun configure set \
   --profile AkProfile \
   --mode AK \
@@ -93,20 +94,21 @@ aliyun configure set \
   --access-key-secret "$AK_SECRET" \
   --region "$ALIYUN_REGION"
 
-for domain in $CDN_DOMAINS; do
-  echo "  refreshing ${domain}*"
-  aliyun dcdn RefreshDcdnObjectCaches \
-    --region "$ALIYUN_REGION" \
-    --ObjectPath "${domain}*" \
-    --ObjectType File
-done
-if [ "$ENVIRONMENT" = production ] && [ -n "${ESA_SITE_ID:-}" ]; then
+if [ "$ENVIRONMENT" = production ]; then
   log "Refreshing ESA cache"
   aliyun esa PurgeCaches \
-    --force --version 2024-09-10 \
+    --force --method POST --version 2024-09-10 \
     --endpoint esa.cn-hangzhou.aliyuncs.com \
     --SiteId "$ESA_SITE_ID" --Type directory \
     --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
+else
+  log "Refreshing staging DCDN cache"
+  for domain in $CDN_DOMAINS; do
+    aliyun dcdn RefreshDcdnObjectCaches \
+      --region "$ALIYUN_REGION" \
+      --ObjectPath "${domain}*" \
+      --ObjectType File
+  done
 fi
 
 log "Done. Deployed '$ENVIRONMENT' to $OSS_BUCKET and requested edge cache refresh."
