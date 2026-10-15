@@ -13,11 +13,6 @@ on:
         type: choice
         options:
           - production
-          # staging 已废弃 —— staging.rexpandcareer.com 不再维护,选中只会把这次
-          # 改动传到一个没人看的 bucket,还白跑一次 CDN 刷新。留在下拉框里迟早被
-          # 误选,所以注释掉。下面 "Set environment variables" 里对应的 staging
-          # 分支一并保留但已不可达,将来真要恢复预发环境时两处一起解开即可。
-          # - staging
 
 # A publishing run must finish before the next one starts. Keep pending runs
 # queued so an older manual dispatch cannot replace a newer main push.
@@ -84,18 +79,8 @@ jobs:
 
       - name: Set environment variables
         run: |
-          ENVIRONMENT="${{ github.event.inputs.environment }}"
-          if [ -z "$ENVIRONMENT" ]; then
-            ENVIRONMENT="production"
-          fi
-          echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_ENV
-
-          if [[ "$ENVIRONMENT" == "staging" ]]; then
-            echo "OSS_BUCKET=staging-rexpand-official-website" >> $GITHUB_ENV
-            echo "CDN_DOMAINS=http://staging.rexpandcareer.com/" >> $GITHUB_ENV
-          else
-            echo "OSS_BUCKET=rexpand-official-website" >> $GITHUB_ENV
-          fi
+          echo "ENVIRONMENT=production" >> $GITHUB_ENV
+          echo "OSS_BUCKET=rexpand-official-website" >> $GITHUB_ENV
 
       - name: Refuse to publish an outdated main revision
         run: |
@@ -188,24 +173,15 @@ jobs:
             --access-key-secret $CDN_ACCESS_KEY_SECRET \
             --region cn-hangzhou
 
-          if [[ "$ENVIRONMENT" == "production" ]]; then
-            if [[ -z "$ESA_SITE_ID" ]]; then
-              echo "::error::ESA_SITE_ID repository variable is required for production cache refresh."
-              exit 1
-            fi
-            aliyun esa PurgeCaches \
-              --force --method POST --version 2024-09-10 \
-              --endpoint esa.cn-hangzhou.aliyuncs.com \
-              --SiteId "$ESA_SITE_ID" --Type directory \
-              --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
-          else
-            for url in $CDN_DOMAINS; do
-              aliyun dcdn RefreshDcdnObjectCaches \
-                --region cn-hangzhou \
-                --ObjectPath "$url" \
-                --ObjectType Directory
-            done
+          if [[ -z "$ESA_SITE_ID" ]]; then
+            echo "::error::ESA_SITE_ID repository variable is required for production cache refresh."
+            exit 1
           fi
+          aliyun esa PurgeCaches \
+            --force --method POST --version 2024-09-10 \
+            --endpoint esa.cn-hangzhou.aliyuncs.com \
+            --SiteId "$ESA_SITE_ID" --Type directory \
+            --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
           ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
           ossutil rm -f "oss://${OSS_BUCKET}/_diag-hr.txt" || true
 
