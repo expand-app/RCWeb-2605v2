@@ -4,7 +4,7 @@
 # Mirrors .github/workflows/deploy.yml so it can run locally or in CI.
 #
 # Usage:
-#   scripts/deploy.sh [production|staging]   # default: production
+#   scripts/deploy.sh [production]   # default: production
 #
 # Required env (same keys as the GitHub Actions secrets):
 #   ACCESS_KEY_ID       Aliyun AccessKey ID      (or OSS_ACCESS_KEY_ID)
@@ -12,7 +12,7 @@
 # Optional:
 #   OSS_ENDPOINT        default: oss-cn-hangzhou.aliyuncs.com
 #   ALIYUN_REGION       default: cn-hangzhou
-# Required for production:
+# Required:
 #   ESA_SITE_ID         ESA site to purge after publishing
 
 set -euo pipefail
@@ -34,12 +34,8 @@ case "$ENVIRONMENT" in
     OSS_BUCKET="rexpand-official-website"
     [ -n "${ESA_SITE_ID:-}" ] || die "ESA_SITE_ID is required for production"
     ;;
-  staging)
-    OSS_BUCKET="staging-rexpand-official-website"
-    CDN_DOMAINS="http://staging.rexpandcareer.com/"
-    ;;
   *)
-    die "unknown environment '$ENVIRONMENT' (expected: production | staging)"
+    die "unknown environment '$ENVIRONMENT' (only production is supported)"
     ;;
 esac
 
@@ -94,21 +90,11 @@ aliyun configure set \
   --access-key-secret "$AK_SECRET" \
   --region "$ALIYUN_REGION"
 
-if [ "$ENVIRONMENT" = production ]; then
-  log "Refreshing ESA cache"
-  aliyun esa PurgeCaches \
-    --force --method POST --version 2024-09-10 \
-    --endpoint esa.cn-hangzhou.aliyuncs.com \
-    --SiteId "$ESA_SITE_ID" --Type directory \
-    --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
-else
-  log "Refreshing staging DCDN cache"
-  for domain in $CDN_DOMAINS; do
-    aliyun dcdn RefreshDcdnObjectCaches \
-      --region "$ALIYUN_REGION" \
-      --ObjectPath "${domain}*" \
-      --ObjectType File
-  done
-fi
+log "Refreshing ESA cache"
+aliyun esa PurgeCaches \
+  --force --method POST --version 2024-09-10 \
+  --endpoint esa.cn-hangzhou.aliyuncs.com \
+  --SiteId "$ESA_SITE_ID" --Type directory \
+  --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
 
 log "Done. Deployed '$ENVIRONMENT' to $OSS_BUCKET and requested edge cache refresh."
