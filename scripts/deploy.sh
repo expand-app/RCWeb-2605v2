@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Deploy the static site to Aliyun OSS + refresh the CDN.
+# Deploy the static site to Aliyun OSS + refresh the edge caches.
 # Mirrors .github/workflows/deploy.yml so it can run locally or in CI.
 #
 # Usage:
@@ -49,6 +49,7 @@ AK_SECRET="${ACCESS_KEY_SECRET:-${OSS_ACCESS_KEY_SECRET:-}}"
 
 command -v ossutil >/dev/null 2>&1 || die "ossutil not found. Install: curl https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash"
 command -v aliyun  >/dev/null 2>&1 || die "aliyun CLI not found. See: https://github.com/aliyun/aliyun-cli/releases"
+command -v node    >/dev/null 2>&1 || die "node not found"
 python3 -c 'from PIL import Image' >/dev/null 2>&1 || die "Pillow not found. Install scripts/image-optimizer-requirements.txt in a Python environment."
 
 log "Deploying to '$ENVIRONMENT'  (bucket: $OSS_BUCKET)"
@@ -65,8 +66,10 @@ cp media/food.mp4 dist/media/
 cp media/food-*.png dist/media/
 cp media/meetfood-logo.png dist/media/
 cp -r media/team dist/media/
+cp -r media/avatars dist/media/
 mkdir -p dist/og
 cp -r public/og/. dist/og/
+node scripts/og-pages.mjs
 python3 scripts/optimize-deploy-images.py dist
 python3 scripts/build-card-thumbnails.py dist
 echo "--- dist tree ---"
@@ -77,6 +80,9 @@ du -sh dist
 log "Uploading dist/ to oss://$OSS_BUCKET/"
 ossutil config -e "$OSS_ENDPOINT" -i "$AK_ID" -k "$AK_SECRET"
 ossutil cp -r -f ./dist/ "oss://$OSS_BUCKET/"
+ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ "oss://$OSS_BUCKET/"
+ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-root/ "oss://$OSS_BUCKET/"
+ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-nested/ "oss://$OSS_BUCKET/"
 
 # --- Refresh CDN ------------------------------------------------------------
 log "Refreshing Aliyun DCDN cache"
@@ -94,5 +100,13 @@ for domain in $CDN_DOMAINS; do
     --ObjectPath "${domain}*" \
     --ObjectType File
 done
+if [ "$ENVIRONMENT" = production ] && [ -n "${ESA_SITE_ID:-}" ]; then
+  log "Refreshing ESA cache"
+  aliyun esa PurgeCaches \
+    --force --version 2024-09-10 \
+    --endpoint esa.cn-hangzhou.aliyuncs.com \
+    --SiteId "$ESA_SITE_ID" --Type directory \
+    --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
+fi
 
-log "Done. Deployed '$ENVIRONMENT' to $OSS_BUCKET and requested CDN refresh."
+log "Done. Deployed '$ENVIRONMENT' to $OSS_BUCKET and requested edge cache refresh."

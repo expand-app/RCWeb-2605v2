@@ -142,23 +142,14 @@ jobs:
           for vf in dist/baidu_verify_*.html; do
             [ -f "$vf" ] && ossutil cp -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" "$vf" "oss://$OSS_BUCKET/$(basename "$vf")"
           done
-          # Nested clean-URL pages (/background/<slug>, /legal/<x>): DCDN's
-          # host_redirect can't rewrite multi-segment paths on this account, so
-          # we ALSO upload each as an extensionless object at its exact clean
-          # key (e.g. "background/quant"). With SupportSubDir=false below, OSS
-          # serves these directly via the CNAME — no rewrite needed. Each file
-          # has no extension, so Content-Type must be set explicitly.
-          if [ -f dist-nested/manifest.txt ]; then
-            while IFS=$'\t' read -r f key; do
-              [ -z "$key" ] && continue
-              ossutil cp -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" "dist-nested/$f" "oss://$OSS_BUCKET/$key"
-            done < dist-nested/manifest.txt
-          fi
-          # Static-website hosting: SupportSubDir=false lets the CNAME serve the
-          # extensionless objects directly for nested clean URLs. Single-segment
-          # routes still go through DCDN's host_redirect (->/<seg>.html) and are
-          # unaffected. Unknown paths still fall back to index.html via the
-          # ErrorDocument below, so the SPA fallback keeps working. Idempotent.
+          # Publish every clean URL as an extensionless object. ESA Basic cannot
+          # match DCDN's regex host_redirect, while DCDN can keep serving the
+          # matching .html files during the rollback window. OSS needs an
+          # explicit HTML Content-Type for objects without an extension.
+          ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-root/ "oss://$OSS_BUCKET/"
+          ossutil cp -r -f --meta "Content-Type:text/html; charset=utf-8#Cache-Control:no-cache" ./dist-clean-nested/ "oss://$OSS_BUCKET/"
+          # Keep the existing website fallback for unknown SPA paths. ESA
+          # rewrites / to /index.html before OSS origin fetch.
           cat > /tmp/website.xml <<'XML'
           <?xml version="1.0" encoding="UTF-8"?>
           <WebsiteConfiguration>
@@ -179,10 +170,11 @@ jobs:
           # made from now on. Re-run each deploy keeps it on (self-healing).
           ossutil bucket-versioning --method put oss://$OSS_BUCKET enabled || true
 
-      - name: Refresh Aliyun CDN cache
+      - name: Refresh DCDN and ESA caches during migration
         env:
           CDN_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
           CDN_ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+          ESA_SITE_ID: ${{ vars.ESA_SITE_ID }}
         run: |
           cd $HOME
           curl -L -o aliyun-cli-linux-latest-amd64.tgz https://github.com/aliyun/aliyun-cli/releases/download/v3.0.226/aliyun-cli-linux-3.0.226-amd64.tgz
@@ -228,6 +220,15 @@ jobs:
               --ObjectPath "$url" \
               --ObjectType Directory
           done
+          # The site ID is added as a repository variable after ESA is
+          # provisioned. Keep DCDN refreshes until rollback is no longer needed.
+          if [[ "$ENVIRONMENT" == "production" && -n "$ESA_SITE_ID" ]]; then
+            aliyun esa PurgeCaches \
+              --force --version 2024-09-10 \
+              --endpoint esa.cn-hangzhou.aliyuncs.com \
+              --SiteId "$ESA_SITE_ID" --Type directory \
+              --Content '{"Directories":["https://www.rexpandcareer.com/","https://rexpandcareer.com/"]}'
+          fi
           ossutil config -e oss-cn-hangzhou.aliyuncs.com -i "$CDN_ACCESS_KEY_ID" -k "$CDN_ACCESS_KEY_SECRET" >/dev/null 2>&1 || true
           ossutil rm -f "oss://${OSS_BUCKET}/_diag-hr.txt" || true
 

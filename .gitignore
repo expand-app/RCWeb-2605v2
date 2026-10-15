@@ -64,6 +64,8 @@ Thumbs.db
 .env.*.local
 secrets.json
 dist/
+dist-clean-root/
+dist-clean-nested/
 dist-pages/
 dist-nested/
 # ...but keep the paste-able single-file Worker bundle (for dashboard deploy)
