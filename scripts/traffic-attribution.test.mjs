@@ -221,7 +221,7 @@ test('storage failures, missing GA and duplicate script loading do not break nav
 test('local diagnostics disable production collection but expose real event parameters', () => {
   const b = browser({ href: 'http://localhost:8765/?traffic_debug=1&utm_source=deepseek' });
   b.ready(); b.consult();
-  assert.equal(b.window['ga-disable-G-56CSPCF34B'], true);
+  assert.equal(b.window['ga-disable-G-SSLD98NGK9'], true);
   assert.equal(b.events.filter(item => item[0] === 'console').length, 3);
   assert.ok(b.events.find(item => item[0] === 'console' && item[1].includes('consult_click')));
 });
@@ -255,10 +255,17 @@ test('both entrypoints capture before GA config and deployment includes the asse
   for (const name of ['index.html', 'email.html']) {
     const html = fs.readFileSync(name, 'utf8');
     assert.ok(html.includes('window.RCTraffic.config()'));
+    assert.ok(html.includes('gtag/js?id=G-SSLD98NGK9'));
+    assert.ok(html.includes("gtag('config', 'G-SSLD98NGK9'"));
     assert.ok(html.indexOf('src="/analytics/traffic.js"') < html.indexOf("gtag('config'"));
   }
   const html = fs.readFileSync('index.html', 'utf8');
   assert.ok(Buffer.byteLength(html.slice(0, html.indexOf('<meta charset'))) < 1024);
   assert.ok(html.indexOf('src="/analytics/traffic.js"') < html.indexOf('location.replace'));
   assert.ok(fs.readFileSync('.github/workflows/deploy.yml', 'utf8').includes('cp -r analytics dist/'));
+  const b = browser();
+  b.ready(); b.consult();
+  for (const event of b.events.filter(item => item[0] === 'event')) {
+    assert.equal(event[2].send_to, 'G-SSLD98NGK9', event[1] + ' must reach the configured property');
+  }
 });

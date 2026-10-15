@@ -85,7 +85,7 @@ node --test scripts/traffic-attribution.test.mjs
 
 ## 流量来源与 LLM 归因
 
-`analytics/traffic.js` 在首页跳转和 GA4 初始化之前采集来源，主页、预渲染详情页和邮件页共用。沿用现有 GA4 数据流 `G-56CSPCF34B`，不需要新增后端；正式入库仍取决于 Google Analytics 请求是否成功、浏览器拦截及现有同意设置。脚本缺失时网站和原有 GA4 初始化仍可工作。
+`analytics/traffic.js` 在首页跳转和 GA4 初始化之前采集来源，主页、预渲染详情页和邮件页共用。使用公司管理的 GA4 数据流 `G-SSLD98NGK9`，不需要新增后端；正式入库仍取决于 Google Analytics 请求是否成功、浏览器拦截及现有同意设置。脚本缺失时网站和原有 GA4 初始化仍可工作。
 
 识别 DeepSeek、ChatGPT、Claude、Gemini、Perplexity、Copilot、Kimi、豆包、通义/Qwen、腾讯元宝、Grok、文小言和秘塔；普通外站、搜索、邮件、付费推广和来源不明的访问单独分类。域名按完整主机名/子域名匹配，`deepseek.com.evil.com` 不会被认成 DeepSeek；Google/Bing 普通搜索及 x.com 不会被笼统算成 AI。
 
@@ -105,7 +105,7 @@ node --test scripts/traffic-attribution.test.mjs
 
 ### GA4 后台配置（上线前完成）
 
-用有编辑权限的账号进入 [Google Analytics](https://analytics.google.com/)，确认网站数据流的衡量 ID 为 `G-56CSPCF34B`。管理 → 数据展示 → 自定义定义 → 创建自定义维度，以下参数均选择“事件”作用域：
+用有编辑权限的账号进入 [Google Analytics](https://analytics.google.com/)，确认网站数据流的衡量 ID 为 `G-SSLD98NGK9`。管理 → 数据展示 → 自定义定义 → 创建自定义维度，以下参数均选择“事件”作用域：
 
 | 展示名称 | 事件参数 | 用途 |
 |---|---|---|

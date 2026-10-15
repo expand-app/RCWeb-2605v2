@@ -10,7 +10,7 @@
   var localPreview = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(w.location.hostname);
   var diagnostics = localPreview && new URLSearchParams(w.location.search).get('traffic_debug') === '1';
   // Local preview must not contaminate the production property's reports.
-  if (localPreview) w['ga-disable-G-56CSPCF34B'] = true;
+  if (localPreview) w['ga-disable-G-SSLD98NGK9'] = true;
   var PROVIDERS = [
     ['deepseek', ['deepseek.com'], ['deepseek']],
     ['chatgpt', ['chatgpt.com', 'chat.openai.com'], ['chatgpt', 'openai']],
@@ -161,7 +161,7 @@
   function emit(name, extra) {
     if (typeof w.gtag !== 'function') return;
     var params = Object.assign(context(), {
-      send_to: 'G-56CSPCF34B',
+      send_to: 'G-SSLD98NGK9',
       page_location: pageURL(),
       page_title: d.title
     }, extra);
