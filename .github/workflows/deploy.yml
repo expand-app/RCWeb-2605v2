@@ -41,6 +41,9 @@ jobs:
       - name: Guard the approved site baseline
         run: python3 scripts/check_site_baseline.py
 
+      - name: Verify traffic attribution
+        run: node --test scripts/traffic-attribution.test.mjs
+
       - name: Install image optimizer
         run: |
           python3 -m venv /tmp/rexpand-image-venv
@@ -51,6 +54,7 @@ jobs:
           mkdir -p dist
           cp index.html dist/
           cp email.html dist/
+          cp -r analytics dist/
           cp robots.txt dist/
           cp sitemap.xml dist/
           # Webmaster ownership files (Bing, Baidu, etc.) — served at root.
