@@ -1,6 +1,6 @@
 # RCWeb-2605 · Rexpand 睿思班
 
-Single-page marketing site for **Rexpand** (睿思班) — AI-driven career placement for international students in North America.
+Single-page marketing site for **Rexpand** (睿思班) — AI-driven career placement for international students.
 
 Live at: **https://rexpandcareer.com**
 
@@ -68,6 +68,17 @@ python serve.py
 ```
 
 Or any static server (`python -m http.server 8765`, `npx serve`, etc.).
+
+本地修改后验证（不会发布）：
+
+```bash
+python3 scripts/check_site_baseline.py
+node .claude/skills/deploy-aliyun/scripts/check-inline-js.mjs index.html
+node scripts/og-pages.mjs
+node scripts/check-seo.mjs
+```
+
+部署用站点地图由 `og-pages.mjs` 生成至 `dist/sitemap.xml`；不要只编辑根目录的旧静态站点地图。文章正文与 URL 来自现有数据，品牌文案修改不应批量改写文章。
 
 ---
 

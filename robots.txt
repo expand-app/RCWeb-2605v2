@@ -28,7 +28,12 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# AI crawlers (let them index our content for AI search results)
+# AI search discovery (training crawler preferences below remain unchanged)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
+# Existing crawler permissions
 User-agent: GPTBot
 Allow: /
 

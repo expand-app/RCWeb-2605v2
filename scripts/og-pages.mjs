@@ -15,9 +15,8 @@
  * Also writes:
  *   dist/sitemap.xml        — auto-generated, includes every route + article
  *                             + replay, with proper lastmod
- *   dist/llms.txt           — GEO standard (https://llmstxt.org/) so AI
- *                             crawlers (GPTBot/ClaudeBot/PerplexityBot) get
- *                             a curated entry-point summary
+ *   dist/llms.txt           — supplementary human-readable service directory;
+ *                             not a requirement for indexing or AI citations
  */
 import fs from 'fs';
 import path from 'path';
@@ -74,7 +73,7 @@ const IMG_TABLE = (() => {
 })();
 
 function resolveArticleImage(a){
-  if(a?.image?.url) return { url: a.image.url, alt: a.image.alt || '' };
+  if(a?.image?.url) return { url: new URL(a.image.url, ORIGIN).href, alt: a.image.alt || '' };
   if(a?.image?.type && IMG_TABLE[a.image.type]?.url){
     return { url: IMG_TABLE[a.image.type].url, alt: a.image.alt || '' };
   }
@@ -106,11 +105,11 @@ function isoDuration(s){
 function applyHead(src, { title, desc, url, og, ogw, ogh, jsonLd }){
   let out = src;
   const canonical = url;
-  out = out.replace(/(<title id="meta-title">)[^<]*(<\/title>)/, `$1${esc(title)}$2`);
+  out = out.replace(/(<title id="meta-title">)[^<]*(<\/title>)/, (_, a, b) => a + esc(title) + b);
   const setAttr = (id, attr, val) => {
     if(val == null) return;
     const re = new RegExp(`(<[^>]*id="${id}"[^>]*${attr}=")[^"]*(")`);
-    out = out.replace(re, `$1${esc(val)}$2`);
+    out = out.replace(re, (_, a, b) => a + esc(val) + b);
   };
   setAttr('meta-description', 'content', desc);
   setAttr('meta-canonical', 'href', canonical);
@@ -130,9 +129,45 @@ function applyHead(src, { title, desc, url, og, ogw, ogh, jsonLd }){
   if(jsonLd){
     const arr = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
     const block = arr
-      .map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`)
+      .map((o) => `<script type="application/ld+json" data-route-schema>${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`)
       .join('\n') + '\n';
     out = out.replace('</head>', block + '</head>');
+  }
+  return out;
+}
+
+// Render existing content for every visitor, including clients without JS.
+// Empty-slot replacement keeps the interactive SPA's elements and handlers.
+function fillSlot(src, id, content){
+  const re = new RegExp(`(<([a-z0-9]+)[^>]*id="${id}"[^>]*>)\\s*(</\\2>)`);
+  if(!re.test(src)) throw new Error('Missing empty render slot: ' + id);
+  return src.replace(re, (_, open, tag, close) => open + content + close);
+}
+function activatePage(src, id){
+  return src.replace(/<main class="page(?: active)?" id="([^"]+)">/g,
+    (_, pageId) => `<main class="page${pageId === id ? ' active' : ''}" id="${pageId}">`);
+}
+function renderBody(src, pg){
+  if(pg._article){
+    const a = pg._article;
+    let out = activatePage(src, 'page-article');
+    out = fillSlot(out, 'artTitle', a.title || esc(a.slug));
+    out = fillSlot(out, 'artDek', esc(a.dek || ''));
+    out = fillSlot(out, 'artEyebrow', `<span>${esc(a.category || '')}</span><span class="sep"></span><time datetime="${isoDate(a.date)}">${esc(a.date || '')}</time>`);
+    out = fillSlot(out, 'artBody', a.body || '');
+    out = fillSlot(out, 'artSources', (a.sources || []).map(s => `<li><div><a href="${esc(s.url)}" rel="noopener noreferrer">${esc(s.title)}</a><span class="src-host">${esc(s.host || '')}</span></div></li>`).join(''));
+    if(a.tldr?.length) out = fillSlot(out, 'artTldrSlot', `<div class="art-tldr"><div class="tldr-lbl">— 核心要点 / Key Takeaways</div><ul>${a.tldr.map(t => `<li>${t}</li>`).join('')}</ul></div>`);
+    if(a.faq?.length) out = fillSlot(out, 'artFaqSlot', `<section class="art-faq"><div class="faq-lbl">— 常见问题 / Frequently Asked</div><dl>${a.faq.map(f => `<dt>${f.q}</dt><dd>${f.a}</dd>`).join('')}</dl></section>`);
+    return out.replace('<meta property="og:type" content="website">', '<meta property="og:type" content="article">');
+  }
+  const ids = {'/':'home','/offer':'offer','/cases':'cases','/about':'about','/resources':'resources','/legal/privacy':'legal','/legal/user-terms':'legal','/legal/mentor-terms':'legal'};
+  let out = ids[pg.path] ? activatePage(src, 'page-' + ids[pg.path]) : src;
+  if(pg.path.startsWith('/legal/')){
+    const key = pg.path.split('/').pop();
+    out = out.replace(/<article class="legal-doc(?: active)?" data-legal="([^"]+)">/g, (_, name) => `<article class="legal-doc${name === key ? ' active' : ''}" data-legal="${name}">`);
+  }
+  if(pg.path === '/resources'){
+    out = fillSlot(out, 'articleGrid', articles.map(a => `<article class="article-card" data-article-slug="${esc(a.slug)}"><div class="ac-body"><div class="ac-meta">${esc(a.date)}</div><h3><a href="/a-${esc(a.slug)}">${a.title}</a></h3><p class="ac-dek">${esc(a.dek)}</p></div></article>`).join(''));
   }
   return out;
 }
@@ -222,7 +257,8 @@ for(const a of articles){
     og: img.url,
     ogw: 1200, ogh: 630,
     jsonLd: [jsonLd, breadcrumbLd],
-    _lastmod: dateISO
+    _lastmod: dateISO,
+    _article: a
   });
 }
 
@@ -281,10 +317,10 @@ let count = 0;
 const nested = [];
 for(const pg of pages){
   const key = pg.path.replace(/^\//, '');
-  const rendered = applyHead(html, {
+  const rendered = renderBody(applyHead(html, {
     title: pg.title, desc: pg.desc, url: ORIGIN + pg.path,
     og: pg.og, ogw: pg.ogw, ogh: pg.ogh, jsonLd: pg.jsonLd,
-  });
+  }), pg);
   const outPath = path.join(ROOT, 'dist', key + '.html');
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, rendered);
@@ -296,24 +332,27 @@ for(const pg of pages){
   }
   count++;
 }
+// The homepage uses the same authoritative route metadata as SPA navigation.
+fs.writeFileSync(path.join(ROOT, 'dist', 'index.html'), renderBody(applyHead(html, {
+  ...routeMeta.home, url: ORIGIN + '/',
+}), {path:'/'}));
 if(nested.length){
   fs.writeFileSync(path.join(ROOT, 'dist-nested', 'manifest.txt'), nested.join('\n') + '\n');
 }
 
 // ---------- Auto-regenerate sitemap.xml ----------
 // Includes every page above + the homepage. Each entry has proper <lastmod>
-// (today for fixed routes, article/replay date for content). Replaces any
+// (only known article/replay dates; omit unknown marketing-page dates). Replaces any
 // static sitemap.xml that was copied into dist/ earlier in the deploy.
 //
 // `priority` is mostly cosmetic these days (Google ignores it) but useful
 // for Baidu/Yandex which still consult it.
-const today = new Date().toISOString().slice(0, 10);
 const sitemapUrls = [];
-sitemapUrls.push({ loc: ORIGIN + '/', lastmod: today, changefreq: 'weekly', priority: '1.0' });
+sitemapUrls.push({ loc: ORIGIN + '/', changefreq: 'weekly', priority: '1.0' });
 for(const pg of pages){
   sitemapUrls.push({
     loc: ORIGIN + pg.path,
-    lastmod: pg._lastmod || today,
+    lastmod: pg._lastmod || null,
     changefreq: pg._lastmod ? 'monthly' : 'weekly',
     priority: pg.path.startsWith('/a-') || pg.path.startsWith('/r-') ? '0.7' : '0.9',
   });
@@ -322,23 +361,22 @@ const sitemapXml =
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
   sitemapUrls.map((u) =>
-    `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`
+    `  <url>\n    <loc>${esc(u.loc)}</loc>${u.lastmod ? `\n    <lastmod>${u.lastmod}</lastmod>` : ''}\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`
   ).join('\n') + '\n</urlset>\n';
 fs.writeFileSync(path.join(ROOT, 'dist', 'sitemap.xml'), sitemapXml);
 
 // ---------- llms.txt for GEO (Generative Engine Optimization) ----------
-// https://llmstxt.org/ — emerging standard for AI crawlers. Gives a curated
-// entry-point summary that's easier for LLMs to index than scraping the SPA.
+// Supplementary directory only. Keep claims aligned with visible service copy.
 const llmsTxt = `# Rexpand · 睿思班
 
-> AI-driven career placement for international students in North America. Multi-Agent automation + a 1,000+ mentor network for software engineering, AI product management, data analytics, data science, quantitative finance, and investment banking placements. Money-back guarantee.
+> Rexpand 睿思班是一家 AI 驱动的留学生服务公司，提供岗位筛选、代投、内推、背景提升与面试辅导。我们不只教你做，每一步都帮你做。
 
 ## Core Services
 
-- [保 offer 项目 / Money-back Offer Guarantee Program](${ORIGIN}/offer): The flagship program — pay only when an offer lands.
-- [案例 / Verified Case Archive](${ORIGIN}/cases): 63 archived student success cases with verified offer letters.
-- [面试回放 / Mock Interview Replays](${ORIGIN}/resources): Full-length real-interview recordings with Pueblo-style scoring and timestamped questions.
-- [求职情报 / Career Intel](${ORIGIN}/resources): 50+ articles on H1B, layoffs, FAANG/MBB/IB recruiting timelines, and salary data.
+- [SAR 核心求职服务](${ORIGIN}/offer): 智能筛选岗位、岗位投递与 Hiring Team 内推触达，配合背景提升及 1v1 面试辅导。服务配置见页面套餐对比。
+- [成功案例 / Student Cases](${ORIGIN}/cases): 学员经历与求职案例档案。
+- [面试回放 / Mock Interview Replays](${ORIGIN}/resources): 面试练习回放、问题与反馈。
+- [求职情报 / Career Intel](${ORIGIN}/resources): 行业动态、岗位与面试准备文章。历史文章中的市场与签证信息应结合发布日期阅读。
 - [关于我们 / About](${ORIGIN}/about): Team, mentors, and mission.
 
 ## Background Boost Tracks
