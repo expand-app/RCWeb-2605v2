@@ -8,9 +8,8 @@
  * 57+6 user-content pages). We extract them so this never drifts.
  *
  * Reads ./index.html + data/*.json, writes ./dist/<path>.html for each route
- * (served at the clean URL via CDN host_redirect rewrite /<path> -> /<path>.html
- * for single-segment, or as extensionless OSS objects via dist-nested/ for
- * multi-segment paths like /article/<slug> and /replay/<slug>).
+ * and clean-URL hardlinks for extensionless OSS objects. This
+ * lets ESA serve clean URLs directly without DCDN's regex host_redirect.
  *
  * Also writes:
  *   dist/sitemap.xml        — auto-generated, includes every route + article
@@ -314,7 +313,19 @@ for(const r of replays){
 // ---------- Write each page ----------
 
 let count = 0;
-const nested = [];
+const cleanUrls = [];
+const cleanRootDir = path.join(ROOT, 'dist-clean-root');
+const cleanNestedDir = path.join(ROOT, 'dist-clean-nested');
+fs.rmSync(cleanRootDir, { recursive: true, force: true });
+fs.rmSync(cleanNestedDir, { recursive: true, force: true });
+function addCleanUrl(source, key){
+  // A key such as "background" is a file in OSS and a parent directory for
+  // "background/quant" locally, so stage root and nested keys separately.
+  const target = path.join(key.includes('/') ? cleanNestedDir : cleanRootDir, key);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.linkSync(source, target);
+  cleanUrls.push(key);
+}
 for(const pg of pages){
   const key = pg.path.replace(/^\//, '');
   const rendered = renderBody(applyHead(html, {
@@ -324,21 +335,18 @@ for(const pg of pages){
   const outPath = path.join(ROOT, 'dist', key + '.html');
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, rendered);
-  if(key.includes('/')){
-    const flat = key.replace(/\//g, '__');
-    fs.mkdirSync(path.join(ROOT, 'dist-nested'), { recursive: true });
-    fs.writeFileSync(path.join(ROOT, 'dist-nested', flat), rendered);
-    nested.push(`${flat}\t${key}`);
-  }
+  addCleanUrl(outPath, key);
+  // Keep shared legacy deep links fresh while the SPA normalizes their URL.
+  if(key.startsWith('bg-')) addCleanUrl(outPath, `background/${key.slice(3)}`);
+  if(key.startsWith('a-')) addCleanUrl(outPath, `article/${key.slice(2)}`);
+  if(key.startsWith('r-')) addCleanUrl(outPath, `replay/${key.slice(2)}`);
+  if(key === 'legal/user-terms') addCleanUrl(outPath, 'legal/terms');
   count++;
 }
 // The homepage uses the same authoritative route metadata as SPA navigation.
 fs.writeFileSync(path.join(ROOT, 'dist', 'index.html'), renderBody(applyHead(html, {
   ...routeMeta.home, url: ORIGIN + '/',
 }), {path:'/'}));
-if(nested.length){
-  fs.writeFileSync(path.join(ROOT, 'dist-nested', 'manifest.txt'), nested.join('\n') + '\n');
-}
 
 // ---------- Auto-regenerate sitemap.xml ----------
 // Includes every page above + the homepage. Each entry has proper <lastmod>
@@ -406,6 +414,6 @@ fs.writeFileSync(path.join(ROOT, 'dist', 'llms.txt'), llmsTxt);
 // ---------- Build marker ----------
 fs.writeFileSync(
   path.join(ROOT, 'dist', 'og-build-marker.txt'),
-  `og-pages built ${count} .html pages (+${nested.length} extensionless), ${sitemapUrls.length} sitemap urls, llms.txt at ${new Date().toISOString()}\n`
+  `og-pages built ${count} .html pages (+${cleanUrls.length} clean URLs), ${sitemapUrls.length} sitemap urls, llms.txt at ${new Date().toISOString()}\n`
 );
-console.log(`og-pages: generated ${count} per-route .html files (+${nested.length} extensionless), sitemap.xml (${sitemapUrls.length} urls), llms.txt`);
+console.log(`og-pages: generated ${count} per-route .html files (+${cleanUrls.length} clean URLs), sitemap.xml (${sitemapUrls.length} urls), llms.txt`);
