@@ -7173,6 +7173,14 @@ footer{
   #page-offer .detail-caption{font-family:var(--mono);font-size:10px;letter-spacing:.11em;color:var(--green-dark);}
   #page-offer .detail-hero-num{font-family:var(--serif-en);font-size:72px;line-height:1;color:var(--green-dark);}
   #page-offer .detail-hero-num span{font-size:.5em;}
+  #page-offer .mentor-preview{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:4px 0;}
+  #page-offer .mentor-preview a{display:flex;flex-direction:column;align-items:center;gap:8px;color:#e4eae5;font-size:11px;text-decoration:none;min-width:0;}
+  #page-offer .mentor-preview img{width:58px;max-width:100%;aspect-ratio:1;border-radius:50%;object-fit:cover;border:2px solid rgba(102,209,127,.35);transition:transform .2s,border-color .2s;}
+  #page-offer .mentor-preview a:hover img{transform:translateY(-3px);border-color:#66d17f;}
+  #page-offer .mentor-preview a:focus-visible,#page-offer .mentor-preview-more:focus-visible{outline:2px solid #66d17f;outline-offset:5px;border-radius:4px;}
+  #page-offer .mentor-preview-more{color:#8cea9e;font-size:12px;align-self:flex-start;text-decoration:none;border-bottom:1px solid rgba(102,209,127,.4);padding-bottom:4px;}
+  #mentors{scroll-margin-top:30px;}
+  @media(max-width:400px){#page-offer .mentor-preview{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}}
   #page-offer .interview .detail-visual{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.16);}
   #page-offer .interview .detail-query span,#page-offer .interview .detail-flow span,#page-offer .interview .detail-tags span{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.17);color:#fff;}
   #page-offer .interview .detail-flow strong{background:rgba(102,209,127,.14);border-color:rgba(102,209,127,.45);color:#8cea9e;}
@@ -14388,7 +14396,7 @@ footer{
       <div class="method-row">
         <div class="method-num">— 01 · MENTORS</div>
         <div class="method-info"><h3>1on1 名企导师辅导<span class="en">Expert Coaching</span></h3><p>从 1,000+ 位在职导师中匹配目标领域的导师，包括 Hiring Manager、资深从业者与现役面试官。围绕 Technical、BQ、Case 和简历深挖练习。</p></div>
-        <div class="detail-visual"><div class="detail-hero-num">1,000<span>+</span></div><div class="detail-caption">在职名企导师 · 定向匹配</div><div class="detail-tags"><span>Hiring Manager</span><span>资深从业者</span><span>现役面试官</span></div></div>
+        <div class="detail-visual mentor-network-preview"><div class="detail-hero-num">1,000<span>+</span></div><div class="detail-caption">在职名企导师 · 定向匹配</div><div class="mentor-preview" aria-label="部分在职导师"></div><div class="detail-tags"><span>Hiring Manager</span><span>资深从业者</span><span>现役面试官</span></div><a class="mentor-preview-more" href="/about#mentors" data-route="about" data-section="mentors">认识我们的导师 <span aria-hidden="true">↗</span></a></div>
       </div>
       <div class="method-row">
         <div class="method-num">— 02 · VIP TEAM</div>
@@ -23170,7 +23178,7 @@ footer{
     </div>
   </section>
 
-  <section class="section" id="mentors" style="padding-top: 0;">
+  <section class="section" id="mentors" tabindex="-1" style="padding-top: 0;">
     <div class="sec-header" style="grid-template-columns:1fr;">
       <div>
         <div class="sec-num">02 / Mentors</div>
@@ -24042,6 +24050,7 @@ function applyContentMeta({path, title, desc, image, type = 'website'}){
 
 function go(routeName, opts){
   opts = opts || {};
+  const section = routeName === 'about' && (opts.section === 'mentors' || ((opts.fromPop || opts.skipPush) && location.hash === '#mentors')) ? 'mentors' : null;
   const target = routes[routeName] || 'page-home';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const el = document.getElementById(target);
@@ -24081,6 +24090,7 @@ function go(routeName, opts){
     if(location.hash && (location.hash.startsWith('#/replay/') || location.hash.startsWith('#/article/'))){
       targetPath += location.hash;
     }
+    if(section) targetPath += '#' + section;
     if(location.pathname + location.search + location.hash !== targetPath){
       try { history.pushState({route: routeName}, '', targetPath); } catch(_){}
     }
@@ -24100,6 +24110,11 @@ function go(routeName, opts){
 
   // trigger reveal animations
   setTimeout(triggerReveal, 50);
+  if(section) requestAnimationFrame(() => {
+    const destination = document.getElementById(section);
+    destination?.scrollIntoView({behavior:'instant', block:'start'});
+    destination?.focus({preventScroll:true});
+  });
 }
 
 /* Robust body scroll-lock for modals. body{overflow:hidden} does NOT lock
@@ -24139,7 +24154,7 @@ document.addEventListener('click', (e) => {
   if(location.hash.startsWith('#/replay/') || location.hash.startsWith('#/article/')){
     history.replaceState(null, '', location.pathname + location.search);
   }
-  go(link.dataset.route);
+  go(link.dataset.route, {section:link.dataset.section});
 });
 
 /* Mobile hamburger toggle */
@@ -37322,6 +37337,28 @@ function triggerReveal(){
   const r = pathToRoute(location.pathname);
   const bgDir = (r === 'background') ? (pathToBgDir(location.pathname) || BG_DEFAULT_DIR) : null;
   go(r, {skipPush: true, bgDir: bgDir});
+})();
+
+/* Reuse the about-page mentor identity and image as the single source. */
+(function(){
+  const preview = document.querySelector('.mentor-preview');
+  if(!preview) return;
+  const names = ['Jimmy','Vincent','Jiexuan','Leo','Amber','Cathy'];
+  const portraits = Array.from(document.querySelectorAll('#mentors .mentor-card .avatar img'));
+  names.forEach(name => {
+    const original = portraits.find(img => img.alt === name);
+    if(!original) return;
+    const link = document.createElement('a');
+    link.href = '/about#mentors';
+    link.dataset.route = 'about';
+    link.dataset.section = 'mentors';
+    link.setAttribute('aria-label', name + ' 导师：查看关于我们的导师阵容');
+    const img = original.cloneNode(false);
+    img.loading = 'lazy'; img.decoding = 'async';
+    img.width = 58; img.height = 58;
+    const label = document.createElement('span'); label.textContent = name;
+    link.append(img, label); preview.append(link);
+  });
 })();
 
 /* Home "真实学员 → 真实 offer" auto-scroll marquee. The cases page is the
