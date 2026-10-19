@@ -1281,11 +1281,14 @@ h1.page-title .accent{
 .home-mentors{ border-top: 1px solid var(--line); }
 .home-mentors-grid{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
   margin-top: 8px;
 }
 .hm-card{
+  color: inherit;
+  text-decoration: none;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1302,6 +1305,7 @@ h1.page-title .accent{
   box-shadow: 0 8px 20px rgba(10,14,11,0.06);
   border-color: rgba(31,169,64,0.30);
 }
+.hm-card:focus-visible{outline:3px solid var(--green-dark);outline-offset:4px;}
 .hm-avatar{
   width: 64px; height: 64px;
   border-radius: 50%;
@@ -6296,40 +6300,60 @@ footer{
         <div class="sec-num">03 / Mentors</div>
         <h2 class="sec-title">1,000+ 名企导师，<br><em>来自顶级公司.</em></h2>
       </div>
-      <p class="sec-desc">所有导师均为现役在职 Hiring Manager · 最少 5 年工作经验。<a class="hl-link" href="/about" data-route="about">查看完整导师库 →</a></p>
+      <p class="sec-desc">所有导师均为现役在职 Hiring Manager · 最少 5 年工作经验。<a class="hl-link" href="/about#mentors" data-route="about" data-section="mentors">查看完整导师库 →</a></p>
     </div>
 
     <div class="home-mentors-grid">
-      <div class="hm-card">
-        <div class="hm-avatar"><img src="/media/avatars/avatar_l.7f33e695.png" alt="Lance" loading="lazy" decoding="async"></div>
+      <a class="hm-card" href="/about#mentor-lance" data-route="about" data-section="mentor-lance" data-mentor-name="Lance" aria-label="查看 Lance 导师的个人介绍">
+        <div class="hm-avatar"><img src="https://rexpandcareer.com/avatars/2026-06-01-9c7af014-2026-4379-bd80-c1603b075a4d.png" alt="Lance" loading="lazy" decoding="async"></div>
         <div class="hm-name">Lance<span class="hm-role">/ VP</span></div>
-        <div class="hm-company">知名银行 · VP</div>
-      </div>
-      <div class="hm-card">
+        <div class="hm-company">Zions Bank<br>Senior Manager · VP</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-jimmy" data-route="about" data-section="mentor-jimmy" data-mentor-name="Jimmy" aria-label="查看 Jimmy 导师的个人介绍">
         <div class="hm-avatar"><img src="/media/avatars/avatar_jimmy.e7cb9d7d.png" alt="Jimmy" loading="lazy" decoding="async"></div>
         <div class="hm-name">Jimmy<span class="hm-role">/ Sr. SDE</span></div>
-        <div class="hm-company">AWS · Sr. SDE</div>
-      </div>
-      <div class="hm-card">
-        <div class="hm-avatar"><img src="/media/avatars/avatar_max.aebfaebb.png" alt="Max" loading="lazy" decoding="async"></div>
-        <div class="hm-name">Max<span class="hm-role">/ FLAG</span></div>
-        <div class="hm-company">FLAG · CS</div>
-      </div>
-      <div class="hm-card">
+        <div class="hm-company">AWS<br>资深软件工程师</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-jiexuan" data-route="about" data-section="mentor-jiexuan" data-mentor-name="Jiexuan" aria-label="查看 Jiexuan 导师的个人介绍">
+        <div class="hm-avatar"><img src="/media/avatars/avatar_jiexuan.356c5402.png" alt="Jiexuan" loading="lazy" decoding="async"></div>
+        <div class="hm-name">Jiexuan<span class="hm-role">/ Sr. Analyst</span></div>
+        <div class="hm-company">Barclays · PwC<br>资深金融分析师</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-vincent" data-route="about" data-section="mentor-vincent" data-mentor-name="Vincent" aria-label="查看 Vincent 导师的个人介绍">
         <div class="hm-avatar"><img src="/media/avatars/avatar_yang.3ec880a6.png" alt="Vincent" loading="lazy" decoding="async"></div>
         <div class="hm-name">Vincent<span class="hm-role">/ VP</span></div>
-        <div class="hm-company">Morgan Stanley · Quant VP</div>
-      </div>
-      <div class="hm-card">
+        <div class="hm-company">Morgan Stanley<br>信贷量化研究 VP</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-amber" data-route="about" data-section="mentor-amber" data-mentor-name="Amber" aria-label="查看 Amber 导师的个人介绍">
+        <div class="hm-avatar"><img src="/media/avatars/avatar_amber.62b56fc7.png" alt="Amber" loading="lazy" decoding="async"></div>
+        <div class="hm-name">Amber<span class="hm-role">/ Lead</span></div>
+        <div class="hm-company">Barclays<br>Risk Strategy Lead</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-teddy" data-route="about" data-section="mentor-teddy" data-mentor-name="Teddy" aria-label="查看 Teddy 导师的个人介绍">
         <div class="hm-avatar"><img src="/media/avatars/avatar_teddy.693ed0f7.png" alt="Teddy" loading="lazy" decoding="async"></div>
         <div class="hm-name">Teddy<span class="hm-role">/ VP</span></div>
-        <div class="hm-company">JPMorgan · Quant Lead</div>
-      </div>
-      <div class="hm-card">
+        <div class="hm-company">JPMorgan<br>Quant Modeling Lead</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-cathy" data-route="about" data-section="mentor-cathy" data-mentor-name="Cathy" aria-label="查看 Cathy 导师的个人介绍">
+        <div class="hm-avatar"><img src="/media/avatars/avatar_cathy.2ba5b4a0.png" alt="Cathy" loading="lazy" decoding="async"></div>
+        <div class="hm-name">Cathy<span class="hm-role">/ Sr. Officer</span></div>
+        <div class="hm-company">Wells Fargo<br>Sr. Risk Officer · 15y+</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-max" data-route="about" data-section="mentor-max" data-mentor-name="Max" aria-label="查看 Max 导师的个人介绍">
+        <div class="hm-avatar"><img src="/media/avatars/avatar_max.aebfaebb.png" alt="Max" loading="lazy" decoding="async"></div>
+        <div class="hm-name">Max<span class="hm-role">/ FLAG</span></div>
+        <div class="hm-company">FLAG 之一<br>多年 CS 方向辅导</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-claire" data-route="about" data-section="mentor-claire" data-mentor-name="Claire" aria-label="查看 Claire 导师的个人介绍">
+        <div class="hm-avatar"><img src="/media/avatars/avatar_claire.2ef82482.png" alt="Claire" loading="lazy" decoding="async"></div>
+        <div class="hm-name">Claire<span class="hm-role">/ Sr. VP</span></div>
+        <div class="hm-company">Morgan Stanley<br>Senior VP · 投行后台</div>
+      </a>
+      <a class="hm-card" href="/about#mentor-leo" data-route="about" data-section="mentor-leo" data-mentor-name="Leo" aria-label="查看 Leo 导师的个人介绍">
         <div class="hm-avatar"><img src="/media/avatars/avatar_leo.68d2c665.png" alt="Leo" loading="lazy" decoding="async"></div>
-        <div class="hm-name">Leo<span class="hm-role">/ Sr. DA</span></div>
-        <div class="hm-company">Amazon Alexa · Sr. DA</div>
-      </div>
+        <div class="hm-name">Leo<span class="hm-role">/ Senior DA</span></div>
+        <div class="hm-company">Amazon Alexa<br>零售 &amp; 电商方向</div>
+      </a>
     </div>
   </section>
 
@@ -7179,7 +7203,8 @@ footer{
   #page-offer .mentor-preview a:hover img{transform:translateY(-3px);border-color:#66d17f;}
   #page-offer .mentor-preview a:focus-visible,#page-offer .mentor-preview-more:focus-visible{outline:2px solid #66d17f;outline-offset:5px;border-radius:4px;}
   #page-offer .mentor-preview-more{color:#8cea9e;font-size:12px;align-self:flex-start;text-decoration:none;border-bottom:1px solid rgba(102,209,127,.4);padding-bottom:4px;}
-  #mentors{scroll-margin-top:30px;}
+  #mentors,#mentors .mentor-card{scroll-margin-top:30px;}
+  #mentors .mentor-card:target,#mentors .mentor-card:focus{outline:2px solid var(--green-dark);outline-offset:4px;background:#f6faf4;}
   @media(max-width:400px){#page-offer .mentor-preview{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}}
   #page-offer .interview .detail-visual{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.16);}
   #page-offer .interview .detail-query span,#page-offer .interview .detail-flow span,#page-offer .interview .detail-tags span{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.17);color:#fff;}
@@ -24050,7 +24075,9 @@ function applyContentMeta({path, title, desc, image, type = 'website'}){
 
 function go(routeName, opts){
   opts = opts || {};
-  const section = routeName === 'about' && (opts.section === 'mentors' || ((opts.fromPop || opts.skipPush) && location.hash === '#mentors')) ? 'mentors' : null;
+  const requestedSection = opts.section || ((opts.fromPop || opts.skipPush) ? location.hash.slice(1) : '');
+  const sectionTarget = document.getElementById(requestedSection);
+  const section = routeName === 'about' && /^(mentors|mentor-[a-z0-9-]+)$/.test(requestedSection) && sectionTarget?.closest('#page-about') ? requestedSection : null;
   const target = routes[routeName] || 'page-home';
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const el = document.getElementById(target);
@@ -37362,33 +37389,60 @@ function triggerReveal(){
   });
 })();
 
+/* Share stable mentor anchors and About-page identity across both previews.
+   Derive IDs from names, never card positions; admin HTML sync may replace cards. */
+(function(){
+  const mentors = new Map();
+  document.querySelectorAll('#mentors .mentor-card').forEach(card => {
+    const portrait = card.querySelector('.avatar img');
+    const name = portrait?.alt.trim();
+    if(!name) return;
+    const id = 'mentor-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    if(id === 'mentor-' || document.getElementById(id)) return;
+    card.id = id; card.tabIndex = -1;
+    card.setAttribute('aria-label', name + ' 导师个人介绍');
+    mentors.set(name, {card, portrait, id});
+  });
+  function connect(link, name, mentor){
+    link.href = '/about#' + mentor.id;
+    link.dataset.route = 'about'; link.dataset.section = mentor.id;
+    link.setAttribute('aria-label', '查看 ' + name + ' 导师的个人介绍');
+  }
+  document.querySelectorAll('.home-mentors-grid [data-mentor-name]').forEach(link => {
+    const name = link.dataset.mentorName, mentor = mentors.get(name);
+    if(!mentor){ link.remove(); return; }
+    connect(link, name, mentor);
+    const image = mentor.portrait.cloneNode(false);
+    image.loading = 'lazy'; image.decoding = 'async';
+    link.querySelector('.hm-avatar').replaceChildren(image);
+    link.querySelector('.hm-name').firstChild.textContent = name;
+    link.querySelector('.hm-role').textContent = mentor.card.querySelector('.name .role').textContent;
+    const company = link.querySelector('.hm-company');
+    company.replaceChildren(...Array.from(mentor.card.querySelector('.company').childNodes, node => {
+      const copy = node.cloneNode(true);
+      // Some legacy source text is multiply entity-encoded; keep previews readable.
+      if(copy.nodeType === Node.TEXT_NODE) copy.textContent = copy.textContent.replace(/&(?:amp;)+/g, '&');
+      return copy;
+    }));
+  });
+  const preview = document.querySelector('.mentor-preview');
+  if(!preview) return;
+  ['Jimmy','Vincent','Jiexuan','Leo','Amber','Cathy'].forEach(name => {
+    const mentor = mentors.get(name);
+    if(!mentor) return;
+    const link = document.createElement('a'); connect(link, name, mentor);
+    const img = mentor.portrait.cloneNode(false);
+    img.loading = 'lazy'; img.decoding = 'async'; img.width = 58; img.height = 58;
+    const label = document.createElement('span'); label.textContent = name;
+    link.append(img, label); preview.append(link);
+  });
+})();
+
 /* boot — route from the current URL so deep links / refreshes land on the right page */
 (function(){
   const r = pathToRoute(location.pathname);
   const bgDir = (r === 'background') ? (pathToBgDir(location.pathname) || BG_DEFAULT_DIR) : null;
   go(r, {skipPush: true, bgDir: bgDir});
-})();
-
-/* Reuse the about-page mentor identity and image as the single source. */
-(function(){
-  const preview = document.querySelector('.mentor-preview');
-  if(!preview) return;
-  const names = ['Jimmy','Vincent','Jiexuan','Leo','Amber','Cathy'];
-  const portraits = Array.from(document.querySelectorAll('#mentors .mentor-card .avatar img'));
-  names.forEach(name => {
-    const original = portraits.find(img => img.alt === name);
-    if(!original) return;
-    const link = document.createElement('a');
-    link.href = '/about#mentors';
-    link.dataset.route = 'about';
-    link.dataset.section = 'mentors';
-    link.setAttribute('aria-label', name + ' 导师：查看关于我们的导师阵容');
-    const img = original.cloneNode(false);
-    img.loading = 'lazy'; img.decoding = 'async';
-    img.width = 58; img.height = 58;
-    const label = document.createElement('span'); label.textContent = name;
-    link.append(img, label); preview.append(link);
-  });
 })();
 
 /* Home "真实学员 → 真实 offer" auto-scroll marquee. The cases page is the
