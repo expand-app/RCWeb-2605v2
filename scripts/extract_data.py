@@ -20,6 +20,7 @@ Writes:
     data/articles.json   (55 industry/career articles)
 """
 import re, json, subprocess, sys
+from html import unescape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -142,9 +143,11 @@ def extract_mentors():
             "name": name.group(1).strip(),
             "role_title": name.group(2).strip(),
             "avatar_src": avatar.group(1).strip() if avatar else None,
-            "company": parts[0].strip(),
-            "company_sub": parts[1].strip() if len(parts) > 1 else "",
-            "focus": [t.strip() for t in focus],
+            # JSON stores plain text; the admin renderer escapes it back to HTML.
+            # Decode one HTML layer here so repeated syncs do not add more &amp;.
+            "company": unescape(parts[0].strip()),
+            "company_sub": unescape(parts[1].strip()) if len(parts) > 1 else "",
+            "focus": [unescape(t.strip()) for t in focus],
             "video_url": video,
             "has_video": bool(video),
         })
