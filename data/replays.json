@@ -1,5 +1,106 @@
 [
   {
+    "slug": "openai-product-manager-2026-10-30",
+    "date": "2026.10.30",
+    "duration": "29:20",
+    "company": "OpenAI",
+    "location": "",
+    "role": "Product Manager",
+    "logo": "O",
+    "seoTitle": "Product Manager · OpenAI — Mock Interview Replay",
+    "dek": "A 29:20 OpenAI Product Manager mock interview replay, 3 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-10-30-video-1-.mp4",
+    "score": {
+      "overall": 70,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "70%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          15,
+          20,
+          "最终选出 behavior coach，但 users 与 problems 的关系未直接讲透。"
+        ],
+        [
+          "Specificity & Evidence",
+          19,
+          25,
+          "有宠物场景、市场比例与方案例子，验证指标较少。"
+        ],
+        [
+          "Depth & Reasoning",
+          17,
+          25,
+          "提出分层和比较标准，但安全、MVP取舍未充分展开。"
+        ],
+        [
+          "Role Fit",
+          13,
+          20,
+          "展现机会探索与方案发散，使命、安全和端到端体验偏弱。"
+        ],
+        [
+          "Communication",
+          6,
+          10,
+          "表达有活力，但方案铺陈过多，决策主线不够紧。"
+        ]
+      ]
+    },
+    "summary": "候选人能从宠物用户痛点发散出多种 AI 产品形态，并用 user impact、feasibility、differentiation、engagement 建立比较框架，整体有产品直觉。主要保留意见是方案收敛和决策落地：最终选了 real-time behavior coach，却没有清楚说明首个 MVP、验证指标及安全边界；对 OpenAI mission 的连接也较薄。",
+    "mainIssue": {
+      "title": "从多方案发散转向一个可验证的 MVP 决策",
+      "body": "在宠物产品方案与优先级讨论中，候选人提出 smart collar、vision app、home hub、behavior coach、dietitian 等多个方向，但没有及时收束到一个首发场景和验证计划。\n- 被问到“Tell me more about it”时，候选人连续介绍七种方案，虽有 “Luna’s afternoon aggression” 这样的具体例子，仍很快转向 pet matching 和 conversation simulator。\n- 在 solution prioritization 中，候选人列出四项标准并逐个打分，最后选 real-time behavior coach，但没有补上首个 MVP、成功指标或如何验证建议有效。\n这会让 hiring committee 怀疑候选人能否在早期模糊环境中把创意转成聚焦、可执行的产品决策。\n\n— 如何改进 —\n下次遇到开放式产品题，先明确一个用户场景，再用简短决策链收敛：\n- 选定一个高痛点用户与具体问题，例如“狗主人无法判断反复吠叫的诱因”。\n- 比较最多三个方案，先说明 criteria 权重，再解释为什么某方案适合 MVP。\n- 说清首个体验、验证指标和停止条件，例如四周内行为改善率、建议采纳率及误报率。"
+    },
+    "alsoNoting": [
+      "把用户优先与问题优先的关系说成迭代校准",
+      "把 AI 推断表述为假设，并补上安全验证边界",
+      "使命连接需要落到具体能力与长期价值"
+    ],
+    "questions": [
+      {
+        "t": 242,
+        "q": "Is it better to focus on the problems to solve first rather than on users?",
+        "meta": "他把“宠物沟通”设为未被解决、但有大众市场的机会；先接住这个前提，别急着质疑市场，后续重点应放在用户是谁、核心痛点是什么"
+      },
+      {
+        "t": 625,
+        "q": "Tell me more about it.",
+        "meta": "面试官认可你的分层与优先级，但指出还缺 AGI goal：不只解决眼前用户痛点，也要说明这项产品如何推进使命"
+      },
+      {
+        "t": 797,
+        "q": "How would you prioritize the solution that you'd pursue as a PM in OpenAI?",
+        "meta": "你已经把候选方案推进到比较框架，也主动想到 prototype；面试官明确说“just want to see you "
+      }
+    ]
+  },
+  {
     "slug": "meta-data-scientist-analytics-2026-09-18",
     "date": "2026.09.18",
     "duration": "28:23",
