@@ -6672,6 +6672,42 @@ footer{
     align-items: center;
   }
   #page-offer .bp-item:last-child{ border-bottom: none; }
+  #page-offer .bp-sar-group{
+    margin: 0 0 18px;
+    border: 1px solid #b9dcc2;
+    border-radius: 8px;
+    background: #f6fbf7;
+    overflow: hidden;
+  }
+  #page-offer .bp-sar-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #b9dcc2;
+    background: #e6f4e9;
+  }
+  #page-offer .bp-sar-head strong{
+    font-family: var(--serif-cn);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--green-dark);
+  }
+  #page-offer .bp-sar-head span{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .04em;
+    color: var(--green-dark);
+  }
+  #page-offer .bp-sar-group .bp-item{
+    padding: 14px;
+  }
+  #page-offer .bp-sar-group .bp-num{
+    color: var(--green-dark);
+    font-weight: 600;
+  }
   /* 内部资源内推 —— 唯一非 AI 通道的服务,在地图里做视觉区分:
      浅绿底 + 左侧绿色竖条 + 实心绿徽章(其余项是浅绿底徽章)。 */
   #page-offer .bp-item.featured{
@@ -13987,6 +14023,8 @@ footer{
     #page-offer .bp-foot{ grid-template-columns: 1fr;}
     #page-offer .bp-foot-item:first-child{ border-right: none; border-bottom: 1px solid var(--line);}
     #page-offer .bp-item .bp-metric{ font-size: 9px; padding: 4px 8px;}
+    #page-offer .bp-sar-group .bp-item{ grid-template-columns: 24px minmax(0, 1fr); }
+    #page-offer .bp-sar-group .bp-metric{ grid-column: 2; justify-self: start; }
     #page-offer .packages{ padding: 56px 20px 0;}
     #page-offer .pkg-head{ grid-template-columns: 1fr; gap: 20px;}
     #page-offer .pkg-scroll-hint{
@@ -14109,20 +14147,26 @@ footer{
           </div>
           <h3>拿面试</h3>
 
-          <div class="bp-item">
-            <span class="bp-num">— 01</span>
-            <div class="bp-name">岗位职能搜索服务<small>Job Smart Search Service · 多轮组合职能、地区与背景，筛读 JD</small></div>
-            <span class="bp-metric">SMART SEARCH</span>
-          </div>
-          <div class="bp-item">
-            <span class="bp-num">— 02</span>
-            <div class="bp-name">岗位投递服务<small>Application Service · 服务期内每日投递，新岗位 24 小时内申请</small></div>
-            <span class="bp-metric">≤ 24 HRS</span>
-          </div>
-          <div class="bp-item">
-            <span class="bp-num">— 03</span>
-            <div class="bp-name">Hiring Team 内推服务<small>Hiring Team Referral Service · AI 找到岗位团队，结合导师资源沟通内推</small></div>
-            <span class="bp-metric">24 / 7</span>
+          <div class="bp-sar-group" role="group" aria-label="SAR 核心求职服务：岗位搜索、投递与内推">
+            <div class="bp-sar-head">
+              <strong>SAR 核心求职服务</strong>
+              <span>SMART SEARCH → APPLICATION → REFERRAL</span>
+            </div>
+            <div class="bp-item">
+              <span class="bp-num">S</span>
+              <div class="bp-name">岗位职能搜索服务<small>Job Smart Search Service · 多轮组合职能、地区与背景，筛读 JD</small></div>
+              <span class="bp-metric">SMART SEARCH</span>
+            </div>
+            <div class="bp-item">
+              <span class="bp-num">A</span>
+              <div class="bp-name">岗位投递服务<small>Application Service · 服务期内每日投递，新岗位 24 小时内申请</small></div>
+              <span class="bp-metric">≤ 24 HRS</span>
+            </div>
+            <div class="bp-item">
+              <span class="bp-num">R</span>
+              <div class="bp-name">Hiring Team 内推服务<small>Hiring Team Referral Service · AI 找到岗位团队，结合导师资源沟通内推</small></div>
+              <span class="bp-metric">24 / 7</span>
+            </div>
           </div>
           <div class="bp-item featured">
             <span class="bp-num">— 04</span>
