@@ -1188,5 +1188,22 @@
     "has_narrative": false,
     "name_label": "L 同学",
     "quote": ""
+  },
+  {
+    "id": "10075",
+    "display_id": "19864",
+    "avatar": "W",
+    "school": "GWU",
+    "major": "Economics",
+    "dir": "Data",
+    "dir_key": "data",
+    "company": "deluxe",
+    "role": "Data Scientist",
+    "degree": "博士",
+    "reason": "",
+    "focus": "",
+    "has_narrative": false,
+    "name_label": "W 同学",
+    "quote": ""
   }
 ]
