@@ -1,5 +1,44 @@
 [
   {
+    "slug": "wandover-f493314b9c681f32e121d5e1",
+    "category": "招聘市场",
+    "date": "2026.11.13",
+    "readTime": "6 min read",
+    "title": "黄仁勋辞任，押注英伟达的求职计划要变吗",
+    "dek": "AI龙头换帅，留学生更该盯紧团队方向、岗位进度和自己的等待成本。",
+    "image": {
+      "url": "/og/intel-wandover-f493314b9c681f32e121d5e1.jpg",
+      "alt": "黄仁勋辞任，押注英伟达的求职计划要变吗"
+    },
+    "body": "\n        <p class=\"lede\">黄仁勋是否辞任英伟达 CEO、Colette Kress 是否接任，应以可核验的 NVIDIA 官方公告及监管披露为准，目前不能在此确认这些消息。对北美中国留学生而言，即使管理层交接得到确认，也不等于英伟达招聘冻结或停止支持 H1B；是否继续申请，应看具体岗位、团队预算和 recruiter 的直接反馈。</p>\n<h2>关键要点</h2>\n<ul>\n  <li>关于黄仁勋辞任及临时 CEO 任命的消息，不能在未经核实的情况下作为已发生事实传播。</li>\n  <li>CEO 变更、股价波动与招聘预算属于不同层面的信息，不能相互替代。</li>\n  <li>申请 NVIDIA 的求职者应重点确认岗位是否有效、面试是否继续，以及入职审批是否变化。</li>\n  <li>OPT、STEM OPT 和 H-1B 支持需要按岗位及雇佣实体确认，不能仅凭公司名称判断。</li>\n  <li>已进入面试或拿到 offer 的候选人，应保留书面沟通，同时继续推进其他匹配机会。</li>\n</ul>\n<h2>黄仁勋辞任英伟达 CEO 的消息应该在哪里确认？</h2>\n<p>截至 2026-11-13，本文不将相关人事变动及涉及个人行为、安全问题的指控作为已核实事实。涉及上市公司领导层变更，优先查阅 <a href=\"https://nvidianews.nvidia.com/\" target=\"_blank\" rel=\"noopener\">NVIDIA Newsroom</a>、<a href=\"https://investor.nvidia.com/\" target=\"_blank\" rel=\"noopener\">NVIDIA Investor Relations</a> 和 <a href=\"https://www.sec.gov/edgar/search/\" target=\"_blank\" rel=\"noopener\">SEC EDGAR</a> 中的公司披露。</p>\n<p>这些链接是官方核对入口，并不代表其中已经发布或证实此次交接。确认时，需要区分公告发布日期、生效时间，以及正式任命与临时安排。</p>\n<ul>\n  <li><strong>看原始公告：</strong> 是否明确说明离任职务、接任者和生效日期。</li>\n  <li><strong>看监管披露：</strong> 是否存在对应的人事变更文件，而非只有媒体标题。</li>\n  <li><strong>看报道归因：</strong> “董事会讨论”“考虑继任者”和“已任命”不是同一个结论。</li>\n</ul>\n<p>求职决策不需要等待所有争议都有定论，但应避免把尚未确认的人事消息当作撤回申请的依据。</p>\n<h2>英伟达 CEO 变动会导致招聘冻结吗？</h2>\n<p><strong>管理层变动本身不能证明招聘冻结。</strong> 即使交接属实，是否影响某个 SDE、AI infrastructure 或芯片岗位，仍需确认该团队的 headcount、项目优先级和审批状态。</p>\n<p>对候选人来说，岗位层面的直接反馈比宏观猜测更有用。可以通过 <a href=\"https://www.nvidia.com/en-us/about-nvidia/careers/\" target=\"_blank\" rel=\"noopener\">NVIDIA Careers</a> 查找职位，再向 recruiter 核对实际进度。</p>\n<table style=\"border-collapse:collapse;width:100%;margin:0 0 22px;font-size:15px;line-height:1.6;\"><thead><tr><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">观察到的信号</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">可以据此判断什么</th><th style=\"border:1px solid #e5e5e5;padding:8px 12px;text-align:left;background:#f7f7f5;font-weight:600;\">建议下一步</th></tr></thead><tbody><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">招聘官网仍有职位</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">岗位仍对外展示，不保证预算未变</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">确认是否仍接受申请</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">面试按计划进行</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">当前招聘流程仍在推进</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">询问后续安排及审批节点</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">面试延期或暂停</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">该流程出现变化，原因待确认</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">询问是排期问题还是岗位调整</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">岗位下架</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">职位不再公开展示</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">确认是否招满、撤销或转内部招聘</td></tr><tr><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">offer 等待审批</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">录用尚有未完成环节</td><td style=\"border:1px solid #e5e5e5;padding:8px 12px;vertical-align:top;\">确认剩余条件及预计反馈时间</td></tr></tbody></table>\n<p>不要把单个职位下架解读为全公司停止招聘，也不要把职位仍在线当作一定会发 offer 的承诺。</p>\n<h2>中国留学生现在还应该投递 NVIDIA 吗？</h2>\n<p>如果岗位匹配、申请入口有效，且身份条件允许，<strong>可以继续投递，同时分散目标公司</strong>。不必仅因管理层消息放弃申请，也不宜把求职计划全部押在一家企业上。</p>\n<p>不同阶段的候选人，应采取不同动作：</p>\n<ul>\n  <li><strong>准备投递：</strong> 围绕 job description 调整简历，让项目经历对应岗位所需能力。</li>\n  <li><strong>正在面试：</strong> 确认下一轮是否照常进行，以及职责和汇报关系是否调整。</li>\n  <li><strong>等待 offer：</strong> 询问 headcount 是否已获批准、是否仍需额外审批。</li>\n  <li><strong>已经签约：</strong> 书面确认入职日期、岗位及地点有无变化，保留相关邮件。</li>\n</ul>\n<p>申请 AI 或 SDE 岗位时，准备重点仍应是可解释的技术贡献：你解决了什么问题、如何选择方案，以及怎样验证结果。行业新闻可以帮助理解业务，但不能替代项目深度和面试准备。</p>\n<h2>英伟达管理层变化会影响 OPT 或 H1B 支持吗？</h2>\n<p>不能从 CEO 消息直接推断 OPT、STEM OPT 或 H1B sponsorship 政策发生变化。公司层面的品牌认知，也不能替代某个岗位的实际支持条件。</p>\n<p>移民规则应查阅 <a href=\"https://www.uscis.gov/\" target=\"_blank\" rel=\"noopener\">USCIS</a> 的适用页面；个人身份安排则应与 DSO 或合格移民律师确认。这里的官方链接用于查询规则，不代表 USCIS 对此次公司事件作出过说明。</p>\n<p>向 recruiter 沟通时，可以直接询问：</p>\n<ul>\n  <li>该岗位是否接受我目前的工作授权？</li>\n  <li>对未来需要 H-1B sponsorship 的候选人，团队是否有相应安排？</li>\n  <li>雇佣实体、工作地点或入职日期是否会调整？</li>\n  <li>与身份相关的材料由谁负责对接？</li>\n</ul>\n<p>对已经拿到 offer 的留学生，尤其要区分“招聘团队愿意录用”和“身份相关流程已经完成”，不要把口头表态当作最终结果。</p>\n<h2>常见问题</h2>\n<p><strong>黄仁勋已经确认辞任英伟达 CEO 了吗？</strong></p>\n<p>本文无法确认该消息。应以可核验的 NVIDIA 官方公告及对应监管披露为准，不宜仅凭聚合新闻标题作结论。</p>\n<p><strong>Colette Kress 接任是否意味着英伟达会削减招聘？</strong></p>\n<p>即使接任获得确认，也不能据此推断招聘削减。需要另行观察公司明确披露的招聘政策，以及具体团队的反馈。</p>\n<p><strong>英伟达岗位还在线，是否代表一定有 headcount？</strong></p>\n<p>不一定。公开岗位页面只能说明职位仍在展示，预算和审批状态需要向 recruiter 确认。</p>\n<p><strong>中国留学生应该暂停申请英伟达吗？</strong></p>\n<p>不必仅因未经确认的人事消息暂停申请。继续推进匹配岗位，同时保留其他公司的面试机会，更有利于管理求职不确定性。</p>\n<p><strong>已经拿到 offer，需要重新确认什么？</strong></p>\n<p>优先确认入职日期、岗位是否保留，以及工作授权和 sponsorship 对接是否照常进行；涉及个人身份风险时，及时咨询 DSO 或移民律师。</p>\n<p>如果你正在调整 NVIDIA 或其他北美科技公司的投递策略，可通过企业微信预约 Rexpand 1v1 免费咨询，梳理岗位匹配、简历与面试准备的下一步。</p>\n        <section style=\"margin:48px 0 8px;padding:24px 26px;border:1px solid #d7e8dc;border-radius:12px;background:#f0fdf4;\">\n  <p style=\"font-size:20px;font-weight:700;line-height:1.35;color:#0a0a0a;margin:0 0 8px;\">不确定自己的求职路怎么走?</p>\n  <p style=\"font-size:14px;line-height:1.7;color:#404040;margin:0 0 18px;\">企业微信 1v1 免费咨询 · 30 分钟内回复。点击下方链接或微信扫码,直接添加 Rexpand 求职顾问。</p>\n  <div style=\"display:flex;align-items:center;gap:24px;flex-wrap:wrap;\">\n    <a href=\"https://work.weixin.qq.com/ca/cawcde33679f282bca\" target=\"_blank\" rel=\"noopener\" style=\"display:inline-block;background:#1FA940;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;border-radius:8px;text-decoration:none;\">立即免费咨询 →</a>\n    <img src=\"https://wandover.com/assets/rexpand-consult-qr.png\" alt=\"扫码添加 Rexpand 求职顾问\" style=\"width:128px;height:128px;display:block;border:1px solid #e5e5e5;border-radius:8px;\">\n  </div>\n</section>\n      ",
+    "keywords": [
+      "黄仁勋辞任",
+      "英伟达CEO",
+      "Colette Kress",
+      "NVIDIA招聘",
+      "英伟达留学生求职",
+      "AI岗位招聘",
+      "H1B sponsorship"
+    ],
+    "sources": [
+      {
+        "title": "The New York Times",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPSWxaN0tPUFI1US1TR2ppVnJqdmVuQTJLWmI0LVNDSDc0YkNOdjgxQUQ2elZjQjRQZzlyVlZuTGU4NndKOFJVT3dUeXBFNUhHV2c0d05lVndNVzZoZHZ6YWVqel8zN2l5Wnc0OXg3M3RxVWIxZ0RuMUptWm13YWRTR0dB?oc=5"
+      },
+      {
+        "title": "The American Bazaar",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOUkcxaGhONnFEOGNuVFlZNFlqNENFbGZld1lxX3BES3U4V3BHTEtyaWdUb1Nua0djVnlKYmlLa2ZUdUw3MnVqbVFycm1zMVFNVmcwbGZBaXdFQ2xkVy1jMGw4ci14dzh0RkhPbjlxbm1SLVhUQWcycDVkamhpWF9MMWpTUTlORHp6V1ZGUDZHNkxVZ2JNLUhkdXl1X21YSmlVSzhmQw?oc=5"
+      },
+      {
+        "title": "CFO Dive",
+        "host": "news.google.com",
+        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOd1V0QjFiUlQ3VldYaGFPbXplRkoyMmtvMlFLZkhzbldnZjNTUGtnUS1CZ2xDQkJtSjFuaTRCN3FldkI4Mk41VzZQUTd0Q192ZjctcVBnYTIxRzZtVjdzdzJuLU5yamNsUUZBLTRTcTBnQ09RVTljZ1B6WjNuNjJBRzljSHoyaS1LYmdHVGRCT2pTQQ?oc=5"
+      }
+    ]
+  },
+  {
     "slug": "wandover-b7d6d123991f5c08a9dbab84",
     "category": "H1B & 签证",
     "date": "2026.11.12",
