@@ -27643,6 +27643,125 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // @data:replays:start
   const REPLAYS = [
   {
+    "slug": "meta-data-scientist-2026-11-13",
+    "date": "2026.11.13",
+    "duration": "26:52",
+    "company": "Meta",
+    "location": "",
+    "role": "Data Scientist",
+    "logo": "M",
+    "seoTitle": "Data Scientist · Meta — Mock Interview Replay",
+    "dek": "A 26:52 Meta Data Scientist mock interview replay, 7 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-11-13-meta-.mp4",
+    "score": {
+      "overall": 60,
+      "max": 100,
+      "verdict": "BORDERLINE",
+      "verdictPct": "60%",
+      "label": "Committee hesitates; could go either way.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          13,
+          20,
+          "能跟进 spam detection，但多次需 probe 才落到方案。"
+        ],
+        [
+          "Specificity & Evidence",
+          15,
+          25,
+          "提到 SMOTE、AUC、LogReg/RF，具体信号与验证仍不足。"
+        ],
+        [
+          "Depth & Reasoning",
+          15,
+          25,
+          "识别 class imbalance 与分阶段建模，误报权衡未充分展开。"
+        ],
+        [
+          "Role Fit",
+          8,
+          15,
+          "技术方向相关，但产品指标、实验与决策影响信号有限。"
+        ],
+        [
+          "Communication",
+          9,
+          15,
+          "框架表达尚清楚，但常停在分类或标签来源，需追问推进。"
+        ]
+      ]
+    },
+    "summary": "整体有基础的 spam/fraud 建模思路，能识别类别不平衡、标签来源和 user journey 分阶段预测；但核心检测方案多次停在概念层，面试官需要持续补充方向。对 Meta Data Scientist 的产品决策、指标与误判成本意识展示不足，建议谨慎推进并在后续重点验证端到端分析能力。",
+    "mainIssue": {
+      "title": "把 spam detection 从概念框架推进到可验证的决策方案",
+      "body": "在 WhatsApp spam detection 讨论中，候选人能提出 metadata、activity、ecosystem 分类，也提到人工审核、历史审核数据和 SMOTE，但多次没有主动接上具体信号、标签质量与业务评估。\n- 讨论检测信号时，回答停在特征分桶，面试官追问后才需要进一步落到重复内容、发送频率和链接信号。\n- 讨论类别不平衡时提到 SMOTE、AUC、Logistic Regression 和 Random Forest，但没有先明确 false positive 与漏检的业务代价，也未主动说明真实分布下的验证方式。\n- 讨论用户旅程时，分阶段预测点是有价值的方向，但各阶段的 KPI、阈值和干预效果仍未形成完整闭环。\n这会让 hiring committee 怀疑候选人能否把分析框架转成可执行的产品决策。\n\n— 如何改进 —\n下次遇到产品检测 case，先用一条完整链路作答，再按追问展开：\n- 开场明确目标与伤害：减少诈骗触达，同时控制正常用户误拦。\n- 给出 3–4 个可观测特征，例如重复消息率、发送速度、链接信誉、用户举报率，并说明如何组合。\n- 说明标签来源及质量控制：reviewed cases、抽样复核、延迟与 reporting bias。\n- 以真实分布的 holdout set 评估 precision/recall、阈值下误拦率，并按 signup、首条消息等阶段分别衡量干预效果。"
+    },
+    "alsoNoting": [
+      "提问面试官的 data-driven project 时，可追问决策变化与影响衡量"
+    ],
+    "questions": [
+      {
+        "t": 103,
+        "q": "How would you detect spammers on WhatsApp?",
+        "meta": "面试官要和你共同填写 Google Doc，并以 WhatsApp 为背景展开问题；先跟住文档里的信息，别急着猜题或作答"
+      },
+      {
+        "t": 510,
+        "q": "How are we gonna actually detect spam?",
+        "meta": "他在提出从 WhatsApp 用户行为中众包标签的思路，重点可能是如何利用收发消息和联系人信息生成标签"
+      },
+      {
+        "t": 1188,
+        "q": "Is there a behavior question you'd like to ask me and then I can also ask you as well?",
+        "meta": "他在补充：欺诈不是单一模型覆盖用户的整个生命周期，而是要考虑不同阶段的识别与干预"
+      },
+      {
+        "t": 254,
+        "q": "What was the last point that you just mentioned there?",
+        "meta": "他认同你先界定 spam，并补充核心是恶意意图；接下来可能会讲 spammer 的行为模式"
+      },
+      {
+        "t": 339,
+        "q": "How are we gonna actually get the labels?",
+        "meta": "面试官认可这些 data sources，但把焦点转向如何获取 labels：数据有用不等于能训练或评估模型"
+      },
+      {
+        "t": 613,
+        "q": "How are we going to consider the fact that we're dealing with low true positiveness in this case, compared to messages that are not spam?",
+        "meta": "面试官明确给定 已有 labels，是在把讨论从规则/无监督识别转到监督式分类；下一步聚焦建模流程与验证，不必再纠结标签"
+      },
+      {
+        "t": 789,
+        "q": "Do you have some initial thoughts about that?",
+        "meta": "面试官在补充另一种处理类别不平衡的方法：移除部分非 spam 用户来调整训练集比例"
+      }
+    ]
+  },
+  {
     "slug": "openai-product-manager-2026-10-30",
     "date": "2026.10.30",
     "duration": "29:20",
