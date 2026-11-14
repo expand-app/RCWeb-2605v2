@@ -203,10 +203,44 @@ img{max-width:100%; display:block;}
 .language-switch button[aria-pressed="true"]{ background:var(--ink); color:#fff; }
 .translation-note{ display:none; margin:18px 0; padding:12px 16px; border-left:3px solid var(--green-dark); background:var(--green-soft); color:var(--ink-2); font:12px/1.6 var(--sans-cn); }
 html[lang="en"] .translation-note{ display:block; }
-.site-translation-banner{ display:none; padding:7px 18px; background:#f5f8f5; color:#55615a; text-align:center; font:11px/1.5 var(--sans-cn); }
-html[lang="en"] .site-translation-banner{ display:block; }
+/* The Chinese layout uses English subtitles for context. In English they repeat the title. */
+html[lang="en"] .pt-en,
+html[lang="en"] .dii-en,
+html[lang="en"] .pkg-en,
+html[lang="en"] .t-en,
+html[lang="en"] .sum-en,
+html[lang="en"] .tldr-en{ display:none; }
+html[lang="en"] .en:not(#bg-title-en){ display:none !important; }
+html[lang="en"] .bg-brief-title small,
+html[lang="en"] .translation-duplicate{ display:none; }
+html[lang="en"] .bp-pillar-head .label{ display:none; }
+html[lang="en"] .legal-sub{ display:none; }
+html:not([lang="en"]) .english-only{ display:none !important; }
+html[lang="en"] .english-only{ display:inline !important; }
+html[lang="en"] .chinese-only{ display:none !important; }
+html[lang="en"] .nav .logo small,
+html[lang="en"] .foot-brand .logo small,
+html[lang="en"] .dd-name small{ display:none; }
+html[lang="en"] .nav-inner{ max-width:1440px; gap:24px; }
+html[lang="en"] .nav-links{ gap:22px; font-size:13px; }
+html[lang="en"] .nav-links .nav-item,
+html[lang="en"] .nav-cta a{ white-space:nowrap; }
+html[lang="en"] .nav-cta{ gap:14px; font-size:13px; }
+html[lang="en"] .home-headline{ font-size:clamp(36px, 3.8vw, 52px); }
+html[lang="en"] .home-headline .hl-2 .accent{ margin-right:0; }
+html[lang="en"] #page-home{ overflow-x:clip; }
+@media (max-width:960px){
+  html[lang="en"] .nav-inner{ gap:8px; }
+  html[lang="en"] .nav-links{ gap:0; }
+  html[lang="en"] .nav-cta .btn-primary{ font-size:11px; }
+}
+@media (max-width:1100px) and (min-width:961px){
+  html[lang="en"] .nav-inner{ padding-inline:20px; gap:14px; }
+  html[lang="en"] .nav-links{ gap:12px; font-size:12px; }
+  html[lang="en"] .nav-cta{ gap:8px; font-size:12px; }
+  html[lang="en"] .nav-cta .btn-primary{ padding:8px 10px; }
+}
 html[lang="en"] #bg-title-cn{ display:none; }
-html[lang="en"] .home-headline .hl-2 .accent{ margin-right:.18em; }
 @media (max-width: 600px){
   .nav .nav-inner{ gap:8px; }
   .nav .logo small{ display:none; }
@@ -6131,7 +6165,6 @@ footer{
     </div>
   </div>
 </nav>
-<p class="site-translation-banner">Machine-translated English draft. Select CHN for the original wording.</p>
 
 <!-- ============================================================
      PAGE: HOME — Silicon Valley minimal redesign
@@ -14517,7 +14550,7 @@ footer{
       <div class="pkg-cell head"><div class="pkg-name">猎头加</div><div class="pkg-en">Headhunter+</div><div class="pkg-cycle">HPP</div></div>
       <div class="pkg-cell head"><div class="pkg-name">铂金计划</div><div class="pkg-en">Platinum</div><div class="pkg-cycle">PP</div></div>
       <div class="pkg-cell head diamond"><div class="pkg-name">钻石计划</div><div class="pkg-en">Diamond</div><div class="pkg-cycle">DP</div></div>
-      <div class="pkg-cell row-label">服务周期<small>SERVICE PERIOD</small></div>
+      <div class="pkg-cell row-label">服务周期<small class="translation-duplicate">SERVICE PERIOD</small></div>
       <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
       <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
       <div class="pkg-cell"><span class="label-mini">12 个月</span></div>
@@ -17391,7 +17424,7 @@ footer{
     <div class="sec-header">
       <div>
         <div class="sec-num">— Background</div>
-        <h2 class="sec-title">两款真实产品 ·<br><em>Full-Stack + AI Agent.</em></h2>
+        <h2 class="sec-title"><span class="chinese-only">两款真实产品 ·<br><em>Full-Stack + AI Agent.</em></span><span class="english-only">Build two real products.<br><em>Full-stack development + AI agents.</em></span></h2>
       </div>
       <p class="sec-desc">你会从 0 到 1 交付两款真实的科技产品:一款「小红书 + DoorDash」式的食物分享 + 外卖移动应用 Meetfood,以及一款 AI 驱动的自动内推平台 Tuilink。覆盖现代 SDE 工作的全部技能维度——全栈工程 + AI-native 系统设计。</p>
     </div>
@@ -18806,7 +18839,7 @@ footer{
     <div class="sec-header">
       <div>
         <div class="sec-num">— Background</div>
-        <h2 class="sec-title">两个真实的咨询项目 ·<br><em>Carve-out 估值 + 现金流模型.</em></h2>
+        <h2 class="sec-title"><span class="chinese-only">两个真实的咨询项目 ·<br><em>Carve-out 估值 + 现金流模型.</em></span><span class="english-only">Two real consulting projects.<br><em>Carve-out valuation + cash flow modeling.</em></span></h2>
       </div>
       <p class="sec-desc">在咨询公司 Transaction Advisory Services 部门,我们为两类完全不同的客户交付投行级建模成果:一家跨国科技公司因美国监管要求被拆分出来的资产估值(交税),以及一家奢侈品家具公司的 13 周现金流监控模型(债务契约合规)。</p>
     </div>
@@ -19250,7 +19283,7 @@ footer{
     <div class="sec-header">
       <div>
         <div class="sec-num">— Background</div>
-        <h2 class="sec-title">为纽约的小型基金做<br><em>量化风险 + 资产配置咨询.</em></h2>
+        <h2 class="sec-title"><span class="chinese-only">为纽约的小型基金做<br><em>量化风险 + 资产配置咨询.</em></span><span class="english-only">Advise a New York fund on<br><em>risk and asset allocation.</em></span></h2>
       </div>
       <p class="sec-desc">客户是一家位于纽约的小型基金。他们需要在两件事上拿到外部 Quant 咨询:一是 Market Risk 的度量与控制,二是 Quant 资产配置策略。我们用 VaR、Marginal VaR、Macro Factor 与组合优化把"主观判断"换成"可量化、可解释的决策"。</p>
     </div>
@@ -19599,7 +19632,7 @@ footer{
     <div class="sec-header">
       <div>
         <div class="sec-num">— Background</div>
-        <h2 class="sec-title">用数据科学撬动<br><em>更好的电网决策.</em></h2>
+        <h2 class="sec-title"><span class="chinese-only">用数据科学撬动<br><em>更好的电网决策.</em></span><span class="english-only">Use data science to improve<br><em>power grid decisions.</em></span></h2>
       </div>
       <p class="sec-desc">电力行业链路从发电、变电、传输到零售。我们的客户是中间的电网公司(Power Utility),他们用 DS 把"凭经验调度"升级为"数据驱动决策",在 5 个核心业务问题上拿出成果。</p>
     </div>
@@ -19848,7 +19881,7 @@ footer{
     <div class="sec-header">
       <div>
         <div class="sec-num">— Background</div>
-        <h2 class="sec-title">为客户从 0 到 1 搭建<br><em>Email Marketing.</em></h2>
+        <h2 class="sec-title"><span class="chinese-only">为客户从 0 到 1 搭建<br><em>Email Marketing.</em></span><span class="english-only">Build an email marketing<br><em>program from the ground up.</em></span></h2>
       </div>
       <p class="sec-desc">一家北美汽车销售商,客户是在美中国留学生。我们帮他们走出微信 / Ins / 小红书的传统圈子,补上 Email Marketing 渠道,从数据清理到邮件投放完成 0→1 搭建。</p>
     </div>
@@ -20089,7 +20122,7 @@ footer{
       <div class="sec-header">
         <div>
           <div class="sec-num">01 / Why It Works</div>
-          <h2 class="sec-title" id="bg-hl-title">四个无法在<br>校内复现的<em>价值锚点.</em></h2>
+          <h2 class="sec-title" id="bg-hl-title"><span class="chinese-only">四个无法在<br>校内复现的<em>价值锚点.</em></span><span class="english-only">Four career advantages<br><em>you cannot gain in a classroom.</em></span></h2>
         </div>
         <p class="sec-desc" id="bg-hl-desc">从简历可信度到技术栈深度，每一项都直接指向 Hiring Team 看简历时的决策因素。</p>
       </div>
@@ -23677,7 +23710,7 @@ footer{
   <article class="legal-doc active" data-legal="privacy">
     <div class="legal-wrap">
       <div class="legal-eyebrow">— Privacy Policy</div>
-      <h1 class="legal-title">欢迎来到 <em>Rexpand</em>。</h1>
+      <h1 class="legal-title"><span class="chinese-only">欢迎来到 <em>Rexpand</em>。</span><span class="english-only">Welcome to <em>Rexpand.</em></span></h1>
       <p class="legal-sub">Your privacy, on the record.</p>
       <div class="legal-updated">更新日期 · 2024 年 5 月 1 日</div>
       <p class="legal-intro">"我们"、"我们的"或"Rexpand" —— 我们尊重你的隐私，并承诺保护你的个人信息。以下隐私政策（"本政策"）解释了我们如何收集、使用、披露和保护你通过我们的网站和服务提供的信息。在使用 Rexpand 的服务或访问我们的网站时，请确认你已阅读、理解并同意本政策中描述的数据处理行为。</p>
@@ -23730,7 +23763,7 @@ footer{
   <article class="legal-doc" data-legal="user-terms">
     <div class="legal-wrap">
       <div class="legal-eyebrow">— User Service Agreement</div>
-      <h1 class="legal-title">欢迎使用 <em>Rexpand</em> 的服务。</h1>
+      <h1 class="legal-title"><span class="chinese-only">欢迎使用 <em>Rexpand</em> 的服务。</span><span class="english-only"><em>Rexpand</em> Terms of Service.</span></h1>
       <p class="legal-sub">Terms of service for students.</p>
       <div class="legal-updated">更新日期 · 2024 年 5 月 1 日</div>
       <p class="legal-intro">以下用户服务协议（"本协议"）规定了你与 Rexpand（"我们"、"我们的"或"Rexpand"）之间的法律关系。在使用我们的服务之前，请仔细阅读本协议。如果你使用我们的服务，即表示你接受本协议的条款。</p>
@@ -23769,7 +23802,7 @@ footer{
   <article class="legal-doc" data-legal="mentor-terms">
     <div class="legal-wrap">
       <div class="legal-eyebrow">— Mentor Service Agreement</div>
-      <h1 class="legal-title">欢迎你成为 <em>Rexpand</em> 的导师。</h1>
+      <h1 class="legal-title"><span class="chinese-only">欢迎你成为 <em>Rexpand</em> 的导师。</span><span class="english-only"><em>Rexpand</em> Mentor Agreement.</span></h1>
       <p class="legal-sub">Terms of service for mentors.</p>
       <div class="legal-updated">更新日期 · 2024 年 5 月 1 日</div>
       <p class="legal-intro">以下是我们的导师服务协议（"本协议"），请仔细阅读并确认你同意受其约束。</p>
