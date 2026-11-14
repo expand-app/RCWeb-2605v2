@@ -6,14 +6,7 @@ import json
 import re
 import sys
 
-import argostranslate.translate
-import stanza
-
-_pipeline = stanza.Pipeline
-def _offline_pipeline(*args, **kwargs):
-    kwargs.setdefault('download_method', stanza.DownloadMethod.REUSE_RESOURCES)
-    return _pipeline(*args, **kwargs)
-stanza.Pipeline = _offline_pipeline
+from english_translation_engine import translate
 
 PAGES = {"page-home", "page-offer", "page-cases", "page-background", "page-resources", "page-about", "page-legal"}
 
@@ -52,15 +45,8 @@ class CopyParser(HTMLParser):
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "i18n"
 OUT.mkdir(exist_ok=True)
-translator = argostranslate.translate.get_translation_from_codes("zh", "en")
-if translator is None:
-    raise SystemExit("Install the Argos zh→en model first")
-
-
 def draft(text):
-    if not re.search(r"[\u4e00-\u9fff]", text):
-        return text
-    return translator.translate(text)
+    return translate(text)
 
 
 class BodyTranslator(HTMLParser):

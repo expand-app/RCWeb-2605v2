@@ -11,22 +11,12 @@ import re
 
 from tree_sitter import Language, Parser
 import tree_sitter_javascript
-import argostranslate.translate
-import stanza
-
-_pipeline = stanza.Pipeline
-def _offline_pipeline(*args, **kwargs):
-    kwargs.setdefault('download_method', stanza.DownloadMethod.REUSE_RESOURCES)
-    return _pipeline(*args, **kwargs)
-stanza.Pipeline = _offline_pipeline
+from english_translation_engine import translate
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>', (ROOT / 'index.html').read_text(), re.S)[-1]
 SOURCE = SCRIPT.encode()
 TREE = Parser(Language(tree_sitter_javascript.language())).parse(SOURCE).root_node
-ENGINE = argostranslate.translate.get_translation_from_codes('zh', 'en')
-if ENGINE is None:
-    raise SystemExit('Install the Argos zh→en model first')
 
 
 class TextCollector(HTMLParser):
@@ -119,7 +109,7 @@ def main():
     candidates = sorted(candidates, key=lambda s: (len(s), s))
     for i, text in enumerate(candidates, 1):
         if text not in existing:
-            existing[text] = ENGINE.translate(text)
+            existing[text] = translate(text)
         if i % 25 == 0:
             path.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + '\n')
             print('Dynamic', i, '/', len(candidates), flush=True)

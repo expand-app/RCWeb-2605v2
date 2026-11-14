@@ -11,15 +11,7 @@ from pathlib import Path
 import json
 import re
 
-import argostranslate.package
-import argostranslate.translate
-import stanza
-
-_pipeline = stanza.Pipeline
-def _offline_pipeline(*args, **kwargs):
-    kwargs.setdefault("download_method", stanza.DownloadMethod.REUSE_RESOURCES)
-    return _pipeline(*args, **kwargs)
-stanza.Pipeline = _offline_pipeline
+from english_translation_engine import translate
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/articles.json"
@@ -27,24 +19,10 @@ TARGET = ROOT / "i18n/articles.en.json"
 FIELDS = ("title", "dek", "body", "category", "tldr", "faq", "image", "hero", "sources", "keywords")
 
 
-def translation_engine():
-    engine = argostranslate.translate.get_translation_from_codes("zh", "en")
-    if engine is None:
-        argostranslate.package.update_package_index()
-        package = next(p for p in argostranslate.package.get_available_packages()
-                       if p.from_code == "zh" and p.to_code == "en")
-        argostranslate.package.install_from_path(package.download())
-        engine = argostranslate.translate.get_translation_from_codes("zh", "en")
-    return engine
-
-
-ENGINE = translation_engine()
-
-
 def draft(text):
     if not isinstance(text, str) or not re.search(r"[\u4e00-\u9fff]", text):
         return text
-    translated = ENGINE.translate(text)
+    translated = translate(text)
     if "内推" in text:
         translated = re.sub(r"(?i)\b(?:introverts?|introspection|introspective|inner push|internal push|inner thrust|inside push|inner press)\b", "referral", translated)
     return translated
