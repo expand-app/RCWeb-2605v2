@@ -1,0 +1,49 @@
+name: Update English site drafts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - data/articles.json
+  workflow_dispatch:
+
+concurrency:
+  group: rexpand-english-articles
+  queue: max
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install offline translator
+        run: python -m pip install argostranslate==1.11.0 tree-sitter tree-sitter-javascript
+      - name: Translate new or changed site copy and articles
+        run: |
+          python scripts/update_english_articles.py
+          python scripts/draft_english_offline.py --static-only
+          python scripts/translate_dynamic_copy.py
+          python scripts/finalize_english_copy.py
+      - name: Commit English drafts
+        run: |
+          if git diff --quiet -- i18n/; then exit 0; fi
+          git config user.name 'rexpand-translation-bot'
+          git config user.email 'rexpand-translation-bot@users.noreply.github.com'
+          git add i18n/
+          git commit -m 'content: update English site drafts'
+          git pull --rebase origin main
+          git push origin HEAD:main
+          # Pushes made with GITHUB_TOKEN do not start other push workflows.
+          # Dispatch the existing production workflow at the new main revision.
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/actions/workflows/deploy.yml/dispatches" -f ref=main
+        env:
+          GH_TOKEN: ${{ github.token }}

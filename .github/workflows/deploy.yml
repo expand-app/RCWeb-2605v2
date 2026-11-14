@@ -53,6 +53,9 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html dist/
+          mkdir -p dist/i18n
+          cp i18n/en.json dist/i18n/en.json
+          cp i18n/articles.en.json dist/i18n/articles.en.json
           cp email.html dist/
           cp -r analytics dist/
           cp robots.txt dist/
@@ -113,6 +116,7 @@ jobs:
           # must always revalidate so a new deploy shows up immediately instead of
           # being served from a stale browser/CDN cache.
           ossutil cp -r -f --include "*.html" --meta "Cache-Control:no-cache" ./dist/ oss://$OSS_BUCKET/
+          ossutil cp -r -f --meta "Content-Type:application/json; charset=utf-8#Cache-Control:no-cache" ./dist/i18n/ "oss://$OSS_BUCKET/i18n/"
           # sitemap.xml + llms.txt: explicit content-type so crawlers (and AI
           # crawlers checking /llms.txt) get text/plain or application/xml back
           # instead of OSS guessing application/octet-stream from extension.

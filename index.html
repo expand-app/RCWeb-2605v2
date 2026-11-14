@@ -198,6 +198,20 @@ img{max-width:100%; display:block;}
 .nav-links a:hover{ color: var(--green-dark); }
 .nav-links a.active{ color: var(--ink); font-weight: 500; }
 .nav-cta{ display:flex; align-items:center; gap:18px; font-size: 14px; }
+.language-switch{ display:flex; align-items:center; gap:2px; padding:3px; border:1px solid var(--line); border-radius:100px; white-space:nowrap; }
+.language-switch button{ border:0; background:transparent; border-radius:100px; padding:5px 8px; font:600 11px var(--mono); color:var(--ink-3); cursor:pointer; }
+.language-switch button[aria-pressed="true"]{ background:var(--ink); color:#fff; }
+.translation-note{ display:none; margin:18px 0; padding:12px 16px; border-left:3px solid var(--green-dark); background:var(--green-soft); color:var(--ink-2); font:12px/1.6 var(--sans-cn); }
+html[lang="en"] .translation-note{ display:block; }
+.site-translation-banner{ display:none; padding:7px 18px; background:#f5f8f5; color:#55615a; text-align:center; font:11px/1.5 var(--sans-cn); }
+html[lang="en"] .site-translation-banner{ display:block; }
+html[lang="en"] #bg-title-cn{ display:none; }
+html[lang="en"] .home-headline .hl-2 .accent{ margin-right:.18em; }
+@media (max-width: 600px){
+  .nav .nav-inner{ gap:8px; }
+  .nav .logo small{ display:none; }
+  body .nav-cta .btn-primary{ padding:7px 8px; font-size:11px; }
+}
 .nav-cta .login{ color: var(--ink-3); cursor: pointer; }
 /* The mobile-drawer "登录" entry; hidden on desktop where .nav-cta .login already shows. */
 .nav-links .nav-item-login{ display: none; }
@@ -5897,6 +5911,9 @@ footer{
   .nav-links .nav-item-login{ display: block; }
   .nav-cta .btn-primary{ padding: 7px 13px; font-size: 12px; }
   .nav-cta .btn-primary{ white-space: nowrap; }
+  .language-switch{ order:1; margin-left:auto; }
+  .language-switch button{ padding:5px 6px; font-size:10px; }
+  .nav-cta{ margin-left:0; }
   .nav-toggle{ display: block; order: 3; }
   /* Mobile menu drawer */
   .nav-links{
@@ -6108,8 +6125,13 @@ footer{
       <a class="login" href="https://student.rexpandcareer.com/" target="_blank" rel="noopener">登录</a>
       <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">求职咨询</a>
     </div>
+    <div class="language-switch" role="group" aria-label="Language / 语言">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="true">CHN</button>
+    </div>
   </div>
 </nav>
+<p class="site-translation-banner">Machine-translated English draft. Select CHN for the original wording.</p>
 
 <!-- ============================================================
      PAGE: HOME — Silicon Valley minimal redesign
@@ -6429,7 +6451,7 @@ footer{
     line-height: 1.12;
   }
   #page-offer .ssar-title-intro{ display: block; }
-  #page-offer .ssar-title-service{ display: flex; align-items: baseline; gap: .22em; margin-top: .1em; font-size: .68em; white-space: nowrap; }
+  #page-offer .ssar-title-service{ display: flex; align-items: baseline; gap: .34em; margin-top: .1em; font-size: .68em; white-space: nowrap; }
   #page-offer .ssar-title-brand{ font-size: 1.95em; line-height: 1; }
   #page-offer .ssar-lead{ max-width: 490px; margin-bottom: 36px; }
   #page-offer .ssar-lead > span{ display: block; }
@@ -23191,6 +23213,7 @@ footer{
     <div class="art-eyebrow" id="artEyebrow"></div>
     <h1 class="art-title" id="artTitle"></h1>
     <p class="art-dek" id="artDek"></p>
+    <p class="translation-note">Machine-translated English version for reference. If wording differs, the Chinese original governs. Select CHN above to read the original.</p>
 
     <div id="artMedia"></div>
 
@@ -23645,6 +23668,7 @@ footer{
 </style>
 
 <main class="page" id="page-legal">
+  <p class="translation-note">Machine-translated English version for reference only. The Chinese original governs. Select CHN above to read the original legal text.</p>
   <div class="legal-topbar">
     <a data-route="home">首页</a>
     <span class="sep">/</span>
@@ -23849,6 +23873,118 @@ footer{
 /* ===========================================================
    Page router — switches between pages on data-route click
 =========================================================== */
+let siteLanguage = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'zh';
+let englishCopy = null;
+let englishArticles = null;
+const originalText = new WeakMap();
+const originalAttributes = new WeakMap();
+const englishTextFor = (source) => {
+  const key = source.trim();
+  let translated = englishCopy?.[key];
+  if(!translated){
+    const lessons = key.match(/^(\d+) 节课程大纲。?$/);
+    const modules = key.match(/^(\d+) 个核心模块。?$/);
+    if(lessons) translated = `${lessons[1]}-lesson curriculum.`;
+    if(modules) translated = `${modules[1]} core modules.`;
+  }
+  return (translated ? source.replace(key, translated) : source)
+    .replace(/。/g, '.').replace(/，/g, ',').replace(/；/g, ';').replace(/：/g, ':');
+};
+
+function localizeNode(root){
+  if(!root || !englishCopy) return;
+  const visit = (node) => {
+    if(node.nodeType === Node.TEXT_NODE){
+      if(node.parentElement?.closest('script, style, .language-switch')) return;
+      let source = originalText.get(node);
+      const current = node.nodeValue;
+      if(source === undefined || (current !== source && current !== englishTextFor(source))){
+        source = current;
+        originalText.set(node, source);
+      }
+      const target = siteLanguage === 'en' ? englishTextFor(source) : source;
+      if(current !== target) node.nodeValue = target;
+      return;
+    }
+    if(node.nodeType !== Node.ELEMENT_NODE || node.matches('script, style')) return;
+    if(!node.closest('.language-switch')){
+      const originals = originalAttributes.get(node) || {};
+      for(const attr of ['alt', 'title', 'aria-label', 'placeholder']){
+        if(!node.hasAttribute(attr)) continue;
+        const current = node.getAttribute(attr);
+        let source = originals[attr];
+        if(source === undefined || (current !== source && current !== englishTextFor(source))){
+          source = current;
+          originals[attr] = source;
+        }
+        const target = siteLanguage === 'en' ? englishTextFor(source) : source;
+        if(current !== target) node.setAttribute(attr, target);
+      }
+      originalAttributes.set(node, originals);
+    }
+    for(const child of node.childNodes) visit(child);
+  };
+  visit(root);
+}
+
+async function setSiteLanguage(language){
+  siteLanguage = language === 'en' ? 'en' : 'zh';
+  if(siteLanguage === 'en' && (!englishCopy || !englishArticles)){
+    try {
+      const [copyResponse, articlesResponse] = await Promise.all([
+        fetch('/i18n/en.json', {cache:'no-store'}), fetch('/i18n/articles.en.json', {cache:'no-store'})
+      ]);
+      if(!copyResponse.ok || !articlesResponse.ok) throw new Error('English copy unavailable');
+      [englishCopy, englishArticles] = await Promise.all([copyResponse.json(), articlesResponse.json()]);
+    } catch(error) {
+      console.error(error);
+      siteLanguage = 'zh';
+      return;
+    }
+  }
+  document.documentElement.lang = siteLanguage === 'en' ? 'en' : 'zh-CN';
+  document.querySelectorAll('.language-switch button').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.lang === siteLanguage));
+  });
+  localizeNode(document.body);
+  const bgEyebrow = document.getElementById('bg-eyebrow');
+  if(bgEyebrow) bgEyebrow.textContent = siteLanguage === 'en'
+    ? 'Background Boost · Real-world remote projects'
+    : 'Background Boost · 工业级远程实习';
+  const url = new URL(location.href);
+  if(siteLanguage === 'en') url.searchParams.set('lang', 'en');
+  else url.searchParams.delete('lang');
+  history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+  const route = pathToRoute(url.pathname);
+  applyMeta(route, {bgDir: route === 'background' ? pathToBgDir(url.pathname) : null});
+  document.dispatchEvent(new Event('site-language-changed'));
+}
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('.language-switch button');
+  if(button) setSiteLanguage(button.dataset.lang);
+});
+
+document.addEventListener('click', (event) => {
+  if(siteLanguage !== 'en') return;
+  const link = event.target.closest('a[href]');
+  if(!link) return;
+  const target = new URL(link.href, location.href);
+  if(target.origin !== location.origin || !/^https?:$/.test(target.protocol)) return;
+  target.searchParams.set('lang', 'en');
+  link.href = target.pathname + target.search + target.hash;
+}, true);
+
+new MutationObserver(records => {
+  if(!englishCopy || siteLanguage !== 'en') return;
+  for(const record of records){
+    if(record.type === 'characterData') localizeNode(record.target);
+    else if(record.type === 'attributes') localizeNode(record.target);
+    else for(const node of record.addedNodes) localizeNode(node);
+  }
+}).observe(document.body, {subtree: true, childList: true, characterData: true,
+  attributes: true, attributeFilter: ['alt', 'title', 'aria-label', 'placeholder']});
+
 const routes = {
   home: 'page-home',
   offer: 'page-offer',
@@ -23911,6 +24047,19 @@ const routeMeta = {
   'mentor-terms': { path: '/legal/mentor-terms', title: '导师协议 · Mentor Terms — Rexpand',  desc: 'Rexpand 睿思班 导师合作协议。', og: DEFAULT_OG },
   replay:  { path: '/resources', title: '面试复盘 — Rexpand 睿思班', desc: '真实面试复盘视频。', og: DEFAULT_OG },
   article: { path: '/resources', title: '行业文章 — Rexpand 睿思班', desc: '深度行业洞察。', og: DEFAULT_OG }
+};
+const routeMetaEn = {
+  home: ['Rexpand | AI-Powered Career Support for International Students', 'Job search, applications, referrals, experience-building programs, and interview coaching for international students.'],
+  offer: ['SAR Career Services | Smart Search, Applications & Referrals | Rexpand', 'Explore Rexpand SAR services: smart job search, daily applications, Hiring Team referrals, and interview preparation.'],
+  cases: ['Student Success Stories | Rexpand', 'Explore real student outcomes and verified offer letters.'],
+  background: ['Career Experience Programs | Rexpand', 'Explore six industry-oriented programs in data, finance, software engineering, and AI product management.'],
+  resources: ['Career Resources & Interview Replays | Rexpand', 'Read career insights and watch real interview replays.'],
+  about: ['About Rexpand | AI-Powered Career Support', 'Meet Rexpand and our network of more than 1,000 industry mentors.'],
+  privacy: ['Privacy Policy | Rexpand', 'Read the English reference translation of the Rexpand privacy policy.'],
+  'user-terms': ['User Terms | Rexpand', 'Read the English reference translation of the Rexpand user terms.'],
+  'mentor-terms': ['Mentor Terms | Rexpand', 'Read the English reference translation of the Rexpand mentor terms.'],
+  article: ['Career Insights | Rexpand', 'Read Rexpand career insights.'],
+  replay: ['Interview Replays | Rexpand', 'Watch real interview replays.']
 };
 
 /* ===========================================================
@@ -24107,19 +24256,20 @@ function applyMeta(routeName, opts){
     };
     path = m.path;
   }
-  const canonical = ORIGIN + path;
-  document.title = m.title;
+  const canonical = ORIGIN + path + (siteLanguage === 'en' ? '?lang=en' : '');
+  const [pageTitle, pageDesc] = siteLanguage === 'en' ? (routeMetaEn[routeName] || routeMetaEn.home) : [m.title, m.desc];
+  document.title = pageTitle;
   const set = (id, attr, val) => { const el = document.getElementById(id); if(el && val != null) el.setAttribute(attr, val); };
-  set('meta-description', 'content', m.desc);
+  set('meta-description', 'content', pageDesc);
   set('meta-canonical', 'href', canonical);
-  set('og-title', 'content', m.title);
-  set('og-description', 'content', m.desc);
+  set('og-title', 'content', pageTitle);
+  set('og-description', 'content', pageDesc);
   set('og-url', 'content', canonical);
   set('og-image', 'content', m.og);
   set('og-image-width', 'content', m.ogw);
   set('og-image-height', 'content', m.ogh);
-  set('tw-title', 'content', m.title);
-  set('tw-description', 'content', m.desc);
+  set('tw-title', 'content', pageTitle);
+  set('tw-description', 'content', pageDesc);
   set('tw-image', 'content', m.og);
   if(routeName === 'background' && opts.bgDir){
     document.getElementById('bgJsonLd').textContent = JSON.stringify(buildBgCourseJsonLd(opts.bgDir));
@@ -24128,7 +24278,7 @@ function applyMeta(routeName, opts){
 
 // Keep item metadata on the same existing clean URL before and after SPA navigation.
 function applyContentMeta({path, title, desc, image, type = 'website'}){
-  const canonical = ORIGIN + path;
+  const canonical = ORIGIN + path + (siteLanguage === 'en' ? '?lang=en' : '');
   document.title = title;
   const set = (id, attr, value) => document.getElementById(id)?.setAttribute(attr, value);
   set('meta-canonical', 'href', canonical);
@@ -24184,6 +24334,7 @@ function go(routeName, opts){
       const dir = opts.bgDir || pathToBgDir(location.pathname) || (typeof CURRENT_BG_DIR !== 'undefined' ? CURRENT_BG_DIR : null) || BG_DEFAULT_DIR;
       targetPath = '/bg-' + BG_SLUG_BY_DIR[dir];
     }
+    if(siteLanguage === 'en') targetPath += '?lang=en';
     // Preserve deep-link hash so #/replay/<slug> and #/article/<slug> URLs stay shareable
     if(location.hash && (location.hash.startsWith('#/replay/') || location.hash.startsWith('#/article/'))){
       targetPath += location.hash;
@@ -24199,6 +24350,7 @@ function go(routeName, opts){
     ? (opts.bgDir || pathToBgDir(location.pathname) || (typeof CURRENT_BG_DIR !== 'undefined' ? CURRENT_BG_DIR : null) || BG_DEFAULT_DIR)
     : null;
   applyMeta(routeName, { bgDir: bgDirForMeta });
+  if(englishCopy) localizeNode(el);
 
   // Close mobile menu if open
   document.body.classList.remove('mobile-menu-open');
@@ -24307,7 +24459,7 @@ window.addEventListener('DOMContentLoaded', () => {
           fn(slug);
           // openX → go(...) pushes routeMeta.{article|replay}.path = '/resources';
           // restore the canonical clean URL so the address bar stays /a-foo or /r-foo.
-          history.replaceState(null, '', prefix + slug);
+          history.replaceState(null, '', prefix + slug + (siteLanguage === 'en' ? '?lang=en' : ''));
         } catch(_){ go('resources'); }
       }
     }, 60);
@@ -24324,14 +24476,15 @@ window.addEventListener('DOMContentLoaded', () => {
     // links land on the canonical single-segment URL going forward.
     const legacy = location.pathname.match(/^\/background\/([a-z-]+)\/?$/);
     if(legacy && BG_DIR_BY_SLUG[legacy[1]]){
-      try { history.replaceState({route:'background'}, '', '/bg-' + legacy[1]); } catch(_){}
+      try { history.replaceState({route:'background'}, '', '/bg-' + legacy[1] + (siteLanguage === 'en' ? '?lang=en' : '')); } catch(_){}
     }
     if(location.pathname === '/background' || location.pathname === '/background/'){
-      try { history.replaceState({route:'background'}, '', '/bg-' + BG_SLUG_BY_DIR[bgDir || BG_DEFAULT_DIR]); } catch(_){}
+      try { history.replaceState({route:'background'}, '', '/bg-' + BG_SLUG_BY_DIR[bgDir || BG_DEFAULT_DIR] + (siteLanguage === 'en' ? '?lang=en' : '')); } catch(_){}
     }
   }
   // Kick off hero stat count-up after the entrance animations settle
   setTimeout(runHeroCountUp, 900);
+  setSiteLanguage(siteLanguage);
 });
 
 /* Hero stat count-up — numbers tick from 0 → target on page load */
@@ -26836,7 +26989,7 @@ function bgRender(dirKey, opts){
   if(bgPageActive && !opts.fromUrl && BG_SLUG_BY_DIR[dirKey]){
     const newPath = '/bg-' + BG_SLUG_BY_DIR[dirKey];
     if(location.pathname !== newPath){
-      try { history.pushState({route:'background', bgDir:dirKey}, '', newPath); } catch(_){}
+      try { history.pushState({route:'background', bgDir:dirKey}, '', newPath + (siteLanguage === 'en' ? '?lang=en' : '')); } catch(_){}
     }
   }
   if(bgPageActive && typeof applyMeta === 'function' && BG_ROUTE_META[dirKey]){
@@ -26867,10 +27020,11 @@ function bgRender(dirKey, opts){
   if(fmBc) fmBc.classList.toggle('show', dirKey === 'fm');
 
   // eyebrow + title + lead
-  const ebParts = d.eyebrow.split(' · ');
+  const eyebrow = siteLanguage === 'en' ? 'Background Boost · Real-world remote projects' : d.eyebrow;
+  const ebParts = eyebrow.split(' · ');
   document.getElementById('bg-eyebrow').innerHTML = ebParts.length === 2
     ? `${ebParts[0]} · <span class="eb-link">${ebParts[1]}</span>`
-    : d.eyebrow;
+    : eyebrow;
   document.getElementById('bg-title-cn').textContent = d.titleCn;
   document.getElementById('bg-title-en').textContent = d.titleEn;
   document.getElementById('bg-lead').textContent = d.lead;
@@ -30643,6 +30797,15 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
 
   const BY_SLUG = Object.fromEntries(REPLAYS.map(r => [r.slug, r]));
   const pageRep = document.getElementById('page-replay');
+  function localizeReplayData(value){
+    if(siteLanguage !== 'en' || !englishCopy) return value;
+    if(typeof value === 'string') return englishCopy[value] || value;
+    if(Array.isArray(value)) return value.map(localizeReplayData);
+    if(value && typeof value === 'object') return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, localizeReplayData(item)])
+    );
+    return value;
+  }
 
   // helper: format seconds → MM:SS
   function fmtTime(s){
@@ -30657,6 +30820,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   function nl2br(s){ return escHtml(s).replace(/\n/g, '<br>'); }
 
   function renderReplay(r){
+    r = localizeReplayData(r);
     // ---------- Header (compact, deduplicated) ----------
     const role = r.role || (r.title || '');
     const headerHtml = `
@@ -30809,7 +30973,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
       contentUrl: r.videoSrc || undefined,
       thumbnailUrl: r.videoPoster || DEFAULT_OG,
       url: ORIGIN + '/r-' + r.slug,
-      inLanguage: 'zh-CN',
+      inLanguage: siteLanguage === 'en' ? 'en' : 'zh-CN',
       publisher: { '@type': 'Organization', name: 'Rexpand · 睿思班', url: ORIGIN }
     });
     document.head.appendChild(schema);
@@ -30859,7 +31023,8 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
         ${tags.map(t => `<a class="af-chip" data-rfilter="${t}">${t} <span class="af-count">${tagCounts[t]}</span></a>`).join('')}
       </div>
     `;
-    gridEl.innerHTML = REPLAYS.map(r => {
+    gridEl.innerHTML = REPLAYS.map(original => {
+      const r = localizeReplayData(original);
       const role = r.role || (r.title || '').split('·')[0].trim();
       const cardTitle = `${r.role || r.title} · ${r.company}`;
       // Decorative giant initial — company first letter, but "Mc" for McKinsey
@@ -30883,7 +31048,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
             <span>${r.date.slice(5).replace('.','/')}</span><span class="dot"></span>
             <span>${r.location || r.companyMeta || r.company}</span>
           </div>
-          <h3><a href="/r-${r.slug}">${cardTitle}</a></h3>
+          <h3><a href="/r-${r.slug}${siteLanguage === 'en' ? '?lang=en' : ''}">${cardTitle}</a></h3>
           ${r.dek ? `<p class="ac-dek">${r.dek}</p>` : ''}
         </div>
       </article>
@@ -30922,11 +31087,16 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
       e.preventDefault();
       const slug = card.dataset.replaySlug;
       if(window.openReplayBySlug) window.openReplayBySlug(slug);
-      history.replaceState(null, '', '/r-' + slug);
+      history.replaceState(null, '', '/r-' + slug + (siteLanguage === 'en' ? '?lang=en' : ''));
     });
   }
 
   renderReplayList();
+  document.addEventListener('site-language-changed', () => {
+    renderReplayList();
+    const slug = location.pathname.match(/^\/r-([^/]+)/)?.[1];
+    if(slug && BY_SLUG[slug] && pageRep.classList.contains('active')) renderReplay(BY_SLUG[slug]);
+  });
 
   // Back button on replay page
   const backBtn = pageRep.querySelector('[data-replay-back]');
@@ -37187,6 +37357,16 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   if (articleCount) articleCount.textContent = ARTICLES.length;
 
   const BY_SLUG = Object.fromEntries(ARTICLES.map(a => [a.slug, a]));
+  const visibleArticles = () => siteLanguage === 'en'
+    ? ARTICLES.filter(a => englishArticles && englishArticles[a.slug])
+    : ARTICLES;
+  const localizedArticle = (article) => siteLanguage === 'en' && englishArticles?.[article.slug]
+    ? {...article, ...englishArticles[article.slug], keywords: englishArticles[article.slug].keywords || [], image: article.image
+        ? {...article.image, alt: englishArticles[article.slug].imageAlt || article.image.alt}
+        : article.image, sources: (article.sources || []).map((source, index) => ({
+          ...source, title: englishArticles[article.slug].sourceTitles?.[index] || source.title
+        }))}
+    : article;
 
   // Sort articles by date descending (most recent first)
   ARTICLES.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
@@ -37197,24 +37377,27 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   function renderList(){
     const gridEl = document.getElementById('articleGrid');
     if(!gridEl) return;
+    const listed = visibleArticles();
+    if(articleCount) articleCount.textContent = listed.length;
 
     // Build category filter chips
     const filtersEl = document.getElementById('articleFilters');
     if(filtersEl){
       const counts = {};
-      ARTICLES.forEach(a => { counts[a.category] = (counts[a.category] || 0) + 1; });
+      listed.forEach(a => { counts[a.category] = (counts[a.category] || 0) + 1; });
       const cats = Object.keys(counts).sort((a,b) => counts[b] - counts[a]);
       filtersEl.innerHTML = `
         <span class="af-label">— Filter</span>
         <div class="af-chips">
-          <a class="af-chip active" data-filter="all">全部 <span class="af-count">${ARTICLES.length}</span></a>
-          ${cats.map(c => `<a class="af-chip" data-filter="${c}">${c} <span class="af-count">${counts[c]}</span></a>`).join('')}
+          <a class="af-chip active" data-filter="all">${siteLanguage === 'en' ? 'All' : '全部'} <span class="af-count">${listed.length}</span></a>
+          ${cats.map(c => `<a class="af-chip" data-filter="${c}">${siteLanguage === 'en' ? (englishCopy?.[c] || c) : c} <span class="af-count">${counts[c]}</span></a>`).join('')}
         </div>
       `;
     }
 
     // Render grid (all articles — no featured separation)
-    gridEl.innerHTML = ARTICLES.map(a => {
+    gridEl.innerHTML = listed.map(original => {
+      const a = localizedArticle(original);
       const dateShort = a.date.replace(/\./g, '/');
       const imageUrl = a.image && a.image.url;
       const localOg = imageUrl && imageUrl.startsWith('/og/') && !imageUrl.includes('?');
@@ -37222,7 +37405,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
       const cardSet = localOg ? ` srcset="/thumbs${imageUrl}-360.webp 360w, /thumbs${imageUrl}-720.webp 720w" sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 360px"` : '';
       const img = imageUrl ? `<img src="${cardSource}"${cardSet} alt="${a.image.alt||''}" loading="lazy" decoding="async" referrerpolicy="no-referrer">` : '';
       return `
-      <article class="article-card" data-article-slug="${a.slug}" data-cat="${a.category}">
+      <article class="article-card" data-article-slug="${a.slug}" data-cat="${original.category}">
         <div class="ac-thumb">
           ${img}
           <span class="ac-cat-badge">${a.category}</span>
@@ -37232,7 +37415,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
             <span>${dateShort}</span><span class="dot"></span>
             <span>${a.readTime}</span>
           </div>
-          <h3><a href="/a-${a.slug}">${a.title}</a></h3>
+          <h3><a href="/a-${a.slug}${siteLanguage === 'en' ? '?lang=en' : ''}">${a.title}</a></h3>
           <p class="ac-dek">${a.dek}</p>
         </div>
       </article>`;
@@ -37272,6 +37455,12 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // Render article DETAIL page (with TL;DR, image, FAQ, related, JSON-LD)
   // -----------------------------
   function renderDetail(a){
+    const hasEnglishDraft = Boolean(englishArticles?.[a.slug]);
+    a = localizedArticle(a);
+    const translationNote = pageArt.querySelector('.translation-note');
+    if(translationNote) translationNote.textContent = hasEnglishDraft
+      ? 'Machine-translated English version for reference. If wording differs, the Chinese original governs. Select CHN above to read the original.'
+      : 'An English draft for this article is being prepared. Select CHN above to read the Chinese original.';
     pageArt.querySelector('#artEyebrow').innerHTML =
       `<span>${a.category}</span><span class="sep"></span><span class="date">${a.date}</span><span class="sep"></span><span class="read">${a.readTime}</span>`;
     pageArt.querySelector('#artTitle').innerHTML = a.title;
@@ -37343,8 +37532,8 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
           <div class="rel-lbl">— 相关阅读 / Related</div>
           <div class="rel-grid">
             ${relSlugs.map(s => {
-              const r = BY_SLUG[s];
-              return `<a class="rel-card" href="/a-${r.slug}" data-article-slug="${r.slug}">
+              const r = localizedArticle(BY_SLUG[s]);
+              return `<a class="rel-card" href="/a-${r.slug}${siteLanguage === 'en' ? '?lang=en' : ''}" data-article-slug="${r.slug}">
                 <span class="rc-cat">— ${r.category}</span>
                 <h4>${r.title}</h4>
                 <span class="rc-date">${r.date}</span>
@@ -37426,6 +37615,13 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // Wire up: render list + card click + back + copy
   // -----------------------------
   renderList();
+  document.addEventListener('site-language-changed', () => {
+    renderList();
+    const slug = location.pathname.match(/^\/a-([^/]+)/)?.[1];
+    if(slug && BY_SLUG[slug] && document.getElementById('page-article').classList.contains('active')){
+      renderDetail(BY_SLUG[slug]);
+    }
+  });
 
   pageRes.addEventListener('click', (e) => {
     const card = e.target.closest('[data-article-slug]');
@@ -37439,7 +37635,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
     e.preventDefault();
     const slug = card.dataset.articleSlug;
     if(window.openArticleBySlug) window.openArticleBySlug(slug);
-    history.replaceState(null, '', '/a-' + slug);
+    history.replaceState(null, '', '/a-' + slug + (siteLanguage === 'en' ? '?lang=en' : ''));
   });
 
   const backBtn = pageArt.querySelector('[data-article-back]');

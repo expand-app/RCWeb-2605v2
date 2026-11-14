@@ -1,0 +1,170 @@
+"""Apply Rexpand terminology to the generated English website copy."""
+from pathlib import Path
+import json
+import re
+
+root = Path(__file__).resolve().parents[1] / "i18n"
+copy = json.loads((root / "en.draft.json").read_text())
+dynamic_path = root / "dynamic.en.draft.json"
+if dynamic_path.exists():
+    dynamic = json.loads(dynamic_path.read_text())
+    copy = {**dynamic, **copy}
+exact = {
+    "博士": "PhD",
+    "欢迎来到": "Welcome to",
+    "硕士": "Master's degree",
+    "学士": "Bachelor's degree",
+    "停顿": "Pause",
+    "投行建模": "Investment Banking Modeling",
+    "数据科学": "Data Science",
+    "估值项目": "Valuation project",
+    "异常检测": "Anomaly detection",
+    "招聘市场": "Hiring Market",
+    "H1B & 签证": "H-1B & Visas",
+    "AI 与裁员": "AI & Layoffs",
+    "薪资数据": "Salary Data",
+    "AI 工具": "AI Tools",
+    "留学生策略": "International Student Strategy",
+    "— SOURCES / 来源": "— SOURCES",
+    "— Sources / 来源": "— Sources",
+    "返回面试回放": "Back to Interview Replays",
+    "Success Stories · 真实案例 · Offer letter 留档可查": "SUCCESS STORIES · VERIFIED OFFERS",
+    "学员 offer，": "Student offers,",
+    "说真话.": "without the hype.",
+    "这里展示的每一份 offer 都来自 Rexpand 已签约学员，offer letter 全部留档可核验。我们选择如实呈现案例数量与构成 —— 真实，是这份名单最重要的资产。": "Every offer shown here belongs to a Rexpand student and is backed by an offer letter on file. We show the cases as they are, so you can assess the results for yourself.",
+    "查看钻石计划 →": "Explore Career Services →",
+    "下一个签 offer 的，": "The next person to sign an offer",
+    "免费 1v1 求职评估 · 30 分钟内回复。我们会基于你的背景、签证状态与目标方向，给出可执行的 offer 时间表，并匹配同方向导师。": "Get a free 1-on-1 career assessment. We reply within 30 minutes and outline a practical plan based on your background, work authorization, and target roles.",
+    "微信公众号": "WeChat Official Account",
+    "Dae 老师咨询": "Consult Dae",
+    "小红书": "Xiaohongshu",
+    "京 ICP 备 2022032082 号-1": "Beijing ICP Registration No. 2022032082-1",
+    "BACKGROUND BOOST · 工业级远程实习": "BACKGROUND BOOST · REAL-WORLD REMOTE PROJECTS",
+    "Background Boost · 工业级远程实习": "Background Boost · Real-world remote projects",
+    "需要买车": "Need a car",
+    "点击预览": "Preview",
+    "19 节课程大纲.": "19-lesson curriculum.",
+    "4 个核心模块.": "Four core modules.",
+    "Rexpand 睿思班｜AI 驱动的留学生求职服务": "Rexpand | AI-Powered Career Services for International Students",
+    "求职全流程代做 · 名企导师 1v1 · Offer letter 留档可查": "End-to-end career support · 1-on-1 industry mentors · Verified offers",
+    "帮留学生": "Helping international students",
+    "拿到": "land",
+    "下一份": "their next",
+    "我们不只教你做，每一步都帮你做": "We do the work with you, at every step",
+    "Rexpand 公司年会盛典 · 全员合影": "Rexpand annual gathering · Our team",
+    "— 为什么是 REXPAND": "— WHY REXPAND",
+    "把求职流程做成": "A clearer, more practical",
+    "清晰、可执行": "way to navigate",
+    "的服务.": "your job search.",
+    "流程可复制": "A repeatable process",
+    "导师网络可调度": "Mentors for your goals",
+    "服务有跟进": "Progress you can track",
+    "看钻石计划如何运作": "See how our services work",
+    "六大方向": "Six career paths.",
+    "背景提升项目.": "Real-world experience.",
+    "企业级远程实习 · 名企导师带教 · 结项即获 referral。": "Industry projects · Guidance from working professionals · Referral opportunities upon completion.",
+    "查看所有项目 →": "Explore all programs →",
+    "真实学员 → 真实 offer.": "Real students. Real offers.",
+    "Google · Meta · JPMorgan · Goldman Sachs 等真实 offer letter 留档可查。": "Verified offer letters from Google, Meta, JPMorgan, Goldman Sachs, and more.",
+    "查看全部档案 →": "Explore success stories →",
+    "1,000+ 名企导师，": "1,000+ industry mentors,",
+    "来自顶级公司.": "from leading companies.",
+    "所有导师均为现役在职 Hiring Manager · 最少 5 年工作经验。": "Mentors are currently working professionals, including hiring managers and interviewers with at least five years of experience.",
+    "1v1 求职咨询免费 · 30 分钟内回复。": "Free 1-on-1 career consultation · Reply within 30 minutes.",
+    "预约求职咨询": "Book a career consultation",
+    "每日开岗智能筛选": "Smart search for new openings",
+    "多轮搜索，找对岗位": "Search widely. Match precisely.",
+    "你的背景": "Your background",
+    "目标职能": "Target roles",
+    "地区": "Location",
+    "JD 筛读完成 · 匹配岗位": "Job descriptions reviewed · Roles matched",
+    "新岗位，每天及时投": "Apply to new roles every day",
+    "岗位发布": "Job posted",
+    "申请完成 ✓": "Application submitted ✓",
+    "服务期内每日投递 · 发布后 ≤ 24 小时": "Daily applications throughout your service · Apply within 24 hours of posting",
+    "从岗位找到 Hiring Team": "Connect each role to its Hiring Team",
+    "匹配岗位": "Matching roles",
+    "LinkedIn 自动沟通": "LinkedIn outreach",
+    "24×7 跟进": "24/7 follow-up",
+    "从找到机会，到准备好每一场面试。": "From finding the right role to preparing for every interview.",
+    "拿面试": "Get the interview",
+    "Job Smart Search Service · 多轮组合职能、地区与背景，筛读 JD": "Smart Job Search · Multiple searches across roles, locations, and backgrounds; every job description reviewed",
+    "Application Service · 服务期内每日投递，新岗位 24 小时内申请": "Application Service · Daily applications; new openings applied to within 24 hours",
+    "每天联系目标岗位相关人选，包括校友与在职员工": "Daily outreach to people connected with your target roles, including alumni and current employees",
+    "* 钻石计划专属": "* Diamond plan only",
+    "6 大方向工业级实习 · 简历加分": "Six real-world project tracks · Stronger experience on your résumé",
+    "过面试": "Pass the interview",
+    "1,000+ 在职导师 · Hiring Manager、5 年以上经验、现役面试官": "1,000+ working mentors, including hiring managers and interviewers with 5+ years of experience",
+    "内推沟通 · 专业导师陪伴 · 日常答疑 · 进度复盘": "Referral outreach · Mentor support · Daily questions · Progress reviews",
+    "专属团队按公司、岗位与轮次整理近期 OA 和面试题": "A dedicated team prepares recent online assessment and interview questions by company, role, and stage",
+    "系统性精品课程": "Structured courses",
+    "BQ 系统培训 · LeetCode · Data Science 等方向": "Behavioral interviews · LeetCode · Data Science and more",
+    "睿思班": "Rexpand",
+    "求职项目": "Career Services",
+    "成功案例": "Success Stories",
+    "背景提升": "Experience Building",
+    "AI数据分析": "AI Data Analytics",
+    "数据科学": "Data Science",
+    "量化投资": "Quantitative Finance",
+    "投行建模": "Investment Banking Modeling",
+    "软件工程": "Software Engineering",
+    "AI 产品": "AI Product Management",
+    "免费资源": "Free Resources",
+    "关于我们": "About Us",
+    "登录": "Log In",
+    "求职咨询": "Book a Consultation",
+    "查看钻石计划": "Explore Career Services",
+    "浏览背景提升": "Explore Experience Programs",
+    "SAR · 核心求职服务": "SAR · Core Career Services",
+    "核心服务": "Career Services",
+    "SAR 核心求职服务": "SAR Core Career Services",
+    "岗位职能搜索服务": "Smart Job Search",
+    "岗位投递服务": "Application Service",
+    "Hiring Team 内推服务": "Hiring Team Referral Service",
+    "定向人脉内推服务": "Targeted Network Referral Service",
+    "争取内推": "Seek a Referral",
+    "背景提升项目": "Experience Building Programs",
+    "返回市场情报": "Back to Career Insights",
+    "复制链接": "Copy Link",
+    "用户服务协议": "User Terms of Service",
+    "导师服务协议": "Mentor Terms of Service",
+    "隐私条款": "Privacy Policy",
+    "条款与政策": "Terms & Policies",
+    "首页": "Home",
+    "全部": "All",
+    "岗位搜索": "Job Search",
+    "岗位投递": "Applications",
+    "内推": "Referrals",
+    "面试真题服务": "Interview Question Support",
+    "VIP 专属服务团队": "Dedicated VIP Support Team",
+    "1on1 名企导师辅导": "1-on-1 Industry Mentor Coaching",
+}
+starts = {
+    "Rexpand 是一家 AI 驱动的留学生服务公司。": "Rexpand combines AI-powered job search, applications, referrals, experience building, and interview coaching with more than 1,000 industry mentors —",
+    "自研 Multi-Agent 24/7 定位最新岗位的 Hiring Team": "Our Multi-Agent system identifies Hiring Teams for new openings and supports outreach and follow-up around the clock. Combined with referrals available through our mentor network, our team helps you stay active in a competitive job market.",
+    "四档计划都包含 SAR 岗位搜索、投递与 Hiring Team 内推。": "All four plans include SAR smart search, applications, and Hiring Team referrals. They differ in coaching sessions, experience-building programs, and targeted network outreach.",
+    "搜索、投递、内推与面试准备，按求职进程协同推进。": "Smart search, applications, referrals, and interview preparation work together throughout your job search.",
+    "Hiring Team Referral Service · AI 找到岗位团队": "Hiring Team Referral Service · AI identifies the team behind each role, with our mentor network supporting referral outreach.",
+    "即日岗位投递 +": "Daily applications +",
+    "Hiring Team内推触达获取面试": "Hiring Team outreach to pursue interviews",
+}
+for source, translation in list(copy.items()):
+    if source in exact:
+        copy[source] = exact[source]
+        continue
+    match = next((value for prefix, value in starts.items() if source.startswith(prefix)), None)
+    if match:
+        copy[source] = match
+        continue
+    if "内推" in source:
+        translation = re.sub(r"(?i)\b(?:introverts?|introspection|introspective|inner push|internal push|inner thrust|inside push|inner press)\b", "referral", translation)
+    if "老师" in source or "导师" in source:
+        translation = re.sub(r"(?i)\b(?:famous teachers?|teachers?)\b", "industry mentors", translation)
+    translation = re.sub(r"(?i)\b(?:reexpand|rexepand|rusty ben)\b", "Rexpand", translation)
+    copy[source] = translation
+
+# Some labels are generated by JavaScript and do not appear in the static parser.
+copy.update(exact)
+
+(root / "en.json").write_text(json.dumps(copy, ensure_ascii=False, indent=2) + "\n")
+print("Finalized", len(copy), "English text entries")
