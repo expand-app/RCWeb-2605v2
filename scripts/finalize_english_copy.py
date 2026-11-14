@@ -46,7 +46,7 @@ exact = {
     "19 节课程大纲.": "19-lesson curriculum.",
     "4 个核心模块.": "Four core modules.",
     "Rexpand 睿思班｜AI 驱动的留学生求职服务": "Rexpand | AI-Powered Career Services for International Students",
-    "求职全流程代做 · 名企导师 1v1 · Offer letter 留档可查": "End-to-end career support · 1-on-1 industry mentors · Verified offers",
+    "求职全流程代做 · 名企导师 1v1 · Offer letter 留档可查": "AI-powered job search · 1,000+ industry mentors",
     "帮留学生": "Helping international students",
     "拿到": "land ",
     "下一份": "their next",
@@ -159,7 +159,7 @@ exact = {
     "从 1,000+ 位在职导师中匹配目标领域的导师，包括 Hiring Manager、资深从业者与现役面试官。围绕 Technical、BQ、Case 和简历深挖练习。": "Get matched with a mentor from our network of more than 1,000 working professionals, including hiring managers and interviewers. Practice technical, behavioral, and case interviews, with feedback tailored to your experience.",
 }
 starts = {
-    "Rexpand 是一家 AI 驱动的留学生服务公司。": "Rexpand combines AI-powered job search, applications, referrals, experience building, and interview coaching with more than 1,000 industry mentors —",
+    "Rexpand 是一家 AI 驱动的留学生服务公司。": "Rexpand combines AI-powered search, daily applications, Hiring Team outreach, and interview coaching with more than 1,000 industry mentors —",
     "自研 Multi-Agent 24/7 定位最新岗位的 Hiring Team": "Our Multi-Agent system identifies Hiring Teams for new openings and supports outreach and follow-up around the clock. Combined with referrals available through our mentor network, our team helps you stay active in a competitive job market.",
     "四档计划都包含 SAR 岗位搜索、投递与 Hiring Team 内推。": "All four plans include SAR smart search, applications, and Hiring Team referrals. They differ in coaching sessions, experience-building programs, and targeted network outreach.",
     "搜索、投递、内推与面试准备，按求职进程协同推进。": "Smart search, applications, referrals, and interview preparation work together throughout your job search.",

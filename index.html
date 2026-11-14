@@ -227,12 +227,29 @@ html[lang="en"] .nav-links .nav-item,
 html[lang="en"] .nav-cta a{ white-space:nowrap; }
 html[lang="en"] .nav-cta{ gap:14px; font-size:13px; }
 html[lang="en"] .home-headline{ font-size:clamp(36px, 3.8vw, 52px); }
-html[lang="en"] .home-headline .hl-2 .accent{ margin-right:0; }
+html[lang="en"] .home-headline-zh,
+html:not([lang="en"]) .home-headline-en{ display:none !important; }
+html[lang="en"] .home-headline-en{ max-width:640px; }
 html[lang="en"] #page-home{ overflow-x:clip; }
+.nav-cta-short{ display:none; }
 @media (max-width:960px){
   html[lang="en"] .nav-inner{ gap:8px; }
   html[lang="en"] .nav-links{ gap:0; }
   html[lang="en"] .nav-cta .btn-primary{ font-size:11px; }
+}
+@media (max-width:600px){
+  html[lang="en"] .nav .logo::before{ width:100px; }
+  html[lang="en"] .nav-cta-full{ display:none; }
+  html[lang="en"] .nav-cta-short{ display:inline; }
+  html[lang="en"] .nav-cta .btn-primary{ padding:7px 9px; }
+  html[lang="en"] .language-switch button{ padding:5px 5px; }
+  html[lang="en"] .nav-toggle{ flex:0 0 36px; margin-left:0; }
+}
+@media (max-width:380px){
+  html[lang="en"] .nav-inner{ padding-inline:12px; gap:4px; }
+  html[lang="en"] .nav .logo::before{ width:86px; }
+  html[lang="en"] .nav-cta .btn-primary{ padding:6px 7px; }
+  html[lang="en"] .nav-toggle{ flex-basis:32px; width:32px; }
 }
 @media (max-width:1100px) and (min-width:961px){
   html[lang="en"] .nav-inner{ padding-inline:20px; gap:14px; }
@@ -6157,7 +6174,7 @@ footer{
     </div>
     <div class="nav-cta">
       <a class="login" href="https://student.rexpandcareer.com/" target="_blank" rel="noopener">登录</a>
-      <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">求职咨询</a>
+      <a class="btn-primary" href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener"><span class="nav-cta-full">求职咨询</span><span class="nav-cta-short">Consult</span></a>
     </div>
     <div class="language-switch" role="group" aria-label="Language / 语言">
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -6178,10 +6195,14 @@ footer{
         <span class="dot"></span>
         求职全流程代做 · 名企导师 1v1 · Offer letter 留档可查
       </div>
-      <h1 class="home-headline">
+      <h1 class="home-headline home-headline-zh">
         <span class="hl-line hl-1">帮留学生</span>
         <span class="hl-line hl-2"><span class="accent">拿到</span>下一份</span>
         <span class="hl-line hl-3"><em class="accent-en">offer.</em></span>
+      </h1>
+      <h1 class="home-headline home-headline-en" lang="en">
+        <span class="hl-line hl-1">Your next offer</span>
+        <span class="hl-line hl-2"><em class="accent">starts here.</em></span>
       </h1>
       <p class="home-sub anim-fade-up">
         Rexpand 是一家 AI 驱动的留学生服务公司。从岗位筛选、代投、内推、背景提升到面试辅导，我们和 1,000 名名企老师一起，帮你实现职业梦想——<strong>我们不只教你做，每一步都帮你做</strong>。
