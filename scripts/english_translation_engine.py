@@ -2,14 +2,15 @@
 import re
 
 import argostranslate.package
+import argostranslate.settings
 import argostranslate.translate
-import stanza
 
-_pipeline = stanza.Pipeline
-def _offline_pipeline(*args, **kwargs):
-    kwargs.setdefault("download_method", stanza.DownloadMethod.REUSE_RESOURCES)
-    return _pipeline(*args, **kwargs)
-stanza.Pipeline = _offline_pipeline
+# Argos zh_en 1.9 bundles legacy Stanza metadata/tokenizer weights that are
+# incompatible with Stanza 1.10.1 (packages / feat_dropout KeyErrors on a clean
+# runner). MiniSBD is a supported Argos 1.11 backend with a Chinese model.
+# It downloads its model once, then uses the local cache; no article text is
+# sent to a remote translation service.
+argostranslate.settings.chunk_type = argostranslate.settings.ChunkType.MINISBD
 
 _engine = None
 
