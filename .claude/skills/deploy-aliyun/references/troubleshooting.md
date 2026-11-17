@@ -232,9 +232,9 @@ brew install gh && gh auth login
 多半是本机网络或 VPN 的问题，不是部署失败。挂着某些 VPN 时访问国内 CDN 会不通。
 判断办法：**以 GitHub Actions 的绿勾为准**，然后让用户在自己的正常网络环境下打开页面确认。
 
-### 本地 `python serve.py` 起不来
+### 本地 `python3 serve.py` 起不来
 
-端口被占了就换一个：`python serve.py 8766`。或者先杀掉占用进程：
+端口被占了就换一个：`python3 serve.py 8766`。或者先杀掉占用进程：
 
 ```bash
 lsof -ti:8765 | xargs kill

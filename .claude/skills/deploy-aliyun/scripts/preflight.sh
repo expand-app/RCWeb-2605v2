@@ -60,17 +60,36 @@ fi
 # ── 2. 改动清单 ────────────────────────────────────────────────────────
 head_ "2. 这次要发布的改动"
 # -uall: 新目录里的文件要逐个列出来，否则 git 只显示目录名，第 3 步就查不到新图片
-CHANGED="$(git status --porcelain -uall | sed -E 's/^.{3}//' | sed 's/.* -> //' | tr -d '"')"
+WORKTREE="$(git status --porcelain -uall | sed -E 's/^.{3}//' | sed 's/.* -> //' | tr -d '"' | grep -v '^$' | sort -u)"
+COMMITTED=""
 if git rev-parse --verify --quiet origin/main >/dev/null; then
-  COMMITTED="$(git diff --name-only origin/main...HEAD 2>/dev/null)"
-  CHANGED="$(printf '%s\n%s\n' "$CHANGED" "$COMMITTED")"
+  COMMITTED="$(git diff --name-only origin/main...HEAD 2>/dev/null | grep -v '^$' | sort -u)"
 fi
-CHANGED="$(printf '%s\n' "$CHANGED" | grep -v '^$' | sort -u)"
+CHANGED="$(printf '%s\n%s\n' "$WORKTREE" "$COMMITTED" | grep -v '^$' | sort -u)"
 
-if [ -z "$CHANGED" ]; then
-  warn "没有任何改动 —— 没东西可发布"
+N_WT="$(printf '%s\n' "$WORKTREE" | grep -c . || true)"
+UNPUSHED="$(git rev-list --count origin/main..HEAD 2>/dev/null || echo 0)"
+
+# 分清"改了但没提交" / "提交了但没推" —— 这两种下一步动作不一样，
+# skill 的第 4 步就是按这个分支走的。
+if [ "$N_WT" -gt 0 ]; then
+  STATE="uncommitted"
+  warn "有 $N_WT 个文件改了还没提交 —— 不提交就不会上线"
+  printf '%s\n' "$WORKTREE" | sed 's/^/      /'
+  info "下一步: 确认这些都是要发的，然后 commit + push（见 SKILL.md 第 4 步）"
+elif [ "$UNPUSHED" -gt 0 ]; then
+  STATE="unpushed"
+  warn "有 $UNPUSHED 个提交还没推到 origin/main —— 不推就不会上线"
+  git log --oneline origin/main..HEAD 2>/dev/null | sed 's/^/      /'
+  info "下一步: git push origin main"
 else
-  printf '%s\n' "$CHANGED" | sed 's/^/    /'
+  STATE="clean"
+  ok "工作区干净，本地提交也都推上去了"
+  info "这次没有新东西要发布。想重跑一次部署见 troubleshooting.md「手动触发」"
+fi
+
+if [ -n "$COMMITTED" ] && [ "$STATE" != "clean" ]; then
+  info "（本次发布累计涉及 $(printf '%s\n' "$CHANGED" | grep -c .) 个文件，含已提交的）"
 fi
 
 # ── 3. 图片是否在 deploy.yml 的打包白名单里 ─────────────────────────────
@@ -196,5 +215,13 @@ if [ "$WARN" -gt 0 ]; then
 else
   printf '%s✓ 全部通过%s\n' "$GRN" "$OFF"
 fi
-printf '%s下一步: python serve.py 8765 本地看一眼，确认没问题再 push%s\n' "$DIM" "$OFF"
+
+case "$STATE" in
+  uncommitted)
+    printf '%s下一步: python3 serve.py 8765 本地确认 → commit → push origin main%s\n' "$DIM" "$OFF" ;;
+  unpushed)
+    printf '%s下一步: python3 serve.py 8765 本地确认 → git push origin main%s\n' "$DIM" "$OFF" ;;
+  clean)
+    printf '%s下一步: 没有待发布的改动。先改内容，或手动重跑一次部署%s\n' "$DIM" "$OFF" ;;
+esac
 exit 0
