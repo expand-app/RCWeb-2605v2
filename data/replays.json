@@ -1,5 +1,131 @@
 [
   {
+    "slug": "boston-consulting-group-consultant-2026-11-18",
+    "date": "2026.11.18",
+    "duration": "35:59",
+    "company": "Boston Consulting Group",
+    "location": "",
+    "role": "Consultant",
+    "logo": "B",
+    "seoTitle": "Consultant · Boston Consulting Group — Mock Interview Replay",
+    "dek": "A 35:59 Boston Consulting Group Consultant mock interview replay, 8 interviewer questions with timestamps, full transcript and Puebulo-style scoring.",
+    "tags": [],
+    "videoSrc": "https://rexpandcareer.com/videos/replays/2026-11-18-metool_video-editor.mp4",
+    "score": {
+      "overall": 69,
+      "max": 100,
+      "verdict": "PASS",
+      "verdictPct": "69%",
+      "label": "Advances, with reservations to probe next round.",
+      "bands": [
+        {
+          "name": "Fail",
+          "range": "< 55",
+          "note": "Clear no — panel passes."
+        },
+        {
+          "name": "Borderline",
+          "range": "55–64",
+          "note": "Committee hesitates; could go either way."
+        },
+        {
+          "name": "Pass",
+          "range": "65–84",
+          "note": "Advances, with reservations to probe next round."
+        },
+        {
+          "name": "Strong Pass",
+          "range": "≥ 85",
+          "note": "Panel advances without hesitation."
+        }
+      ],
+      "breakdown": [
+        [
+          "Question Addressing",
+          14,
+          20,
+          "多次经 probe 才贴合 ask；最终能回应，但有偏题时刻。"
+        ],
+        [
+          "Specificity & Evidence",
+          18,
+          25,
+          "使用患者规模、成本与利润目标，但计算链条有缺口。"
+        ],
+        [
+          "Depth & Reasoning",
+          17,
+          25,
+          "能搭建 build-versus-outsource 框架，也识别整合与需求风险。"
+        ],
+        [
+          "Role Fit",
+          11,
+          15,
+          "展现客户问题拆解与战略分析，但建议收束和 ownership 不稳。"
+        ],
+        [
+          "Communication",
+          9,
+          15,
+          "结构意识存在，但多次未先给结论，收尾理由未落地。"
+        ]
+      ]
+    },
+    "summary": "整体是有潜力但表现不够稳定的 case：能搭框架、处理量化输入，也识别战略与运营风险；但多次需要面试官 reframe，且最终建议没有完整说出。建议 pass with reservations，下一轮重点验证结论表达与计算严谨度。",
+    "mainIssue": {
+      "title": "先给明确建议，再用关键证据支撑结论",
+      "body": "在被要求给客户 final thoughts 时，候选人先说“想用 30 秒整理”，随后只提出“3 reasons”的结构，却没有说出理由或 recommendation。此前风险讨论也停在 partner relationship、integration 等标签，未完整说明各自影响；这会让 hiring committee 怀疑候选人能否把分析转化为客户可执行的建议。\n\n— 如何改进 —\n练习用 30 秒完成 case close，并确保结论先落地：\n- 开场直接说建议，例如“建议有条件推进，前提是验证患者需求并确认 downside case 下回报仍达标”。\n- 用三点支撑：$30M 五年利润目标、与现有服务的 strategic fit、partner 与 integration 风险。\n- 每个风险补一句影响和验证动作，最后明确下一步决策门槛。"
+    },
+    "alsoNoting": [
+      "被问客户影响时，先讲影响假设再做患者分群",
+      "利润估算需展示收入、成本与五年期的完整算式",
+      "回答从 pathology services 还是整体 uplift 开始时先直接选择"
+    ],
+    "questions": [
+      {
+        "t": 93,
+        "q": "How would you help them think about the right path forward?",
+        "meta": "这段还只是client setup：浦东医院覆盖 15 个科室、服务范围很广，但面试官正引出当前服务缺口"
+      },
+      {
+        "t": 752,
+        "q": "How might this customer base be affected by the launch of this new pathology services department?",
+        "meta": "面试官确认既有血检实验室是相似业务先例，接下来可能补充其上线经历"
+      },
+      {
+        "t": 1182,
+        "q": "Do you have a preference for starting on the pathology services side versus the just overall uplift?",
+        "meta": "面试官确认了 continuity of care 和减少病历流转带来的摩擦；接下来可把无缝体验连到患者结果与业务成效上"
+      },
+      {
+        "t": 1584,
+        "q": "What's your take there?",
+        "meta": "听到关键输入：预计每年新增10,000 名癌症患者；面试官接下来会给平均收费"
+      },
+      {
+        "t": 591,
+        "q": "What past information would you want to investigate to help them determine whether or not that makes sense?",
+        "meta": "客户是 30 年历史、覆盖中国大陆、2,500 张床位的医院集团，规模化运营是关键背景；他还在回应 pathology "
+      },
+      {
+        "t": 804,
+        "q": "I'd love to better understand what you mean by better services and how that might drive either more treatment for existing customers as well as net new customers.",
+        "meta": "他把“better services”具体落到减少 pathology 第三方交接、做成 seamless patien"
+      },
+      {
+        "t": 1637,
+        "q": "Before concluding the case, could you just lay out for our clients some of the potential risks that you see with moving forward?",
+        "meta": "面试官已确认 1 亿投资在财务上可行，接下来要你面向客户总结潜在影响；重点转向战略收益与风险，别再纠结资金来源"
+      },
+      {
+        "t": 1795,
+        "q": "Would love to hear your final thoughts for the client.",
+        "meta": "面试官补充：provider 还做医疗设备零售，但与客户的供货业务只占其总业务 4%"
+      }
+    ]
+  },
+  {
     "slug": "meta-data-scientist-2026-11-13",
     "date": "2026.11.13",
     "duration": "26:52",
