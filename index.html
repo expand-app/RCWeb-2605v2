@@ -201,12 +201,11 @@ img{max-width:100%; display:block;}
 .language-switch{ display:flex; align-items:center; gap:2px; padding:3px; border:1px solid var(--line); border-radius:100px; white-space:nowrap; }
 .language-switch button{ border:0; background:transparent; border-radius:100px; padding:5px 8px; font:600 11px var(--mono); color:var(--ink-3); cursor:pointer; }
 .language-switch button[aria-pressed="true"]{ background:var(--ink); color:#fff; }
-.translation-note{ display:none; margin:18px 0; padding:12px 16px; border-left:3px solid var(--green-dark); background:var(--green-soft); color:var(--ink-2); font:12px/1.6 var(--sans-cn); }
-html[lang="en"] .translation-note{ display:block; }
 /* The Chinese layout uses English subtitles for context. In English they repeat the title. */
 html[lang="en"] .pt-en,
 html[lang="en"] .dii-en,
 html[lang="en"] .pkg-en,
+html[lang="en"] .pkg-cycle,
 html[lang="en"] .t-en,
 html[lang="en"] .sum-en,
 html[lang="en"] .tldr-en{ display:none; }
@@ -14541,7 +14540,7 @@ footer{
       <div class="method-row">
         <div class="method-num">— 01 · MENTORS</div>
         <div class="method-info"><h3>1on1 名企导师辅导<span class="en">Expert Coaching</span></h3><p>从 1,000+ 位在职导师中匹配目标领域的导师，包括 Hiring Manager、资深从业者与现役面试官。围绕 Technical、BQ、Case 和简历深挖练习。</p></div>
-        <div class="detail-visual mentor-network-preview"><div class="detail-hero-num">1,000<span>+</span></div><div class="detail-caption">在职名企导师 · 定向匹配</div><div class="mentor-preview" aria-label="部分在职导师"></div><div class="detail-tags"><span>Hiring Manager</span><span>资深从业者</span><span>现役面试官</span></div><a class="mentor-preview-more" href="/about#mentors" data-route="about" data-section="mentors">认识我们的导师 <span aria-hidden="true">↗</span></a></div>
+        <div class="detail-visual mentor-network-preview"><div class="detail-hero-num">1,000<span>+</span></div><div class="detail-caption">在职名企导师 · 定向匹配</div><div class="mentor-preview" aria-label="部分在职导师"></div><div class="detail-tags"><span>Hiring Manager</span><span>资深从业者</span><span>现役面试官</span></div><a class="mentor-preview-more" href="/about#mentors" data-route="about" data-section="mentors">查看更多 <span aria-hidden="true">↗</span></a></div>
       </div>
       <div class="method-row">
         <div class="method-num">— 02 · VIP TEAM</div>
@@ -14566,11 +14565,11 @@ footer{
     <div class="pkg-head"><div><div class="sales-num">— PACKAGE COMPARISON</div><h2>四种服务计划，<br><em>按你的目标选择.</em></h2></div><p>四档计划都包含 SAR 岗位搜索、投递与 Hiring Team 内推。差别在辅导次数、背景提升范围和定向人脉内推。</p></div>
     <div class="pkg-scroll-hint">左右滑动查看全部套餐 →</div>
     <div class="pkg-table"><div class="pkg-grid">
-      <div class="pkg-cell head pkg-corner">项目</div>
-      <div class="pkg-cell head"><div class="pkg-name">猎头</div><div class="pkg-en">Headhunter</div><div class="pkg-cycle">HP</div></div>
-      <div class="pkg-cell head"><div class="pkg-name">猎头加</div><div class="pkg-en">Headhunter+</div><div class="pkg-cycle">HPP</div></div>
-      <div class="pkg-cell head"><div class="pkg-name">铂金计划</div><div class="pkg-en">Platinum</div><div class="pkg-cycle">PP</div></div>
-      <div class="pkg-cell head diamond"><div class="pkg-name">钻石计划</div><div class="pkg-en">Diamond</div><div class="pkg-cycle">DP</div></div>
+      <div class="pkg-cell head pkg-corner"><span class="chinese-only">项目</span><span class="english-only">Service Package</span></div>
+      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only">猎头</span><span class="english-only">Headhunter Package (HP)</span></div><div class="pkg-en">Headhunter</div><div class="pkg-cycle">HP</div></div>
+      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only">猎头加</span><span class="english-only">Headhunter Plus Package (HPP)</span></div><div class="pkg-en">Headhunter+</div><div class="pkg-cycle">HPP</div></div>
+      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only">铂金计划</span><span class="english-only">Platinum Package (PP)</span></div><div class="pkg-en">Platinum</div><div class="pkg-cycle">PP</div></div>
+      <div class="pkg-cell head diamond"><div class="pkg-name"><span class="chinese-only">钻石计划</span><span class="english-only">Diamond Package</span></div><div class="pkg-en">Diamond</div><div class="pkg-cycle">DP</div></div>
       <div class="pkg-cell row-label">服务周期<small class="translation-duplicate">SERVICE PERIOD</small></div>
       <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
       <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
@@ -23267,7 +23266,6 @@ footer{
     <div class="art-eyebrow" id="artEyebrow"></div>
     <h1 class="art-title" id="artTitle"></h1>
     <p class="art-dek" id="artDek"></p>
-    <p class="translation-note">Machine-translated English version for reference. If wording differs, the Chinese original governs. Select CHN above to read the original.</p>
 
     <div id="artMedia"></div>
 
@@ -23722,7 +23720,6 @@ footer{
 </style>
 
 <main class="page" id="page-legal">
-  <p class="translation-note">Machine-translated English version for reference only. The Chinese original governs. Select CHN above to read the original legal text.</p>
   <div class="legal-topbar">
     <a data-route="home">首页</a>
     <span class="sep">/</span>
@@ -23909,9 +23906,9 @@ footer{
       <h5>联系</h5>
       <ul>
         <li><a href="https://mp.weixin.qq.com/s?__biz=Mzg3ODg2OTA0Nw==&mid=2247490690&idx=1&sn=72fa5936186ec54e86c39635427e823e" target="_blank" rel="noopener">微信公众号</a></li>
-        <li><a href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">Dae 老师咨询</a></li>
+        <li><a href="https://work.weixin.qq.com/ca/cawcdefe06cca86b8b" target="_blank" rel="noopener">添加微信</a></li>
         <li><a href="https://www.linkedin.com/company/rexpandcareer/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://www.xiaohongshu.com/user/profile/5c87d436000000001602db68" target="_blank" rel="noopener">小红书</a></li>
+        <li><a href="https://www.xiaohongshu.com/user/profile/5c87d436000000001602db68" target="_blank" rel="noopener"><span class="chinese-only">小红书</span><span class="english-only">Rednote</span></a></li>
       </ul>
     </div>
   </div>
@@ -37892,12 +37889,7 @@ if(rmBackBtn) rmBackBtn.addEventListener('click', backToRoles);
   // Render article DETAIL page (with TL;DR, image, FAQ, related, JSON-LD)
   // -----------------------------
   function renderDetail(a){
-    const hasEnglishDraft = Boolean(englishArticles?.[a.slug]);
     a = localizedArticle(a);
-    const translationNote = pageArt.querySelector('.translation-note');
-    if(translationNote) translationNote.textContent = hasEnglishDraft
-      ? 'Machine-translated English version for reference. If wording differs, the Chinese original governs. Select CHN above to read the original.'
-      : 'An English draft for this article is being prepared. Select CHN above to read the Chinese original.';
     pageArt.querySelector('#artEyebrow').innerHTML =
       `<span>${a.category}</span><span class="sep"></span><span class="date">${a.date}</span><span class="sep"></span><span class="read">${a.readTime}</span>`;
     pageArt.querySelector('#artTitle').innerHTML = a.title;

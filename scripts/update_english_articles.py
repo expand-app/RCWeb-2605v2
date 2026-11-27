@@ -19,6 +19,21 @@ TARGET = ROOT / "i18n/articles.en.json"
 FIELDS = ("title", "dek", "body", "category", "tldr", "faq", "image", "hero", "sources", "keywords")
 
 
+def polish(value):
+    if isinstance(value, dict):
+        return {key: polish(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [polish(item) for item in value]
+    if not isinstance(value, str):
+        return value
+    value = re.sub(r"(?i)\b(?:Recpand|Rexpand Wisdom|Enterprise Wisdom|Enterprise Micro-Intelligence)\b", "Rexpand", value)
+    value = value.replace("You don't know where you're going?", "Not sure where to start?")
+    value = value.replace("Free immediate advice", "Get a free consultation")
+    value = re.sub(r"[^<>]*?1v1 free[^<>]*?job search consultant directly\.",
+                   "Get a free 1-on-1 career consultation. We respond within 30 minutes. Use the link or scan the WeChat code to connect with a Rexpand career advisor.", value, flags=re.I)
+    return value
+
+
 def draft(text):
     if not isinstance(text, str) or not re.search(r"[\u4e00-\u9fff]", text):
         return text
@@ -98,9 +113,9 @@ def main():
         slug = article["slug"]
         source_hash = fingerprint(article)
         if existing.get(slug, {}).get("sourceHash") == source_hash:
-            result[slug] = existing[slug]
+            result[slug] = polish(existing[slug])
         else:
-            result[slug] = translate_article(article, source_hash)
+            result[slug] = polish(translate_article(article, source_hash))
             translated_count += 1
             print(f"Translated {translated_count}: {slug}", flush=True)
     TARGET.parent.mkdir(exist_ok=True)
