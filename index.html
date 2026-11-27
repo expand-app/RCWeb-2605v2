@@ -205,13 +205,11 @@ img{max-width:100%; display:block;}
 html[lang="en"] .pt-en,
 html[lang="en"] .dii-en,
 html[lang="en"] .pkg-en,
-html[lang="en"] .pkg-cycle,
 html[lang="en"] .t-en,
 html[lang="en"] .sum-en,
 html[lang="en"] .tldr-en{ display:none; }
 html[lang="en"] .en:not(#bg-title-en){ display:none !important; }
-html[lang="en"] .bg-brief-title small,
-html[lang="en"] .translation-duplicate{ display:none; }
+html[lang="en"] .bg-brief-title small{ display:none; }
 html[lang="en"] .bp-pillar-head .label{ display:none; }
 html[lang="en"] .legal-sub{ display:none; }
 html:not([lang="en"]) .english-only{ display:none !important; }
@@ -7030,12 +7028,6 @@ footer{
     font-weight: 400;
     margin-bottom: 8px;
   }
-  #page-offer .pkg-cell.head .pkg-cycle{
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--ink-3);
-    letter-spacing: 0.08em;
-  }
 
   /* Diamond column highlight */
   #page-offer .pkg-cell.diamond{
@@ -7049,7 +7041,6 @@ footer{
   }
   #page-offer .pkg-cell.diamond.head .pkg-name{ color: #fff; }
   #page-offer .pkg-cell.diamond.head .pkg-en{ color: rgba(255,255,255,0.55); }
-  #page-offer .pkg-cell.diamond.head .pkg-cycle{ color: #66D17F; }
   #page-offer .pkg-cell.diamond.head::before{
     content: "★ FLAGSHIP";
     position: absolute;
@@ -14566,40 +14557,40 @@ footer{
     <div class="pkg-scroll-hint">左右滑动查看全部套餐 →</div>
     <div class="pkg-table"><div class="pkg-grid">
       <div class="pkg-cell head pkg-corner"><span class="chinese-only">项目</span><span class="english-only">Service Package</span></div>
-      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only">猎头</span><span class="english-only">Headhunter Package (HP)</span></div><div class="pkg-en">Headhunter</div><div class="pkg-cycle">HP</div></div>
-      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only">猎头加</span><span class="english-only">Headhunter Plus Package (HPP)</span></div><div class="pkg-en">Headhunter+</div><div class="pkg-cycle">HPP</div></div>
-      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only">铂金计划</span><span class="english-only">Platinum Package (PP)</span></div><div class="pkg-en">Platinum</div><div class="pkg-cycle">PP</div></div>
-      <div class="pkg-cell head diamond"><div class="pkg-name"><span class="chinese-only">钻石计划</span><span class="english-only">Diamond Package</span></div><div class="pkg-en">Diamond</div><div class="pkg-cycle">DP</div></div>
-      <div class="pkg-cell row-label">服务周期<small class="translation-duplicate">SERVICE PERIOD</small></div>
-      <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
-      <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
-      <div class="pkg-cell"><span class="label-mini">12 个月</span></div>
+      <div class="pkg-cell head diamond"><div class="pkg-name"><span class="chinese-only"><span>钻石计划</span> (DP)</span><span class="english-only">Diamond Package</span></div><div class="pkg-en">Diamond</div></div>
+      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only"><span>铂金计划</span> (PP)</span><span class="english-only">Platinum Package (PP)</span></div><div class="pkg-en">Platinum</div></div>
+      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only"><span>猎头加</span> (HPP)</span><span class="english-only">Headhunter Plus Package (HPP)</span></div><div class="pkg-en">Headhunter+</div></div>
+      <div class="pkg-cell head"><div class="pkg-name"><span class="chinese-only"><span>猎头</span> (HP)</span><span class="english-only">Headhunter Package (HP)</span></div><div class="pkg-en">Headhunter</div></div>
+      <div class="pkg-cell row-label">服务周期<small class="chinese-only">SERVICE PERIOD</small></div>
       <div class="pkg-cell diamond"><span class="label-mini">24 个月</span></div>
+      <div class="pkg-cell"><span class="label-mini">12 个月</span></div>
+      <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
+      <div class="pkg-cell"><span class="label-mini">6 个月</span></div>
       <div class="pkg-cell row-label">SAR 服务<small>SMART SEARCH · APPLICATION · REFERRAL</small></div>
-      <div class="pkg-cell"><span class="check">✓</span></div>
-      <div class="pkg-cell"><span class="check">✓</span></div>
-      <div class="pkg-cell"><span class="check">✓</span></div>
       <div class="pkg-cell diamond"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="check">✓</span></div>
       <div class="pkg-cell row-label">1on1 VIP 辅导<small>名企导师</small></div>
-      <div class="pkg-cell"><span class="dash">—</span></div>
-      <div class="pkg-cell"><span class="label-mini">10 节</span></div>
-      <div class="pkg-cell"><span class="label-mini">15 节</span></div>
       <div class="pkg-cell diamond"><span class="label-mini">40 节</span></div>
+      <div class="pkg-cell"><span class="label-mini">15 节</span></div>
+      <div class="pkg-cell"><span class="label-mini">10 节</span></div>
+      <div class="pkg-cell"><span class="dash">—</span></div>
       <div class="pkg-cell row-label">VIP 社群服务<small>日常答疑 · 面试真题</small></div>
-      <div class="pkg-cell"><span class="check">✓</span></div>
-      <div class="pkg-cell"><span class="check">✓</span></div>
-      <div class="pkg-cell"><span class="check">✓</span></div>
       <div class="pkg-cell diamond"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="check">✓</span></div>
       <div class="pkg-cell row-label">定向人脉内推服务<small>钻石计划专属</small></div>
-      <div class="pkg-cell"><span class="dash">—</span></div>
-      <div class="pkg-cell"><span class="dash">—</span></div>
-      <div class="pkg-cell"><span class="dash">—</span></div>
       <div class="pkg-cell diamond"><span class="check">✓</span></div>
+      <div class="pkg-cell"><span class="dash">—</span></div>
+      <div class="pkg-cell"><span class="dash">—</span></div>
+      <div class="pkg-cell"><span class="dash">—</span></div>
       <div class="pkg-cell row-label">背景提升项目<small>工作经历</small></div>
-      <div class="pkg-cell"><span class="dash">—</span></div>
-      <div class="pkg-cell"><span class="dash">—</span></div>
-      <div class="pkg-cell"><span class="label-mini">任选 1 个</span></div>
       <div class="pkg-cell diamond"><span class="label-mini">全部 · ALL 6 TRACKS</span></div>
+      <div class="pkg-cell"><span class="label-mini">任选 1 个</span></div>
+      <div class="pkg-cell"><span class="dash">—</span></div>
+      <div class="pkg-cell"><span class="dash">—</span></div>
     </div></div>
   </section>
 

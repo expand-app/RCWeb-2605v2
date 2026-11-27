@@ -143,7 +143,7 @@ exact = {
     "10 节": "10 Classes",
     "15 节": "15 Classes",
     "40 节": "40 Classes",
-    "任选 1 个": "1",
+    "任选 1 个": "1 Track",
     "全部 · ALL 6 TRACKS": "All Tracks",
     "认识我们的导师": "Meet our mentors",
     "1on1 VIP 辅导": "1-on-1 VIP Coaching",
