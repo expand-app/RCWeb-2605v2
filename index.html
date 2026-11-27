@@ -181,7 +181,6 @@ img{max-width:100%; display:block;}
 .logo .dot{
   display: none;
 }
-.nav .logo small,
 .foot-brand .logo small{
   font-family: var(--sans-cn);
   font-size: 12px; color: var(--ink-4);
@@ -215,7 +214,6 @@ html[lang="en"] .legal-sub{ display:none; }
 html:not([lang="en"]) .english-only{ display:none !important; }
 html[lang="en"] .english-only{ display:inline !important; }
 html[lang="en"] .chinese-only{ display:none !important; }
-html[lang="en"] .nav .logo small,
 html[lang="en"] .foot-brand .logo small,
 html[lang="en"] .dd-name small{ display:none; }
 html[lang="en"] .nav-inner{ max-width:1440px; gap:24px; }
@@ -257,7 +255,6 @@ html[lang="en"] #page-home{ overflow-x:clip; }
 html[lang="en"] #bg-title-cn{ display:none; }
 @media (max-width: 600px){
   .nav .nav-inner{ gap:8px; }
-  .nav .logo small{ display:none; }
   body .nav-cta .btn-primary{ padding:7px 8px; font-size:11px; }
 }
 .nav-cta .login{ color: var(--ink-3); cursor: pointer; }
@@ -6133,9 +6130,7 @@ footer{
 ============================================================ -->
 <nav class="nav">
   <div class="nav-inner">
-    <a class="logo" href="/" data-route="home">
-      <small>睿思班</small>
-    </a>
+    <a class="logo" href="/" data-route="home" aria-label="Rexpand"></a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -23124,7 +23119,6 @@ footer{
   }
   @media (max-width: 360px){
     .nav-inner{ padding: 12px 14px; gap: 8px; }
-    .nav .logo small{ display: none; }
   }
 </style>
 
